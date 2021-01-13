@@ -1,5 +1,5 @@
 module.exports = {
   images: {
-    domains: ['picsum.photos'],
+    domains: ['picsum.photos', 'declara.jne.gob.pe'],
   },
 };
