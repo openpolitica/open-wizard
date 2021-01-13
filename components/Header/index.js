@@ -3,7 +3,7 @@ import { Title } from './styles.js';
 const Header = () => {
   return (
     <header>
-      <Title>Open politica</Title>
+      <Title>Wizard</Title>
     </header>
   );
 };
