@@ -6,5 +6,6 @@ export const Title = styled('h2')`
   font-size: 1.375rem;
   font-weight: 700;
   line-height: 1.75rem;
+  margin: 0;
   text-align: ${(props) => (props.align ? props.align : 'left')};
 `;

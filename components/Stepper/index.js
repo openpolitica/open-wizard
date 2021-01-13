@@ -24,7 +24,7 @@ const Stepper = (props) => {
 
   const untaken = props.of - props.steps;
   return (
-    <StyledStepper>
+    <StyledStepper {...props}>
       {Array.from({ length: props.steps }).map((_, index) => {
         if (index === props.steps - 1 && untaken === 0) {
           return <Step isLast type="taken" />;

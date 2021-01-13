@@ -1,8 +1,8 @@
 import { Title, Header as StyledHeader } from './styles.js';
 
-const Header = () => {
+const Header = props => {
   return (
-    <StyledHeader>
+    <StyledHeader {...props}>
       <Title>Wizard</Title>
     </StyledHeader>
   );
