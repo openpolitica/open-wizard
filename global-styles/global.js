@@ -4,7 +4,7 @@ export default () => (
   <style>
     {`
       body {
-        background-color: white;
+        background-color: #F1F2F3;
         color: black;
         font-size: 16px;
         font-family: sans-serif;
