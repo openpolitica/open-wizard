@@ -1,10 +1,10 @@
-import { Title } from './styles.js';
+import { Title, Header as StyledHeader } from './styles.js';
 
 const Header = () => {
   return (
-    <header>
+    <StyledHeader>
       <Title>Wizard</Title>
-    </header>
+    </StyledHeader>
   );
 };
 

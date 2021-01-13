@@ -6,3 +6,7 @@ export const Title = styled('h1')`
   margin: 0;
   padding: 1.125rem 1.5625rem 1rem;
 `;
+
+export const Header = styled('header')`
+  background: white;
+`;
