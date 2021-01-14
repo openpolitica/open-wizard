@@ -1,4 +1,9 @@
+import Router from 'next/router';
 import * as Styled from './styles';
+
+const onContinueClick = event => {
+  Router.push('/steps/2');
+};
 
 export default function Step1() {
   return (
@@ -18,7 +23,7 @@ export default function Step1() {
         </Styled.Select>
         <Styled.LinkButton>Vivo en el extranjero</Styled.LinkButton>
       </Styled.Step>
-      <Styled.Button>Continuar</Styled.Button>
+      <Styled.Button onClick={onContinueClick}>Continuar</Styled.Button>
     </Styled.Container>
   );
 }
