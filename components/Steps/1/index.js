@@ -43,7 +43,7 @@ export default function Step1() {
         <Styled.Select onChange={handleSelectChange}>
           <option>Seleccione uno</option>
           {locations.map((location) => (
-            <option value={location}>{capitalize(location)}</option>
+            <option key={location} value={location}>{capitalize(location)}</option>
           ))}
         </Styled.Select>
         <Styled.LinkButton onClick={onExpatClick}>

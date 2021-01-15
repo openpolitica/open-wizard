@@ -27,15 +27,15 @@ const Stepper = (props) => {
     <StyledStepper {...props}>
       {Array.from({ length: props.steps }).map((_, index) => {
         if (index === props.steps - 1 && untaken === 0) {
-          return <Step isLast type="taken" />;
+          return <Step key={`taken-${index}`} isLast type="taken" />;
         }
-        return <Step type="taken" />;
+        return <Step key={`taken-${index}`} type="taken" />;
       })}
       {Array.from({ length: untaken }).map((_, index) => {
         if (index === untaken - 1) {
-          return <Step isLast type="untaken" />;
+          return <Step key={`untaken-${index}`} isLast type="untaken" />;
         }
-        return <Step type="untaken" />;
+        return <Step key={`untaken-${index}`} type="untaken" />;
       })}
     </StyledStepper>
   );
