@@ -6,6 +6,7 @@ import BaseYesNoButton from 'components/YesNoButton';
 
 export const Container = styled('section')`
   align-items: center;
+  background: #F1F2F3;
   display: flex;
   flex-direction: column;
 `;
