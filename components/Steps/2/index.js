@@ -4,7 +4,7 @@ import ls from 'local-storage';
 
 export default function Step2() {
   const onYesButtonClick = (event) => {
-    ls('op.wizard', { ...ls('op.wizard'), withSentence: true });
+    ls('op.wizard', { ...ls('op.wizard'), withSentence: null });
     Router.push('/steps/3');
   };
 
