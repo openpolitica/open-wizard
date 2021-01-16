@@ -52,7 +52,7 @@ export default function Step4(props) {
             <Styled.CandidateCard
               key={`Candidate-${index}`}
               candidateParty={candidate.org_politica_nombre}
-              candidateNumber={candidate.cargo_id}
+              candidateNumber={candidate.posicion}
               candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
               profileImageId={candidate.hoja_vida_id}
             />
