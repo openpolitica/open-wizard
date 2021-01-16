@@ -51,7 +51,7 @@ export default function Step4(props) {
           {data.data.candidates.map((candidate, index) => (
             <Styled.CandidateCard
               key={`Candidate-${index}`}
-              candidateParty={''}
+              candidateParty={candidate.org_politica_nombre}
               candidateNumber={candidate.cargo_id}
               candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
               profileImageId={candidate.hoja_vida_id}
