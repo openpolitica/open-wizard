@@ -4,6 +4,7 @@ import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import qs from 'qs';
 import * as Styled from './styles';
+import Loading from 'components/Loading';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -13,10 +14,19 @@ const mapApiTerms = (options) => ({
   limit: 10,
 });
 
+const LoadingScreen = () => {
+  return (
+    <Styled.Container>
+      <Styled.Header />
+      <Loading />
+    </Styled.Container>
+  );
+};
+
 export default function Step4(props) {
   const isServer = typeof window === 'undefined';
   if (isServer) {
-    return <p>Loading</p>;
+    return <LoadingScreen />;
   }
 
   const location = ls('op.wizard').location;
@@ -28,7 +38,7 @@ export default function Step4(props) {
   );
 
   if (!data) {
-    return <p>Loading</p>;
+    return <LoadingScreen />;
   }
 
   return (
