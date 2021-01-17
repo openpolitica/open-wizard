@@ -1,9 +1,9 @@
-import { Title, Header as StyledHeader } from './styles.js';
+import { LogoImg, Header as StyledHeader } from './styles.js';
 
-const Header = props => {
+const Header = (props) => {
   return (
     <StyledHeader {...props}>
-      <Title>Wizard</Title>
+      <LogoImg src={'../images/icons/flag-peru.svg'} />
     </StyledHeader>
   );
 };
