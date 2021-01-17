@@ -32,7 +32,7 @@ export default function Step4(props) {
   const location = ls('op.wizard').location;
   const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
   const { data, error } = useSWR('key', () =>
-    fetch(`https://tip.magiqapps.com/candidates?${apiTerms}`).then((data) =>
+    fetch(`https://api.openpolitica.com/candidates?${apiTerms}`).then((data) =>
       data.json(),
     ),
   );
