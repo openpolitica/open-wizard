@@ -35,7 +35,7 @@ export default function Step1() {
   return (
     <Styled.Container>
       <Styled.Header />
-      <GoBackButton/>
+      <GoBackButton>Regresa</GoBackButton>
       <Styled.Step>
         <Styled.Stepper steps={1} of={4} />
         <Styled.Title>¿Dónde vives?</Styled.Title>
