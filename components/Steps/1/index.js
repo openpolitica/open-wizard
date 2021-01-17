@@ -3,6 +3,7 @@ import Router from 'next/router';
 import ls from 'local-storage';
 import { locations } from './locations';
 import * as Styled from './styles';
+import GoBackButton from 'components/GoBackButton';
 
 const capitalize = (text) => {
   if (typeof text !== 'string') {
@@ -34,6 +35,7 @@ export default function Step1() {
   return (
     <Styled.Container>
       <Styled.Header />
+      <GoBackButton/>
       <Styled.Step>
         <Styled.Stepper steps={1} of={4} />
         <Styled.Title>¿Dónde vives?</Styled.Title>

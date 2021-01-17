@@ -6,6 +6,7 @@ import BaseParagraph from 'components/BaseParagraph';
 import BaseSelect from 'components/BaseSelect';
 import BaseLinkButton from 'components/LinkButton';
 import BaseButton from 'components/BaseButton';
+import GoBackButton from 'components/GoBackButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -48,3 +49,5 @@ export const Button = styled(BaseButton)`
   align-self: flex-end;
   margin: 13.125rem 1.5rem 0 0;
 `;
+
+
