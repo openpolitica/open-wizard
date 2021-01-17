@@ -19,8 +19,7 @@ export default function Step2() {
       <Styled.Step>
         <Styled.Stepper steps={2} of={4} />
         <Styled.Title align="center">
-          ¿Deseas que te mostremos candidatos con sentencias en el Poder
-          Judicial?
+          ¿Incluimos candidatos con sentencias en el Poder Judicial?
         </Styled.Title>
         <Styled.YesNoButton
           onYesButtonClick={onYesButtonClick}
