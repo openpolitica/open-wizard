@@ -35,7 +35,7 @@ export const Title = styled.h1`
 
 export const Span = styled.span`
   color: #4eb5a2;
-  
+
 }
 `;
 
