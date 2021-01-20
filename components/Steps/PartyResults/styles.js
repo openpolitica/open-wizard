@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import BaseHeader from 'components/Header';
 import BaseTitle from 'components/BaseTitle';
 import BaseChip from 'components/Chip';
+import BaseFilterButton from 'components/FilterButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -18,6 +19,10 @@ export const Step = styled('div')`
   flex-direction: column;
   display: flex;
   padding: 1.5rem;
+`;
+
+export const FilterButton = styled(BaseFilterButton)`
+  align-self: flex-end;
 `;
 
 export const Title = styled(BaseTitle)`
