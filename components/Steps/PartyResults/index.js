@@ -58,11 +58,14 @@ export default function PartyResults(props) {
   return (
     <Styled.Container>
       <Styled.Header />
-      <Styled.Title>Explora tus opciones</Styled.Title>
-      <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
-      <Styled.Results>
-        {groupCandidatesByPartyName(data.data.candidates)}
-      </Styled.Results>
+      <Styled.Step>
+        <Styled.FilterButton />
+        <Styled.Title>Explora tus opciones</Styled.Title>
+        <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
+        <Styled.Results>
+          {groupCandidatesByPartyName(data.data.candidates)}
+        </Styled.Results>
+      </Styled.Step>
     </Styled.Container>
   );
 }
