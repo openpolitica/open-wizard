@@ -13,25 +13,13 @@ import {
   SubtitleInfoCard,
   TitleInfoCard,
   ButtonStart,
-<<<<<<< HEAD
-=======
-  FooterContent,
-  WriteUs,
-  WriteUsEmail,
-  TextCopyright,
-  BoxSocialMedia,
-  SocialMediaList,
->>>>>>> upstream/main
   CheckText,
   WrapperCheckLabel,
 } from './styles.js';
 import { useRouter } from 'next/router';
 import BaseButton from 'components/BaseButton';
 import BaseHeader from 'components/Header';
-<<<<<<< HEAD
 import Footer from 'components/Footer';
-=======
->>>>>>> upstream/main
 
 const CheckLabel = (props) => (
   <WrapperCheckLabel>
