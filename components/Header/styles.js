@@ -10,6 +10,7 @@ export const Title = styled('h1')`
 export const Header = styled('header')`
   background: white;
   padding: 18px 24px;
+  cursor: pointer;
 `;
 
 export const LogoImg = styled.img``;
