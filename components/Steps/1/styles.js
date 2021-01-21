@@ -9,6 +9,7 @@ import BaseButton from 'components/BaseButton';
 
 export const Container = styled('section')`
   align-items: center;
+  background: #F1F2F3;
   display: flex;
   flex-direction: column;
 `;
