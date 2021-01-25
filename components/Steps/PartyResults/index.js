@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
@@ -6,6 +7,24 @@ import groupBy from 'lodash.groupby';
 import * as Styled from './styles';
 import PartyCard from 'components/PartyCard';
 import Loading from 'components/Loading';
+import FilterModal from 'components/FilterModal';
+import {
+  applyFilter,
+  applyFilters,
+  byGenre,
+  onlyMale,
+  onlyFemale,
+  hasJNEIncome,
+  hasPublicServiceExperience,
+  byStudies,
+  upToPrimary,
+  upToSecondary,
+  upToHighSchool,
+  upToPostgraduate,
+  doesntHaveSanctionsWithSunat,
+  doesntHaveSanctionsWithServir,
+  doesntHaveSanctionsWithDriving,
+} from './filters';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -43,13 +62,15 @@ export default function PartyResults(props) {
     return <LoadingScreen />;
   }
 
+  const [isFilterModalOpen, setFilterModalState] = useState(false);
   const location = ls('op.wizard').location;
   const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
-  const { data, error } = useSWR('key', () =>
+  const { data, error } = useSWR('/api/candidates', () =>
     fetch(`${process.env.api.candidatesUrl}${apiTerms}`).then((data) =>
       data.json(),
     ),
   );
+  const [filters, setFilters] = useState([]);
 
   if (!data) {
     return <LoadingScreen />;
@@ -57,13 +78,35 @@ export default function PartyResults(props) {
 
   return (
     <Styled.Container>
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        applyFilter={applyFilter}
+        onlyFemale={onlyFemale}
+        onlyMale={onlyMale}
+        hasPublicServiceExperience={hasPublicServiceExperience}
+        hasJNEIncome={hasJNEIncome}
+        upToPrimary={upToPrimary}
+        upToSecondary={upToSecondary}
+        upToHighSchool={upToHighSchool}
+        upToPostgraduate={upToPostgraduate}
+        doesntHaveSanctionsWithSunat={doesntHaveSanctionsWithSunat}
+        doesntHaveSanctionsWithServir={doesntHaveSanctionsWithServir}
+        doesntHaveSanctionsWithDriving={doesntHaveSanctionsWithDriving}
+        filters={filters}
+        setFilters={setFilters}
+        onCloseButtonClick={() => setFilterModalState(false)}
+      />
       <Styled.Header />
       <Styled.Step>
-        <Styled.FilterButton />
+        <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
         <Styled.Results>
-          {groupCandidatesByPartyName(data.data.candidates)}
+          {groupCandidatesByPartyName(
+            filters.length
+              ? applyFilters(data?.data.candidates)(filters)
+              : data?.data.candidates,
+          )}
         </Styled.Results>
       </Styled.Step>
     </Styled.Container>
