@@ -4,7 +4,7 @@ import BaseButton from 'components/BaseButton';
 
 export const Container = styled.div`
   background: white;
-  font-family: Poppins;
+  font-family: 'Poppins', sans-serif;
 `;
 
 export const Hero = styled.main`

@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   background: #fafafa;
+  font-family: 'Poppins', sans-serif;
   padding: 1rem 1.5rem 3rem;
   text-align: center;
 `;
@@ -29,6 +30,7 @@ export const GreenSpan = styled.span`
 export const Subtitle = styled.p`
   font-size: 0.875rem;
   color: #c7cad1;
+  margin: 0;
   margin-top: 0.5rem;
 `;
 
@@ -79,5 +81,6 @@ export const PartOfText = styled.p`
   color: #475065;
   font-size: 0.875rem;
   font-weight: 600;
+  margin: 0;
   margin-bottom: 0.5rem;
 `;
