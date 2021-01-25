@@ -13,18 +13,13 @@ import {
   SubtitleInfoCard,
   TitleInfoCard,
   ButtonStart,
-  FooterContent,
-  WriteUs,
-  WriteUsEmail,
-  TextCopyright,
-  BoxSocialMedia,
-  SocialMediaList,
   CheckText,
   WrapperCheckLabel,
 } from './styles.js';
 import { useRouter } from 'next/router';
 import BaseButton from 'components/BaseButton';
 import BaseHeader from 'components/Header';
+import Footer from 'components/Footer';
 
 const CheckLabel = (props) => (
   <WrapperCheckLabel>
@@ -87,32 +82,7 @@ const HomePage = () => {
           </BackgroundDirections>
         </InfoCard>
       </InfoSection>
-      <FooterContent>
-        <TextCopyright>
-          Copyright © 2020 Open Política. Todos los derechos reservados.
-        </TextCopyright>
-        <WriteUs> Escríbenos</WriteUs>
-        <WriteUsEmail href="mailto: hola@openpolitica.com?subject = Feedback&body = Message">
-          hola@openpolitica.com
-        </WriteUsEmail>
-        <BoxSocialMedia>
-          <SocialMediaList>
-            <a href="http://facebook.com/" target="_blank">
-              <img src="../images/icons/facebook.svg" alt="logo facebook" />
-            </a>
-          </SocialMediaList>
-          <SocialMediaList>
-            <a href="http://twitter.com/openpolitica" target="_blank">
-              <img src="../images/icons/twitter.svg" alt="logo twitter" />
-            </a>
-          </SocialMediaList>
-          <SocialMediaList>
-            <a href="http://instagram.com/open.politica" target="_blank">
-              <img src="../images/icons/instagram.svg" alt="logo instagram" />
-            </a>
-          </SocialMediaList>
-        </BoxSocialMedia>
-      </FooterContent>
+      <Footer />
     </Container>
   );
 };
