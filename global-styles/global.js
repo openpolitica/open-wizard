@@ -7,7 +7,7 @@ export default () => (
         background-color: #F1F2F3;
         color: black;
         font-size: 16px;
-        font-family: Poppins, sans-serif;
+        font-family: sans-serif;
         margin: 0;
       }
       * {
@@ -16,9 +16,6 @@ export default () => (
       *::selection {
         background: #c60dff;
         color: white;
-      }
-      p{
-        margin: 0;
       }
     `}
   </style>
