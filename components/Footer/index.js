@@ -1,4 +1,5 @@
 import * as Styled from './styles';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,22 +9,37 @@ export default function Footer() {
       </Styled.TextCopyright>
       <Styled.WriteUs> Escríbenos</Styled.WriteUs>
       <Styled.WriteUsEmail href="mailto: hola@openpolitica.com?subject = Feedback&body = Message">
-        hola@openpolitica.com
+        odpolitica@gmail.com
       </Styled.WriteUsEmail>
       <Styled.BoxSocialMedia>
         <Styled.SocialMediaList>
           <a href="http://facebook.com/" target="_blank">
-            <img src="../images/icons/facebook.svg" alt="logo facebook" />
+            <Image
+              src="/images/icons/facebook.svg"
+              alt="logo facebook"
+              width={24}
+              height={24}
+            />
           </a>
         </Styled.SocialMediaList>
         <Styled.SocialMediaList>
           <a href="http://twitter.com/openpolitica" target="_blank">
-            <img src="../images/icons/twitter.svg" alt="logo twitter" />
+            <Image
+              src="/images/icons/twitter.svg"
+              alt="logo twitter"
+              width={22}
+              height={22}
+            />
           </a>
         </Styled.SocialMediaList>
         <Styled.SocialMediaList>
           <a href="http://instagram.com/open.politica" target="_blank">
-            <img src="../images/icons/instagram.svg" alt="logo instagram" />
+            <Image
+              src="/images/icons/instagram.svg"
+              alt="logo instagram"
+              width={24}
+              height={24}
+            />
           </a>
         </Styled.SocialMediaList>
       </Styled.BoxSocialMedia>
