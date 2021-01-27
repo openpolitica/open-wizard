@@ -33,28 +33,30 @@ export default function Step1() {
   };
 
   return (
-    <Styled.Container>
+    <>
       <Styled.Header />
-      <GoBackButton route={'/'} text="Regresa" />
-      <Styled.Step>
-        <Styled.Stepper steps={1} of={4} />
-        <Styled.Title>¿Dónde vives?</Styled.Title>
-        <Styled.Paragraph align="center">
-          Con este filtro solo te mostraremos candidatos para tu departamento.
-        </Styled.Paragraph>
-        <Styled.Select onChange={handleSelectChange}>
-          <option>Seleccione uno</option>
-          {locations.map((location) => (
-            <option key={location} value={location}>
-              {capitalize(location)}
-            </option>
-          ))}
-        </Styled.Select>
-        <Styled.LinkButton onClick={onExpatClick}>
-          Vivo en el extranjero
-        </Styled.LinkButton>
-      </Styled.Step>
-      <Styled.Button onClick={onContinueClick}>Continuar</Styled.Button>
-    </Styled.Container>
+      <Styled.Container>
+        <GoBackButton route={'/'} text="Regresa" />
+        <Styled.Step>
+          <Styled.Stepper steps={1} of={4} />
+          <Styled.Title>¿Dónde vives?</Styled.Title>
+          <Styled.Paragraph align="center">
+            Con este filtro solo te mostraremos candidatos para tu departamento.
+          </Styled.Paragraph>
+          <Styled.Select onChange={handleSelectChange}>
+            <option>Seleccione uno</option>
+            {locations.map((location) => (
+              <option key={location} value={location}>
+                {capitalize(location)}
+              </option>
+            ))}
+          </Styled.Select>
+          <Styled.LinkButton onClick={onExpatClick}>
+            Vivo en el extranjero
+          </Styled.LinkButton>
+        </Styled.Step>
+        <Styled.Button onClick={onContinueClick}>Continuar</Styled.Button>
+      </Styled.Container>
+    </>
   );
 }
