@@ -15,20 +15,22 @@ export default function Step3() {
   };
 
   return (
-    <Styled.Container>
+    <>
       <Styled.Header />
-      <GoBackButton route={'/steps/2'} text="Regresa" />
-      <Styled.Step>
-        <Styled.Stepper steps={3} of={4} />
-        <Styled.Title align="center">
-          ¿Te mostramos partidos que votaron a favor de la vacancia presidencial
-          de Noviembre del 2020?
-        </Styled.Title>
-        <Styled.YesNoButton
-          onYesButtonClick={onYesButtonClick}
-          onNoButtonClick={onNoButtonClick}
-        />
-      </Styled.Step>
-    </Styled.Container>
+      <Styled.Container>
+        <GoBackButton route={'/steps/2'} text="Regresa" />
+        <Styled.Step>
+          <Styled.Stepper steps={3} of={4} />
+          <Styled.Title align="center">
+            ¿Te mostramos partidos que votaron a favor de la vacancia
+            presidencial de Noviembre del 2020?
+          </Styled.Title>
+          <Styled.YesNoButton
+            onYesButtonClick={onYesButtonClick}
+            onNoButtonClick={onNoButtonClick}
+          />
+        </Styled.Step>
+      </Styled.Container>
+    </>
   );
 }

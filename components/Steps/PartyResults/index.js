@@ -60,8 +60,10 @@ export default function PartyResults(props) {
     <Styled.Container>
       <Styled.Header />
       <Styled.Step>
-        <GoBackButton route={'/steps/3'} text="Regresa" />
-        <Styled.FilterButton />
+        <Styled.HeadContainer>
+          <GoBackButton route={'/steps/3'} text="Regresa" />
+          <Styled.FilterButton />
+        </Styled.HeadContainer>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
         <Styled.Results>

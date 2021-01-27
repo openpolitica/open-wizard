@@ -9,9 +9,11 @@ import BaseButton from 'components/BaseButton';
 
 export const Container = styled('section')`
   align-items: center;
-  background: #F1F2F3;
+  background: #f1f2f3;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 5.5rem);
+  padding: 1.5rem 1.5rem 0;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -20,6 +22,7 @@ export const Header = styled(BaseHeader)`
 
 export const Step = styled('div')`
   align-items: center;
+  flex: 1;
   flex-direction: column;
   display: flex;
   padding: 0 3.25rem;
@@ -46,6 +49,6 @@ export const LinkButton = styled(BaseLinkButton)`
 `;
 
 export const Button = styled(BaseButton)`
-  align-self: flex-end;
-  margin: 13.125rem 1.5rem 0 0;
+  align-self: center;
+  margin-bottom: 7rem;
 `;

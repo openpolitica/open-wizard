@@ -15,19 +15,21 @@ export default function Step2() {
   };
 
   return (
-    <Styled.Container>
+    <>
       <Styled.Header />
-      <GoBackButton route={'/steps/1'} text="Regresa" />
-      <Styled.Step>
-        <Styled.Stepper steps={2} of={4} />
-        <Styled.Title align="center">
-          ¿Incluimos candidatos con sentencias en el Poder Judicial?
-        </Styled.Title>
-        <Styled.YesNoButton
-          onYesButtonClick={onYesButtonClick}
-          onNoButtonClick={onNoButtonClick}
-        />
-      </Styled.Step>
-    </Styled.Container>
+      <Styled.Container>
+        <GoBackButton route={'/steps/1'} text="Regresa" />
+        <Styled.Step>
+          <Styled.Stepper steps={2} of={4} />
+          <Styled.Title align="center">
+            ¿Incluimos candidatos con sentencias en el Poder Judicial?
+          </Styled.Title>
+          <Styled.YesNoButton
+            onYesButtonClick={onYesButtonClick}
+            onNoButtonClick={onNoButtonClick}
+          />
+        </Styled.Step>
+      </Styled.Container>
+    </>
   );
 }
