@@ -1,6 +1,7 @@
 import * as Styled from './styles';
 import Router from 'next/router';
 import ls from 'local-storage';
+import GoBackButton from 'components/GoBackButton';
 
 export default function Step3() {
   const onYesButtonClick = (event) => {
@@ -16,6 +17,7 @@ export default function Step3() {
   return (
     <Styled.Container>
       <Styled.Header />
+      <GoBackButton route={'/steps/2'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={3} of={4} />
         <Styled.Title align="center">

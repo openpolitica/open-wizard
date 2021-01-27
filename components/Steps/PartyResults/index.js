@@ -6,6 +6,7 @@ import groupBy from 'lodash.groupby';
 import * as Styled from './styles';
 import PartyCard from 'components/PartyCard';
 import Loading from 'components/Loading';
+import GoBackButton from 'components/GoBackButton';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -59,6 +60,7 @@ export default function PartyResults(props) {
     <Styled.Container>
       <Styled.Header />
       <Styled.Step>
+        <GoBackButton route={'/steps/3'} text="Regresa" />
         <Styled.FilterButton />
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
