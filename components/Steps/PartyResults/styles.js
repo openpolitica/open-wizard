@@ -21,6 +21,12 @@ export const Step = styled('div')`
   padding: 1.5rem;
 `;
 
+export const HeadContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
 export const FilterButton = styled(BaseFilterButton)`
   align-self: flex-end;
 `;
@@ -36,7 +42,7 @@ export const Chip = styled(BaseChip)`
 export const Results = styled('section')`
   display: flex;
   flex-wrap: wrap;
-  gap: .4375rem;
+  gap: 0.4375rem;
   margin-top: 1rem;
   width: 20.5rem;
 `;

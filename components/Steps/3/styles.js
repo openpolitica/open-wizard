@@ -8,6 +8,8 @@ export const Container = styled('section')`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 5.5rem);
+  padding: 1.5rem 1.5rem 0;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -16,6 +18,7 @@ export const Header = styled(BaseHeader)`
 
 export const Step = styled('div')`
   align-items: center;
+  flex: 1;
   flex-direction: column;
   display: flex;
   padding: 0 3.25rem;
