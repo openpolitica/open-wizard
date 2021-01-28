@@ -9,14 +9,16 @@ export const Photo = styled(Image)`
 
 export const Name = styled.p`
   color: #475065;
-  font-size: 0.875rem;
+  font-size: 0.818rem;
   font-weight: 600;
+  margin: 0;
   margin-top: 0.5rem;
 `;
 
 export const Role = styled.p`
   color: #475065;
-  font-size: 0.875rem;
+  font-size: 0.818rem;
   font-weight: normal;
+  margin: 0;
   margin-top: 0.25rem;
 `;

@@ -3,7 +3,7 @@ import Header from 'components/Header';
 import { team, collaborators, mentors } from './data';
 import Footer from 'components/Footer';
 import * as Styled from './styles';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default function About() {
   return (
@@ -29,29 +29,26 @@ export default function About() {
             ))}
           </Styled.ListTeam>
         </Styled.TeamSection>
-        <Styled.CollaboratorsSection>
-          <Styled.TitleCollaborators>Colaboradoras</Styled.TitleCollaborators>
-          <Styled.ListTeam>
-            {collaborators.map((collaborators) => (
-              <li>
-                <TeamListUl key={collaborators} {...collaborators} />
-              </li>
-            ))}
-          </Styled.ListTeam>
-        </Styled.CollaboratorsSection>
         <Styled.MentorsSection>
           <Styled.TitleSection>Mentores</Styled.TitleSection>
           <Styled.ListTeam>
             {mentors.map((mentors) => (
               <li>
-                <TeamListUl key={mentors} {...mentors} />
+                <TeamListUl key={mentors.name} {...mentors} />
               </li>
             ))}
           </Styled.ListTeam>
         </Styled.MentorsSection>
         <div style={{ marginTop: '56px' }}>
           <Styled.PartOfText>Fuimos parte de:</Styled.PartOfText>
-          <Image src="/images/200.png" width={116} height={116} />
+          <Link href="https://www.linkedin.com/company/200org/">
+            <Styled.Image200
+              src="/images/200.png"
+              width={116}
+              height={116}
+              alt="logo 200"
+            />
+          </Link>
         </div>
       </Styled.Container>
       <Footer />

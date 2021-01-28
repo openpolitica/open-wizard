@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Image from 'next/image';
 
 export const Container = styled.div`
   background: #fafafa;
@@ -63,15 +64,6 @@ export const ListTeam = styled.ul`
   }
 `;
 
-export const CollaboratorsSection = styled(Section)`
-  border: 1px solid #cee6e1;
-  background-color: #f3f8f7;
-`;
-
-export const TitleCollaborators = styled(TitleSection)`
-  color: #4eb5a2;
-`;
-
 export const MentorsSection = styled(Section)`
   border: 1px solid #f9d5d5;
   background-color: #fdf4f4;
@@ -83,4 +75,8 @@ export const PartOfText = styled.p`
   font-weight: 600;
   margin: 0;
   margin-bottom: 0.5rem;
+`;
+
+export const Image200 = styled(Image)`
+  cursor: pointer;
 `;
