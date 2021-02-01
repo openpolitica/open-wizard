@@ -1,9 +1,8 @@
 import * as Styled from './styles';
-import Link from 'next/link';
 
 export default function TeamCard({ photo, name, role, socialNetwork }) {
   return (
-    <Link href={socialNetwork}>
+    <Styled.Link href={socialNetwork} target="_blank">
       <div style={{ cursor: 'pointer' }}>
         <div>
           <Styled.Photo
@@ -16,6 +15,6 @@ export default function TeamCard({ photo, name, role, socialNetwork }) {
         <Styled.Name>{name}</Styled.Name>
         <Styled.Role>{role}</Styled.Role>
       </div>
-    </Link>
+    </Styled.Link>
   );
 }

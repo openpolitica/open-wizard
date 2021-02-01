@@ -80,3 +80,6 @@ export const PartOfText = styled.p`
 export const Image200 = styled(Image)`
   cursor: pointer;
 `;
+export const Link = styled.a`
+  text-decoration: none;
+`;

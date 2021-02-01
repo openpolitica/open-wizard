@@ -4,6 +4,7 @@ import { team, collaborators, mentors } from './data';
 import Footer from 'components/Footer';
 import * as Styled from './styles';
 import Link from 'next/link';
+import styled from 'styled-components';
 
 export default function About() {
   return (
@@ -41,14 +42,16 @@ export default function About() {
         </Styled.MentorsSection>
         <div style={{ marginTop: '56px' }}>
           <Styled.PartOfText>Fuimos parte de:</Styled.PartOfText>
-          <Link href="https://www.linkedin.com/company/200org/">
+          <Styled.Link
+            href="https://www.linkedin.com/company/200org/"
+            target="_blank">
             <Styled.Image200
               src="/images/200.png"
               width={116}
               height={116}
               alt="logo 200"
             />
-          </Link>
+          </Styled.Link>
         </div>
       </Styled.Container>
       <Footer />
