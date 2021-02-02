@@ -30,9 +30,6 @@ export const NumberOfCandidates = styled(BaseParagraph)`
 `;
 
 export const SeeCandidatesButton = styled(BaseButton)`
-  background-color: white;
-  border: 1px solid #04102F;
-  color: #04102f;
   font-size: .75rem;
   height: 1.875rem;
   line-height: .875rem;

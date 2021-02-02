@@ -14,7 +14,9 @@ const PartyCard = (props) => {
       <Styled.NumberOfCandidates>
         {numberOfCandidates(props.numberOfCandidates)}
       </Styled.NumberOfCandidates>
-      <Styled.SeeCandidatesButton>Ver candidatos</Styled.SeeCandidatesButton>
+      <Styled.SeeCandidatesButton type="transparent">
+        Ver candidatos
+      </Styled.SeeCandidatesButton>
     </Styled.Card>
   );
 };
