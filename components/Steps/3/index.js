@@ -22,10 +22,12 @@ export default function Step3() {
           ¿Te mostramos partidos que votaron a favor de la vacancia presidencial
           de Noviembre del 2020?
         </Styled.Title>
-        <Styled.YesNoButton
-          onYesButtonClick={onYesButtonClick}
-          onNoButtonClick={onNoButtonClick}
-        />
+        <Styled.NoButton onClick={onNoButtonClick}>
+          No, ni hablar
+        </Styled.NoButton>
+        <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
+          Déjalos, está bien
+        </Styled.YesButton>
       </Styled.Step>
     </Styled.Container>
   );
