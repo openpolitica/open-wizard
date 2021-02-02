@@ -41,6 +41,7 @@ const handleEducationState = (state) => (value) => (fn) => {
     if (state.primary) {
       return fn(false);
     }
+    return fn(true);
   }
 };
 
