@@ -46,6 +46,6 @@ export const LinkButton = styled(BaseLinkButton)`
 `;
 
 export const Button = styled(BaseButton)`
-  align-self: flex-end;
+  align-self: center;
   margin: 13.125rem 1.5rem 0 0;
 `;

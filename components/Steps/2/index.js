@@ -21,10 +21,12 @@ export default function Step2() {
         <Styled.Title align="center">
           ¿Incluimos candidatos con sentencias en el Poder Judicial?
         </Styled.Title>
-        <Styled.YesNoButton
-          onYesButtonClick={onYesButtonClick}
-          onNoButtonClick={onNoButtonClick}
-        />
+        <Styled.ButtonTop onClick={onNoButtonClick}>
+          No, ni hablar
+        </Styled.ButtonTop>
+        <Styled.ButtonBottom type="transparent" onClick={onYesButtonClick}>
+          Déjalos, está bien
+        </Styled.ButtonBottom>
       </Styled.Step>
     </Styled.Container>
   );

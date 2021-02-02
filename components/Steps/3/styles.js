@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import BaseHeader from 'components/Header';
 import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
-import BaseYesNoButton from 'components/YesNoButton';
+import BaseButton from 'components/BaseButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -29,6 +29,12 @@ export const Title = styled(BaseTitle)`
   margin-top: 2rem;
 `;
 
-export const YesNoButton = styled(BaseYesNoButton)`
-  margin-top: 2rem;
+export const ButtonTop = styled(BaseButton)`
+  align-self: center;
+  margin: 13.125rem 0 0 0;
+`;
+
+export const ButtonBottom = styled(BaseButton)`
+  align-self: center;
+  margin: 1rem 0 0 0;
 `;
