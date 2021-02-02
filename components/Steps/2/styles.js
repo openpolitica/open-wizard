@@ -30,12 +30,12 @@ export const Title = styled(BaseTitle)`
   margin-top: 2rem;
 `;
 
-export const ButtonTop = styled(BaseButton)`
+export const NoButton = styled(BaseButton)`
   align-self: center;
   margin: 13.125rem 0 0 0;
 `;
 
-export const ButtonBottom = styled(BaseButton)`
+export const YesButton = styled(BaseButton)`
   align-self: center;
   margin: 1rem 0 0 0;
 `;
