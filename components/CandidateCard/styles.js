@@ -32,12 +32,22 @@ export const Fullname = styled('p')`
 
 export const Card = styled('div')`
   align-items: center;
-  border: 1px solid #c7cad1;
   border-radius: 4px;
+  border: 1px solid #c7cad1;
   display: flex;
   gap: 0.25rem;
   height: 3.75rem;
   justify-content: flex-start;
   padding: 0.875rem;
+  position: relative;
   width: 20.5rem;
+`;
+
+export const ArrowCircle = styled('div')`
+  background: #F3F8F7 url("/images/icons/right-arrow.svg") no-repeat center;
+  border-radius: 100%;
+  height: 1.5rem;
+  position: absolute;
+  right: 1rem;
+  width: 1.5rem;
 `;

@@ -1,4 +1,11 @@
-import { Card, PartyIcon, NumberIcon, ProfileIcon, Fullname } from './styles';
+import {
+  Card,
+  PartyIcon,
+  NumberIcon,
+  ProfileIcon,
+  Fullname,
+  ArrowCircle,
+} from './styles';
 
 const profileIconBaseUrl = 'https://declara.jne.gob.pe/Assets/Fotos-HojaVida/';
 
@@ -22,6 +29,7 @@ const CandidateCard = (props) => {
         }
       />
       <Fullname>{props.candidateFullname || 'Nombre de candidato'}</Fullname>
+      <ArrowCircle />
     </Card>
   );
 };
