@@ -25,6 +25,7 @@ import {
   doesntHaveSanctionsWithServir,
   doesntHaveSanctionsWithDriving,
 } from './filters';
+import GoBackButton from 'components/GoBackButton';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -98,7 +99,10 @@ export default function PartyResults(props) {
       />
       <Styled.Header />
       <Styled.Step>
-        <Styled.FilterButton onClick={() => setFilterModalState(true)} />
+        <Styled.Row>
+          <GoBackButton to={'/steps/3'} text="Regresa" />
+          <Styled.FilterButton onClick={() => setFilterModalState(true)} />
+        </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
         <Styled.Results>

@@ -16,6 +16,7 @@ export default function Step2() {
   return (
     <Styled.Container>
       <Styled.Header />
+      <Styled.GoBackButton to={'/steps/1'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={2} of={4} />
         <Styled.Title align="center">
