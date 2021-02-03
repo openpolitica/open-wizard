@@ -34,6 +34,7 @@ export default function Step1() {
   return (
     <Styled.Container>
       <Styled.Header />
+      <Styled.GoBackButton to={'/'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={1} of={4} />
         <Styled.Title>¿Dónde vives?</Styled.Title>
@@ -43,7 +44,9 @@ export default function Step1() {
         <Styled.Select onChange={handleSelectChange}>
           <option>Seleccione uno</option>
           {locations.map((location) => (
-            <option key={location} value={location}>{capitalize(location)}</option>
+            <option key={location} value={location}>
+              {capitalize(location)}
+            </option>
           ))}
         </Styled.Select>
         <Styled.LinkButton onClick={onExpatClick}>
