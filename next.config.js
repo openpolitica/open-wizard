@@ -6,6 +6,7 @@ module.exports = {
     api: {
       baseUrl: 'https://api.openpolitica.com/',
       candidatesUrl: 'https://api.openpolitica.com/candidates?',
-    }
-  }
+      locationsUrl: 'https://api.openpolitica.com/locations/',
+    },
+  },
 };
