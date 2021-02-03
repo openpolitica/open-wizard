@@ -44,6 +44,21 @@ const LoadingScreen = () => {
   );
 };
 
+const capitalize = (text) => {
+  if (typeof text !== 'string') {
+    return '';
+  }
+  return text
+    .toLowerCase()
+    .split(' ')
+    .map(function(word) {
+      return !['de','en','el'].includes(word)
+        ? word.replace(word[0], word[0].toUpperCase())
+        : word;
+    })
+    .join(' ');
+};
+
 const groupCandidatesByPartyName = (candidates) => {
   const candidatesByPartyName = groupBy(candidates, 'org_politica_nombre');
 
@@ -120,7 +135,7 @@ export default function PartyResults(props) {
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
-        <Styled.Chip type={"good"}><strong>{location}</strong> tendrá <strong>{seats?.data.seats} sitios</strong> en el congreso.</Styled.Chip>
+        <Styled.Chip type={"good"}><strong>{capitalize(location)}</strong> tendrá <strong>{seats?.data.seats} sitios</strong> en el congreso.</Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
             filters.length
