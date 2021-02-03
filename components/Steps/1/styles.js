@@ -6,20 +6,28 @@ import BaseParagraph from 'components/BaseParagraph';
 import BaseSelect from 'components/BaseSelect';
 import BaseLinkButton from 'components/LinkButton';
 import BaseButton from 'components/BaseButton';
+import BaseGoBackButton from 'components/GoBackButton';
 
 export const Container = styled('section')`
   align-items: center;
-  background: #F1F2F3;
+  background: #f1f2f3;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 64px);
 `;
 
 export const Header = styled(BaseHeader)`
   width: 100%;
 `;
 
+export const GoBackButton = styled(BaseGoBackButton)`
+  margin-top: 16px;
+  margin-left: 16px;
+`;
+
 export const Step = styled('div')`
   align-items: center;
+  flex: 1;
   flex-direction: column;
   display: flex;
   padding: 0 3.25rem;
@@ -47,5 +55,5 @@ export const LinkButton = styled(BaseLinkButton)`
 
 export const Button = styled(BaseButton)`
   align-self: center;
-  margin: 13.125rem 0 0 0;
+  margin-bottom: 7rem;
 `;

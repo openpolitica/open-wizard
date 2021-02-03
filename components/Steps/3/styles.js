@@ -3,6 +3,7 @@ import BaseHeader from 'components/Header';
 import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseButton from 'components/BaseButton';
+import BaseGoBackButton from 'components/GoBackButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -12,6 +13,11 @@ export const Container = styled('section')`
 
 export const Header = styled(BaseHeader)`
   width: 100%;
+`;
+
+export const GoBackButton = styled(BaseGoBackButton)`
+  margin-top: 16px;
+  margin-left: 16px;
 `;
 
 export const Step = styled('div')`
