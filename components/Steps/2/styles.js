@@ -3,18 +3,24 @@ import BaseHeader from 'components/Header';
 import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseButton from 'components/BaseButton';
+import BaseGoBackButton from 'components/GoBackButton';
 
 export const Container = styled('section')`
   align-items: center;
-  background: #F1F2F3;
+  background: #f1f2f3;
   display: flex;
   flex-direction: column;
+  height: calc(100vh - 64px);
 `;
 
 export const Header = styled(BaseHeader)`
   width: 100%;
 `;
 
+export const GoBackButton = styled(BaseGoBackButton)`
+  margin-top: 16px;
+  margin-left: 16px;
+`;
 export const Step = styled('div')`
   align-items: center;
   flex-direction: column;
