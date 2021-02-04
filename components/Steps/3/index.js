@@ -18,7 +18,7 @@ export default function Step3() {
       <Styled.Header />
       <Styled.GoBackButton to={'/steps/2'} text="Regresa" />
       <Styled.Step>
-        <Styled.Stepper steps={3} of={4} />
+        <Styled.Stepper steps={3} of={3} />
         <Styled.Title align="center">
           ¿Te mostramos partidos que votaron a favor de la vacancia presidencial
           de Noviembre del 2020?
