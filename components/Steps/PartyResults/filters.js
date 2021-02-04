@@ -13,7 +13,8 @@ export const hasJNEIncome = (candidates) =>
 // Experience section
 export const hasPublicServiceExperience = (candidates) =>
   candidates.filter((candidate) => !!candidate.experiencia_publica);
-// We're missing the Private Service Experience property
+export const hasPrivateWorkExperience = (candidates) =>
+  candidates.filter((candidate) => !!candidate.experiencia_privada);
 
 // Education section
 // We treat everything starting with 'educacion_superior' as just 'superior' grade
@@ -48,6 +49,7 @@ const filterMap = {
   onlyMale,
   onlyFemale,
   hasPublicServiceExperience,
+  hasPrivateWorkExperience,
   hasJNEIncome,
   upToPrimary,
   upToSecondary,

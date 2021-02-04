@@ -127,7 +127,10 @@ const FilterModal = (props) => {
             name="privateWorkExperience"
             isChecked={hasPrivateWorkExperience}
             onClick={() =>
-              toggle(setPrivateWorkExperience)(hasPrivateWorkExperience)
+              toggle(setPrivateWorkExperience)(hasPrivateWorkExperience) ||
+              props.setFilters(
+                toggleFilter(props.filters)('hasPrivateWorkExperience'),
+              )
             }
           />
         </Styled.CheckboxRow>
