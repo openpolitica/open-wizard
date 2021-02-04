@@ -6,7 +6,7 @@ import ls from 'local-storage';
 import * as Styled from './styles';
 import Loading from 'components/Loading';
 
-const capitalize = (text) => {
+const capitalize = (text, skipArray) => {
   if (typeof text !== 'string') {
     return '';
   }
@@ -14,7 +14,7 @@ const capitalize = (text) => {
     .toLowerCase()
     .split(' ')
     .map(function(word) {
-      return word !== 'de'
+      return !skipArray.includes(word)
         ? word.replace(word[0], word[0].toUpperCase())
         : word;
     })
@@ -74,7 +74,7 @@ export default function Step1() {
             if (location !== 'PERUANOS RESIDENTES EN EL EXTRANJERO') {
               return (
                 <option key={location} value={location}>
-                  {capitalize(location)}
+                  {capitalize(location, ["de"])}
                 </option>
               );
             }
