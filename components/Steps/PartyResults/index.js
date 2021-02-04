@@ -31,7 +31,7 @@ const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
   sentencias: options.withSentence,
   region: options.location,
-  role: 'CONGRESISTA DE LA REPÚBLICA',
+  role: 'CONGRESISTA',
   limit: 0,
 });
 
