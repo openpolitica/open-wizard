@@ -16,6 +16,7 @@ import {
   onlyFemale,
   hasJNEIncome,
   hasPublicServiceExperience,
+  hasPrivateWorkExperience,
   byStudies,
   upToPrimary,
   upToSecondary,
@@ -85,6 +86,7 @@ export default function PartyResults(props) {
         onlyFemale={onlyFemale}
         onlyMale={onlyMale}
         hasPublicServiceExperience={hasPublicServiceExperience}
+        hasPrivateWorkExperience={hasPrivateWorkExperience}
         hasJNEIncome={hasJNEIncome}
         upToPrimary={upToPrimary}
         upToSecondary={upToSecondary}
