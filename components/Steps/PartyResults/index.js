@@ -44,7 +44,7 @@ const LoadingScreen = () => {
   );
 };
 
-const capitalize = (text) => {
+const capitalize = (text, skipArray) => {
   if (typeof text !== 'string') {
     return '';
   }
@@ -52,7 +52,7 @@ const capitalize = (text) => {
     .toLowerCase()
     .split(' ')
     .map(function(word) {
-      return !['de','en','el'].includes(word)
+      return !skipArray.includes(word)
         ? word.replace(word[0], word[0].toUpperCase())
         : word;
     })
@@ -135,7 +135,10 @@ export default function PartyResults(props) {
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
-        <Styled.Chip type={"good"}><strong>{capitalize(location)}</strong> tendrá <strong>{seats?.data.seats} sitios</strong> en el congreso.</Styled.Chip>
+        <Styled.Chip type={'good'}>
+          <strong>{capitalize(location, ['de', 'en', 'el'])}</strong> tendrá{' '}
+          <strong>{seats?.data.seats} sitios</strong> en el congreso.
+        </Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
             filters.length
