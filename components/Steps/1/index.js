@@ -36,7 +36,7 @@ export default function Step1() {
       <Styled.Header />
       <Styled.GoBackButton to={'/'} text="Regresa" />
       <Styled.Step>
-        <Styled.Stepper steps={1} of={4} />
+        <Styled.Stepper steps={1} of={3} />
         <Styled.Title>¿Dónde vives?</Styled.Title>
         <Styled.Paragraph align="center">
           Con este filtro solo te mostraremos candidatos para tu departamento.

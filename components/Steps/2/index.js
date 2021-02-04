@@ -18,7 +18,7 @@ export default function Step2() {
       <Styled.Header />
       <Styled.GoBackButton to={'/steps/1'} text="Regresa" />
       <Styled.Step>
-        <Styled.Stepper steps={2} of={4} />
+        <Styled.Stepper steps={2} of={3} />
         <Styled.Title align="center">
           ¿Incluimos candidatos con sentencias en el Poder Judicial?
         </Styled.Title>
