@@ -30,7 +30,7 @@ import GoBackButton from 'components/GoBackButton';
 import startCasePeruvianRegions from './startCasePeruvianRegions';
 import simplePluralize from './simplePluralize';
 
-const mapApiTerms = (options) => ({
+const mapApiTerms = options => ({
   vacancia: options.impeachment,
   sentencias: options.withSentence,
   region: options.location,
@@ -47,10 +47,10 @@ const LoadingScreen = () => {
   );
 };
 
-const groupCandidatesByPartyName = (candidates) => {
+const groupCandidatesByPartyName = candidates => {
   const candidatesByPartyName = groupBy(candidates, 'org_politica_nombre');
 
-  return Object.keys(candidatesByPartyName).map((partyName) => (
+  return Object.keys(candidatesByPartyName).map(partyName => (
     <PartyCard
       key={partyName}
       partyName={partyName}
@@ -63,16 +63,16 @@ const groupCandidatesByPartyName = (candidates) => {
 const fetchCandidates = () => {
   const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
   const { data, error } = useSWR('/api/candidates', () =>
-    fetch(`${process.env.api.candidatesUrl}${apiTerms}`).then((data) =>
+    fetch(`${process.env.api.candidatesUrl}?${apiTerms}`).then(data =>
       data.json(),
     ),
   );
   return data;
 };
 
-const fetchSeats = (location) => {
+const fetchSeats = location => {
   const { data, error } = useSWR('/api/locations/seats', () =>
-    fetch(`${process.env.api.locationsUrl}${location}/seats`).then((data) =>
+    fetch(`${process.env.api.locationsUrl}/${location}/seats`).then(data =>
       data.json(),
     ),
   );
@@ -125,10 +125,9 @@ export default function PartyResults(props) {
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
-          <strong>
-            {startCasePeruvianRegions(location)}
-          </strong>{' '}
-          tendrá <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el congreso.
+          <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
+          <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
+          congreso.
         </Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
