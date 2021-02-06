@@ -71,7 +71,7 @@ const fetchCandidates = () => {
 };
 
 const fetchSeats = (location) => {
-  const { data, error } = useSWR('/api/locations', () =>
+  const { data, error } = useSWR('/api/locations/seats', () =>
     fetch(`${process.env.api.locationsUrl}${location}/seats`).then((data) =>
       data.json(),
     ),

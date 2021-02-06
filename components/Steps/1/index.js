@@ -1,14 +1,19 @@
 import { useState } from 'react';
+import useSWR from 'swr';
+import fetch from 'isomorphic-fetch';
 import Router from 'next/router';
 import ls from 'local-storage';
-import { locations } from './locations';
 import * as Styled from './styles';
+import Loading from 'components/Loading';
+import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
 
-const capitalize = (text) => {
-  if (typeof text !== 'string') {
-    return '';
-  }
-  return text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+const LoadingScreen = () => {
+  return (
+    <Styled.Container>
+      <Styled.Header />
+      <Loading />
+    </Styled.Container>
+  );
 };
 
 export default function Step1() {
@@ -31,6 +36,14 @@ export default function Step1() {
     Router.push('/steps/2');
   };
 
+  const { data, error } = useSWR('/api/locations', () =>
+    fetch(`${process.env.api.locationsUrl}`).then((data) => data.json()),
+  );
+
+  if (!data) {
+    return <LoadingScreen />;
+  }
+
   return (
     <Styled.Container>
       <Styled.Header />
@@ -43,11 +56,15 @@ export default function Step1() {
         </Styled.Paragraph>
         <Styled.Select onChange={handleSelectChange}>
           <option>Seleccione uno</option>
-          {locations.map((location) => (
-            <option key={location} value={location}>
-              {capitalize(location)}
-            </option>
-          ))}
+          {data?.data.map((location) => {
+            if (location !== 'PERUANOS RESIDENTES EN EL EXTRANJERO') {
+              return (
+                <option key={location} value={location}>
+                  {startCasePeruvianRegions(location)}
+                </option>
+              );
+            }
+          })}
         </Styled.Select>
         <Styled.LinkButton onClick={onExpatClick}>
           Vivo en el extranjero
