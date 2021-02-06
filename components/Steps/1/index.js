@@ -5,21 +5,7 @@ import Router from 'next/router';
 import ls from 'local-storage';
 import * as Styled from './styles';
 import Loading from 'components/Loading';
-
-const capitalize = (text, skipArray) => {
-  if (typeof text !== 'string') {
-    return '';
-  }
-  return text
-    .toLowerCase()
-    .split(' ')
-    .map(function(word) {
-      return !skipArray.includes(word)
-        ? word.replace(word[0], word[0].toUpperCase())
-        : word;
-    })
-    .join(' ');
-};
+import startCasePeruvianRegions from '../PartyResults/startCasePeruvianRegions';
 
 const LoadingScreen = () => {
   return (
@@ -74,7 +60,7 @@ export default function Step1() {
             if (location !== 'PERUANOS RESIDENTES EN EL EXTRANJERO') {
               return (
                 <option key={location} value={location}>
-                  {capitalize(location, ["de"])}
+                  {startCasePeruvianRegions(location)}
                 </option>
               );
             }
