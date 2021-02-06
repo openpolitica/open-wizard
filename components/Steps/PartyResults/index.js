@@ -26,6 +26,8 @@ import {
   doesntHaveSanctionsWithDriving,
 } from './filters';
 import GoBackButton from 'components/GoBackButton';
+import startCasePeruvianRegions from './startCasePeruvianRegions';
+import simplePluralize from './simplePluralize';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -42,21 +44,6 @@ const LoadingScreen = () => {
       <Loading />
     </Styled.Container>
   );
-};
-
-const capitalize = (text, skipArray) => {
-  if (typeof text !== 'string') {
-    return '';
-  }
-  return text
-    .toLowerCase()
-    .split(' ')
-    .map(function(word) {
-      return !skipArray.includes(word)
-        ? word.replace(word[0], word[0].toUpperCase())
-        : word;
-    })
-    .join(' ');
 };
 
 const groupCandidatesByPartyName = (candidates) => {
@@ -136,8 +123,10 @@ export default function PartyResults(props) {
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
-          <strong>{capitalize(location, ['de', 'en', 'el'])}</strong> tendrá{' '}
-          <strong>{seats?.data.seats} sitios</strong> en el congreso.
+          <strong>
+            {startCasePeruvianRegions(location)}
+          </strong>{' '}
+          tendrá <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el congreso.
         </Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
