@@ -16,6 +16,8 @@ import {
   CheckText,
   WrapperCheckLabel,
 } from './styles.js';
+import useSWR from 'swr';
+import fetch from 'isomorphic-fetch';
 import { useRouter } from 'next/router';
 import BaseButton from 'components/BaseButton';
 import BaseHeader from 'components/Header';
@@ -43,12 +45,20 @@ const HomePage = () => {
     router.push('/steps/1');
   };
 
+  const { data, error } = useSWR('/api/candidates/count', () =>
+    fetch(
+      `${process.env.api.candidatesUrl}/count?role=CONGRESISTA`,
+    ).then(data => data.json()),
+  );
+
+  const count = data ? data.data.count : 'casi 2700';
+
   return (
     <Container>
       <BaseHeader />
       <Hero>
         <Title>
-          Hay 3,120 candidatos al congreso <Span>¿Sabes a quién elegir?</Span>
+          Hay {count} candidatos al congreso <Span>¿Sabes a quién elegir?</Span>
         </Title>
         <Paragraph>
           Te ayudamos a encontrar tus candidatos ideales en 3 sencillos pasos
