@@ -1,14 +1,14 @@
 import * as Styled from './styles';
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 import Image from 'next/image';
 
 export default function GoBackButton({ text, to, ...props }) {
-  const router = useRouter();
 
   const handleGoBack = () => {
-    if (router.push(!to)) {
-      return router.back();
+    if (!to) {
+      return Router.back();
     }
+    return Router.push(to);
   };
 
   return (
