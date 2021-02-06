@@ -23,20 +23,17 @@ const textColorPriority = {
 
 export const Chip = styled('aside')`
   align-items: center;
-  background-color: ${props =>
-    backgroundColorPriority[props.type || 'info']};
-  border: 1px solid ${props =>
-    borderColorPriority[props.type || 'info']};
+  background-color: ${(props) => backgroundColorPriority[props.type || 'info']};
   border-radius: 4px;
-  color: ${props =>
-    textColorPriority[props.type || 'info']};
+  border: 1px solid ${(props) => borderColorPriority[props.type || 'info']};
+  color: ${(props) => textColorPriority[props.type || 'info']};
   display: flex;
   flex-direction: row;
   font-family: 'Poppins', sans-serif;
-  font-size: .75rem;
-  gap: .75rem;
+  font-size: 0.75rem;
+  gap: 0.75rem;
   height: 3rem;
-  line-height: 1.125rem;
   justify-content: center;
-  padding: .875rem 1.125rem;
+  line-height: 1.125rem;
+  padding: 0.875rem 1.125rem;
 `;
