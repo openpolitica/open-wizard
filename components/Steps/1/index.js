@@ -5,7 +5,7 @@ import Router from 'next/router';
 import ls from 'local-storage';
 import * as Styled from './styles';
 import Loading from 'components/Loading';
-import startCasePeruvianRegions from '../PartyResults/startCasePeruvianRegions';
+import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
 
 const LoadingScreen = () => {
   return (
@@ -37,7 +37,7 @@ export default function Step1() {
   };
 
   const { data, error } = useSWR('/api/locations', () =>
-    fetch(`${process.env.api.locationsUrl}`).then(data => data.json()),
+    fetch(`${process.env.api.locationsUrl}`).then((data) => data.json()),
   );
 
   if (!data) {
@@ -56,7 +56,7 @@ export default function Step1() {
         </Styled.Paragraph>
         <Styled.Select onChange={handleSelectChange}>
           <option>Seleccione uno</option>
-          {data?.data.map(location => {
+          {data?.data.map((location) => {
             if (location !== 'PERUANOS RESIDENTES EN EL EXTRANJERO') {
               return (
                 <option key={location} value={location}>
