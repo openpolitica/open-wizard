@@ -3,6 +3,7 @@ import Image from 'next/image';
 import BaseModal from 'components/BaseModal';
 import * as Styled from './styles';
 import {
+  initializeEducationState,
   toInitialEducationState,
   toPrimary,
   toSecondary,
@@ -11,6 +12,7 @@ import {
 } from './logicMaps';
 import * as logicMaps from './logicMaps';
 import handleEducationState from './handleEducationState';
+import ls from 'local-storage';
 
 const toggle = (fn) => (arg) => fn(!arg);
 
@@ -44,26 +46,36 @@ const toggleEducationFilter = (filters) => (filterName) => {
 };
 
 const FilterModal = (props) => {
-  const [isMaleChecked, setMaleGenre] = useState(true);
-  const [isFemaleChecked, setFemaleGenre] = useState(true);
-  const [isJNEIncomeChecked, setJNEIncome] = useState(false);
+  const [isMaleChecked, setMaleGenre] = useState(
+    props.filters.includes('onlyMale') || !props.filters.includes('onlyFemale'),
+  );
+  const [isFemaleChecked, setFemaleGenre] = useState(
+    !props.filters.includes('onlyMale') || props.filters.includes('onlyFemale'),
+  );
+  const [isJNEIncomeChecked, setJNEIncome] = useState(
+    props.filters.includes('hasJNEIncome'),
+  );
   const [educationState, setEducationState] = useState(
-    toInitialEducationState(),
+    initializeEducationState(props.filters),
   );
   const [hasPublicServiceExperience, setPublicServiceExperience] = useState(
-    false,
+    props.filters.includes('hasPublicServiceExperience'),
   );
-  const [hasPrivateWorkExperience, setPrivateWorkExperience] = useState(false);
+  const [hasPrivateWorkExperience, setPrivateWorkExperience] = useState(
+    props.filters.includes('hasPrivateWorkExperience'),
+  );
   const [sanctionsState, setSanctionsState] = useState({
     defaulter: false,
-    sunat: false,
-    servir: false,
-    driving: false,
+    sunat: props.filters.includes('doesntHaveSanctionsWithSunat'),
+    servir: props.filters.includes('doesntHaveSanctionsWithServir'),
+    driving: props.filters.includes('doesntHaveSanctionsWithDriving'),
   });
 
   const branchWithSetEducationState = branchWithSideEffect(setEducationState);
   const setSanctionsStateWithValue = (state, propertyName) => (value) =>
     setSanctionsState({ ...state, [propertyName]: value });
+
+  ls('op.filters', props.filters);
 
   return (
     <BaseModal {...props}>

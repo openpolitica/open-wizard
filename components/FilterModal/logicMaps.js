@@ -1,3 +1,17 @@
+export const initializeEducationState = (filters) => {
+  if (filters.includes('upToPrimary')) {
+    return toPrimary();
+  } else if (filters.includes('upToSecondary')) {
+    return toSecondary();
+  } else if (filters.includes('upToHighSchool')) {
+    return toHighSchool();
+  } else if (filters.includes('upToPostgraduate')) {
+    return toPostgraduate();
+  } else {
+    return toInitialEducationState();
+  }
+};
+
 export const toInitialEducationState = () => ({
   primary: false,
   secondary: false,

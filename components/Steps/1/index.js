@@ -25,6 +25,7 @@ export default function Step1() {
 
   const onContinueClick = (event) => {
     ls('op.wizard', { ...ls('op.wizard'), location });
+    ls('op.filters', []);
     Router.push('/steps/2');
   };
 

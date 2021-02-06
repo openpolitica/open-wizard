@@ -90,7 +90,8 @@ export default function PartyResults(props) {
   const location = ls('op.wizard').location;
   const seats = fetchSeats(location);
 
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState(ls('op.filters') || []);
+  //filters = ['hasPublicServiceExperience', 'hasJNEIncome'];
 
   if (!data || !seats) {
     return <LoadingScreen />;
@@ -125,10 +126,9 @@ export default function PartyResults(props) {
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
-          <strong>
-            {startCasePeruvianRegions(location)}
-          </strong>{' '}
-          tendrá <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el congreso.
+          <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
+          <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
+          congreso.
         </Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
