@@ -63,7 +63,7 @@ const groupCandidatesByPartyName = (candidates) => {
 const fetchCandidates = () => {
   const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
   const { data, error } = useSWR('/api/candidates', () =>
-    fetch(`${process.env.api.candidatesUrl}${apiTerms}`).then((data) =>
+    fetch(`${process.env.api.candidatesUrl}?${apiTerms}`).then((data) =>
       data.json(),
     ),
   );
@@ -72,7 +72,7 @@ const fetchCandidates = () => {
 
 const fetchSeats = (location) => {
   const { data, error } = useSWR('/api/locations/seats', () =>
-    fetch(`${process.env.api.locationsUrl}${location}/seats`).then((data) =>
+    fetch(`${process.env.api.locationsUrl}/${location}/seats`).then((data) =>
       data.json(),
     ),
   );
