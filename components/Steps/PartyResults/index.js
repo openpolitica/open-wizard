@@ -27,6 +27,8 @@ import {
   doesntHaveSanctionsWithDriving,
 } from './filters';
 import GoBackButton from 'components/GoBackButton';
+import startCasePeruvianRegions from './startCasePeruvianRegions';
+import simplePluralize from './simplePluralize';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -58,6 +60,25 @@ const groupCandidatesByPartyName = (candidates) => {
   ));
 };
 
+const fetchCandidates = () => {
+  const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
+  const { data, error } = useSWR('/api/candidates', () =>
+    fetch(`${process.env.api.candidatesUrl}${apiTerms}`).then((data) =>
+      data.json(),
+    ),
+  );
+  return data;
+};
+
+const fetchSeats = (location) => {
+  const { data, error } = useSWR('/api/locations', () =>
+    fetch(`${process.env.api.locationsUrl}${location}/seats`).then((data) =>
+      data.json(),
+    ),
+  );
+  return data;
+};
+
 export default function PartyResults(props) {
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -65,16 +86,13 @@ export default function PartyResults(props) {
   }
 
   const [isFilterModalOpen, setFilterModalState] = useState(false);
+  const data = fetchCandidates();
   const location = ls('op.wizard').location;
-  const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
-  const { data, error } = useSWR('/api/candidates', () =>
-    fetch(`${process.env.api.candidatesUrl}${apiTerms}`).then((data) =>
-      data.json(),
-    ),
-  );
+  const seats = fetchSeats(location);
+
   const [filters, setFilters] = useState([]);
 
-  if (!data) {
+  if (!data || !seats) {
     return <LoadingScreen />;
   }
 
@@ -106,7 +124,12 @@ export default function PartyResults(props) {
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
-        <Styled.Chip>Utiliza los filtros para refinar tu búsqueda</Styled.Chip>
+        <Styled.Chip type={'good'}>
+          <strong>
+            {startCasePeruvianRegions(location)}
+          </strong>{' '}
+          tendrá <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el congreso.
+        </Styled.Chip>
         <Styled.Results>
           {groupCandidatesByPartyName(
             filters.length

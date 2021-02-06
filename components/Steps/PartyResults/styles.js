@@ -37,6 +37,7 @@ export const Title = styled(BaseTitle)`
 
 export const Chip = styled(BaseChip)`
   margin-top: 1rem;
+  width: 20.5rem;
 `;
 
 export const Results = styled('section')`
