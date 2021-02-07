@@ -79,8 +79,11 @@ export default function Step4(props) {
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
         <Styled.Title align="center">
-          Tienes {candidates.length} posibles candidatos de{' '}
-          {candidates[0].org_politica_nombre}
+          Tienes <Styled.Emphasis>{candidates.length}</Styled.Emphasis> posibles
+          candidatos de{' '}
+          <Styled.Emphasis>
+            {startCasePeruvianRegions(candidates[0].org_politica_nombre)}
+          </Styled.Emphasis>
         </Styled.Title>
         <Styled.Candidates>
           {candidates.map((candidate, index) => (
