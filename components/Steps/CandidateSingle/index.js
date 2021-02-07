@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
-import groupBy from 'lodash.groupby';
 import * as Styled from './styles';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
@@ -77,13 +76,11 @@ export default function CandidateSingle(props) {
         <Styled.Row>
           <GoBackButton
             to={
-              ls('op.wizard').filters
+              ls('op.wizard')
                 ? `/results/${toggleSlug(c.org_politica_nombre)}`
                 : '/'
             }
-            text={
-              ls('op.wizard').filters ? 'Regresa a la lista' : 'Inicia tu viaje'
-            }
+            text={ls('op.wizard') ? 'Regresa a la lista' : 'Inicia tu viaje'}
           />
         </Styled.Row>
         <Styled.CandidateBigCard
@@ -152,12 +149,12 @@ export default function CandidateSingle(props) {
           content={c.afiliations}
         />
       </Styled.Step>
-      <Styled.FavoriteButton
+      {/* <Styled.FavoriteButton
         text={
           !isFavorite ? 'Agrégame a tus favoritos' : 'Sácame de tus favoritos'
         }
         onClick={() => onStarClick('exit')}
-      />
+      /> */}
     </Styled.Container>
   );
 }

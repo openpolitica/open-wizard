@@ -13,6 +13,11 @@ const processCandidateContent = (type, content) => {
   if (type === 'education') {
     let superiorEducationCount = 0;
     if (content) {
+      let orderedEducationDetails = content.education
+        ? content.education.sort((a, b) =>
+            a.tipo < b.tipo ? 1 : b.tipo < a.tipo ? -1 : 0,
+          )
+        : 0;
       return (
         <div>
           <p>
@@ -22,14 +27,15 @@ const processCandidateContent = (type, content) => {
           <p>
             <strong>Detalle de estudios superiores:</strong>
           </p>
-          {content.education.length > 0
-            ? content.education.map(c => {
+          {orderedEducationDetails.length > 0
+            ? orderedEducationDetails.map(c => {
                 if (!c.tipo.includes('BASICA') && c.carrera !== '') {
                   superiorEducationCount += 1;
                   return (
                     <ul key={c.carrera + c.tipo}>
                       <li>
-                        <strong>{c.carrera}</strong> en {c.centro_estudio}{' '}
+                        <strong>{capitalize(c.carrera)}</strong> en{' '}
+                        {capitalize(c.centro_estudio)}{' '}
                         {c.concluida === 0 ? '(no concluída)' : null}
                       </li>
                     </ul>
