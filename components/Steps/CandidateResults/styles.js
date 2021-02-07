@@ -4,6 +4,7 @@ import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseParagraph from 'components/BaseParagraph';
 import BaseCandidateCard from 'components/CandidateCard';
+import BaseFilterButton from 'components/FilterButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -13,6 +14,16 @@ export const Container = styled('section')`
 
 export const Header = styled(BaseHeader)`
   width: 100%;
+`;
+
+export const Row = styled('div')`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const FilterButton = styled(BaseFilterButton)`
+  align-self: flex-end;
 `;
 
 export const Step = styled('div')`

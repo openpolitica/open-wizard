@@ -47,8 +47,17 @@ const LoadingScreen = () => {
   );
 };
 
-const groupCandidatesByPartyName = (candidates) => {
-  const candidatesByPartyName = groupBy(candidates, 'org_politica_nombre');
+const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
+  const groupedCandidates = groupBy(candidates, 'org_politica_nombre');
+  ls('op.wizard', { ...ls('op.wizard'), [keyName]: groupedCandidates });
+  return groupedCandidates;
+};
+
+const showPartyCards = (candidates) => {
+  const candidatesByPartyName = groupCandidatesByPartyNameAndLS(
+    candidates,
+    'filteredCandidates',
+  );
 
   return Object.keys(candidatesByPartyName).map((partyName) => (
     <PartyCard
@@ -56,6 +65,7 @@ const groupCandidatesByPartyName = (candidates) => {
       partyName={partyName}
       partyAlias={candidatesByPartyName[partyName][0].org_politica_alias}
       numberOfCandidates={candidatesByPartyName[partyName].length}
+      candidates={candidatesByPartyName[partyName]}
     />
   ));
 };
@@ -89,12 +99,12 @@ export default function PartyResults(props) {
   const data = fetchCandidates();
   const location = ls('op.wizard').location;
   const seats = fetchSeats(location);
-
-  const [filters, setFilters] = useState([]);
+  const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
 
   if (!data || !seats) {
     return <LoadingScreen />;
   }
+  groupCandidatesByPartyNameAndLS(data?.data.candidates, 'candidates');
 
   return (
     <Styled.Container>
@@ -125,13 +135,12 @@ export default function PartyResults(props) {
         </Styled.Row>
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
-          <strong>
-            {startCasePeruvianRegions(location)}
-          </strong>{' '}
-          tendrá <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el congreso.
+          <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
+          <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
+          congreso.
         </Styled.Chip>
         <Styled.Results>
-          {groupCandidatesByPartyName(
+          {showPartyCards(
             filters.length
               ? applyFilters(data?.data.candidates)(filters)
               : data?.data.candidates,
