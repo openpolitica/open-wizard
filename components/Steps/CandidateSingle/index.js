@@ -8,7 +8,7 @@ import GoBackButton from 'components/GoBackButton';
 
 // TODO: move to dynamic ID based on hoja_vida_id
 const candidateId = 136626;
-// const candidateId = 136472;
+//const candidateId = 136472;
 
 const LoadingScreen = () => {
   return (
@@ -19,22 +19,9 @@ const LoadingScreen = () => {
   );
 };
 
-const getCandidate = (candidates) => {
-  const candidatesByPartyName = groupBy(candidates, 'org_politica_nombre');
-
-  return Object.keys(candidatesByPartyName).map((partyName) => (
-    <PartyCard
-      key={partyName}
-      partyName={partyName}
-      partyAlias={candidatesByPartyName[partyName][0].org_politica_alias}
-      numberOfCandidates={candidatesByPartyName[partyName].length}
-    />
-  ));
-};
-
 export default function CandidateSingle(props) {
   const [collapsed, setCollapsed] = useState({
-    place: true,
+    place: false,
     education: true,
     experience: true,
     income: true,
@@ -48,7 +35,7 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
 
-  const onChevronClick = (type) => {
+  const onChevronClick = type => {
     let newCollapsedObject = {};
     for (const [key, value] of Object.entries(collapsed)) {
       key === type
@@ -69,7 +56,7 @@ export default function CandidateSingle(props) {
     fetch(
       `${process.env.api.candidatesUrl}/hoja_vida_id/${props.hoja_vida_id ||
         candidateId}`,
-    ).then((data) => data.json()),
+    ).then(data => data.json()),
   );
 
   if (!data) {
@@ -148,7 +135,7 @@ export default function CandidateSingle(props) {
           title="Pasado político"
           collapsed={collapsed.militancy}
           chevronClick={onChevronClick}
-          content={null}
+          content={c.afiliations}
         />
       </Styled.Step>
       <Styled.FavoriteButton

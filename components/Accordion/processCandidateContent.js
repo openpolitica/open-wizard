@@ -1,3 +1,11 @@
+import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
+
+const getYear = dateString => {
+  return dateString && dateString.includes('/')
+    ? dateString.substring(dateString.lastIndexOf('/') + 1)
+    : 'N/A';
+};
+
 const processCandidateContent = (type, content) => {
   if (type === 'place') {
     return <p>{content}</p>;
@@ -44,8 +52,8 @@ const processCandidateContent = (type, content) => {
             return (
               <ul key={c.ocupacion_profesion_cargo + c.anio_desde}>
                 <li>
-                  <strong>{c.ocupacion_profesion_cargo}</strong> en{' '}
-                  {c.centro_trabajo_org_politica} ({c.anio_desde} -{' '}
+                  <strong>{capitalize(c.ocupacion_profesion_cargo)}</strong> en{' '}
+                  {capitalize(c.centro_trabajo_org_politica)} ({c.anio_desde} -{' '}
                   {c.anio_hasta !== 0 ? c.anio_hasta : ''})
                 </li>
               </ul>
@@ -93,12 +101,46 @@ const processCandidateContent = (type, content) => {
     if (content.length > 0) {
       return content.map(c => {
         return (
-          <p>
-            <strong>{c.delito}</strong>
+          <div key={c.delito}>
+            <p>
+              <strong>{c.delito}</strong>
+            </p>
             <ul>
               <li>{`Tipo: ${c.tipo}`}</li>
               <li>{`Fallo: ${c.fallo}`}</li>
             </ul>
+          </div>
+        );
+      });
+    } else {
+      return <p>No tiene sentencias registradas.</p>;
+    }
+  }
+  if (type === 'militancy') {
+    content = [
+      {
+        org_politica: 'ALIANZA ELECTORAL SOLIDARIDAD NACIONAL - UPP',
+        afiliacion_inicio: '16/12/2015',
+        afiliacion_cancelacion: '16/08/2016',
+      },
+      {
+        org_politica: 'ALIANZA SOLIDARIDAD NACIONAL',
+        afiliacion_inicio: '23/12/2010',
+        afiliacion_cancelacion: '04/08/2011',
+      },
+      {
+        org_politica: 'RENOVACION POPULAR',
+        afiliacion_inicio: '05/11/2004',
+        afiliacion_cancelacion: '07/12/2004',
+      },
+    ];
+    if (content.length > 0) {
+      return content.map(c => {
+        return (
+          <p key={c.org_politica}>
+            {`${c.org_politica} (${getYear(c.afiliacion_inicio)} - ${getYear(
+              c.afiliacion_cancelacion,
+            )})`}
           </p>
         );
       });
