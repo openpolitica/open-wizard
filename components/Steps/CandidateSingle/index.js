@@ -1,14 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
+import ls from 'local-storage';
 import groupBy from 'lodash.groupby';
 import * as Styled from './styles';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
-
-// TODO: move to dynamic ID based on hoja_vida_id
-const candidateId = 136626;
-// const candidateId = 136472;
+import toggleSlug from 'components/PartyCard/toggleSlug';
 
 const LoadingScreen = () => {
   return (
@@ -33,6 +32,7 @@ const getCandidate = (candidates) => {
 };
 
 export default function CandidateSingle(props) {
+  const router = useRouter();
   const [collapsed, setCollapsed] = useState({
     place: true,
     education: true,
@@ -42,6 +42,7 @@ export default function CandidateSingle(props) {
     militancy: true,
   });
   const [isFavorite, setFavorite] = useState(false);
+  const candidateId = router.query.candidateId;
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -67,15 +68,13 @@ export default function CandidateSingle(props) {
 
   const { data, error } = useSWR('/api/candidates/hoja_vida_id', () =>
     fetch(
-      `${process.env.api.candidatesUrl}/hoja_vida_id/${props.hoja_vida_id ||
-        candidateId}`,
+      `${process.env.api.candidatesUrl}/hoja_vida_id/${candidateId}`,
     ).then((data) => data.json()),
   );
 
   if (!data) {
     return <LoadingScreen />;
   }
-
   const c = data?.data;
 
   return (
@@ -83,7 +82,10 @@ export default function CandidateSingle(props) {
       <Styled.Header />
       <Styled.Step>
         <Styled.Row>
-          <GoBackButton to={'/steps/party-results'} text="Regresa a la lista" />
+          <GoBackButton
+            to={ls('op.wizard').filters ? `/results/${toggleSlug(c.org_politica_nombre)}` : '/' }
+            text={ls('op.wizard').filters ? "Regresa a la lista" : "Inicia tu viaje" }
+          />
         </Styled.Row>
         <Styled.CandidateBigCard
           starClick={onStarClick}
