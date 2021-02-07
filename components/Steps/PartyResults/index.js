@@ -55,7 +55,6 @@ const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
 
 const showPartyCards = () => {
   const candidatesByPartyName = ls('op.wizard').filteredCandidates;
-  console.log(candidatesByPartyName);
   return Object.keys(candidatesByPartyName).map((partyName) => (
     <PartyCard
       key={partyName}
