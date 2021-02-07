@@ -1,9 +1,10 @@
 import Router from 'next/router';
 import * as Styled from './styles';
 import { partyIconSource } from 'components/CandidateCard';
+import toggleSlug from './toggleSlug';
 
 const onSeeCandidatesButtonClick = (partyName) => (candidates) => (event) => {
-  Router.push(`/results/${partyName}`);
+  Router.push(`/results/${toggleSlug(partyName)}`);
 };
 
 const numberOfCandidates = (number) =>
