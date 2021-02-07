@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const AccordionIcon = styled('div')`
-  background: ${props =>
+  background: ${(props) =>
     `url('/images/icons/${props.icon}.svg') no-repeat center` ||
     'url("/images/icons/place.svg") no-repeat center'};
   height: 1.5rem;
@@ -61,7 +61,7 @@ export const Row = styled.div`
 `;
 
 export const Chevron = styled('div')`
-  background: ${props =>
+  background: ${(props) =>
     `url('/images/icons/${props.direction}.svg') no-repeat center` ||
     'url("/images/icons/chevronDown.svg") no-repeat center'};
   height: 1.5rem;

@@ -102,6 +102,7 @@ export default function Step4(props) {
               candidateNumber={candidate.posicion}
               candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
               profileImageId={candidate.hoja_vida_id}
+              systemId={candidate.hoja_vida_id}
             />
           ))}
         </Styled.Candidates>

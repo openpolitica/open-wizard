@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   Card,
   PartyIcon,
@@ -19,18 +20,20 @@ export const partyIconSource = (candidateParty) =>
 
 const CandidateCard = (props) => {
   return (
-    <Card {...props}>
-      <PartyIcon src={partyIconSource(props.candidateParty)} />
-      <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
-      <ProfileIcon
-        src={
-          `${profileIconBaseUrl}${props.profileImageId}.jpg` ||
-          `${profileIconBaseUrl}134127.jpg`
-        }
-      />
-      <Fullname>{props.candidateFullname || 'Nombre de candidato'}</Fullname>
-      <ArrowCircle />
-    </Card>
+    <Link href={`/candidate/${props.systemId}`}>
+      <Card {...props}>
+        <PartyIcon src={partyIconSource(props.candidateParty)} />
+        <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
+        <ProfileIcon
+          src={
+            `${profileIconBaseUrl}${props.profileImageId}.jpg` ||
+            `${profileIconBaseUrl}134127.jpg`
+          }
+        />
+        <Fullname>{props.candidateFullname || 'Nombre de candidato'}</Fullname>
+        <ArrowCircle />
+      </Card>
+    </Link>
   );
 };
 
