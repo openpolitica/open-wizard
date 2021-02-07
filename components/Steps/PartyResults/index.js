@@ -53,12 +53,9 @@ const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
   return groupedCandidates;
 };
 
-const showPartyCards = (candidates) => {
-  const candidatesByPartyName = groupCandidatesByPartyNameAndLS(
-    candidates,
-    'filteredCandidates',
-  );
-
+const showPartyCards = () => {
+  const candidatesByPartyName = ls('op.wizard').filteredCandidates;
+  console.log(candidatesByPartyName);
   return Object.keys(candidatesByPartyName).map((partyName) => (
     <PartyCard
       key={partyName}
@@ -97,6 +94,7 @@ export default function PartyResults(props) {
 
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const data = fetchCandidates();
+  ls('op.wizard', { ...ls('op.wizard'), rawCandidates: data?.data.candidates });
   const location = ls('op.wizard').location;
   const seats = fetchSeats(location);
   const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
@@ -104,7 +102,13 @@ export default function PartyResults(props) {
   if (!data || !seats) {
     return <LoadingScreen />;
   }
-  groupCandidatesByPartyNameAndLS(data?.data.candidates, 'candidates');
+  groupCandidatesByPartyNameAndLS(ls('op.wizard').rawCandidates, 'candidates');
+  if (!ls('op.wizard').filteredCandidates) {
+    groupCandidatesByPartyNameAndLS(
+      ls('op.wizard').rawCandidates,
+      'filteredCandidates',
+    );
+  }
 
   return (
     <Styled.Container>
@@ -139,13 +143,7 @@ export default function PartyResults(props) {
           <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
           congreso.
         </Styled.Chip>
-        <Styled.Results>
-          {showPartyCards(
-            filters.length
-              ? applyFilters(data?.data.candidates)(filters)
-              : data?.data.candidates,
-          )}
-        </Styled.Results>
+        <Styled.Results>{showPartyCards()}</Styled.Results>
       </Styled.Step>
     </Styled.Container>
   );

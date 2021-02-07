@@ -61,6 +61,8 @@ export default function Step4(props) {
     toggleSlug(router.query.partyName)
   ];
 
+  console.log(candidates);
+
   return (
     <Styled.Container>
       <FilterModal
