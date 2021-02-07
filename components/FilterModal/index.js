@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import ls from 'local-storage';
+import groupBy from 'lodash.groupby';
 import Image from 'next/image';
 import BaseModal from 'components/BaseModal';
 import * as Styled from './styles';
@@ -11,6 +12,7 @@ import {
   toHighSchool,
   toPostgraduate,
 } from './logicMaps';
+import { applyFilters } from '../Steps/PartyResults/filters';
 import * as logicMaps from './logicMaps';
 import handleEducationState from './handleEducationState';
 
@@ -45,6 +47,12 @@ const toggleEducationFilter = (filters) => (filterName) => {
   ];
 };
 
+const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
+  const groupedCandidates = groupBy(candidates, 'org_politica_nombre');
+  ls('op.wizard', { ...ls('op.wizard'), [keyName]: groupedCandidates });
+  return groupedCandidates;
+};
+
 const FilterModal = (props) => {
   const [isMaleChecked, setMaleGenre] = useState(
     props.filters.includes('onlyMale') || !props.filters.includes('onlyFemale'),
@@ -74,6 +82,12 @@ const FilterModal = (props) => {
   const branchWithSetEducationState = branchWithSideEffect(setEducationState);
   const setSanctionsStateWithValue = (state, propertyName) => (value) =>
     setSanctionsState({ ...state, [propertyName]: value });
+  if (props.filters.length) {
+    const groupedCandidates = applyFilters(ls('op.wizard').rawCandidates)(
+      props.filters,
+    );
+    groupCandidatesByPartyNameAndLS(groupedCandidates, 'filteredCandidates');
+  }
 
   ls('op.wizard', { ...ls('op.wizard'), filters: props.filters });
 
