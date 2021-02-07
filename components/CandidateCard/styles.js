@@ -34,6 +34,7 @@ export const Card = styled('div')`
   align-items: center;
   border-radius: 4px;
   border: 1px solid #c7cad1;
+  cursor: pointer;
   display: flex;
   gap: 0.25rem;
   height: 3.75rem;

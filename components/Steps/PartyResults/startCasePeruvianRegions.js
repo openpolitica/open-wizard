@@ -3,11 +3,15 @@ import lowerCase from 'lodash.lowerCase';
 
 const startCasePeruvianRegions = (
   region,
-  { omit = ['de', 'en', 'el'] } = {},
+  { omit = ['de', 'en', 'el', 'la', 'del'] } = {},
 ) => {
-  return lowerCase(region)
-    .split(' ')
-    .map((word) => (omit.includes(word) ? word : startCase(word)))
+  const lowerRegionArray = lowerCase(region).split(' ');
+  return lowerRegionArray
+    .map(word =>
+      word !== lowerRegionArray[0] && omit.includes(word)
+        ? word
+        : startCase(word),
+    )
     .join(' ');
 };
 
