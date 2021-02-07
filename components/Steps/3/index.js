@@ -5,12 +5,12 @@ import ls from 'local-storage';
 export default function Step3() {
   const onYesButtonClick = (event) => {
     ls('op.wizard', { ...ls('op.wizard'), impeachment: null });
-    Router.push('/steps/party-results');
+    Router.push('/results/grouped-by-party');
   };
 
   const onNoButtonClick = (event) => {
     ls('op.wizard', { ...ls('op.wizard'), impeachment: false });
-    Router.push('/steps/party-results');
+    Router.push('/results/grouped-by-party');
   };
 
   return (

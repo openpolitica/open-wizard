@@ -1,0 +1,99 @@
+import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+import fetch from 'isomorphic-fetch';
+import ls from 'local-storage';
+import qs from 'qs';
+import * as Styled from './styles';
+import Loading from 'components/Loading';
+import GoBackButton from 'components/GoBackButton';
+import FilterModal from 'components/FilterModal';
+import {
+  applyFilter,
+  applyFilters,
+  byGenre,
+  onlyMale,
+  onlyFemale,
+  hasJNEIncome,
+  hasPublicServiceExperience,
+  byStudies,
+  upToPrimary,
+  upToSecondary,
+  upToHighSchool,
+  upToPostgraduate,
+  doesntHaveSanctionsWithSunat,
+  doesntHaveSanctionsWithServir,
+  doesntHaveSanctionsWithDriving,
+} from 'components/Steps/PartyResults/filters';
+
+const mapApiTerms = (options) => ({
+  vacancia: options.impeachment,
+  sentencias: options.withSentence,
+  region: options.location,
+  role: 'CONGRESISTA',
+  limit: 10,
+});
+
+const LoadingScreen = () => {
+  return (
+    <Styled.Container>
+      <Styled.Header />
+      <Loading />
+    </Styled.Container>
+  );
+};
+
+export default function Step4(props) {
+  const isServer = typeof window === 'undefined';
+  if (isServer) {
+    return <LoadingScreen />;
+  }
+
+  const [isFilterModalOpen, setFilterModalState] = useState(false);
+  const [filters, setFilters] = useState(ls('op.wizard').filters.length ? ls('op.wizard').filters : ['onlyMale', 'onlyFemale']);
+  const candidates = ls('op.wizard').filteredCandidates['ACCION POPULAR'];
+
+  return (
+    <Styled.Container>
+      <FilterModal
+        isOpen={isFilterModalOpen}
+        applyFilter={applyFilter}
+        onlyFemale={onlyFemale}
+        onlyMale={onlyMale}
+        hasPublicServiceExperience={hasPublicServiceExperience}
+        hasJNEIncome={hasJNEIncome}
+        upToPrimary={upToPrimary}
+        upToSecondary={upToSecondary}
+        upToHighSchool={upToHighSchool}
+        upToPostgraduate={upToPostgraduate}
+        doesntHaveSanctionsWithSunat={doesntHaveSanctionsWithSunat}
+        doesntHaveSanctionsWithServir={doesntHaveSanctionsWithServir}
+        doesntHaveSanctionsWithDriving={doesntHaveSanctionsWithDriving}
+        filters={filters}
+        setFilters={setFilters}
+        onCloseButtonClick={() => setFilterModalState(false)}
+      />
+      <Styled.Header />
+      <Styled.Step>
+        <Styled.Row>
+          <GoBackButton to={'/results/grouped-by-party'} text="Regresa" />
+          <Styled.FilterButton onClick={() => setFilterModalState(true)} />
+        </Styled.Row>
+        <Styled.Title align="center">
+          Tienes {candidates.length} posibles candidatos de{' '}
+          {candidates[0].org_politica_nombre}
+        </Styled.Title>
+        <Styled.Candidates>
+          {candidates.map((candidate, index) => (
+            <Styled.CandidateCard
+              key={`Candidate-${index}`}
+              candidateParty={candidate.org_politica_nombre}
+              candidateNumber={candidate.posicion}
+              candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
+              profileImageId={candidate.hoja_vida_id}
+            />
+          ))}
+        </Styled.Candidates>
+      </Styled.Step>
+    </Styled.Container>
+  );
+}
