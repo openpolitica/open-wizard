@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import qs from 'qs';
 import * as Styled from './styles';
+import toggleSlug from 'components/PartyCard/toggleSlug';
+import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import FilterModal from 'components/FilterModal';
@@ -43,14 +46,20 @@ const LoadingScreen = () => {
 };
 
 export default function Step4(props) {
+  const router = useRouter();
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
   }
+  if (!router.query.partyName) {
+    router.push('/');
+  }
 
   const [isFilterModalOpen, setFilterModalState] = useState(false);
-  const [filters, setFilters] = useState(ls('op.wizard').filters.length ? ls('op.wizard').filters : ['onlyMale', 'onlyFemale']);
-  const candidates = ls('op.wizard').filteredCandidates['ACCION POPULAR'];
+  const [filters, setFilters] = useState(ls('op.wizard').filters);
+  const candidates = ls('op.wizard').filteredCandidates[
+    toggleSlug(router.query.partyName)
+  ];
 
   return (
     <Styled.Container>
