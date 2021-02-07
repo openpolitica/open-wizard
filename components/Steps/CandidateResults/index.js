@@ -61,8 +61,6 @@ export default function Step4(props) {
     toggleSlug(router.query.partyName)
   ];
 
-  console.log(candidates);
-
   return (
     <Styled.Container>
       <FilterModal
@@ -90,23 +88,32 @@ export default function Step4(props) {
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
         <Styled.Title align="center">
-          Tienes <Styled.Emphasis>{candidates.length}</Styled.Emphasis> posibles
-          candidatos de{' '}
+          Tienes{' '}
           <Styled.Emphasis>
-            {startCasePeruvianRegions(candidates[0].org_politica_nombre)}
+            {candidates ? candidates.length : 0}
+          </Styled.Emphasis>{' '}
+          posibles candidatos {candidates ? 'de' : ''}{' '}
+          <Styled.Emphasis>
+            {startCasePeruvianRegions(
+              candidates ? candidates[0].org_politica_nombre : '',
+            )}
           </Styled.Emphasis>
         </Styled.Title>
         <Styled.Candidates>
-          {candidates.map((candidate, index) => (
-            <Styled.CandidateCard
-              key={`Candidate-${index}`}
-              candidateParty={candidate.org_politica_nombre}
-              candidateNumber={candidate.posicion}
-              candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
-              profileImageId={candidate.hoja_vida_id}
-              systemId={candidate.hoja_vida_id}
-            />
-          ))}
+          {candidates ? (
+            candidates.map((candidate, index) => (
+              <Styled.CandidateCard
+                key={`Candidate-${index}`}
+                candidateParty={candidate.org_politica_nombre}
+                candidateNumber={candidate.posicion}
+                candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
+                profileImageId={candidate.hoja_vida_id}
+                systemId={candidate.hoja_vida_id}
+              />
+            ))
+          ) : (
+            <p>No hay resultados</p>
+          )}
         </Styled.Candidates>
       </Styled.Step>
     </Styled.Container>
