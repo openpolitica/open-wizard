@@ -1,5 +1,5 @@
-import startCase from 'lodash.startCase';
-import lowerCase from 'lodash.lowerCase';
+import startCase from 'lodash.startcase';
+import lowerCase from 'lodash.lowercase';
 
 const startCasePeruvianRegions = (
   region,
