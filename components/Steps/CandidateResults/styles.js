@@ -41,6 +41,11 @@ export const Title = styled(BaseTitle)`
   margin-top: 2rem;
 `;
 
+export const Emphasis = styled('em')`
+  color: #4EB5A2;
+  font-style: normal;
+`;
+
 export const ResultExplanation = styled(BaseParagraph)`
   align-self: start;
   color: #04102F;
