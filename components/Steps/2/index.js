@@ -19,6 +19,13 @@ export default function Step2() {
       <Styled.GoBackButton to={'/steps/1'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={2} of={3} />
+        <Styled.Chip>
+          <strong>Recuerda</strong>
+          <p style={{ margin: '0' }}>
+            Sentencia condenatoria es que fue procesado y hallado culpable.
+            Ejemplo: Prisión efectiva.
+          </p>
+        </Styled.Chip>
         <Styled.Title align="center">
           ¿Incluimos candidatos con sentencias en el Poder Judicial?
         </Styled.Title>

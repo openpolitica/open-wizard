@@ -4,6 +4,7 @@ import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseButton from 'components/BaseButton';
 import BaseGoBackButton from 'components/GoBackButton';
+import BaseChip from 'components/Chip';
 
 export const Container = styled('section')`
   align-items: center;
@@ -30,6 +31,12 @@ export const Step = styled('div')`
 
 export const Stepper = styled(BaseStepper)`
   margin-top: 1.5rem;
+`;
+
+export const Chip = styled(BaseChip)`
+  margin-top: 1.5rem;
+  min-height: 6.125rem;
+  min-width: 20.437rem;
 `;
 
 export const Title = styled(BaseTitle)`
