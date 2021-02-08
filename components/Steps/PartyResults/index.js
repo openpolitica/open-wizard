@@ -139,7 +139,7 @@ export default function PartyResults(props) {
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
           <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
-          <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
+          <strong>{simplePluralize(seats?.data?.seats, 'sitio')}</strong> en el
           congreso.
         </Styled.Chip>
         <Styled.Results>{showPartyCards()}</Styled.Results>
