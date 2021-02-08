@@ -87,6 +87,11 @@ const FilterModal = (props) => {
       props.filters,
     );
     groupCandidatesByPartyNameAndLS(groupedCandidates, 'filteredCandidates');
+  } else {
+    groupCandidatesByPartyNameAndLS(
+      ls('op.wizard').rawCandidates,
+      'filteredCandidates',
+    );
   }
 
   ls('op.wizard', { ...ls('op.wizard'), filters: props.filters });
