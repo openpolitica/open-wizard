@@ -8,7 +8,13 @@ const getYear = dateString => {
 
 const processCandidateContent = (type, content) => {
   if (type === 'place') {
-    return <p>{content ? content : null}</p>;
+    return (
+      <p>
+        {content.departamento
+          ? `${content.provincia}, ${content.departamento}`
+          : content.pais}
+      </p>
+    );
   }
   if (type === 'education') {
     let superiorEducationCount = 0;
