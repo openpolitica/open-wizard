@@ -17,6 +17,7 @@ const wrongCareers = [
   'NO TIENE',
   'POR OBTENER',
   'PROCESO',
+  '-',
 ];
 
 const processCandidateContent = (type, content) => {
