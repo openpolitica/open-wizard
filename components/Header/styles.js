@@ -14,3 +14,7 @@ export const Header = styled('header')`
 `;
 
 export const LogoImg = styled.img``;
+
+export const ChipImg = styled.img`
+  margin: auto 8px;
+`;
