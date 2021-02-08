@@ -43,7 +43,6 @@ const HomePage = () => {
     router.push('/steps/1');
   };
 
-
   return (
     <Container>
       <BaseHeader />
