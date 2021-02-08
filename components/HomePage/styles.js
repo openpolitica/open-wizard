@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import BaseButton from 'components/BaseButton';
 
 export const Container = styled.div`
-  background: white;
+  background: #fff;
   font-family: 'Poppins', sans-serif;
 `;
 
@@ -29,8 +29,7 @@ export const Title = styled.h1`
   font-size: 24px;
   font-weight: 600;
   line-height: 32px;
-  margin: 0;
-  margin-right: 42px;
+  margin-right: 0 42px 0 0;
 `;
 
 export const Span = styled.span`
