@@ -102,7 +102,11 @@ export default function CandidateSingle(props) {
           title="Lugar de nacimiento"
           collapsed={collapsed.place}
           chevronClick={onChevronClick}
-          content={c.nacimiento_departamento}
+          content={{
+            departamento: c.nacimiento_departamento,
+            provincia: c.nacimiento_provincia,
+            pais: c.nacimiento_pais,
+          }}
         />
         <Styled.Accordion
           type="education"
