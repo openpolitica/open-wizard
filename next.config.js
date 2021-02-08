@@ -7,6 +7,7 @@ module.exports = {
       baseUrl: 'https://api.openpolitica.com/',
       candidatesUrl: 'https://api.openpolitica.com/candidates',
       locationsUrl: 'https://api.openpolitica.com/locations',
+      partiesUrl: 'https://api.openpolitica.com/parties',
     },
   },
 };

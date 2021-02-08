@@ -5,6 +5,7 @@ import BaseTitle from 'components/BaseTitle';
 import BaseParagraph from 'components/BaseParagraph';
 import BaseCandidateCard from 'components/CandidateCard';
 import BaseFilterButton from 'components/FilterButton';
+import Chip from 'components/Chip';
 
 export const Container = styled('section')`
   align-items: center;
@@ -42,30 +43,35 @@ export const Title = styled(BaseTitle)`
 `;
 
 export const Emphasis = styled('em')`
-  color: #4EB5A2;
+  color: #4eb5a2;
   font-style: normal;
 `;
 
 export const ResultExplanation = styled(BaseParagraph)`
   align-self: start;
-  color: #04102F;
-  font-size: .875rem;
+  color: #04102f;
+  font-size: 0.875rem;
   font-weight: 700;
-  margin: 1.5rem 0 .5rem 0;
+  margin: 1.5rem 0 0.5rem 0;
 `;
 
 export const Location = styled('span')`
-  color: #4EB5A2;
+  color: #4eb5a2;
   text-transform: capitalize;
 `;
 
-export const ResultInstructions = styled(BaseParagraph)`
-`;
+export const ResultInstructions = styled(BaseParagraph)``;
 
 export const Candidates = styled('section')`
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
 `;
 
 export const CandidateCard = styled(BaseCandidateCard)`
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
+`;
+
+export const ChipCard = styled(Chip)`
+  height: 4rem;
+  margin: 0.2rem 0;
+  width: 20.5rem;
 `;

@@ -60,6 +60,32 @@ export default function Step4(props) {
   const candidates = ls('op.wizard').filteredCandidates[
     toggleSlug(router.query.partyName)
   ];
+  const location = ls('op.wizard').location;
+
+  const { data, error } = useSWR(
+    candidates && location ? '/api/parties/dirtylists' : null,
+    () =>
+      fetch(
+        `${process.env.api.partiesUrl}/dirtylists?region=${location}&party=${candidates[0].org_politica_nombre}`,
+      ).then((data) => data.json()),
+  );
+
+  if (!data) {
+    return <LoadingScreen />;
+  }
+
+  const listIssues = data?.data?.lists[0];
+  const badIssues = listIssues
+    ? listIssues.sentencias_civiles +
+        listIssues.sentencias_penales +
+        listIssues.sancion_servir >
+      0
+    : null;
+  const licenseIssues = ['inhabilita', 'retenida', 'Suspendida'];
+  const infoIssues = listIssues
+    ? listIssues.deuda_sunat + listIssues.papeletas_sat > 0 ||
+      new RegExp(licenseIssues.join('|')).test(listIssues.licencia_conducir)
+    : null;
 
   return (
     <Styled.Container>
@@ -99,6 +125,22 @@ export default function Step4(props) {
             )}
           </Styled.Emphasis>
         </Styled.Title>
+        <Styled.ChipCard type="good">
+          Recuerda que tu voto por este partido beneficia a los primeros de su
+          lista al congreso.
+        </Styled.ChipCard>
+        {badIssues ? (
+          <Styled.ChipCard type="bad">
+            Alguno de los primeros de esta lista tiene{' '}
+            <strong>sentencias y/o sanciones en SERVIR.</strong>
+          </Styled.ChipCard>
+        ) : null}
+        {infoIssues ? (
+          <Styled.ChipCard type="info">
+            Alguno de los primeros de esta lista tiene{' '}
+            <strong>deudas con SUNAT y/o infracciones de tránsito.</strong>
+          </Styled.ChipCard>
+        ) : null}
         <Styled.Candidates>
           {candidates ? (
             candidates.map((candidate, index) => (
