@@ -1,3 +1,4 @@
+import ls from 'local-storage';
 import {
   Container,
   Hero,
@@ -38,6 +39,7 @@ const LogoList = () => (
 
 const HomePage = () => {
   const router = useRouter();
+  ls('op.wizard', {});
 
   const handleStart = (e) => {
     router.push('/steps/1');
