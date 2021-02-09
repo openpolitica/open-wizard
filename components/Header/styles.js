@@ -13,7 +13,9 @@ export const Header = styled('header')`
   cursor: pointer;
 `;
 
-export const LogoImg = styled.img``;
+export const LogoImg = styled.img`
+  max-width: 72px;
+`;
 
 export const ChipImg = styled.img`
   margin: auto 8px;
