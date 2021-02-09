@@ -104,13 +104,8 @@ const FilterModal = (props) => {
   return (
     <BaseModal {...props}>
       <Styled.Header>
-        <Styled.CloseButton>
-          <Image
-            onClick={props.onCloseButtonClick}
-            src="/images/icons/filter-x.svg"
-            width="14"
-            height="14"
-          />
+        <Styled.CloseButton onClick={props.onCloseButtonClick}>
+          <Image src="/images/icons/filter-x.svg" width="14" height="14" />
         </Styled.CloseButton>
       </Styled.Header>
       <Styled.GenreSection>
