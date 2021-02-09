@@ -39,6 +39,10 @@ export const Chip = styled(BaseChip)`
   min-width: 20.437rem;
 `;
 
+export const TextInfo = styled.p`
+  margin: 0;
+`;
+
 export const Title = styled(BaseTitle)`
   margin-top: 2rem;
 `;
