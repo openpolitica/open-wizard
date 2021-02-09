@@ -6,6 +6,20 @@ const getYear = dateString => {
     : 'N/A';
 };
 
+const wrongCareers = [
+  '0',
+  'FALTA',
+  'AUN SIN GRADO',
+  'NO',
+  'NINGUNO',
+  'NO APLICA',
+  'NO TENGO',
+  'NO TIENE',
+  'POR OBTENER',
+  'PROCESO',
+  '-',
+];
+
 const processCandidateContent = (type, content) => {
   if (type === 'place') {
     return <p>{content ? content : null}</p>;
@@ -34,9 +48,15 @@ const processCandidateContent = (type, content) => {
                   return (
                     <ul key={c.carrera + c.tipo}>
                       <li>
-                        <strong>{capitalize(c.carrera)}</strong> en{' '}
-                        {capitalize(c.centro_estudio)}{' '}
-                        {c.concluida === 0 ? '(no concluída)' : null}
+                        <strong>
+                          {capitalize(
+                            !wrongCareers.includes(c.carrera)
+                              ? c.carrera
+                              : 'Carrera no especificada',
+                          )}
+                        </strong>{' '}
+                        en {capitalize(c.centro_estudio)}{' '}
+                        {c.concluyo === 0 ? '(no concluída)' : null}
                       </li>
                     </ul>
                   );
