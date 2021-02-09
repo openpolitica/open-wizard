@@ -54,19 +54,20 @@ export default function Step4(props) {
   if (!router.query.partyName) {
     router.push('/');
   }
+  const partyName = router.query.partyName;
 
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const [filters, setFilters] = useState(ls('op.wizard').filters);
-  const candidates = ls('op.wizard').filteredCandidates[
-    toggleSlug(router.query.partyName)
-  ];
+  const candidates = ls('op.wizard').filteredCandidates[toggleSlug(partyName)];
   const location = ls('op.wizard').location;
 
   const { data, error } = useSWR(
-    candidates && location ? '/api/parties/dirtylists' : null,
+    location
+      ? `/api/parties/dirtylists?region=${location}&party=${partyName}`
+      : null,
     () =>
       fetch(
-        `${process.env.api.partiesUrl}/dirtylists?region=${location}&party=${candidates[0].org_politica_nombre}`,
+        `${process.env.api.partiesUrl}/dirtylists?region=${location}&party=${partyName}`,
       ).then((data) => data.json()),
   );
 
@@ -120,9 +121,7 @@ export default function Step4(props) {
           </Styled.Emphasis>{' '}
           posibles candidatos {candidates ? 'de' : ''}{' '}
           <Styled.Emphasis>
-            {startCasePeruvianRegions(
-              candidates ? candidates[0].org_politica_nombre : '',
-            )}
+            {startCasePeruvianRegions(candidates ? partyName : '')}
           </Styled.Emphasis>
         </Styled.Title>
         <Styled.ChipCard type="good">
