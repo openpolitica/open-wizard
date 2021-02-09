@@ -68,7 +68,7 @@ const showPartyCards = () => {
 
 const fetchCandidates = () => {
   const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
-  const { data, error } = useSWR('/api/candidates', () =>
+  const { data, error } = useSWR(`/api/candidates/${JSON.stringify(apiTerms)}`, () =>
     fetch(`${process.env.api.candidatesUrl}?${apiTerms}`).then((data) =>
       data.json(),
     ),
@@ -101,6 +101,7 @@ export default function PartyResults(props) {
   if (!data || !seats) {
     return <LoadingScreen />;
   }
+
   groupCandidatesByPartyNameAndLS(ls('op.wizard').rawCandidates, 'candidates');
   if (!ls('op.wizard').filteredCandidates) {
     groupCandidatesByPartyNameAndLS(
