@@ -54,14 +54,16 @@ const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
 };
 
 const FilterModal = (props) => {
-  const isOnlyMale = props.filters.includes('onlyMale');
-  const isOnlyFemale = props.filters.includes('onlyFemale');
+  const includesOnlyMale = props.filters.includes('onlyMale');
+  const includesOnlyFemale = props.filters.includes('onlyFemale');
 
   const [isMaleChecked, setMaleGenre] = useState(
-    !(isOnlyMale && isOnlyFemale) && (isOnlyMale || !isOnlyFemale),
+    !(includesOnlyMale && includesOnlyFemale) &&
+      (includesOnlyMale || !includesOnlyFemale),
   );
   const [isFemaleChecked, setFemaleGenre] = useState(
-    !(isOnlyMale && isOnlyFemale) && (!isOnlyMale || isOnlyFemale),
+    !(includesOnlyMale && includesOnlyFemale) &&
+      (!includesOnlyMale || includesOnlyFemale),
   );
   const [isJNEIncomeChecked, setJNEIncome] = useState(
     props.filters.includes('hasJNEIncome'),
