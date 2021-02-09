@@ -35,8 +35,6 @@ export const Stepper = styled(BaseStepper)`
 
 export const Chip = styled(BaseChip)`
   margin-top: 1.5rem;
-  min-height: 6.125rem;
-  min-width: 20.437rem;
 `;
 
 export const Title = styled(BaseTitle)`
