@@ -17,7 +17,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
-          <title>Votu.pe</title>
           <link
             href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
             rel="stylesheet"
