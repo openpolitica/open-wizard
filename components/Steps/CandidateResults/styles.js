@@ -71,7 +71,5 @@ export const CandidateCard = styled(BaseCandidateCard)`
 `;
 
 export const ChipCard = styled(Chip)`
-  height: 4rem;
-  margin: 0.2rem 0;
-  width: 20.5rem;
+  margin: 0.5rem 0 0;
 `;

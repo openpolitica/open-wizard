@@ -22,7 +22,7 @@ const textColorPriority = {
 };
 
 export const Chip = styled('aside')`
-  align-items: center;
+  align-items: baseline;
   background-color: ${(props) => backgroundColorPriority[props.type || 'info']};
   border-radius: 4px;
   border: 1px solid ${(props) => borderColorPriority[props.type || 'info']};
@@ -32,7 +32,8 @@ export const Chip = styled('aside')`
   font-family: 'Poppins', sans-serif;
   font-size: 0.75rem;
   gap: 0.75rem;
-  height: 3rem;
+  max-width: 20.437rem;
+  min-height: 2.875rem;
   justify-content: center;
   line-height: 1.125rem;
   padding: 0.875rem 1.125rem;
