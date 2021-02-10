@@ -33,6 +33,7 @@ export const Tag = styled('input').attrs((props) => ({
   type: 'checkbox',
 }))`
   appearance: none;
+  display: none;
 `;
 
 export const TagLabel = styled('label')`
