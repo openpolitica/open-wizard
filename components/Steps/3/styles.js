@@ -9,6 +9,7 @@ export const Container = styled('section')`
   align-items: center;
   display: flex;
   flex-direction: column;
+  height: 100vh;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -23,8 +24,9 @@ export const GoBackButton = styled(BaseGoBackButton)`
 export const Step = styled('div')`
   align-items: center;
   flex-direction: column;
+  flex: 1;
   display: flex;
-  padding: 0 3.25rem;
+  padding: 0 1.5rem;
 `;
 
 export const Stepper = styled(BaseStepper)`
@@ -32,12 +34,18 @@ export const Stepper = styled(BaseStepper)`
 `;
 
 export const Title = styled(BaseTitle)`
+  font-size: 1.125rem;
   margin-top: 2rem;
+`;
+
+export const YesNoButtons = styled('div')`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
 `;
 
 export const NoButton = styled(BaseButton)`
   align-self: center;
-  margin: 13.125rem 0 0 0;
 `;
 
 export const YesButton = styled(BaseButton)`
