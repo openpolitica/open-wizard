@@ -14,7 +14,7 @@ export const Container = styled('section')`
   background: #f1f2f3;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -28,10 +28,9 @@ export const GoBackButton = styled(BaseGoBackButton)`
 
 export const Step = styled('div')`
   align-items: center;
-  flex: 1;
+  flex: 2;
   flex-direction: column;
   display: flex;
-  padding: 0 1.5rem;
 `;
 
 export const Stepper = styled(BaseStepper)`
@@ -58,10 +57,9 @@ export const Select = styled(BaseSelect)`
 
 export const LinkButton = styled(BaseLinkButton)`
   cursor: pointer;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const Button = styled(BaseButton)`
   align-self: center;
-  margin-bottom: 5rem;
 `;

@@ -9,7 +9,7 @@ export const Container = styled('section')`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -35,14 +35,13 @@ export const Stepper = styled(BaseStepper)`
 
 export const Title = styled(BaseTitle)`
   font-size: 1.125rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 `;
 
 export const YesNoButtons = styled('div')`
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-bottom: 5rem;
 `;
 
 export const NoButton = styled(BaseButton)`

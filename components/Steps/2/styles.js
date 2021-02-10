@@ -11,7 +11,7 @@ export const Container = styled('section')`
   background: #f1f2f3;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -44,13 +44,12 @@ export const TextInfo = styled.p`
 
 export const Title = styled(BaseTitle)`
   font-size: 1.125rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 `;
 export const YesNoButtons = styled('div')`
   display: flex;
   flex: 1;
   flex-direction: column;
-  padding-bottom: 5rem;
 `;
 
 export const NoButton = styled(BaseButton)`
