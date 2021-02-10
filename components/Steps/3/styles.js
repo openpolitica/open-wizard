@@ -23,8 +23,8 @@ export const GoBackButton = styled(BaseGoBackButton)`
 
 export const Step = styled('div')`
   align-items: center;
+  flex: 2;
   flex-direction: column;
-  flex: 1;
   display: flex;
   padding: 0 1.5rem;
 `;
@@ -40,6 +40,7 @@ export const Title = styled(BaseTitle)`
 
 export const YesNoButtons = styled('div')`
   display: flex;
+  flex: 1;
   flex-direction: column;
   padding-bottom: 5rem;
 `;
