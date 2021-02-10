@@ -54,11 +54,16 @@ const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
 };
 
 const FilterModal = (props) => {
+  const includesOnlyMale = props.filters.includes('onlyMale');
+  const includesOnlyFemale = props.filters.includes('onlyFemale');
+
   const [isMaleChecked, setMaleGenre] = useState(
-    props.filters.includes('onlyMale') || !props.filters.includes('onlyFemale'),
+    !(includesOnlyMale && includesOnlyFemale) &&
+      (includesOnlyMale || !includesOnlyFemale),
   );
   const [isFemaleChecked, setFemaleGenre] = useState(
-    !props.filters.includes('onlyMale') || props.filters.includes('onlyFemale'),
+    !(includesOnlyMale && includesOnlyFemale) &&
+      (!includesOnlyMale || includesOnlyFemale),
   );
   const [isJNEIncomeChecked, setJNEIncome] = useState(
     props.filters.includes('hasJNEIncome'),
@@ -99,13 +104,8 @@ const FilterModal = (props) => {
   return (
     <BaseModal {...props}>
       <Styled.Header>
-        <Styled.CloseButton>
-          <Image
-            onClick={props.onCloseButtonClick}
-            src="/images/icons/filter-x.svg"
-            width="14"
-            height="14"
-          />
+        <Styled.CloseButton onClick={props.onCloseButtonClick}>
+          <Image src="/images/icons/filter-x.svg" width="14" height="14" />
         </Styled.CloseButton>
       </Styled.Header>
       <Styled.GenreSection>

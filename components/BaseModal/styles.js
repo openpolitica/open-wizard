@@ -9,7 +9,9 @@ export const Modal = styled('section').attrs((props) => ({
   border: 1px solid #f1f2f3;
   box-shadow: 0px 4px 24px rgba(0, 0, 0, 0.12);
   border-radius: 4px;
+  height: 90vh;
   left: 50%;
+  overflow: scroll;
   position: absolute;
   transition: all linear 0.3s;
   transform: translateX(-50%);

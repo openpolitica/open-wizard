@@ -1,14 +1,35 @@
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
+import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
 
-const getYear = dateString => {
+const getYear = (dateString) => {
   return dateString && dateString.includes('/')
     ? dateString.substring(dateString.lastIndexOf('/') + 1)
     : 'N/A';
 };
 
+const wrongCareers = [
+  '0',
+  'FALTA',
+  'AUN SIN GRADO',
+  'NO',
+  'NINGUNO',
+  'NO APLICA',
+  'NO TENGO',
+  'NO TIENE',
+  'POR OBTENER',
+  'PROCESO',
+  '-',
+];
+
 const processCandidateContent = (type, content) => {
   if (type === 'place') {
-    return <p>{content ? content : null}</p>;
+    return (
+      <p>
+        {content.departamento
+          ? `${content.provincia}, ${content.departamento}`
+          : content.pais}
+      </p>
+    );
   }
   if (type === 'education') {
     let superiorEducationCount = 0;
@@ -28,15 +49,21 @@ const processCandidateContent = (type, content) => {
             <strong>Detalle de estudios superiores:</strong>
           </p>
           {orderedEducationDetails.length > 0
-            ? orderedEducationDetails.map(c => {
+            ? orderedEducationDetails.map((c) => {
                 if (!c.tipo.includes('BASICA') && c.carrera !== '') {
                   superiorEducationCount += 1;
                   return (
                     <ul key={c.carrera + c.tipo}>
                       <li>
-                        <strong>{capitalize(c.carrera)}</strong> en{' '}
-                        {capitalize(c.centro_estudio)}{' '}
-                        {c.concluida === 0 ? '(no concluída)' : null}
+                        <strong>
+                          {capitalize(
+                            !wrongCareers.includes(c.carrera)
+                              ? c.carrera
+                              : 'Carrera no especificada',
+                          )}
+                        </strong>{' '}
+                        en {capitalize(c.centro_estudio)}{' '}
+                        {c.concluyo === 0 ? '(no concluída)' : null}
                       </li>
                     </ul>
                   );
@@ -58,7 +85,7 @@ const processCandidateContent = (type, content) => {
 
       return (
         <>
-          {orderedContent.map(c => {
+          {orderedContent.map((c) => {
             return (
               <ul key={c.ocupacion_profesion_cargo + c.anio_desde}>
                 <li>
@@ -110,27 +137,74 @@ const processCandidateContent = (type, content) => {
     }
   }
   if (type === 'sanction') {
-    if (content && content.length > 0) {
-      return content.map(c => {
-        return (
-          <div key={c.delito}>
-            <p>
-              <strong>{c.delito}</strong>
-            </p>
-            <ul>
-              <li>{`Tipo: ${c.tipo}`}</li>
-              <li>{`Fallo: ${c.fallo}`}</li>
-            </ul>
-          </div>
+    const sanctionArray = [];
+    if (content) {
+      if (content.sentencias.length > 0) {
+        sanctionArray.push(
+          <div key="judgements">
+            <h4>Sentencias</h4>
+            {content.sentencias.map((c) => {
+              return (
+                <div key={c.delito}>
+                  <ul>
+                    <li>{`Delito: ${c.delito} (${c.tipo})`}</li>
+                    <li>{`Fallo: ${c.fallo}`}</li>
+                  </ul>
+                </div>
+              );
+            })}
+          </div>,
         );
-      });
-    } else {
-      return <p>No tiene sentencias registradas.</p>;
+      }
+      if (content.servir !== 'No registra') {
+        sanctionArray.push(
+          <div key="servir">
+            <p>
+              <strong>Sanción Servir: </strong>
+              {content.servir}
+            </p>
+          </div>,
+        );
+      }
+      if (content.deuda_sunat > 0) {
+        sanctionArray.push(
+          <div key="sunat">
+            <p>
+              <strong>Deuda con Sunat: </strong>
+              {content.deuda_sunat}
+            </p>
+          </div>,
+        );
+      }
+      if (content.papeletas > 0) {
+        sanctionArray.push(
+          <div key="papeletas">
+            <p>
+              <strong>Papeletas SAT: </strong>
+              {content.papeletas}
+            </p>
+          </div>,
+        );
+      }
+      if (hasDriverLicenseIssue(content.licencia)) {
+        sanctionArray.push(
+          <div key="licencia">
+            <p>
+              <strong>Licencia de conducir: </strong>
+              {content.licencia}
+            </p>
+          </div>,
+        );
+      }
+      if (sanctionArray.length > 0) {
+        return sanctionArray;
+      }
     }
+    return <p>No tiene sentencias o sanciones registradas.</p>;
   }
   if (type === 'militancy') {
     if (content && content.length > 0) {
-      return content.map(c => {
+      return content.map((c) => {
         return (
           <p key={c.org_politica}>
             {`${c.org_politica} (${getYear(c.afiliacion_inicio)} - ${getYear(

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
@@ -49,12 +49,13 @@ const LoadingScreen = () => {
 
 const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
   const groupedCandidates = groupBy(candidates, 'org_politica_nombre');
-  ls('op.wizard', { ...ls('op.wizard'), [keyName]: groupedCandidates });
+  if (keyName) {
+    ls('op.wizard', { ...ls('op.wizard'), [keyName]: groupedCandidates });
+  }
   return groupedCandidates;
 };
 
-const showPartyCards = () => {
-  const candidatesByPartyName = ls('op.wizard').filteredCandidates;
+const showPartyCards = (candidatesByPartyName) => {
   return Object.keys(candidatesByPartyName).map((partyName) => (
     <PartyCard
       key={partyName}
@@ -64,16 +65,6 @@ const showPartyCards = () => {
       candidates={candidatesByPartyName[partyName]}
     />
   ));
-};
-
-const fetchCandidates = () => {
-  const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
-  const { data, error } = useSWR('/api/candidates', () =>
-    fetch(`${process.env.api.candidatesUrl}?${apiTerms}`).then((data) =>
-      data.json(),
-    ),
-  );
-  return data;
 };
 
 const fetchSeats = (location) => {
@@ -86,27 +77,61 @@ const fetchSeats = (location) => {
 };
 
 export default function PartyResults(props) {
+  // initializa candidates state, populate with filteredCandidates if exists
+  const [candidates, setCandidates] = useState({});
+  const [isFilterModalOpen, setFilterModalState] = useState(false);
+  const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
+
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
   }
 
-  const [isFilterModalOpen, setFilterModalState] = useState(false);
-  const data = fetchCandidates();
-  ls('op.wizard', { ...ls('op.wizard'), rawCandidates: data?.data.candidates });
+  const fetchStoreCandidates = async () => {
+    // vacancia path step 1: refreshes from API
+    const response = await fetch(
+      `${process.env.api.candidatesUrl}?${apiTerms}`,
+    );
+    const data = await response.json();
+
+    //// apply filters to candidates if filters exist
+    const fetchedCandidates = (await filters.length)
+      ? applyFilters(data?.data.candidates)(filters)
+      : data?.data.candidates;
+
+    // vacancia path step 2: update local candidates state with filters when applicable
+    setCandidates(groupCandidatesByPartyNameAndLS(fetchedCandidates));
+
+    // vacancia path step 3: refresh local storage information
+    //// store new rawCandidates (never filtered!)
+    ls('op.wizard', {
+      ...ls('op.wizard'),
+      rawCandidates: data?.data.candidates,
+    });
+    //// group and store new filteredcandidates
+    groupCandidatesByPartyNameAndLS(fetchedCandidates, 'filteredCandidates');
+  };
+
+  const apiTerms = qs.stringify(mapApiTerms(ls('op.wizard')));
+
+  // Data refresh hooks
+  useEffect(() => {
+    // vacancia path: refresh "candidates" state!
+    fetchStoreCandidates();
+  }, []);
+
+  useEffect(() => {
+    // internal path, whenever filters change:
+    //// update "candidates" state based on filters!
+    //// FilterModal takes care of updating local storage
+    setCandidates(ls('op.wizard').filteredCandidates);
+  }, [filters]);
+
   const location = ls('op.wizard').location;
   const seats = fetchSeats(location);
-  const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
 
-  if (!data || !seats) {
+  if (!candidates || !seats) {
     return <LoadingScreen />;
-  }
-  groupCandidatesByPartyNameAndLS(ls('op.wizard').rawCandidates, 'candidates');
-  if (!ls('op.wizard').filteredCandidates) {
-    groupCandidatesByPartyNameAndLS(
-      ls('op.wizard').rawCandidates,
-      'filteredCandidates',
-    );
   }
 
   return (
@@ -139,10 +164,10 @@ export default function PartyResults(props) {
         <Styled.Title>Explora tus opciones</Styled.Title>
         <Styled.Chip type={'good'}>
           <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
-          <strong>{simplePluralize(seats?.data.seats, 'sitio')}</strong> en el
+          <strong>{simplePluralize(seats?.data?.seats, 'sitio')}</strong> en el
           congreso.
         </Styled.Chip>
-        <Styled.Results>{showPartyCards()}</Styled.Results>
+        <Styled.Results>{showPartyCards(candidates)}</Styled.Results>
       </Styled.Step>
     </Styled.Container>
   );
