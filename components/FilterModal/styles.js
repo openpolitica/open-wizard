@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
 export const Header = styled('header')`
+  background-color: white;
   display: flex;
   border: 1px solid #f1f2f3;
   height: 3.875rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 `;
 
 export const CloseButton = styled('button')`
@@ -32,7 +36,6 @@ export const FilterTitle = styled('h2')`
 export const Tag = styled('input').attrs((props) => ({
   type: 'checkbox',
 }))`
-  appearance: none;
   display: none;
 `;
 
