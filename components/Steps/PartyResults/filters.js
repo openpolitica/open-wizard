@@ -1,3 +1,5 @@
+import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
+
 // Genre section
 export const byGenre = (candidates, genre) =>
   candidates
@@ -43,7 +45,11 @@ export const doesntHaveSanctionsWithServir = (candidates) =>
     (candidate) => candidate.sancion_servir_registro === 'No registra',
   );
 export const doesntHaveSanctionsWithDriving = (candidates) =>
-  candidates.filter((candidate) => candidate.papeletas_sat === 0);
+  candidates.filter(
+    (candidate) =>
+      candidate.papeletas_sat === 0 &&
+      !hasDriverLicenseIssue(candidate.licencia_conducir),
+  );
 
 const filterMap = {
   onlyMale,

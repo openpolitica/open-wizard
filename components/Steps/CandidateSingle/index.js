@@ -35,7 +35,7 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
 
-  const onChevronClick = type => {
+  const onChevronClick = (type) => {
     let newCollapsedObject = {};
     for (const [key, value] of Object.entries(collapsed)) {
       key === type
@@ -61,7 +61,7 @@ export default function CandidateSingle(props) {
     () =>
       fetch(
         `${process.env.api.candidatesUrl}/hoja_vida_id/${candidateId}`,
-      ).then(data => data.json()),
+      ).then((data) => data.json()),
   );
 
   if (!data) {
@@ -143,7 +143,13 @@ export default function CandidateSingle(props) {
           title="Sanciones e infracciones"
           collapsed={collapsed.sanction}
           chevronClick={onChevronClick}
-          content={c.judgements}
+          content={{
+            sentencias: c.judgements,
+            servir: c.sancion_servir_registro,
+            deuda_sunat: c.deuda_sunat,
+            licencia: c.licencia_conducir,
+            papeletas: c.papeletas_sat,
+          }}
         />
         <Styled.Accordion
           type="militancy"

@@ -27,6 +27,7 @@ import {
   doesntHaveSanctionsWithServir,
   doesntHaveSanctionsWithDriving,
 } from 'components/Steps/PartyResults/filters';
+import hasDriverLicenseIssue from './hasDriverLicenseIssue';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -81,10 +82,10 @@ export default function Step4(props) {
         listIssues.sancion_servir >
       0
     : null;
-  const licenseIssues = ['inhabilita', 'retenida', 'Suspendida'];
+
   const infoIssues = listIssues
     ? listIssues.deuda_sunat + listIssues.papeletas_sat > 0 ||
-      new RegExp(licenseIssues.join('|')).test(listIssues.licencia_conducir)
+      hasDriverLicenseIssue(listIssues.licencia_conducir)
     : null;
 
   return (
