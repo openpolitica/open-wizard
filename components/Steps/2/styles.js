@@ -37,6 +37,10 @@ export const Chip = styled(BaseChip)`
   margin-top: 1.5rem;
 `;
 
+export const TextInfo = styled.p`
+  margin: 0;
+`;
+
 export const Title = styled(BaseTitle)`
   margin-top: 2rem;
 `;
