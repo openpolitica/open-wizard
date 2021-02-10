@@ -24,14 +24,14 @@ export default function Step3() {
           de Noviembre del 2020?
         </Styled.Title>
       </Styled.Step>
-      <Styled.WrapperButton>
+      <Styled.YesNoButtons>
         <Styled.NoButton onClick={onNoButtonClick}>
           No, ni hablar
         </Styled.NoButton>
         <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
           Déjalos, está bien
         </Styled.YesButton>
-      </Styled.WrapperButton>
+      </Styled.YesNoButtons>
     </Styled.Container>
   );
 }

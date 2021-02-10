@@ -46,7 +46,7 @@ export const Title = styled(BaseTitle)`
   font-size: 1.125rem;
   margin-top: 2rem;
 `;
-export const WrapperButton = styled('div')`
+export const YesNoButtons = styled('div')`
   display: flex;
   flex-direction: column;
   padding-bottom: 5rem;
