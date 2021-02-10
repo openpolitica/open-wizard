@@ -13,7 +13,7 @@ export const Container = styled('section')`
   background: #f1f2f3;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 64px);
+  height: 100vh;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -38,6 +38,7 @@ export const Stepper = styled(BaseStepper)`
 `;
 
 export const Title = styled(BaseTitle)`
+  font-size: 1.125rem;
   margin-top: 2rem;
 `;
 
