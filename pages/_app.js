@@ -16,7 +16,7 @@ function Votu({ Component, pageProps }) {
 const logger = (value) =>
   console.info(`%c${value}`, 'background: #222; color: #bada55');
 
-const AppWithHotjar = (props) => {
+const VotuWithHotjar = (props) => {
   const { initHotjar } = useHotjar();
 
   useEffect(() => {
@@ -26,4 +26,6 @@ const AppWithHotjar = (props) => {
   return <Votu {...props} />;
 };
 
-export default AppWithHotjar;
+export default process.env.NEXT_PUBLIC_ENVIRONMENT === 'local'
+  ? Votu
+  : VotuWithHotjar;
