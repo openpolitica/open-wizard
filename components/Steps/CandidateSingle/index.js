@@ -35,7 +35,7 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
 
-  const onChevronClick = (type) => {
+  const onTitleRowClick = (type) => {
     let newCollapsedObject = {};
     for (const [key, value] of Object.entries(collapsed)) {
       key === type
@@ -101,7 +101,7 @@ export default function CandidateSingle(props) {
           type="place"
           title="Lugar de nacimiento"
           collapsed={collapsed.place}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={{
             departamento: c.nacimiento_departamento,
             provincia: c.nacimiento_provincia,
@@ -112,7 +112,7 @@ export default function CandidateSingle(props) {
           type="education"
           title="Educación"
           collapsed={collapsed.education}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={{
             education: c.education,
             education_level: c.educacion_mayor_nivel,
@@ -122,14 +122,14 @@ export default function CandidateSingle(props) {
           type="experience"
           title="Experiencia"
           collapsed={collapsed.experience}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={c.experience}
         />
         <Styled.Accordion
           type="income"
           title="Ingresos y bienes"
           collapsed={collapsed.income}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={{
             ingreso_total: c.ingreso_total,
             ingreso_total_privado: c.ingreso_total_privado,
@@ -142,7 +142,7 @@ export default function CandidateSingle(props) {
           type="sanction"
           title="Sanciones e infracciones"
           collapsed={collapsed.sanction}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={{
             sentencias: c.judgements,
             servir: c.sancion_servir_registro,
@@ -155,7 +155,7 @@ export default function CandidateSingle(props) {
           type="militancy"
           title="Pasado político"
           collapsed={collapsed.militancy}
-          chevronClick={onChevronClick}
+          titleRowClick={onTitleRowClick}
           content={c.afiliations}
         />
       </Styled.Step>

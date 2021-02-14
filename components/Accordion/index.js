@@ -11,18 +11,17 @@ import {
 import processCandidateContent from './processCandidateContent';
 
 const Accordion = (props) => {
-  const onChevronClick = (event) => {
-    props.chevronClick(props.type);
+  const onTitleRowClick = (event) => {
+    props.titleRowClick(props.type);
   };
 
   return (
     <Card {...props}>
-      <TitleRow>
+      <TitleRow onClick={onTitleRowClick}>
         <AccordionIcon icon={props.type} />
         <Title>{props.title}</Title>
         <Chevron
           direction={props.collapsed ? 'chevronDown' : 'chevronUp'}
-          onClick={onChevronClick}
         />
       </TitleRow>
       {!props.collapsed ? (
