@@ -1,9 +1,8 @@
 import TeamListUl from 'components/TeamCard';
 import Header from 'components/Header';
-import { team, collaborators, mentors } from './data';
+import { team, mentors } from './data';
 import Footer from 'components/Footer';
 import * as Styled from './styles';
-import Image from 'next/image';
 
 export default function About() {
   return (
@@ -23,35 +22,29 @@ export default function About() {
           <Styled.TitleSection>El equipo</Styled.TitleSection>
           <Styled.ListTeam>
             {team.map((team) => (
-              <li>
-                <TeamListUl key={team.name} {...team} />
+              <li key={team.name}>
+                <TeamListUl {...team} />
               </li>
             ))}
           </Styled.ListTeam>
         </Styled.TeamSection>
-        <Styled.CollaboratorsSection>
-          <Styled.TitleCollaborators>Colaboradoras</Styled.TitleCollaborators>
-          <Styled.ListTeam>
-            {collaborators.map((collaborators) => (
-              <li>
-                <TeamListUl key={collaborators} {...collaborators} />
-              </li>
-            ))}
-          </Styled.ListTeam>
-        </Styled.CollaboratorsSection>
         <Styled.MentorsSection>
           <Styled.TitleSection>Mentores</Styled.TitleSection>
           <Styled.ListTeam>
             {mentors.map((mentors) => (
-              <li>
-                <TeamListUl key={mentors} {...mentors} />
+              <li key={mentors.name}>
+                <TeamListUl {...mentors} />
               </li>
             ))}
           </Styled.ListTeam>
         </Styled.MentorsSection>
         <div style={{ marginTop: '56px' }}>
           <Styled.PartOfText>Fuimos parte de:</Styled.PartOfText>
-          <Image src="/images/200.png" width={116} height={116} />
+          <Styled.Link200
+            href="https://www.linkedin.com/company/200org/"
+            target="_blank">
+            <Styled.Image200 src="/images/200.png" />
+          </Styled.Link200>
         </div>
       </Styled.Container>
       <Footer />
