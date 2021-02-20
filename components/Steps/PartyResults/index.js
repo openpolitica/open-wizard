@@ -81,6 +81,9 @@ export default function PartyResults(props) {
   const [candidates, setCandidates] = useState({});
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
+  const totalNumberOfCandidates = Object.entries(
+    ls('op.wizard').filteredCandidates,
+  ).reduce((prev, value) => value[1].length + prev, 0);
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -161,7 +164,12 @@ export default function PartyResults(props) {
           <GoBackButton to={'/steps/3'} text="Regresa" />
           <Styled.FilterButton onClick={() => setFilterModalState(true)} />
         </Styled.Row>
-        <Styled.Title>Explora tus opciones</Styled.Title>
+        <Styled.Title>
+          Explora {totalNumberOfCandidates !== 1 ? 'tus' : 'tu'}{' '}
+          {totalNumberOfCandidates !== 1
+            ? `${totalNumberOfCandidates} opciones`
+            : 'única opción'}
+        </Styled.Title>
         <Styled.Chip type={'good'}>
           <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
           <strong>{simplePluralize(seats?.data?.seats, 'sitio')}</strong> en el
