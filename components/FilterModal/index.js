@@ -78,7 +78,6 @@ const FilterModal = (props) => {
     props.filters.includes('hasPrivateWorkExperience'),
   );
   const [sanctionsState, setSanctionsState] = useState({
-    defaulter: false,
     sunat: props.filters.includes('doesntHaveSanctionsWithSunat'),
     servir: props.filters.includes('doesntHaveSanctionsWithServir'),
     driving: props.filters.includes('doesntHaveSanctionsWithDriving'),
