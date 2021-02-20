@@ -261,21 +261,6 @@ const FilterModal = (props) => {
       <Styled.ModalSection>
         <Styled.FilterTitle>Sanciones e Infracciones</Styled.FilterTitle>
         <Styled.CheckboxRow>
-          <Styled.CheckboxLabel htmlFor="sanctionsDefaulter">
-            No es moroso en deudas judiciales y/o alimentarias
-          </Styled.CheckboxLabel>
-          <Styled.Checkbox
-            id="sanctionsMoratory"
-            name="sanctionsMoratory"
-            isChecked={sanctionsState.defaulter}
-            onClick={() =>
-              toggle(setSanctionsStateWithValue(sanctionsState, 'defaulter'))(
-                sanctionsState.defaulter,
-              )
-            }
-          />
-        </Styled.CheckboxRow>
-        <Styled.CheckboxRow>
           <Styled.CheckboxLabel htmlFor="sanctionsSUNAT">
             No tiene deuda en la SUNAT
           </Styled.CheckboxLabel>
