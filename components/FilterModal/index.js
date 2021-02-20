@@ -78,7 +78,6 @@ const FilterModal = (props) => {
     props.filters.includes('hasPrivateWorkExperience'),
   );
   const [sanctionsState, setSanctionsState] = useState({
-    defaulter: false,
     sunat: props.filters.includes('doesntHaveSanctionsWithSunat'),
     servir: props.filters.includes('doesntHaveSanctionsWithServir'),
     driving: props.filters.includes('doesntHaveSanctionsWithDriving'),
@@ -260,21 +259,6 @@ const FilterModal = (props) => {
       </Styled.ModalSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Sanciones e Infracciones</Styled.FilterTitle>
-        <Styled.CheckboxRow>
-          <Styled.CheckboxLabel htmlFor="sanctionsDefaulter">
-            No es moroso en deudas judiciales y/o alimentarias
-          </Styled.CheckboxLabel>
-          <Styled.Checkbox
-            id="sanctionsMoratory"
-            name="sanctionsMoratory"
-            isChecked={sanctionsState.defaulter}
-            onClick={() =>
-              toggle(setSanctionsStateWithValue(sanctionsState, 'defaulter'))(
-                sanctionsState.defaulter,
-              )
-            }
-          />
-        </Styled.CheckboxRow>
         <Styled.CheckboxRow>
           <Styled.CheckboxLabel htmlFor="sanctionsSUNAT">
             No tiene deuda en la SUNAT

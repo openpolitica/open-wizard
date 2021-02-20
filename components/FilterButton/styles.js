@@ -9,3 +9,7 @@ export const Button = styled(StyledButton)`
   min-width: 5.625rem;
   padding: 0 0.75rem;
 `;
+
+export const Icon = styled('img')`
+  margin-right: 0.3rem;
+`;
