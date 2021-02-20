@@ -4,13 +4,14 @@ import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseButton from 'components/BaseButton';
 import BaseGoBackButton from 'components/GoBackButton';
+import BaseChip from 'components/Chip';
 
 export const Container = styled('section')`
   align-items: center;
   background: #f1f2f3;
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 64px);
+  height: 100vh;
 `;
 
 export const Header = styled(BaseHeader)`
@@ -24,21 +25,35 @@ export const GoBackButton = styled(BaseGoBackButton)`
 export const Step = styled('div')`
   align-items: center;
   flex-direction: column;
+  flex: 1;
   display: flex;
-  padding: 0 3.25rem;
+  padding: 0 1.5rem;
 `;
 
 export const Stepper = styled(BaseStepper)`
   margin-top: 1.5rem;
 `;
 
+export const Chip = styled(BaseChip)`
+  margin-top: 1.5rem;
+`;
+
+export const TextInfo = styled.p`
+  margin: 0;
+`;
+
 export const Title = styled(BaseTitle)`
+  font-size: 1.125rem;
   margin-top: 2rem;
+`;
+export const YesNoButtons = styled('div')`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 5rem;
 `;
 
 export const NoButton = styled(BaseButton)`
   align-self: center;
-  margin: 13.125rem 0 0 0;
 `;
 
 export const YesButton = styled(BaseButton)`

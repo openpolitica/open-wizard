@@ -19,16 +19,25 @@ export default function Step2() {
       <Styled.GoBackButton to={'/steps/1'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={2} of={3} />
+        <Styled.Chip>
+          <strong>Recuerda</strong>
+          <Styled.TextInfo>
+            Sentencia condenatoria es que fue procesado y hallado culpable.
+            Ejemplo: Prisión efectiva.
+          </Styled.TextInfo>
+        </Styled.Chip>
         <Styled.Title align="center">
           ¿Incluimos candidatos con sentencias en el Poder Judicial?
         </Styled.Title>
+      </Styled.Step>
+      <Styled.YesNoButtons>
         <Styled.NoButton onClick={onNoButtonClick}>
           No, ni hablar
         </Styled.NoButton>
         <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
           Déjalos, está bien
         </Styled.YesButton>
-      </Styled.Step>
+      </Styled.YesNoButtons>
     </Styled.Container>
   );
 }

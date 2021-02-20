@@ -50,10 +50,14 @@ export default function Step1() {
       <Styled.GoBackButton to={'/'} text="Regresa" />
       <Styled.Step>
         <Styled.Stepper steps={1} of={3} />
-        <Styled.Title>¿Dónde vives?</Styled.Title>
-        <Styled.Paragraph align="center">
-          Con este filtro solo te mostraremos candidatos para tu departamento.
-        </Styled.Paragraph>
+        <Styled.Chip>
+          <strong>Recuerda</strong>
+          <Styled.TextInfo>
+            Los candidatos para Lima Provincias o Callao son distintos para Lima
+            Metropolitana.
+          </Styled.TextInfo>
+        </Styled.Chip>
+        <Styled.Title>¿En dónde votarás?</Styled.Title>
         <Styled.Select onChange={handleSelectChange}>
           <option>Seleccione uno</option>
           {data?.data.map((location) => {

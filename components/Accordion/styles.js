@@ -34,6 +34,7 @@ export const Card = styled('div')`
 
 export const TitleRow = styled.div`
   align-items: flex-end;
+  cursor: pointer;
   display: flex;
   flex: 0 0 100%;
   flex-direction: 'row';

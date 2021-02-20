@@ -15,9 +15,11 @@ const BaseModal = (props) => {
 
   return container
     ? ReactDOM.createPortal(
-        <Styled.ModalContainer {...props}>
+        <Styled.Overlay
+          nextHeight={document.querySelector('#__next').offsetHeight}
+          {...props}>
           <Styled.Modal {...props} />
-        </Styled.ModalContainer>,
+        </Styled.Overlay>,
         container,
       )
     : null;

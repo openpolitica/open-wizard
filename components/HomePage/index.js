@@ -50,7 +50,7 @@ const HomePage = () => {
       <BaseHeader />
       <Hero>
         <Title>
-          Hay 3,120 candidatos al congreso <Span>¿Sabes a quién elegir?</Span>
+          Hay casi 2700 candidatos al congreso <Span>¿Sabes a quién elegir?</Span>
         </Title>
         <Paragraph>
           Te ayudamos a encontrar tus candidatos ideales en 3 sencillos pasos

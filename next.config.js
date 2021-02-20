@@ -9,5 +9,9 @@ module.exports = {
       locationsUrl: 'https://api.openpolitica.com/locations',
       partiesUrl: 'https://api.openpolitica.com/parties',
     },
+    hotjar: {
+      id: 2235835,
+      version: 6,
+    }
   },
 };

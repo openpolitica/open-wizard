@@ -16,14 +16,15 @@ export const Modal = styled('section').attrs((props) => ({
   width: 20.5rem;
 `;
 
-export const ModalContainer = styled('div').attrs((props) => ({
+export const Overlay = styled('div').attrs((props) => ({
   style: {
-    height: props.isOpen ? '100vh' : '0',
     opacity: props.isOpen ? '1' : '0',
     zIndex: props.isOpen ? '10' : '-1',
   },
 }))`
   background: rgba(255, 255, 255, 0.9);
+  min-height: ${(props) =>
+    props.nextHeight ? `${props.nextHeight}px` : '150vh'};
   position: absolute;
   width: 100vw;
 `;
