@@ -6,6 +6,10 @@ export const Button = styled(StyledButton)`
   display: flex;
   height: 2.25rem;
   justify-content: space-around;
-  padding: 0 .75rem;
+  padding: 0 0.75rem;
   min-width: 5.625rem;
+`;
+
+export const Icon = styled('img')`
+  margin-right: 0.3rem;
 `;
