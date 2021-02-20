@@ -331,9 +331,9 @@ const FilterModal = (props) => {
         </Styled.CheckboxRow>
       </Styled.ModalSection>
       <Styled.Footer>
-        <Styled.SaveButton onClick={props.onCloseButtonClick}>
-          Aplicar Filtro
-        </Styled.SaveButton>
+        <Styled.ApplyFiltersButton onClick={props.onCloseButtonClick}>
+          Aplicar filtros
+        </Styled.ApplyFiltersButton>
       </Styled.Footer>
     </BaseModal>
   );

@@ -24,7 +24,7 @@ export const CloseButton = styled('button')`
   padding: 1.5rem;
 `;
 
-export const SaveButton = styled(StyledButton)`
+export const ApplyFiltersButton = styled(StyledButton)`
   align-items: center;
   display: flex;
   height: 2.25rem;
