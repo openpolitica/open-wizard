@@ -1,9 +1,19 @@
 import styled from 'styled-components';
+import { StyledButton } from 'components/BaseButton/styles';
 
 export const Header = styled('header')`
-  display: flex;
   border: 1px solid #f1f2f3;
+  display: flex;
   height: 3.875rem;
+`;
+
+export const Footer = styled('footer')`
+  align-items: center;
+  border: 1px solid #f1f2f3;
+  display: flex;
+  height: 3.875rem;
+  justify-content: flex-end;
+  padding: 0 1rem;
 `;
 
 export const CloseButton = styled('button')`
@@ -12,6 +22,15 @@ export const CloseButton = styled('button')`
   border: none;
   cursor: pointer;
   padding: 1.5rem;
+`;
+
+export const ApplyFiltersButton = styled(StyledButton)`
+  align-items: center;
+  display: flex;
+  height: 2.25rem;
+  justify-content: space-around;
+  min-width: 5.625rem;
+  padding: 0 0.75rem;
 `;
 
 export const GenreSection = styled('section')`
