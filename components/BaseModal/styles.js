@@ -27,5 +27,4 @@ export const Overlay = styled('div').attrs((props) => ({
     props.nextHeight ? `${props.nextHeight}px` : '150vh'};
   position: absolute;
   width: 100vw;
-  height: 75vh;
 `;

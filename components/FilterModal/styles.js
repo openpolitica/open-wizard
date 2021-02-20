@@ -2,18 +2,18 @@ import styled from 'styled-components';
 import { StyledButton } from 'components/BaseButton/styles';
 
 export const Header = styled('header')`
-  display: flex;
   border: 1px solid #f1f2f3;
+  display: flex;
   height: 3.875rem;
 `;
 
 export const Footer = styled('footer')`
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
-  padding: 0 1rem;
   border: 1px solid #f1f2f3;
+  display: flex;
   height: 3.875rem;
+  justify-content: flex-end;
+  padding: 0 1rem;
 `;
 
 export const CloseButton = styled('button')`
@@ -29,8 +29,8 @@ export const SaveButton = styled(StyledButton)`
   display: flex;
   height: 2.25rem;
   justify-content: space-around;
-  padding: 0 0.75rem;
   min-width: 5.625rem;
+  padding: 0 0.75rem;
 `;
 
 export const GenreSection = styled('section')`
