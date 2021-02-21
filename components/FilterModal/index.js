@@ -54,17 +54,13 @@ const groupCandidatesByPartyNameAndLS = (candidates, keyName) => {
 };
 
 const FilterModal = (props) => {
-  const includesOnlyMale = props.filters.includes('onlyMale');
-  const includesOnlyFemale = props.filters.includes('onlyFemale');
-
   const [isMaleChecked, setMaleGenre] = useState(
-    !(includesOnlyMale && includesOnlyFemale) &&
-      (includesOnlyMale || !includesOnlyFemale),
+    props.filters.includes('onlyMale'),
   );
   const [isFemaleChecked, setFemaleGenre] = useState(
-    !(includesOnlyMale && includesOnlyFemale) &&
-      (!includesOnlyMale || includesOnlyFemale),
+    props.filters.includes('onlyFemale'),
   );
+
   const [isJNEIncomeChecked, setJNEIncome] = useState(
     props.filters.includes('hasJNEIncome'),
   );
@@ -112,22 +108,40 @@ const FilterModal = (props) => {
         <Styled.Tag name="female" id="female" />
         <Styled.TagLabel
           checked={isFemaleChecked}
-          onClick={() =>
-            toggle(setFemaleGenre)(isFemaleChecked) ||
-            props.setFilters(toggleFilter(props.filters)('onlyMale'))
-          }
+          onClick={() => {
+            if (isMaleChecked) {
+              setMaleGenre(!isMaleChecked);
+              setFemaleGenre(!isFemaleChecked);
+              props.setFilters([
+                ...props.filters.filter((f) => f !== 'onlyMale'),
+                'onlyFemale',
+              ]);
+            } else {
+              setFemaleGenre(!isFemaleChecked);
+              props.setFilters(toggleFilter(props.filters)('onlyFemale'));
+            }
+          }}
           htmlFor="female">
-          Mujer
+          Solo mujeres
         </Styled.TagLabel>
         <Styled.Tag name="male" id="male" />
         <Styled.TagLabel
           checked={isMaleChecked}
-          onClick={() =>
-            toggle(setMaleGenre)(isMaleChecked) ||
-            props.setFilters(toggleFilter(props.filters)('onlyFemale'))
-          }
+          onClick={() => {
+            if (isFemaleChecked) {
+              setFemaleGenre(!isFemaleChecked);
+              setMaleGenre(!isMaleChecked);
+              props.setFilters([
+                ...props.filters.filter((f) => f !== 'onlyFemale'),
+                'onlyMale',
+              ]);
+            } else {
+              setMaleGenre(!isMaleChecked);
+              props.setFilters(toggleFilter(props.filters)('onlyMale'));
+            }
+          }}
           htmlFor="male">
-          Hombre
+          Solo hombres
         </Styled.TagLabel>
       </Styled.GenreSection>
       <Styled.ModalSection>
