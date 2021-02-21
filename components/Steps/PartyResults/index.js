@@ -81,9 +81,6 @@ export default function PartyResults(props) {
   const [candidates, setCandidates] = useState({});
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
-  const totalNumberOfCandidates = Object.entries(
-    ls('op.wizard').filteredCandidates,
-  ).reduce((prev, value) => value[1].length + prev, 0);
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -136,6 +133,11 @@ export default function PartyResults(props) {
   if (!candidates || !seats) {
     return <LoadingScreen />;
   }
+
+  const totalNumberOfCandidates = Object.entries(candidates).reduce(
+    (prev, value) => value[1].length + prev,
+    0,
+  );
 
   return (
     <Styled.Container>
