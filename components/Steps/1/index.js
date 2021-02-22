@@ -71,7 +71,7 @@ export default function Step1() {
           })}
         </Styled.Select>
         <Styled.LinkButton onClick={onExpatClick}>
-          Vivo en el extranjero
+          Voto en el extranjero
         </Styled.LinkButton>
       </Styled.Step>
       <Styled.Button onClick={onContinueClick}>Continuar</Styled.Button>
