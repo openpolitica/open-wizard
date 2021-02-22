@@ -11,6 +11,7 @@ export const StepBall = styled('div')`
   border-radius: 0.625rem;
   height: 1.25rem;
   width: 1.25rem;
+  border: ${({ active }) => (active ? '2px solid #3c9484' : 'none')};
 `;
 
 export const StepLine = styled('div')`
