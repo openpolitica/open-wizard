@@ -5,6 +5,7 @@ export const WrapperImg = styled('div')`
   position: relative;
   width: 1.25rem;
   height: 1.25rem;
+  margin-right: 0.5rem;
 `;
 
 export const ChipIcon = (props) => (
@@ -41,7 +42,6 @@ export const Chip = styled('aside')`
   flex-direction: row;
   font-family: 'Poppins', sans-serif;
   font-size: 0.75rem;
-  gap: 0.75rem;
   max-width: 20.437rem;
   min-height: 2.875rem;
   justify-content: center;
