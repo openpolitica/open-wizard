@@ -1,7 +1,17 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
-export const ChipIcon = (props) => <Image height="15" width="15" {...props} />;
+export const WrapperImg = styled('div')`
+  position: relative;
+  width: 1.25rem;
+  height: 1.25rem;
+`;
+
+export const ChipIcon = (props) => (
+  <WrapperImg>
+    <Image layout="fill" objectFit="cover" {...props} />
+  </WrapperImg>
+);
 
 const backgroundColorPriority = {
   good: '#F3F8F7',
@@ -22,7 +32,7 @@ const textColorPriority = {
 };
 
 export const Chip = styled('aside')`
-  align-items: baseline;
+  align-items: flex-start;
   background-color: ${(props) => backgroundColorPriority[props.type || 'info']};
   border-radius: 4px;
   border: 1px solid ${(props) => borderColorPriority[props.type || 'info']};
