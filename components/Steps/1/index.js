@@ -53,8 +53,8 @@ export default function Step1() {
         <Styled.Chip>
           <strong>Recuerda</strong>
           <Styled.TextInfo>
-            Los candidatos para Lima Provincias o Callao son distintos para Lima
-            Metropolitana.
+            Los candidatos para Lima Provincias y Callao son distintos a los de
+            Lima Metropolitana.
           </Styled.TextInfo>
         </Styled.Chip>
         <Styled.Title>¿En dónde votarás?</Styled.Title>
