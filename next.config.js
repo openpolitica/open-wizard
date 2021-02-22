@@ -12,6 +12,10 @@ module.exports = {
     hotjar: {
       id: 2235835,
       version: 6,
-    }
+    },
+    matomo: {
+      url: 'https://votupe.matomo.cloud/',
+      siteId: 1,
+    },
   },
 };
