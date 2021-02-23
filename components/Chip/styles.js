@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
-export const WrapperImg = styled('div')`
+export const ChipCanvas = styled('div')`
   position: relative;
   width: 1.25rem;
   height: 1.25rem;
@@ -9,9 +9,9 @@ export const WrapperImg = styled('div')`
 `;
 
 export const ChipIcon = (props) => (
-  <WrapperImg>
+  <ChipCanvas>
     <Image layout="fill" objectFit="cover" {...props} />
-  </WrapperImg>
+  </ChipCanvas>
 );
 
 const backgroundColorPriority = {
