@@ -26,15 +26,12 @@ const Stepper = (props) => {
   return (
     <StyledStepper {...props}>
       {Array.from({ length: props.steps }).map((_, index) => {
-        if (index === props.steps - 1 && untaken === 0) {
+        const isActiveStep = index + 1 === props.steps;
+        if (isActiveStep && untaken === 0) {
           return <Step key={`taken-${index}`} isLast type="taken" active />;
         }
         return (
-          <Step
-            key={`taken-${index}`}
-            type="taken"
-            active={props.steps === index + 1}
-          />
+          <Step key={`taken-${index}`} type="taken" active={isActiveStep} />
         );
       })}
       {Array.from({ length: untaken }).map((_, index) => {

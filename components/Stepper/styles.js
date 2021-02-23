@@ -12,13 +12,13 @@ const stepLineColorPriority = {
 export const StepBall = styled('div')`
   background-color: ${(props) =>
     stepBallColorPriority[props.type || 'untaken']};
-  border-radius: 0.625rem;
-  height: 1.25rem;
-  width: 1.25rem;
   border: ${({ active, type }) =>
     active
       ? `2px solid ${stepLineColorPriority[type || 'taken']}`
       : `1px solid ${stepLineColorPriority[type || 'untaken']}`};
+  border-radius: 0.625rem;
+  height: 1.25rem;
+  width: 1.25rem;
 `;
 
 export const StepLine = styled('div')`
