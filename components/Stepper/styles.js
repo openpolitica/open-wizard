@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
-const backgroundColorPriority = {
+const stepBallColorPriority = {
   taken: '#4EB5A2',
-  untaken: '#C7CAD1',
+  untaken: '#F3F8F7',
+};
+const stepLineColorPriority = {
+  taken: '#3C9484',
+  untaken: '#CEE6E1',
 };
 
 export const StepBall = styled('div')`
   background-color: ${(props) =>
-    backgroundColorPriority[props.type || 'untaken']};
+    stepBallColorPriority[props.type || 'untaken']};
+  border: ${({ active, type }) =>
+    active
+      ? `2px solid ${stepLineColorPriority[type || 'taken']}`
+      : `1px solid ${stepLineColorPriority[type || 'untaken']}`};
   border-radius: 0.625rem;
   height: 1.25rem;
   width: 1.25rem;
@@ -15,7 +23,7 @@ export const StepBall = styled('div')`
 
 export const StepLine = styled('div')`
   background-color: ${(props) =>
-    backgroundColorPriority[props.type || 'untaken']};
+    stepLineColorPriority[props.type || 'untaken']};
   height: 0.0625rem;
   width: 4.0625rem;
 `;

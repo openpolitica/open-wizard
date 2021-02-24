@@ -8,7 +8,7 @@ import {
 const Step = (props) => {
   return (
     <StyledStep>
-      <StepBall type={props.type} />
+      <StepBall type={props.type} active={props.active} />
       {props.isLast ? null : <StepLine type={props.type} />}
     </StyledStep>
   );
@@ -26,10 +26,13 @@ const Stepper = (props) => {
   return (
     <StyledStepper {...props}>
       {Array.from({ length: props.steps }).map((_, index) => {
-        if (index === props.steps - 1 && untaken === 0) {
-          return <Step key={`taken-${index}`} isLast type="taken" />;
+        const isActiveStep = index + 1 === props.steps;
+        if (isActiveStep && untaken === 0) {
+          return <Step key={`taken-${index}`} isLast type="taken" active />;
         }
-        return <Step key={`taken-${index}`} type="taken" />;
+        return (
+          <Step key={`taken-${index}`} type="taken" active={isActiveStep} />
+        );
       })}
       {Array.from({ length: untaken }).map((_, index) => {
         if (index === untaken - 1) {
