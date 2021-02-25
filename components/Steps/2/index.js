@@ -22,8 +22,8 @@ export default function Step2() {
         <Styled.Chip>
           <strong>Recuerda</strong>
           <Styled.TextInfo>
-            Sentencia condenatoria es que fue procesado y hallado culpable.
-            Ejemplo: Prisión efectiva.
+            Sentencia condenatoria, es que el candidato fue procesado y hallado
+            culpable. Ejemplo: Prisión efectiva.
           </Styled.TextInfo>
         </Styled.Chip>
         <Styled.Title align="center">
