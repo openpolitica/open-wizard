@@ -53,6 +53,7 @@ export const Accordion = styled(BaseAccordion)`
   margin-bottom: 0.5rem;
 `;
 
-export const FavoriteButton  = styled(BaseButton)`
+export const FavoriteButton = styled(BaseButton)`
   margin-bottom: 0.5rem;
+  margin-top: -1rem;
 `;

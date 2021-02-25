@@ -27,8 +27,9 @@ export default function CandidateSingle(props) {
     sanction: true,
     militancy: true,
   });
-  const [isFavorite, setFavorite] = useState(false);
+  const [isFavorite, setFavorite] = useState(false); // TODO: initial state to match local storage
   const candidateId = router.query.candidateId;
+  const comesFromFavorites = false; // TODO: change to props.source
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -45,12 +46,15 @@ export default function CandidateSingle(props) {
     setCollapsed(newCollapsedObject);
   };
 
-  const onStarClick = (action = 'none') => {
+  const onFavoriteAction = (action = 'none') => {
     setFavorite(!isFavorite);
+    // TODO: add line to store favorite status in local storage
     if (action === 'exit') {
       router.push(
         ls('op.wizard').filters
-          ? `/results/${toggleSlug(c.org_politica_nombre)}`
+          ? !comesFromFavorites
+            ? `/results/${toggleSlug(c.org_politica_nombre)}`
+            : `/results/${toggleSlug(c.org_politica_nombre)}` // TODO: change to favorites page
           : '/',
       );
     }
@@ -77,14 +81,22 @@ export default function CandidateSingle(props) {
           <GoBackButton
             to={
               ls('op.wizard')
-                ? `/results/${toggleSlug(c.org_politica_nombre)}`
+                ? !comesFromFavorites
+                  ? `/results/${toggleSlug(c.org_politica_nombre)}`
+                  : `/results/${toggleSlug(c.org_politica_nombre)}` // TODO: change to favorites page
                 : '/'
             }
-            text={ls('op.wizard') ? 'Regresa a la lista' : 'Inicia tu viaje'}
+            text={
+              ls('op.wizard')
+                ? !comesFromFavorites
+                  ? 'Regresa a la lista'
+                  : 'Regresa a tus favoritos'
+                : 'Inicia tu viaje'
+            }
           />
         </Styled.Row>
         <Styled.CandidateBigCard
-          starClick={onStarClick}
+          starClick={onFavoriteAction}
           isFavorite={isFavorite}
           profileImageId={candidateId}
           candidateParty={c.org_politica_nombre}
@@ -159,12 +171,15 @@ export default function CandidateSingle(props) {
           content={c.afiliations}
         />
       </Styled.Step>
-      {/* <Styled.FavoriteButton
+      <Styled.FavoriteButton
         text={
-          !isFavorite ? 'Agrégame a tus favoritos' : 'Sácame de tus favoritos'
+          !isFavorite
+            ? 'Agrégame a tus favoritos'
+            : 'Eliminar como candidato favorito'
         }
-        onClick={() => onStarClick('exit')}
-      /> */}
+        type={!isFavorite ? 'primary' : 'transparent'}
+        onClick={() => onFavoriteAction('exit')}
+      />
     </Styled.Container>
   );
 }
