@@ -4,6 +4,8 @@ import Image from 'next/image';
 export const ChipCanvas = styled('div')`
   height: 1.25rem;
   margin-right: 0.5rem;
+  min-height: 1.25rem;
+  min-width: 1.25rem;
   position: relative;
   width: 1.25rem;
 `;
