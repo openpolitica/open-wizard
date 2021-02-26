@@ -8,7 +8,7 @@ const iconPriority = {
 
 const Chip = (props) => {
   return (
-    <Styled.Chip {...props}>
+    <Styled.Chip {...props} role="alert">
       <Styled.ChipIcon src={`/images/icons/${iconPriority[props.type || 'info']}`} />
       <span>{props.children}</span>
     </Styled.Chip>
