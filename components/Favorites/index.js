@@ -11,7 +11,7 @@ export default function Favorites(props) {
       <Styled.Header />
       <Styled.Step>
         <Styled.Row>
-          <GoBackButton />
+          <GoBackButton text="Regresa" />
         </Styled.Row>
         <Styled.Title>Mis candidatxs favoritxs</Styled.Title>
         <Styled.Candidates>

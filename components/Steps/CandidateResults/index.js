@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import qs from 'qs';
+import { FavoritesContext } from 'hooks/useFavorites';
 import * as Styled from './styles';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
@@ -48,7 +49,11 @@ const LoadingScreen = () => {
 
 export default function Step4(props) {
   const router = useRouter();
+  const { favorites } = useContext(Favorites2Context);
   const isServer = typeof window === 'undefined';
+  const comingFromFavorites = () => {
+    console.log(ls('op.wizard').filters);
+  };
   if (isServer) {
     return <LoadingScreen />;
   }
@@ -151,6 +156,7 @@ export default function Step4(props) {
                 candidateFullname={`${candidate.id_nombres} ${candidate.id_apellido_paterno}`}
                 profileImageId={candidate.hoja_vida_id}
                 systemId={candidate.hoja_vida_id}
+                changeFromFavorites={() => comingFromFavorites}
               />
             ))
           ) : (

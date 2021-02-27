@@ -21,7 +21,7 @@ export const partyIconSource = (candidateParty) =>
 const CandidateCard = (props) => {
   return (
     <Link href={`/candidate/${props.systemId}`}>
-      <Card {...props}>
+      <Card onClick={props.changeFromFavorites()} {...props}>
         <PartyIcon src={partyIconSource(props.candidateParty)} />
         <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
         <ProfileIcon

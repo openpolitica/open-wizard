@@ -25,6 +25,10 @@ const reducer = (state, action) => {
   if (action.type === 'resetFavorites') {
     return initialFavoritesState;
   }
+  if (action.type === 'fromFavoritePage') {
+    state.isFromFavoritePage = action.value.indexOf('favorites') > -1;
+    return state.isFromFavoritePage;
+  }
 };
 
 export const FavoritesProvider = ({ children }) => {
@@ -42,6 +46,9 @@ export const FavoritesProvider = ({ children }) => {
         removeFavoriteBySystemId: (value) =>
           dispatch({ type: 'removeFavoriteBySystemId', value }),
         resetFavorites: (value) => dispatch({ type: 'resetFavorites' }),
+        isFromFavoritePage: false,
+        fromFavoritePage: (value) =>
+          dispatch({ type: 'fromFavoritePage', value }),
       }}>
       {children}
     </FavoritesContext.Provider>
