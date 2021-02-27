@@ -49,7 +49,7 @@ const LoadingScreen = () => {
 
 export default function Step4(props) {
   const router = useRouter();
-  const { favorites } = useContext(Favorites2Context);
+  const { fromFavoritePage } = useContext(FavoritesContext);
   const isServer = typeof window === 'undefined';
   const comingFromFavorites = () => {
     console.log(ls('op.wizard').filters);
