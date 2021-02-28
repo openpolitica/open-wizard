@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Image from 'next/image';
 
+const borderPriority = {
+  primary: '#c7cad1',
+  secondary: '#4EB5A2',
+};
+
 export const PartyIcon = styled(Image).attrs((props) => ({
   height: 32,
   width: 32,
@@ -33,7 +38,7 @@ export const Fullname = styled('p')`
 export const Card = styled('div')`
   align-items: center;
   border-radius: 4px;
-  border: 1px solid #c7cad1;
+  border: 1px solid ${props => borderPriority[props.type || 'primary']};
   cursor: pointer;
   display: flex;
   gap: 0.25rem;
@@ -45,7 +50,7 @@ export const Card = styled('div')`
 `;
 
 export const ArrowCircle = styled('div')`
-  background: #F3F8F7 url("/images/icons/right-arrow.svg") no-repeat center;
+  background: #f3f8f7 url('/images/icons/right-arrow.svg') no-repeat center;
   border-radius: 100%;
   height: 1.5rem;
   position: absolute;
