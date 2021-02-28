@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import Image from 'next/image';
 
 export const ChipCanvas = styled('div')`
+  flex: 0 0 1.25rem;
   height: 1.25rem;
   margin-right: 0.5rem;
   position: relative;
-  flex: 0 0 1.25rem;
 `;
 
 export const ChipIcon = (props) => (
