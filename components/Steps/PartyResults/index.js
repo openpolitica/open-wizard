@@ -180,10 +180,10 @@ export default function PartyResults(props) {
           <strong>{simplePluralize(seats?.data?.seats, 'sitio')}</strong> en el
           congreso.
         </Styled.Chip>
-        {candidates.length ? (
+        {Object.keys(candidates).length ? (
           <Styled.Results>{showPartyCards(candidates)}</Styled.Results>
-        ) : (
-          <Styled.NoCandidatesChip type="bad">
+        ) : !Object.keys(candidates).length ? (
+          <Styled.NoCandidatesChip type={'bad'}>
             <span>Creo que estás pidiendo mucho.</span>
           </Styled.NoCandidatesChip>
         )}
