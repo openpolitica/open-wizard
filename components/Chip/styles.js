@@ -4,10 +4,8 @@ import Image from 'next/image';
 export const ChipCanvas = styled('div')`
   height: 1.25rem;
   margin-right: 0.5rem;
-  min-height: 1.25rem;
-  min-width: 1.25rem;
   position: relative;
-  width: 1.25rem;
+  flex: 0 0 1.25rem;
 `;
 
 export const ChipIcon = (props) => (
@@ -44,7 +42,7 @@ export const Chip = styled('aside')`
   flex-direction: row;
   font-family: 'Poppins', sans-serif;
   font-size: 0.75rem;
-  justify-content: center;
+  justify-content: flex-start;
   line-height: 1.125rem;
   max-width: 20.437rem;
   min-height: 2.875rem;
