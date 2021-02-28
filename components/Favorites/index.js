@@ -50,6 +50,7 @@ export default function Favorites(props) {
             favorites.map((favorite, index) => (
               <Styled.CandidateCard
                 key={`Candidate-${index}`}
+                type="secondary"
                 candidateParty={favorite.org_politica_nombre}
                 candidateNumber={favorite.posicion}
                 candidateFullname={`${favorite.id_nombres} ${favorite.id_apellido_paterno}`}
