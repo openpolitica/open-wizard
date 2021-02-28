@@ -22,12 +22,13 @@ export default function Step2() {
         <Styled.Chip>
           <strong>Recuerda</strong>
           <Styled.TextInfo>
-            Sentencia condenatoria, es que el candidato fue procesado y hallado
-            culpable. Ejemplo: Prisión efectiva.
+            Cuando un candidato tiene una sentencia condenatoria
+            <strong> penal</strong> es porque fue procesado y hallado culpable.
+            Ejemplo: Prisión efectiva.
           </Styled.TextInfo>
         </Styled.Chip>
         <Styled.Title align="center">
-          ¿Incluimos candidatos con sentencias en el Poder Judicial?
+          ¿Incluimos candidatos con sentencias penales en el Poder Judicial?
         </Styled.Title>
       </Styled.Step>
       <Styled.YesNoButtons>
