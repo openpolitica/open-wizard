@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
+import Router from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import qs from 'qs';
 import groupBy from 'lodash.groupby';
+import { FavoritesContext } from 'hooks/useFavorites';
 import * as Styled from './styles';
 import PartyCard from 'components/PartyCard';
 import Loading from 'components/Loading';
@@ -81,6 +83,7 @@ export default function PartyResults(props) {
   const [candidates, setCandidates] = useState({});
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const [filters, setFilters] = useState(ls('op.wizard')?.filters || []);
+  const { favorites } = useContext(FavoritesContext);
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -178,6 +181,12 @@ export default function PartyResults(props) {
           congreso.
         </Styled.Chip>
         <Styled.Results>{showPartyCards(candidates)}</Styled.Results>
+        {favorites.length ? (
+          <Styled.SeeFavoritesButton
+            text="Ver mis favoritxs"
+            onClick={() => Router.push('/favorites')}
+          />
+        ) : null}
       </Styled.Step>
     </Styled.Container>
   );

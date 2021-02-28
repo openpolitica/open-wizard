@@ -73,6 +73,7 @@ export const Card = styled('div')`
 
 export const Star = styled('div')`
   background: ${props => starPriority[props.type || 'notFavorite'].background};
+  cursor: pointer;
   height: 2rem;
   position: absolute;
   right: 1rem;

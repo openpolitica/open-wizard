@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { FavoritesProvider } from 'hooks/useFavorites';
 
 const CandidateSingle = dynamic(
   () => import('components/Steps/CandidateSingle'),
@@ -7,5 +8,9 @@ const CandidateSingle = dynamic(
   },
 );
 
-const nossrCandidateSingle = () => <CandidateSingle />;
+const nossrCandidateSingle = () => (
+  <FavoritesProvider>
+    <CandidateSingle />
+  </FavoritesProvider>
+);
 export default nossrCandidateSingle;

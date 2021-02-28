@@ -24,7 +24,11 @@ export const partyIconSource = (candidateParty) =>
 
 const CandidateBigCard = (props) => {
   const onStarClick = (event) => {
-    props.starClick();
+    if (props.isFavorite) {
+      props.removeFavorite(props.candidate.hoja_vida_id);
+      return;
+    }
+    props.addFavorite(props.candidate);
   };
 
   return (
@@ -51,10 +55,10 @@ const CandidateBigCard = (props) => {
             <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
           </Row>
         </Row>
-        {/* <Star
+        <Star
           onClick={onStarClick}
           type={props.isFavorite ? 'favorite' : 'notFavorite'}
-        /> */}
+        />
       </MainRow>
       <Row>
         {props.candidateDesignate === 'No' ? (
