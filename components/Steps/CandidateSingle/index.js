@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import * as Styled from './styles';
+import { FavoritesContext } from 'hooks/useFavorites';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import toggleSlug from 'components/PartyCard/toggleSlug';
@@ -19,6 +20,11 @@ const LoadingScreen = () => {
 
 export default function CandidateSingle(props) {
   const router = useRouter();
+  const {
+    addFavorite,
+    favorites,
+    removeFavoriteBySystemId: removeFavorite,
+  } = useContext(FavoritesContext);
   const [collapsed, setCollapsed] = useState({
     place: false,
     education: true,
@@ -27,7 +33,6 @@ export default function CandidateSingle(props) {
     sanction: true,
     militancy: true,
   });
-  const [isFavorite, setFavorite] = useState(false);
   const candidateId = router.query.candidateId;
 
   const isServer = typeof window === 'undefined';
@@ -45,17 +50,6 @@ export default function CandidateSingle(props) {
     setCollapsed(newCollapsedObject);
   };
 
-  const onStarClick = (action = 'none') => {
-    setFavorite(!isFavorite);
-    if (action === 'exit') {
-      router.push(
-        ls('op.wizard').filters
-          ? `/results/${toggleSlug(c.org_politica_nombre)}`
-          : '/',
-      );
-    }
-  };
-
   const { data, error } = useSWR(
     candidateId ? '/api/candidates/hoja_vida_id' : null,
     () =>
@@ -68,6 +62,9 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
   const c = data?.data;
+  const isFavorite = favorites.find(
+    (favorite) => c.hoja_vida_id === favorite.hoja_vida_id,
+  );
 
   return (
     <Styled.Container>
@@ -84,8 +81,10 @@ export default function CandidateSingle(props) {
           />
         </Styled.Row>
         <Styled.CandidateBigCard
-          starClick={onStarClick}
+          addFavorite={addFavorite}
+          removeFavorite={removeFavorite}
           isFavorite={isFavorite}
+          candidate={c}
           profileImageId={candidateId}
           candidateParty={c.org_politica_nombre}
           candidateNumber={c.posicion}
@@ -159,12 +158,18 @@ export default function CandidateSingle(props) {
           content={c.afiliations}
         />
       </Styled.Step>
-      {/* <Styled.FavoriteButton
-        text={
-          !isFavorite ? 'Agrégame a tus favoritos' : 'Sácame de tus favoritos'
-        }
-        onClick={() => onStarClick('exit')}
-      /> */}
+      {isFavorite ? (
+        <Styled.FavoriteButton
+          text="Sácame de tus favoritos"
+          type="transparent"
+          onClick={() => removeFavorite(c.hoja_vida_id)}
+        />
+      ) : (
+        <Styled.FavoriteButton
+          text="Agregame a tus favoritos"
+          onClick={() => addFavorite(c)}
+        />
+      )}
     </Styled.Container>
   );
 }
