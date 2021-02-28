@@ -16,16 +16,16 @@ export const Header = styled(BaseHeader)`
 
 export const Step = styled('div')`
   align-items: center;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
   padding: 1.5rem;
 `;
 
 export const Row = styled.div`
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const Title = styled(BaseTitle)`

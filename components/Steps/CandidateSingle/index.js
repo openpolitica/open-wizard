@@ -160,13 +160,13 @@ export default function CandidateSingle(props) {
       </Styled.Step>
       {isFavorite ? (
         <Styled.FavoriteButton
-          text="Sácame de tus favoritos"
+          text="Sácame de tus opciones"
           type="transparent"
           onClick={() => removeFavorite(c.hoja_vida_id)}
         />
       ) : (
         <Styled.FavoriteButton
-          text="Agregame a tus favoritos"
+          text="Agrégame a tus opciones"
           onClick={() => addFavorite(c)}
         />
       )}

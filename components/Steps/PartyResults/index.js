@@ -183,7 +183,7 @@ export default function PartyResults(props) {
         <Styled.Results>{showPartyCards(candidates)}</Styled.Results>
         {favorites.length ? (
           <Styled.SeeFavoritesButton
-            text="Ver mis favoritxs"
+            text="Ver mis posibles opciones"
             onClick={() => Router.push('/favorites')}
           />
         ) : null}
