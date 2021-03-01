@@ -44,7 +44,7 @@ export default function Favorites(props) {
             onClick={onGoBackButtonClick}
           />
         </Styled.Row>
-        <Styled.Title>Mis candidatxs favoritxs</Styled.Title>
+        <Styled.Title>Mis posibles opciones</Styled.Title>
         <Styled.Candidates>
           {favorites.length ? (
             favorites.map((favorite, index) => (
@@ -59,7 +59,7 @@ export default function Favorites(props) {
               />
             ))
           ) : (
-            <Chip type={'info'}>Todavía no tienes candidatxs favoritxs.</Chip>
+            <Chip type={'info'}>Todavía no tienes opciones guardadas.</Chip>
           )}
         </Styled.Candidates>
         <Styled.KeepLookingButton
