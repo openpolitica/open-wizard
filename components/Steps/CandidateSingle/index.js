@@ -33,8 +33,7 @@ export default function CandidateSingle(props) {
     sanction: true,
     militancy: true,
   });
-  const candidateId = router.query.candidateId;
-
+  const { candidateId, fromPath } = router.query;
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
@@ -66,19 +65,24 @@ export default function CandidateSingle(props) {
     (favorite) => c.hoja_vida_id === favorite.hoja_vida_id,
   );
 
+  function generateLabel(path) {
+    if (!ls('op.wizard')) {
+      return 'Inicia tu viaje';
+    }
+
+    if (path === '/favorites') {
+      return 'Posibles opciones';
+    } else {
+      return 'Regresa a la Lista';
+    }
+  }
+
   return (
     <Styled.Container>
       <Styled.Header />
       <Styled.Step>
         <Styled.Row>
-          <GoBackButton
-            to={
-              ls('op.wizard')
-                ? `/results/${toggleSlug(c.org_politica_nombre)}`
-                : '/'
-            }
-            text={ls('op.wizard') ? 'Regresa a la lista' : 'Inicia tu viaje'}
-          />
+          <GoBackButton to={fromPath || '/'} text={generateLabel(fromPath)} />
         </Styled.Row>
         <Styled.CandidateBigCard
           addFavorite={addFavorite}

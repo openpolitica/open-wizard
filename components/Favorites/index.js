@@ -25,7 +25,7 @@ const onKeepLookingButtonClick = (event) => {
 
 const onGoBackButtonClick = (event) => {
   if (comesFromAFinishedUserTrip) {
-    Router.back();
+    Router.push('results/grouped-by-party');
     return;
   }
   Router.push('/');
