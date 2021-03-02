@@ -14,7 +14,7 @@ module.exports = {
       version: 6,
     },
     matomo: {
-      url: 'http://analytics.openpolitica.com/',
+      url: 'https://matomo.openpolitica.com/',
       siteId: 1,
     },
   },
