@@ -182,8 +182,8 @@ export default function PartyResults(props) {
         </Styled.Chip>
         {Object.keys(candidates).length ? (
           <Styled.Results>{showPartyCards(candidates)}</Styled.Results>
-        ) : !Object.keys(candidates).length ? (
-          <Styled.NoCandidatesChip type={'bad'}>
+        ) : (
+          <Styled.NoCandidatesChip type="bad">
             <span>Creo que estás pidiendo mucho.</span>
           </Styled.NoCandidatesChip>
         )}
