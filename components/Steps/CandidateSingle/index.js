@@ -18,6 +18,16 @@ const LoadingScreen = () => {
   );
 };
 
+function generateGoBackText(path) {
+  if (!ls('op.wizard')) {
+    return 'Inicia tu viaje';
+  }
+  if (path === '/favorites') {
+    return 'Posibles opciones';
+  }
+  return 'Regresa a la Lista';
+}
+
 export default function CandidateSingle(props) {
   const router = useRouter();
   const {
@@ -65,24 +75,15 @@ export default function CandidateSingle(props) {
     (favorite) => c.hoja_vida_id === favorite.hoja_vida_id,
   );
 
-  function generateLabel(path) {
-    if (!ls('op.wizard')) {
-      return 'Inicia tu viaje';
-    }
-
-    if (path === '/favorites') {
-      return 'Posibles opciones';
-    } else {
-      return 'Regresa a la Lista';
-    }
-  }
-
   return (
     <Styled.Container>
       <Styled.Header />
       <Styled.Step>
         <Styled.Row>
-          <GoBackButton to={fromPath || '/'} text={generateLabel(fromPath)} />
+          <GoBackButton
+            to={fromPath || '/'}
+            text={generateGoBackText(fromPath)}
+          />
         </Styled.Row>
         <Styled.CandidateBigCard
           addFavorite={addFavorite}
