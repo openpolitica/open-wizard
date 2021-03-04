@@ -40,6 +40,12 @@ export const Chip = styled(BaseChip)`
   margin-top: 1rem;
 `;
 
+export const NoCandidatesChip = styled(BaseChip)`
+  justify-content: flex-start;
+  margin-top: 0.5rem;
+  width: 100%;
+`;
+
 export const Results = styled('section')`
   display: flex;
   flex-wrap: wrap;
