@@ -278,59 +278,45 @@ const FilterModal = (props) => {
           />
         </Styled.CheckboxRow>
       </Styled.ModalSection>
-      <Styled.ModalSection>
+      <Styled.GenreSection>
         <Styled.FilterTitle>Estado en el partido</Styled.FilterTitle>
-        <Styled.CheckboxRow>
-          <Styled.CheckboxLabel htmlFor="militant">
-            Ver militantes del partido
-          </Styled.CheckboxLabel>
-          <Styled.Checkbox
-            id="militant"
-            name="militant"
-            isChecked={isMilitantMemberState}
-            onClick={() => {
-              if (isGuestMemberState) {
-                setMilitantMemberState(!isMilitantMemberState);
-                setGuestMemberState(!isGuestMemberState);
-                props.setFilters((prevFilters) => [
-                  ...prevFilters.filter((f) => f !== 'isGuestMember'),
-                  'isMilitantMember',
-                ]);
-              } else {
-                toggle(setMilitantMemberState)(isMilitantMemberState) ||
-                  props.setFilters(
-                    toggleFilter(props.filters)('isMilitantMember'),
-                  );
-              }
-            }}
-          />
-        </Styled.CheckboxRow>
-        <Styled.CheckboxRow>
-          <Styled.CheckboxLabel htmlFor="guest">
-            Ver invitados del partido
-          </Styled.CheckboxLabel>
-          <Styled.Checkbox
-            id="guest"
-            name="guest"
-            isChecked={isGuestMemberState}
-            onClick={() => {
-              if (isMilitantMemberState) {
-                setMilitantMemberState(!isMilitantMemberState);
-                setGuestMemberState(!isGuestMemberState);
-                props.setFilters((prevFilters) => [
-                  ...prevFilters.filter((f) => f !== 'isMilitantMember'),
-                  'isGuestMember',
-                ]);
-              } else {
-                toggle(setGuestMemberState)(isGuestMemberState) ||
-                  props.setFilters(
-                    toggleFilter(props.filters)('isGuestMember'),
-                  );
-              }
-            }}
-          />
-        </Styled.CheckboxRow>
-      </Styled.ModalSection>
+        <Styled.Tag name="militant" id="militant" />
+        <Styled.TagLabel
+          checked={isMilitantMemberState}
+          onClick={() => {
+            setMilitantMemberState(!isMilitantMemberState);
+            if (isGuestMemberState) {
+              setGuestMemberState(!isGuestMemberState);
+              props.setFilters((prevFilters) => [
+                ...prevFilters.filter((f) => f !== 'isGuestMember'),
+                'isMilitantMember',
+              ]);
+            } else {
+              props.setFilters(toggleFilter(props.filters)('isMilitantMember'));
+            }
+          }}
+          htmlFor="militant">
+          Solo Militantes
+        </Styled.TagLabel>
+        <Styled.Tag name="guest" id="guest" />
+        <Styled.TagLabel
+          checked={isGuestMemberState}
+          onClick={() => {
+            setGuestMemberState(!isGuestMemberState);
+            if (isMilitantMemberState) {
+              setMilitantMemberState(!isMilitantMemberState);
+              props.setFilters((prevFilters) => [
+                ...prevFilters.filter((f) => f !== 'isMilitantMember'),
+                'isGuestMember',
+              ]);
+            } else {
+              props.setFilters(toggleFilter(props.filters)('isGuestMember'));
+            }
+          }}
+          htmlFor="guest">
+          Solo Invitados
+        </Styled.TagLabel>
+      </Styled.GenreSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Sanciones e Infracciones</Styled.FilterTitle>
         <Styled.CheckboxRow>
