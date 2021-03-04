@@ -37,6 +37,12 @@ export const upToSecondary = (data) => byStudies(data, 'secundaria');
 export const upToHighSchool = (data) => byStudies(data, 'superior');
 export const upToPostgraduate = (data) => byStudies(data, 'postgrado');
 
+// Member state section
+export const isMilitantMember = (candidates) =>
+  candidates.filter((candidate) => candidate.designado === 'No');
+export const isGuestMember = (candidates) =>
+  candidates.filter((candidate) => candidate.designado === 'Sí');
+
 // Sanctions section
 export const doesntHaveSanctionsWithSunat = (candidates) =>
   candidates.filter((candidate) => candidate.deuda_sunat === 0);
@@ -61,6 +67,8 @@ const filterMap = {
   upToSecondary,
   upToHighSchool,
   upToPostgraduate,
+  isMilitantMember,
+  isGuestMember,
   doesntHaveSanctionsWithSunat,
   doesntHaveSanctionsWithServir,
   doesntHaveSanctionsWithDriving,
