@@ -18,6 +18,16 @@ const LoadingScreen = () => {
   );
 };
 
+function generateGoBackText(path) {
+  if (!ls('op.wizard')) {
+    return 'Inicia tu viaje';
+  }
+  if (path === '/favorites') {
+    return 'Posibles opciones';
+  }
+  return 'Regresa a la Lista';
+}
+
 export default function CandidateSingle(props) {
   const router = useRouter();
   const {
@@ -33,8 +43,7 @@ export default function CandidateSingle(props) {
     sanction: true,
     militancy: true,
   });
-  const candidateId = router.query.candidateId;
-
+  const { candidateId, fromPath } = router.query;
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
@@ -72,12 +81,8 @@ export default function CandidateSingle(props) {
       <Styled.Step>
         <Styled.Row>
           <GoBackButton
-            to={
-              ls('op.wizard')
-                ? `/results/${toggleSlug(c.org_politica_nombre)}`
-                : '/'
-            }
-            text={ls('op.wizard') ? 'Regresa a la lista' : 'Inicia tu viaje'}
+            to={fromPath || '/'}
+            text={generateGoBackText(fromPath)}
           />
         </Styled.Row>
         <Styled.CandidateBigCard

@@ -20,7 +20,12 @@ export const partyIconSource = (candidateParty) =>
 
 const CandidateCard = (props) => {
   return (
-    <Link href={`/candidate/${props.systemId}`}>
+    <Link
+      href={{
+        pathname: `/candidate/${props.systemId}`,
+        query: { fromPath: window.location.pathname },
+      }}
+      as={`/candidate/${props.systemId}`}>
       <Card {...props}>
         <PartyIcon src={partyIconSource(props.candidateParty)} />
         <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>

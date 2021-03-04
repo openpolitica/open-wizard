@@ -15,17 +15,9 @@ const comesFromAFinishedUserTrip = includesAll([
   'withSentence',
 ])(Object.keys(ls.get('op.wizard')));
 
-const onKeepLookingButtonClick = (event) => {
+const goBackToPartyResults = (event) => {
   if (comesFromAFinishedUserTrip) {
-    Router.push('/results/grouped-by-party');
-    return;
-  }
-  Router.push('/');
-};
-
-const onGoBackButtonClick = (event) => {
-  if (comesFromAFinishedUserTrip) {
-    Router.back();
+    Router.push('results/grouped-by-party');
     return;
   }
   Router.push('/');
@@ -41,7 +33,7 @@ export default function Favorites(props) {
         <Styled.Row>
           <GoBackButton
             text={comesFromAFinishedUserTrip ? 'Regresa' : 'Ir al Home'}
-            onClick={onGoBackButtonClick}
+            onClick={goBackToPartyResults}
           />
         </Styled.Row>
         <Styled.Title>Mis posibles opciones</Styled.Title>
@@ -64,7 +56,7 @@ export default function Favorites(props) {
         </Styled.Candidates>
         <Styled.KeepLookingButton
           text="Sigue buscando"
-          onClick={onKeepLookingButtonClick}
+          onClick={goBackToPartyResults}
         />
       </Styled.Step>
     </Styled.Container>
