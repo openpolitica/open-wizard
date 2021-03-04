@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ls from 'local-storage';
 import groupBy from 'lodash.groupby';
 import Image from 'next/image';
