@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ls from 'local-storage';
 import groupBy from 'lodash.groupby';
 import Image from 'next/image';
@@ -67,6 +67,13 @@ const FilterModal = (props) => {
   const [educationState, setEducationState] = useState(
     initializeEducationState(props.filters),
   );
+  const [isMilitantMemberState, setMilitantMemberState] = useState(
+    props.filters.includes('isMilitantMember'),
+  );
+  const [isGuestMemberState, setGuestMemberState] = useState(
+    props.filters.includes('isGuestMember'),
+  );
+
   const [hasPublicServiceExperience, setPublicServiceExperience] = useState(
     props.filters.includes('hasPublicServiceExperience'),
   );
@@ -268,6 +275,59 @@ const FilterModal = (props) => {
                 toggleEducationFilter(props.filters)('upToPostgraduate'),
               )
             }
+          />
+        </Styled.CheckboxRow>
+      </Styled.ModalSection>
+      <Styled.ModalSection>
+        <Styled.FilterTitle>Estado en el partido</Styled.FilterTitle>
+        <Styled.CheckboxRow>
+          <Styled.CheckboxLabel htmlFor="militant">
+            Ver militantes del partido
+          </Styled.CheckboxLabel>
+          <Styled.Checkbox
+            id="militant"
+            name="militant"
+            isChecked={isMilitantMemberState}
+            onClick={() => {
+              if (isGuestMemberState) {
+                setMilitantMemberState(!isMilitantMemberState);
+                setGuestMemberState(!isGuestMemberState);
+                props.setFilters((prevFilters) => [
+                  ...prevFilters.filter((f) => f !== 'isGuestMember'),
+                  'isMilitantMember',
+                ]);
+              } else {
+                toggle(setMilitantMemberState)(isMilitantMemberState) ||
+                  props.setFilters(
+                    toggleFilter(props.filters)('isMilitantMember'),
+                  );
+              }
+            }}
+          />
+        </Styled.CheckboxRow>
+        <Styled.CheckboxRow>
+          <Styled.CheckboxLabel htmlFor="guest">
+            Ver invitados del partido
+          </Styled.CheckboxLabel>
+          <Styled.Checkbox
+            id="guest"
+            name="guest"
+            isChecked={isGuestMemberState}
+            onClick={() => {
+              if (isMilitantMemberState) {
+                setMilitantMemberState(!isMilitantMemberState);
+                setGuestMemberState(!isGuestMemberState);
+                props.setFilters((prevFilters) => [
+                  ...prevFilters.filter((f) => f !== 'isMilitantMember'),
+                  'isGuestMember',
+                ]);
+              } else {
+                toggle(setGuestMemberState)(isGuestMemberState) ||
+                  props.setFilters(
+                    toggleFilter(props.filters)('isGuestMember'),
+                  );
+              }
+            }}
           />
         </Styled.CheckboxRow>
       </Styled.ModalSection>
