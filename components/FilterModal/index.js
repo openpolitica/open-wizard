@@ -67,6 +67,13 @@ const FilterModal = (props) => {
   const [educationState, setEducationState] = useState(
     initializeEducationState(props.filters),
   );
+  const [isMilitantMemberState, setMilitantMemberState] = useState(
+    props.filters.includes('isMilitantMember'),
+  );
+  const [isGuestMemberState, setGuestMemberState] = useState(
+    props.filters.includes('isGuestMember'),
+  );
+
   const [hasPublicServiceExperience, setPublicServiceExperience] = useState(
     props.filters.includes('hasPublicServiceExperience'),
   );
@@ -103,7 +110,7 @@ const FilterModal = (props) => {
           <Image src="/images/icons/filter-x.svg" width="14" height="14" />
         </Styled.CloseButton>
       </Styled.Header>
-      <Styled.GenreSection>
+      <Styled.TagSection>
         <Styled.FilterTitle>Género</Styled.FilterTitle>
         <Styled.Tag name="female" id="female" />
         <Styled.TagLabel
@@ -143,7 +150,7 @@ const FilterModal = (props) => {
           htmlFor="male">
           Solo hombres
         </Styled.TagLabel>
-      </Styled.GenreSection>
+      </Styled.TagSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Experiencia declarada</Styled.FilterTitle>
         <Styled.CheckboxRow>
@@ -271,6 +278,45 @@ const FilterModal = (props) => {
           />
         </Styled.CheckboxRow>
       </Styled.ModalSection>
+      <Styled.TagSection>
+        <Styled.FilterTitle>Estado en el partido</Styled.FilterTitle>
+        <Styled.Tag name="militant" id="militant" />
+        <Styled.TagLabel
+          checked={isMilitantMemberState}
+          onClick={() => {
+            setMilitantMemberState(!isMilitantMemberState);
+            if (isGuestMemberState) {
+              setGuestMemberState(!isGuestMemberState);
+              props.setFilters((prevFilters) => [
+                ...prevFilters.filter((f) => f !== 'isGuestMember'),
+                'isMilitantMember',
+              ]);
+            } else {
+              props.setFilters(toggleFilter(props.filters)('isMilitantMember'));
+            }
+          }}
+          htmlFor="militant">
+          Solo Militantes
+        </Styled.TagLabel>
+        <Styled.Tag name="guest" id="guest" />
+        <Styled.TagLabel
+          checked={isGuestMemberState}
+          onClick={() => {
+            setGuestMemberState(!isGuestMemberState);
+            if (isMilitantMemberState) {
+              setMilitantMemberState(!isMilitantMemberState);
+              props.setFilters((prevFilters) => [
+                ...prevFilters.filter((f) => f !== 'isMilitantMember'),
+                'isGuestMember',
+              ]);
+            } else {
+              props.setFilters(toggleFilter(props.filters)('isGuestMember'));
+            }
+          }}
+          htmlFor="guest">
+          Solo Invitados
+        </Styled.TagLabel>
+      </Styled.TagSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Sanciones e Infracciones</Styled.FilterTitle>
         <Styled.CheckboxRow>
