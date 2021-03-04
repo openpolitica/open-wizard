@@ -33,7 +33,7 @@ export const ApplyFiltersButton = styled(StyledButton)`
   padding: 0 0.75rem;
 `;
 
-export const GenreSection = styled('section')`
+export const TagSection = styled('section')`
   border-bottom: 1px solid #f1f2f3;
   height: 7.125rem;
   padding: 1.5rem;

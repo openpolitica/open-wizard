@@ -110,7 +110,7 @@ const FilterModal = (props) => {
           <Image src="/images/icons/filter-x.svg" width="14" height="14" />
         </Styled.CloseButton>
       </Styled.Header>
-      <Styled.GenreSection>
+      <Styled.TagSection>
         <Styled.FilterTitle>Género</Styled.FilterTitle>
         <Styled.Tag name="female" id="female" />
         <Styled.TagLabel
@@ -150,7 +150,7 @@ const FilterModal = (props) => {
           htmlFor="male">
           Solo hombres
         </Styled.TagLabel>
-      </Styled.GenreSection>
+      </Styled.TagSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Experiencia declarada</Styled.FilterTitle>
         <Styled.CheckboxRow>
@@ -278,7 +278,7 @@ const FilterModal = (props) => {
           />
         </Styled.CheckboxRow>
       </Styled.ModalSection>
-      <Styled.GenreSection>
+      <Styled.TagSection>
         <Styled.FilterTitle>Estado en el partido</Styled.FilterTitle>
         <Styled.Tag name="militant" id="militant" />
         <Styled.TagLabel
@@ -316,7 +316,7 @@ const FilterModal = (props) => {
           htmlFor="guest">
           Solo Invitados
         </Styled.TagLabel>
-      </Styled.GenreSection>
+      </Styled.TagSection>
       <Styled.ModalSection>
         <Styled.FilterTitle>Sanciones e Infracciones</Styled.FilterTitle>
         <Styled.CheckboxRow>
