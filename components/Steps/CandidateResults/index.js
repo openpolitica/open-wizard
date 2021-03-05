@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import { useEffect, useState, useContext } from 'react';
+import Router, { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import qs from 'qs';
+import { FavoritesContext } from 'hooks/useFavorites';
 import * as Styled from './styles';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
+import FavoriteButton from 'components/FavoriteButton';
 import FilterModal from 'components/FilterModal';
 import {
   applyFilter,
@@ -48,6 +50,8 @@ const LoadingScreen = () => {
 
 export default function Step4(props) {
   const router = useRouter();
+  const { favorites } = useContext(FavoritesContext);
+
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
@@ -111,7 +115,12 @@ export default function Step4(props) {
       <Styled.Step>
         <Styled.Row>
           <GoBackButton to={'/results/grouped-by-party'} text="Regresa" />
-          <Styled.FilterButton onClick={() => setFilterModalState(true)} />
+          {favorites.length ? (
+            <FavoriteButton
+              text="Mis posibles opciones"
+              onClick={() => Router.push('/favorites')}
+            />
+          ) : null}
         </Styled.Row>
         <Styled.Title align="center">
           Tienes{' '}
@@ -125,6 +134,10 @@ export default function Step4(props) {
             )}
           </Styled.Emphasis>
         </Styled.Title>
+        <Styled.FilterButton
+          type="transparent"
+          onClick={() => setFilterModalState(true)}
+        />
         <Styled.ChipCard type="good">
           Recuerda que tu voto por este partido beneficia a los primeros de su
           lista al congreso.

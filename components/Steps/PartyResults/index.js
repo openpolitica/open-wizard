@@ -29,6 +29,7 @@ import {
   doesntHaveSanctionsWithDriving,
 } from './filters';
 import GoBackButton from 'components/GoBackButton';
+import FavoriteButton from 'components/FavoriteButton';
 import startCasePeruvianRegions from './startCasePeruvianRegions';
 import simplePluralize from './simplePluralize';
 
@@ -167,7 +168,12 @@ export default function PartyResults(props) {
       <Styled.Step>
         <Styled.Row>
           <GoBackButton to={'/steps/3'} text="Regresa" />
-          <Styled.FilterButton onClick={() => setFilterModalState(true)} />
+          {favorites.length ? (
+            <FavoriteButton
+              text="Mis posibles opciones"
+              onClick={() => Router.push('/favorites')}
+            />
+          ) : null}
         </Styled.Row>
         <Styled.Title>
           Explora {totalNumberOfCandidates !== 1 ? 'tus' : 'tu'}{' '}
@@ -175,6 +181,10 @@ export default function PartyResults(props) {
             ? `${totalNumberOfCandidates} opciones`
             : 'única opción'}
         </Styled.Title>
+        <Styled.FilterButton
+          type="transparent"
+          onClick={() => setFilterModalState(true)}
+        />
         <Styled.Chip type={'good'}>
           <strong>{startCasePeruvianRegions(location)}</strong> tendrá{' '}
           <strong>{simplePluralize(seats?.data?.seats, 'sitio')}</strong> en el
@@ -187,12 +197,6 @@ export default function PartyResults(props) {
             <span>Creo que estás pidiendo mucho.</span>
           </Styled.NoCandidatesChip>
         )}
-        {favorites.length ? (
-          <Styled.SeeFavoritesButton
-            text="Ver mis posibles opciones"
-            onClick={() => Router.push('/favorites')}
-          />
-        ) : null}
       </Styled.Step>
     </Styled.Container>
   );
