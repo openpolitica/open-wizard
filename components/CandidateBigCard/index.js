@@ -9,6 +9,7 @@ import {
   MainRow,
   Row,
   MemberBox,
+  Subtitle,
 } from './styles';
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 
@@ -45,10 +46,15 @@ const CandidateBigCard = (props) => {
             flexDirection: 'column',
             padding: '0 0.4rem 0 0.4rem',
           }}>
-          <Row style={{ alignItems: 'flex-end' }}>
+          <Row style={{ flexDirection: 'column' }}>
             <Fullname>
               {capitalize(props.candidateFullname) || 'Nombre de candidato'}
             </Fullname>
+            <Subtitle>
+              {props.district !== 'PERUANOS RESIDENTES EN EL EXTRANJERO'
+                ? `Postula por ${capitalize(props.district)}`
+                : `Postula al Extranjero`}
+            </Subtitle>
           </Row>
           <Row>
             <PartyIcon src={partyIconSource(props.candidateParty)} />

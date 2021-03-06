@@ -101,7 +101,8 @@ export default function CandidateSingle(props) {
             c.id_apellido_paterno +
             ' ' +
             c.id_apellido_materno
-          }></Styled.CandidateBigCard>
+          }
+          district={c.postula_distrito}></Styled.CandidateBigCard>
         <Styled.Accordion
           type="information"
           title="Información personal"

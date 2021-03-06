@@ -52,7 +52,7 @@ export const Fullname = styled('p')`
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.125rem;
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.1rem 0;
 `;
 
 export const Card = styled('div')`
@@ -104,4 +104,14 @@ export const MemberBox = styled.div`
   font-size: 0.8rem;
   margin-top: 0.4rem;
   padding: 0.6rem 0.9rem;
+`;
+
+export const Subtitle = styled('h3')`
+  color: #8e94a4;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7875rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-bottom: 0.2rem;
 `;
