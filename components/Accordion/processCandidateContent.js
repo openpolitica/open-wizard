@@ -7,6 +7,31 @@ const getYear = (dateString) => {
     : 'N/A';
 };
 
+const getMonth = (dateString) => {
+  return dateString && dateString.includes('/')
+    ? dateString.substring(
+        dateString.indexOf('/') + 1,
+        dateString.lastIndexOf('/'),
+      )
+    : 'N/A';
+};
+
+const getDay = (dateString) => {
+  return dateString && dateString.includes('/')
+    ? dateString.substring(0, dateString.indexOf('/'))
+    : 'N/A';
+};
+
+const getAge = (dateString) => {
+  const year = getYear(dateString);
+  const month = getMonth(dateString);
+  const day = getDay(dateString);
+  const birthday = new Date(`${year}-${month}-${day}`);
+  var ageDifMs = Date.now() - birthday.getTime();
+  var ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+
 const wrongCareers = [
   '0',
   'FALTA',
@@ -25,6 +50,10 @@ const processCandidateContent = (type, content) => {
   if (type === 'information') {
     return (
       <div>
+        <p>
+          <strong>Edad: </strong>
+          {getAge(content.birthdate)} años
+        </p>
         <p>
           <strong>DNI: </strong>
           {content.dni}

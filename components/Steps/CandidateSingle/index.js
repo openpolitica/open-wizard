@@ -109,6 +109,7 @@ export default function CandidateSingle(props) {
           titleRowClick={onTitleRowClick}
           content={{
             dni: c.id_dni,
+            birthdate: c.nacimiento_fecha,
           }}
         />
         <Styled.Accordion
