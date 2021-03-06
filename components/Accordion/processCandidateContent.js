@@ -22,6 +22,16 @@ const wrongCareers = [
 ];
 
 const processCandidateContent = (type, content) => {
+  if (type === 'information') {
+    return (
+      <div>
+        <p>
+          <strong>DNI: </strong>
+          {content.dni}
+        </p>
+      </div>
+    );
+  }
   if (type === 'place') {
     return (
       <p>
