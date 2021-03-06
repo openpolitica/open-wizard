@@ -1,5 +1,15 @@
-import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
+
+const capitalize = (text, { omit = ['de', 'en', 'el', 'la', 'del'] } = {}) => {
+  const lowerRegionArray = text.toLowerCase().split(' ');
+  return lowerRegionArray
+    .map((word) =>
+      word !== lowerRegionArray[0] && omit.includes(word)
+        ? word
+        : `${word[0].toUpperCase()}${word.slice(1)}`,
+    )
+    .join(' ');
+};
 
 const getYear = (dateString) => {
   return dateString && dateString.includes('/')
