@@ -213,7 +213,7 @@ const processCandidateContent = (type, content) => {
         sanctionArray.push(
           <div key="papeletas">
             <p>
-              <strong>Papeletas SAT: </strong>
+              <strong>Historial de papeletas SAT: </strong>
               {content.papeletas}
             </p>
           </div>,
