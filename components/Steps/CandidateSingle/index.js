@@ -108,6 +108,7 @@ export default function CandidateSingle(props) {
           collapsed={collapsed.information}
           titleRowClick={onTitleRowClick}
           content={{
+            birthdate: c.nacimiento_fecha,
             dni: c.id_dni,
           }}
         />
