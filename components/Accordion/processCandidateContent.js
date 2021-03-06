@@ -236,19 +236,58 @@ const processCandidateContent = (type, content) => {
     return <p>No tiene sentencias o sanciones registradas.</p>;
   }
   if (type === 'militancy') {
-    if (content && content.length > 0) {
-      return content.map((c) => {
-        return (
-          <p key={c.org_politica}>
-            {`${c.org_politica} (${getYear(c.afiliacion_inicio)} - ${getYear(
-              c.afiliacion_cancelacion,
-            )})`}
-          </p>
+    const militancyArray = [];
+    if (content) {
+      if (content.afiliations) {
+        if (content.afiliations.length > 0) {
+          militancyArray.push(
+            <>
+              <h4>Partidos anteriores</h4>
+              {content.afiliations.map((c) => {
+                return (
+                  <ul>
+                    <li key={c.org_politica}>
+                      {`${c.org_politica} (${getYear(
+                        c.afiliacion_inicio,
+                      )} - ${getYear(c.afiliacion_cancelacion)})`}
+                    </li>
+                  </ul>
+                );
+              })}
+            </>,
+          );
+        } else {
+          militancyArray.push(
+            <p>
+              <strong>Partidos anteriores: </strong>No registra historial.
+            </p>,
+          );
+        }
+      }
+      if (content.processAll) {
+        militancyArray.push(
+          <div>
+            <p>
+              <strong>Elecciones Participadas: </strong>
+              {content.processAll}
+            </p>
+            <p>
+              <strong>Elecciones Ganadas: </strong>
+              {content.processWin}
+            </p>
+          </div>,
         );
-      });
-    } else {
-      return <p>No registra historial político.</p>;
+      }
+      if (content.moneyContributions) {
+        militancyArray.push(
+          <p>
+            <strong>Aportes monetarios a elecciones: </strong>
+            S/.{content.moneyContributions}
+          </p>,
+        );
+      }
     }
+    return militancyArray;
   }
 };
 

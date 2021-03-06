@@ -172,7 +172,12 @@ export default function CandidateSingle(props) {
           title="Pasado político"
           collapsed={collapsed.militancy}
           titleRowClick={onTitleRowClick}
-          content={c.afiliations}
+          content={{
+            afiliations: c.afiliations,
+            processAll: c.procesos_electorales_participados,
+            processWin: c.procesos_electorales_ganados,
+            moneyContributions: c.aportes_electorales,
+          }}
         />
       </Styled.Step>
       {isFavorite ? (
