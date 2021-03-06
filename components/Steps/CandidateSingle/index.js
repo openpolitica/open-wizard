@@ -36,7 +36,8 @@ export default function CandidateSingle(props) {
     removeFavoriteBySystemId: removeFavorite,
   } = useContext(FavoritesContext);
   const [collapsed, setCollapsed] = useState({
-    place: false,
+    information: false,
+    place: true,
     education: true,
     experience: true,
     income: true,
@@ -101,6 +102,15 @@ export default function CandidateSingle(props) {
             ' ' +
             c.id_apellido_materno
           }></Styled.CandidateBigCard>
+        <Styled.Accordion
+          type="information"
+          title="Información personal"
+          collapsed={collapsed.information}
+          titleRowClick={onTitleRowClick}
+          content={{
+            dni: c.id_dni,
+          }}
+        />
         <Styled.Accordion
           type="place"
           title="Lugar de nacimiento"
