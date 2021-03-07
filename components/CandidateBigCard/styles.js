@@ -91,7 +91,12 @@ export const MainRow = styled.div`
 
 export const Row = styled.div`
   display: flex;
-  flex-direction: 'row';
+  flex-direction: row;
+`;
+
+export const Column = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 export const MemberBox = styled.div`

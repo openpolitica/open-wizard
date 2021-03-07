@@ -8,6 +8,7 @@ import {
   Star,
   MainRow,
   Row,
+  Column,
   MemberBox,
   Subtitle,
 } from './styles';
@@ -41,12 +42,11 @@ const CandidateBigCard = (props) => {
             `${profileIconBaseUrl}134127.jpg`
           }
         />
-        <Row
+        <Column
           style={{
-            flexDirection: 'column',
             padding: '0 0.4rem 0 0.4rem',
           }}>
-          <Row style={{ flexDirection: 'column' }}>
+          <Column>
             <Fullname>
               {capitalize(props.candidateFullname) || 'Nombre de candidato'}
             </Fullname>
@@ -55,12 +55,12 @@ const CandidateBigCard = (props) => {
                 ? `Postula por ${capitalize(props.district)}`
                 : `Postula al Extranjero`}
             </Subtitle>
-          </Row>
+          </Column>
           <Row>
             <PartyIcon src={partyIconSource(props.candidateParty)} />
             <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
           </Row>
-        </Row>
+        </Column>
         <Star
           onClick={onStarClick}
           type={props.isFavorite ? 'favorite' : 'notFavorite'}
