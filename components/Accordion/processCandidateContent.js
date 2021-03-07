@@ -38,6 +38,11 @@ const getAge = (dateString) => {
   return Math.abs(ageDate.getUTCFullYear() - 1970);
 };
 
+const addLeadZeros = (num, size) => {
+  var s = '0'.repeat(size) + num;
+  return s.substr(s.length - size);
+};
+
 const wrongCareers = [
   '0',
   'FALTA',
@@ -60,7 +65,7 @@ const processCandidateContent = (type, content) => {
           <strong>Edad:</strong> {getAge(content.birthdate)} años
         </p>
         <p>
-          <strong>DNI:</strong> {content.dni}
+          <strong>DNI:</strong> {addLeadZeros(content.dni, 8)}
         </p>
       </div>
     );
