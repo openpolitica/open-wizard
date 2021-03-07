@@ -21,7 +21,7 @@ const starPriority = {
   },
 };
 
-export const PartyIcon = styled(Image).attrs(props => ({
+export const PartyIcon = styled(Image).attrs((props) => ({
   height: 32,
   width: 32,
 }))`
@@ -41,7 +41,7 @@ export const NumberIcon = styled('span')`
   width: 2rem;
 `;
 
-export const ProfileIcon = styled(Image).attrs(props => ({
+export const ProfileIcon = styled(Image).attrs((props) => ({
   height: 100,
   width: 71,
 }))``;
@@ -72,7 +72,8 @@ export const Card = styled('div')`
 `;
 
 export const Star = styled('div')`
-  background: ${props => starPriority[props.type || 'notFavorite'].background};
+  background: ${(props) =>
+    starPriority[props.type || 'notFavorite'].background};
   cursor: pointer;
   height: 2rem;
   position: absolute;
@@ -100,10 +101,10 @@ export const Column = styled.div`
 `;
 
 export const MemberBox = styled.div`
-  background-color: ${props =>
+  background-color: ${(props) =>
     memberBoxPriority[props.type || 'green'].backgroundColor};
   border-radius: 4px;
-  color: ${props => memberBoxPriority[props.type || 'green'].color};
+  color: ${(props) => memberBoxPriority[props.type || 'green'].color};
   display: flex;
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
