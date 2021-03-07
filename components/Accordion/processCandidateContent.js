@@ -1,10 +1,10 @@
 import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
 
 const capitalize = (text, { omit = ['de', 'en', 'el', 'la', 'del'] } = {}) => {
-  const lowerRegionArray = text.toLowerCase().split(' ');
-  return lowerRegionArray
+  const lowerTextArray = text.toLowerCase().split(' ');
+  return lowerTextArray
     .map((word) =>
-      word !== lowerRegionArray[0] && omit.includes(word)
+      word !== lowerTextArray[0] && omit.includes(word)
         ? word
         : `${word[0].toUpperCase()}${word.slice(1)}`,
     )
