@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "eslint --ext js ."
   },
   "dependencies": {
     "@openpolitica/matomo-next": "^1.2.1",
@@ -23,6 +24,10 @@
     "swr": "^0.4.0"
   },
   "devDependencies": {
-    "@svgr/webpack": "^5.5.0"
+    "@svgr/webpack": "^5.5.0",
+    "eslint": "^7.21.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
