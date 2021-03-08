@@ -59,7 +59,7 @@ export default function Step1() {
         </Styled.Chip>
         <Styled.Title>¿En dónde votarás?</Styled.Title>
         <Styled.Select onChange={handleSelectChange}>
-          <option>Seleccione uno</option>
+          <option value={''}>Selecciona uno</option>
           {data?.data.map((location) => {
             if (location !== 'PERUANOS RESIDENTES EN EL EXTRANJERO') {
               return (
@@ -74,7 +74,9 @@ export default function Step1() {
           Voto en el extranjero
         </Styled.LinkButton>
       </Styled.Step>
-      <Styled.Button onClick={onContinueClick}>Continuar</Styled.Button>
+      <Styled.Button onClick={onContinueClick} disabled={!location}>
+        Continuar
+      </Styled.Button>
     </Styled.Container>
   );
 }

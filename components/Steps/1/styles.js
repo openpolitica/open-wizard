@@ -63,5 +63,6 @@ export const LinkButton = styled(BaseLinkButton)`
 
 export const Button = styled(BaseButton)`
   align-self: center;
+  background-color: ${(props) => (props.disabled ? 'grey' : 'auto')};
   margin-bottom: 5rem;
 `;
