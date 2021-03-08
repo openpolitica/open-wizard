@@ -65,4 +65,7 @@ export const Button = styled(BaseButton)`
   align-self: center;
   background-color: ${(props) => (props.disabled ? 'grey' : 'auto')};
   margin-bottom: 5rem;
+  &:hover {
+    text-decoration: ${(props) => (props.disabled ? 'none' : 'underline')};
+  }
 `;
