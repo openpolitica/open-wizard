@@ -58,7 +58,7 @@ const wrongCareers = [
 ];
 
 const processCandidateContent = (type, content) => {
-  if (type === 'information') {
+  if (type === 'personalInfo') {
     return (
       <div>
         <p>
