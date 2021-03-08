@@ -106,7 +106,7 @@ export default function CandidateSingle(props) {
         <Styled.Accordion
           type="personalInfo"
           title="Información personal"
-          collapsed={collapsed.information}
+          collapsed={collapsed.personalInfo}
           titleRowClick={onTitleRowClick}
           content={{
             birthdate: c.nacimiento_fecha,
