@@ -22,7 +22,7 @@ const withHotjar = (Component) => (props) => {
 
   useEffect(() => {
     initHotjar(process.env.hotjar.id, process.env.hotjar.version, logger);
-  });
+  }, []);
 
   return <Component {...props} />;
 };
@@ -33,7 +33,7 @@ const withMatomo = (Component) => (props) => {
       url: process.env.matomo.url,
       siteId: process.env.matomo.siteId,
     });
-  });
+  }, []);
 
   return <Component {...props} />;
 };
