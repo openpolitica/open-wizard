@@ -1,11 +1,12 @@
 import styled, { keyframes } from 'styled-components';
+import Image from 'next/image';
 
 export const Loading = styled('section')`
-  line-height: 2em;
-  margin: 180px auto;
+  line-height: 2rem;
+  margin: 11.25rem auto;
   overflow: hidden;
   position: relative;
-  width: 90px;
+  width: 5.625rem;
 `;
 
 const rotate = keyframes`
@@ -29,4 +30,4 @@ export const FadingEffect = styled('div')`
   -o-animation: ${rotate} 5s ease-in alternate infinite;
 `;
 
-export const Loader = styled('img')``;
+export const Loader = styled(Image)``;
