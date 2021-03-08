@@ -8,7 +8,10 @@ import {
   Star,
   MainRow,
   Row,
+  Column,
+  ContentColumn,
   MemberBox,
+  Subtitle,
 } from './styles';
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 
@@ -40,21 +43,22 @@ const CandidateBigCard = (props) => {
             `${profileIconBaseUrl}134127.jpg`
           }
         />
-        <Row
-          style={{
-            flexDirection: 'column',
-            padding: '0 0.4rem 0 0.4rem',
-          }}>
-          <Row style={{ alignItems: 'flex-end' }}>
+        <ContentColumn>
+          <Column>
             <Fullname>
               {capitalize(props.candidateFullname) || 'Nombre de candidato'}
             </Fullname>
-          </Row>
+            <Subtitle>
+              {props.district !== 'PERUANOS RESIDENTES EN EL EXTRANJERO'
+                ? `Postula por ${capitalize(props.district)}`
+                : `Postula al Extranjero`}
+            </Subtitle>
+          </Column>
           <Row>
             <PartyIcon src={partyIconSource(props.candidateParty)} />
             <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
           </Row>
-        </Row>
+        </ContentColumn>
         <Star
           onClick={onStarClick}
           type={props.isFavorite ? 'favorite' : 'notFavorite'}

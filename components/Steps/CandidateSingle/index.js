@@ -36,7 +36,8 @@ export default function CandidateSingle(props) {
     removeFavoriteBySystemId: removeFavorite,
   } = useContext(FavoritesContext);
   const [collapsed, setCollapsed] = useState({
-    place: false,
+    personalInfo: false,
+    place: true,
     education: true,
     experience: true,
     income: true,
@@ -100,7 +101,18 @@ export default function CandidateSingle(props) {
             c.id_apellido_paterno +
             ' ' +
             c.id_apellido_materno
-          }></Styled.CandidateBigCard>
+          }
+          district={c.postula_distrito}></Styled.CandidateBigCard>
+        <Styled.Accordion
+          type="personalInfo"
+          title="Información personal"
+          collapsed={collapsed.information}
+          titleRowClick={onTitleRowClick}
+          content={{
+            birthdate: c.nacimiento_fecha,
+            dni: c.id_dni,
+          }}
+        />
         <Styled.Accordion
           type="place"
           title="Lugar de nacimiento"
@@ -160,7 +172,12 @@ export default function CandidateSingle(props) {
           title="Pasado político"
           collapsed={collapsed.militancy}
           titleRowClick={onTitleRowClick}
-          content={c.afiliations}
+          content={{
+            afiliations: c.afiliations,
+            processAll: c.procesos_electorales_participados,
+            processWin: c.procesos_electorales_ganados,
+            moneyContributions: c.aportes_electorales,
+          }}
         />
       </Styled.Step>
       {isFavorite ? (

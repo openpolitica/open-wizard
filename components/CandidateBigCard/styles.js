@@ -21,7 +21,7 @@ const starPriority = {
   },
 };
 
-export const PartyIcon = styled(Image).attrs(props => ({
+export const PartyIcon = styled(Image).attrs((props) => ({
   height: 32,
   width: 32,
 }))`
@@ -41,7 +41,7 @@ export const NumberIcon = styled('span')`
   width: 2rem;
 `;
 
-export const ProfileIcon = styled(Image).attrs(props => ({
+export const ProfileIcon = styled(Image).attrs((props) => ({
   height: 100,
   width: 71,
 }))``;
@@ -52,7 +52,7 @@ export const Fullname = styled('p')`
   font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.125rem;
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.1rem 0;
 `;
 
 export const Card = styled('div')`
@@ -72,7 +72,8 @@ export const Card = styled('div')`
 `;
 
 export const Star = styled('div')`
-  background: ${props => starPriority[props.type || 'notFavorite'].background};
+  background: ${(props) =>
+    starPriority[props.type || 'notFavorite'].background};
   cursor: pointer;
   height: 2rem;
   position: absolute;
@@ -80,28 +81,45 @@ export const Star = styled('div')`
   width: 2rem;
 `;
 
-export const MainRow = styled.div`
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
+export const MainRow = styled(Row)`
   align-items: flex-end;
   border-bottom: 1px solid #e3e5e8;
-  display: flex;
   flex: 0 0 100%;
-  flex-direction: 'row';
   padding-bottom: 0.8rem;
 `;
 
-export const Row = styled.div`
+export const Column = styled.div`
   display: flex;
-  flex-direction: 'row';
+  flex-direction: column;
+`;
+
+export const ContentColumn = styled(Column)`
+  padding: 0 0.4rem 0 0.4rem;
 `;
 
 export const MemberBox = styled.div`
-  background-color: ${props =>
+  background-color: ${(props) =>
     memberBoxPriority[props.type || 'green'].backgroundColor};
   border-radius: 4px;
-  color: ${props => memberBoxPriority[props.type || 'green'].color};
+  color: ${(props) => memberBoxPriority[props.type || 'green'].color};
   display: flex;
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
   margin-top: 0.4rem;
   padding: 0.6rem 0.9rem;
+`;
+
+export const Subtitle = styled('h3')`
+  color: #8e94a4;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7875rem;
+  font-weight: 700;
+  line-height: 1.5rem;
+  margin: 0;
+  margin-bottom: 0.2rem;
 `;

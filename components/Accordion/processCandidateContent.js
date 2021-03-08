@@ -1,10 +1,46 @@
-import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
+
+const capitalize = (text, { omit = ['de', 'en', 'el', 'la', 'del'] } = {}) => {
+  const lowerTextArray = text.toLowerCase().split(' ');
+  return lowerTextArray
+    .map((word) =>
+      word !== lowerTextArray[0] && omit.includes(word)
+        ? word
+        : `${word[0].toUpperCase()}${word.slice(1)}`,
+    )
+    .join(' ');
+};
 
 const getYear = (dateString) => {
   return dateString && dateString.includes('/')
     ? dateString.substring(dateString.lastIndexOf('/') + 1)
     : 'N/A';
+};
+
+const getMonth = (dateString) => {
+  return dateString.substring(
+    dateString.indexOf('/') + 1,
+    dateString.lastIndexOf('/'),
+  );
+};
+
+const getDay = (dateString) => {
+  return dateString.substring(0, dateString.indexOf('/'));
+};
+
+const getAge = (dateString) => {
+  const year = getYear(dateString);
+  const month = getMonth(dateString);
+  const day = getDay(dateString);
+  const birthday = new Date(`${year}-${month}-${day}`);
+  const ageDifMs = Date.now() - birthday.getTime();
+  const ageDate = new Date(ageDifMs);
+  return Math.abs(ageDate.getUTCFullYear() - 1970);
+};
+
+const addLeadZeros = (num, size) => {
+  const numString = '0'.repeat(size) + num;
+  return numString.substr(numString.length - size);
 };
 
 const wrongCareers = [
@@ -22,6 +58,18 @@ const wrongCareers = [
 ];
 
 const processCandidateContent = (type, content) => {
+  if (type === 'personalInfo') {
+    return (
+      <div>
+        <p>
+          <strong>Edad:</strong> {getAge(content.birthdate)} años
+        </p>
+        <p>
+          <strong>DNI:</strong> {addLeadZeros(content.dni, 8)}
+        </p>
+      </div>
+    );
+  }
   if (type === 'place') {
     return (
       <p>
@@ -180,7 +228,7 @@ const processCandidateContent = (type, content) => {
         sanctionArray.push(
           <div key="papeletas">
             <p>
-              <strong>Papeletas SAT: </strong>
+              <strong>Historial de papeletas SAT: </strong>
               {content.papeletas}
             </p>
           </div>,
@@ -203,19 +251,58 @@ const processCandidateContent = (type, content) => {
     return <p>No tiene sentencias o sanciones registradas.</p>;
   }
   if (type === 'militancy') {
-    if (content && content.length > 0) {
-      return content.map((c) => {
-        return (
-          <p key={c.org_politica}>
-            {`${c.org_politica} (${getYear(c.afiliacion_inicio)} - ${getYear(
-              c.afiliacion_cancelacion,
-            )})`}
-          </p>
+    const militancyArray = [];
+    if (content) {
+      if (content.afiliations) {
+        if (content.afiliations.length > 0) {
+          militancyArray.push(
+            <>
+              <h4>Partidos anteriores</h4>
+              {content.afiliations.map((c) => {
+                return (
+                  <ul>
+                    <li key={c.org_politica}>
+                      {`${c.org_politica} (${getYear(
+                        c.afiliacion_inicio,
+                      )} - ${getYear(c.afiliacion_cancelacion)})`}
+                    </li>
+                  </ul>
+                );
+              })}
+            </>,
+          );
+        } else {
+          militancyArray.push(
+            <p>
+              <strong>Partidos anteriores: </strong>No registra historial.
+            </p>,
+          );
+        }
+      }
+      if (content.processAll) {
+        militancyArray.push(
+          <div>
+            <p>
+              <strong>Elecciones Participadas: </strong>
+              {content.processAll}
+            </p>
+            <p>
+              <strong>Elecciones Ganadas: </strong>
+              {content.processWin}
+            </p>
+          </div>,
         );
-      });
-    } else {
-      return <p>No registra historial político.</p>;
+      }
+      if (content.moneyContributions) {
+        militancyArray.push(
+          <p>
+            <strong>Aportes monetarios a elecciones: </strong>
+            S/.{content.moneyContributions}
+          </p>,
+        );
+      }
     }
+    return militancyArray;
   }
 };
 
