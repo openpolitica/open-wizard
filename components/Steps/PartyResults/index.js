@@ -169,10 +169,7 @@ export default function PartyResults(props) {
         <Styled.Row>
           <GoBackButton to={'/steps/3'} text="Regresa" />
           {favorites.length ? (
-            <FavoriteButton
-              text="Mis posibles opciones"
-              onClick={() => Router.push('/favorites')}
-            />
+            <FavoriteButton onClick={() => Router.push('/favorites')} />
           ) : null}
         </Styled.Row>
         <Styled.Title>
