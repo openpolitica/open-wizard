@@ -39,8 +39,8 @@ const getAge = (dateString) => {
 };
 
 const addLeadZeros = (num, size) => {
-  var s = '0'.repeat(size) + num;
-  return s.substr(s.length - size);
+  const numString = '0'.repeat(size) + num;
+  return numString.substr(numString.length - size);
 };
 
 const wrongCareers = [

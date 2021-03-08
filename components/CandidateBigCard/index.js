@@ -9,6 +9,7 @@ import {
   MainRow,
   Row,
   Column,
+  ContentColumn,
   MemberBox,
   Subtitle,
 } from './styles';
@@ -42,10 +43,7 @@ const CandidateBigCard = (props) => {
             `${profileIconBaseUrl}134127.jpg`
           }
         />
-        <Column
-          style={{
-            padding: '0 0.4rem 0 0.4rem',
-          }}>
+        <ContentColumn>
           <Column>
             <Fullname>
               {capitalize(props.candidateFullname) || 'Nombre de candidato'}
@@ -60,7 +58,7 @@ const CandidateBigCard = (props) => {
             <PartyIcon src={partyIconSource(props.candidateParty)} />
             <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
           </Row>
-        </Column>
+        </ContentColumn>
         <Star
           onClick={onStarClick}
           type={props.isFavorite ? 'favorite' : 'notFavorite'}

@@ -81,23 +81,25 @@ export const Star = styled('div')`
   width: 2rem;
 `;
 
-export const MainRow = styled.div`
-  align-items: flex-end;
-  border-bottom: 1px solid #e3e5e8;
-  display: flex;
-  flex: 0 0 100%;
-  flex-direction: 'row';
-  padding-bottom: 0.8rem;
-`;
-
 export const Row = styled.div`
   display: flex;
   flex-direction: row;
 `;
 
+export const MainRow = styled(Row)`
+  align-items: flex-end;
+  border-bottom: 1px solid #e3e5e8;
+  flex: 0 0 100%;
+  padding-bottom: 0.8rem;
+`;
+
 export const Column = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const ContentColumn = styled(Column)`
+  padding: 0 0.4rem 0 0.4rem;
 `;
 
 export const MemberBox = styled.div`
