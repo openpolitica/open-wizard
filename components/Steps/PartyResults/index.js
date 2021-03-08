@@ -29,7 +29,6 @@ import {
   doesntHaveSanctionsWithDriving,
 } from './filters';
 import GoBackButton from 'components/GoBackButton';
-import FavoriteButton from 'components/FavoriteButton';
 import startCasePeruvianRegions from './startCasePeruvianRegions';
 import simplePluralize from './simplePluralize';
 
@@ -169,9 +168,12 @@ export default function PartyResults(props) {
         <Styled.Row>
           <GoBackButton to={'/steps/3'} text="Regresa" />
           {favorites.length ? (
-            <FavoriteButton
-              text="Mis posibles opciones"
+            <Styled.SeeFavoritesButton
+              icon={
+                <img src="../images/icons/starBorderGreen.svg" alt="star" />
+              }
               onClick={() => Router.push('/favorites')}
+              text="Mis posibles opciones"
             />
           ) : null}
         </Styled.Row>
