@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { FavoritesProvider } from 'hooks/useFavorites';
 
 const CandidateResults = dynamic(
   () => import('components/Steps/CandidateResults'),
@@ -7,5 +8,9 @@ const CandidateResults = dynamic(
   },
 );
 
-const nossrCandidateResults = () => <CandidateResults />;
+const nossrCandidateResults = () => (
+  <FavoritesProvider>
+    <CandidateResults />;
+  </FavoritesProvider>
+);
 export default nossrCandidateResults;

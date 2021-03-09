@@ -24,7 +24,10 @@ export const Row = styled('div')`
 `;
 
 export const FilterButton = styled(BaseFilterButton)`
-  align-self: flex-end;
+  align-self: center;
+  font-size: 0.875rem;
+  margin: 1rem 0 0.5rem 0;
+  padding: 0 1rem;
 `;
 
 export const Step = styled('div')`

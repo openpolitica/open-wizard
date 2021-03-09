@@ -3,7 +3,6 @@ import BaseHeader from 'components/Header';
 import BaseTitle from 'components/BaseTitle';
 import BaseChip from 'components/Chip';
 import BaseFilterButton from 'components/FilterButton';
-import BaseButton from 'components/BaseButton';
 
 export const Container = styled('section')`
   align-items: center;
@@ -29,7 +28,10 @@ export const Row = styled.div`
 `;
 
 export const FilterButton = styled(BaseFilterButton)`
-  align-self: flex-end;
+  align-self: center;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  padding: 0 1rem;
 `;
 
 export const Title = styled(BaseTitle)`
@@ -52,10 +54,4 @@ export const Results = styled('section')`
   gap: 0.4375rem;
   margin-top: 1rem;
   width: 20.5rem;
-`;
-
-export const SeeFavoritesButton = styled((props) => (
-  <BaseButton type="secondary" {...props} />
-))`
-  margin-top: 0.875rem;
 `;
