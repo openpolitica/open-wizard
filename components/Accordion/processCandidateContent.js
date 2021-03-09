@@ -256,32 +256,34 @@ const processCandidateContent = (type, content) => {
       if (content.afiliations) {
         if (content.afiliations.length > 0) {
           militancyArray.push(
-            <>
+            <div key="militancia">
               <h4>Partidos anteriores</h4>
-              {content.afiliations.map((c) => {
-                return (
-                  <ul>
+              <ul>
+                {content.afiliations.map((c) => {
+                  return (
                     <li key={c.org_politica}>
                       {`${c.org_politica} (${getYear(
                         c.afiliacion_inicio,
                       )} - ${getYear(c.afiliacion_cancelacion)})`}
                     </li>
-                  </ul>
-                );
-              })}
-            </>,
+                  );
+                })}
+              </ul>
+            </div>,
           );
         } else {
           militancyArray.push(
-            <p>
-              <strong>Partidos anteriores: </strong>No registra historial.
-            </p>,
+            <div key="militancia">
+              <p>
+                <strong>Partidos anteriores: </strong>No registra historial.
+              </p>
+            </div>,
           );
         }
       }
       if (content.processAll) {
         militancyArray.push(
-          <div>
+          <div key="procesos">
             <p>
               <strong>Elecciones Participadas: </strong>
               {content.processAll}
@@ -295,10 +297,12 @@ const processCandidateContent = (type, content) => {
       }
       if (content.moneyContributions) {
         militancyArray.push(
-          <p>
-            <strong>Aportes monetarios a elecciones: </strong>
-            S/.{content.moneyContributions}
-          </p>,
+          <div key="aportes">
+            <p>
+              <strong>Aportes monetarios a elecciones: </strong>
+              S/.{content.moneyContributions}
+            </p>
+          </div>,
         );
       }
     }
