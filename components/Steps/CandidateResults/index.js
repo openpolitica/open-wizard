@@ -116,10 +116,7 @@ export default function Step4(props) {
         <Styled.Row>
           <GoBackButton to={'/results/grouped-by-party'} text="Regresa" />
           {favorites.length ? (
-            <FavoriteButton
-              text="Mis posibles opciones"
-              onClick={() => Router.push('/favorites')}
-            />
+            <FavoriteButton onClick={() => Router.push('/favorites')} />
           ) : null}
         </Styled.Row>
         <Styled.Title align="center">
