@@ -180,18 +180,6 @@ export default function CandidateSingle(props) {
           }}
         />
       </Styled.Step>
-      {isFavorite ? (
-        <Styled.FavoriteButton
-          text="Sácame de tus opciones"
-          type="transparent"
-          onClick={() => removeFavorite(c.hoja_vida_id)}
-        />
-      ) : (
-        <Styled.FavoriteButton
-          text="Agrégame a tus opciones"
-          onClick={() => addFavorite(c)}
-        />
-      )}
     </Styled.Container>
   );
 }

@@ -59,10 +59,6 @@ const CandidateBigCard = (props) => {
             <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
           </Row>
         </ContentColumn>
-        <Star
-          onClick={onStarClick}
-          type={props.isFavorite ? 'favorite' : 'notFavorite'}
-        />
       </MainRow>
       <Row>
         {props.candidateDesignate === 'No' ? (
