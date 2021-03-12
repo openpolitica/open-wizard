@@ -20,9 +20,7 @@ const Accordion = (props) => {
       <TitleRow onClick={onTitleRowClick}>
         <AccordionIcon icon={props.type} />
         <Title>{props.title}</Title>
-        <Chevron
-          direction={props.collapsed ? 'chevronDown' : 'chevronUp'}
-        />
+        <Chevron direction={props.collapsed ? 'chevronDown' : 'chevronUp'} />
       </TitleRow>
       {!props.collapsed ? (
         <ContentRow>
