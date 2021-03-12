@@ -1,29 +1,4 @@
 import styled from 'styled-components';
-import BaseImage from 'next/image';
-import * as icons from 'public/images/icons/topics/';
-
-export const iconMap = Object.entries(icons)
-  .map(([iconName, Icon]) => ({
-    [iconName]: styled(Icon)`
-      ${(props) =>
-        props.checked
-          ? `path {
-     fill: #5BC13E;
-     stroke: #5BC13E;
-   }`
-          : `path {
-     fill: #C7CAD1;
-     stroke: #C7CAD1;
-   }`}
-    `,
-  }))
-  .reduce(
-    (accumulator, current) => ({
-      ...accumulator,
-      [Object.keys(current)[0]]: Object.values(current)[0],
-    }),
-    {},
-  );
 
 export const Label = styled('label')`
   align-items: center;
@@ -47,4 +22,12 @@ export const Checkbox = styled('input').attrs((props) => ({
 }))`
   appearance: none;
   display: none;
+`;
+
+export const TopicIcon = styled('svg')`
+  color: ${(props) => (props.checked ? '#5BC13E' : '#C7CAD1')};
+  path {
+    fill: currentColor;
+    stroke: currentColor;
+  }
 `;
