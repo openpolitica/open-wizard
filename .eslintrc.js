@@ -7,7 +7,7 @@ module.exports = {
   ],
   rules: {
     'no-console': ['warn'],
-    'no-unused-vars': ['warn'],
+    'no-unused-vars': ['error'],
     'import/newline-after-import': ['warn', { count: 1 }],
     'import/no-unused-modules': ['warn'],
     'react-hooks/rules-of-hooks': 'off',

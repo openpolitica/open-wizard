@@ -7,14 +7,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ext js .",
+    "lint-only": "eslint --ext .js",
     "lint:fix": "npm run lint -- --fix",
+    "lint-only:fix": "npm run lint-only -- --fix",
     "prepare": "husky install",
     "postinstall": "husky install",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "**/*.{js,jsx,css}": [
-      "npm run lint:fix"
+    "*.{js,jsx,css}": [
+      "npm run lint-only:fix"
     ]
   },
   "dependencies": {
