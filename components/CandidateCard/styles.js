@@ -38,7 +38,7 @@ export const Fullname = styled('p')`
 export const Card = styled('div')`
   align-items: center;
   border-radius: 4px;
-  border: 1px solid ${props => borderPriority[props.type || 'primary']};
+  border: 1px solid ${(props) => borderPriority[props.type || 'primary']};
   cursor: pointer;
   display: flex;
   gap: 0.25rem;

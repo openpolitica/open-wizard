@@ -7,7 +7,7 @@ const startCasePeruvianRegions = (
 ) => {
   const lowerRegionArray = lowerCase(region).split(' ');
   return lowerRegionArray
-    .map(word =>
+    .map((word) =>
       word !== lowerRegionArray[0] && omit.includes(word)
         ? word
         : startCase(word),

@@ -20,19 +20,19 @@ export const PartyIcon = CandidatePartyIcon;
 
 export const PartyName = styled(BaseTitle)`
   font-size: 0.75rem;
-  line-height: .75rem;
-  margin-top: .5rem;
+  line-height: 0.75rem;
+  margin-top: 0.5rem;
   text-align: center;
 `;
 
 export const NumberOfCandidates = styled(BaseParagraph)`
-  margin-top: .25rem;
+  margin-top: 0.25rem;
 `;
 
 export const SeeCandidatesButton = styled(BaseButton)`
-  font-size: .75rem;
+  font-size: 0.75rem;
   height: 1.875rem;
-  line-height: .875rem;
+  line-height: 0.875rem;
   margin-top: 1rem;
   min-width: 6.375rem;
 `;

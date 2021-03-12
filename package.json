@@ -6,7 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext js ."
+    "lint": "eslint --ext js .",
+    "lint:fix": "npm run lint -- --fix",
+    "lint-only": "eslint --ext .js",
+    "lint-only:fix": "npm run lint-only -- --fix",
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,css}": [
+      "npm run lint-only"
+    ]
   },
   "dependencies": {
     "@openpolitica/matomo-next": "^1.2.1",
@@ -25,9 +36,16 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^5.5.0",
+    "babel-eslint": "^10.1.0",
     "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
     "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
     "eslint-plugin-react": "^7.22.0",
-    "eslint-plugin-react-hooks": "^4.2.0"
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "2.2.1"
   }
 }
