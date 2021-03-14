@@ -59,8 +59,8 @@ export const InfoText = styled.p`
 `;
 
 export const BoxLogo = styled.div`
-  display: flex;
   align-items: center;
+  display: flex;
   img {
     margin-right: 8px;
   }
