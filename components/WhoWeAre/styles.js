@@ -72,6 +72,10 @@ export const MentorsSection = styled(Section)`
   background-color: #fdf4f4;
 `;
 
+export const Content200 = styled('div')`
+  margin-top: 3.5rem;
+`;
+
 export const PartOfText = styled('p')`
   color: #475065;
   font-size: 0.875rem;

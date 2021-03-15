@@ -38,14 +38,14 @@ export default function WhoWeAre() {
             ))}
           </Styled.ListTeam>
         </Styled.MentorsSection>
-        <div style={{ marginTop: '56px' }}>
+        <Styled.Content200>
           <Styled.PartOfText>Fuimos parte de:</Styled.PartOfText>
           <Styled.Link200
             href="https://www.linkedin.com/company/200org/"
             target="_blank">
             <Styled.Image200 src="/images/200.png" />
           </Styled.Link200>
-        </div>
+        </Styled.Content200>
       </Styled.Container>
       <Footer />
     </>
