@@ -34,6 +34,7 @@ const LogoList = () => (
     <img src="../images/jne.svg" alt="jne logo" />
     <img src="../images/power-of-attorney.svg" alt="poder judicial logo" />
     <img src="../images/public-ministry.svg" alt="ministerio público logo" />
+    <img src="../images/el-comercio.svg" alt="el comercio logo" />
   </BoxLogo>
 );
 
