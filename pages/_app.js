@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from 'react';
 import Head from 'next/head';
-import { useHotjar } from 'react-use-hotjar';
+import useHotjar from 'react-use-hotjar';
 import { init as initMatomo } from '@openpolitica/matomo-next';
 
 function Votu({ Component, pageProps }) {
