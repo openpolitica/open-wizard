@@ -9,8 +9,11 @@ export default function Footer() {
       </Styled.TextCopyright>
       <Styled.TextLinks> Enlaces</Styled.TextLinks>
       <Styled.AboutUsLink>
-        <Link href="/about">Acerca de Nosotros</Link>
+        <Link href="/who-we-are">Acerca de Nosotros</Link>
       </Styled.AboutUsLink>
+      <Styled.AboutTheProjectLink>
+        <Link href="/about">Sobre el proyecto</Link>
+      </Styled.AboutTheProjectLink>
       <Styled.WriteUs> Escríbenos</Styled.WriteUs>
       <Styled.WriteUsEmail href="mailto:  openpoliticaperu@gmail.com?subject = Feedback&body = Message">
         openpoliticaperu@gmail.com

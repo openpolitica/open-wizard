@@ -5,6 +5,7 @@ export const FooterContent = styled('footer')`
   color: #fff;
   padding: 2.5rem 1.5rem;
   font-family: Roboto;
+  width: 100%;
 `;
 
 export const TextCopyright = styled('p')`
@@ -29,6 +30,10 @@ export const AboutUsLink = styled(TextCopyright)`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const AboutTheProjectLink = styled(AboutUsLink)`
+  margin-top: 0.5rem;
 `;
 
 export const WriteUs = styled('p')`
