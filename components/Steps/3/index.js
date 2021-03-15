@@ -26,10 +26,10 @@ export default function Step3() {
       </Styled.Step>
       <Styled.YesNoButtons>
         <Styled.NoButton onClick={onNoButtonClick}>
-          No, ni hablar
+          Ocultar candidatos
         </Styled.NoButton>
         <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
-          Déjalos, está bien
+          Incluir candidatos
         </Styled.YesButton>
       </Styled.YesNoButtons>
     </Styled.Container>
