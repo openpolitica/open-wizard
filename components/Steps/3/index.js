@@ -20,8 +20,8 @@ export default function Step3() {
       <Styled.Step>
         <Styled.Stepper steps={3} of={3} />
         <Styled.Title align="center">
-          ¿Te mostramos partidos que votaron a favor de la vacancia presidencial
-          de Noviembre del 2020?
+          ¿Incluimos partidos que votaron a favor de la vacancia presidencial de
+          Noviembre del 2020?
         </Styled.Title>
       </Styled.Step>
       <Styled.YesNoButtons>
