@@ -4,11 +4,13 @@ import fromIconToTopicName from 'components/PresidentialTopics/fromIconToTopicNa
 
 const translationMap = {
   education: 'educación',
+  environment: 'ambiente',
+  governability: 'gobernabilidad',
+  growth: 'crecimiento',
   health: 'salud',
-  economy: 'economía',
-  gobernability: 'gobernanza',
+  rights: 'derechos',
   security: 'seguridad',
-  environment: 'medio ambiente',
+  taxes: 'impuestos y pensiones',
 };
 
 const TopicCheckbox = ({ type, checked, ...props }) => {
