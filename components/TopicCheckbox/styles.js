@@ -31,3 +31,9 @@ export const TopicIcon = styled('svg')`
     stroke: currentColor;
   }
 `;
+
+export const TopicTitle = styled('span')`
+  &:first-letter {
+    text-transform: capitalize;
+  }
+`;
