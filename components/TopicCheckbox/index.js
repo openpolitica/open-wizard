@@ -1,8 +1,6 @@
-import { Fragment, useState } from 'react';
 import * as Styled from './styles.js';
 import * as icons from 'public/images/icons/topics';
-
-const startCase = ([first, ...rest]) => [first.toUpperCase(), ...rest].join('');
+import fromIconToTopicName from 'components/PresidentialTopics/fromIconToTopicName';
 
 const translationMap = {
   education: 'educación',
@@ -13,21 +11,19 @@ const translationMap = {
   environment: 'medio ambiente',
 };
 
-const TopicCheckbox = ({ type }) => {
-  const [checked, setCheckedState] = useState(false);
-  const Icon = icons[`${startCase(type)}Icon` || 'EducationIcon'];
+const TopicCheckbox = ({ type, checked, ...props }) => {
+  const Icon = icons[type || 'EducationIcon'];
 
   return (
-    <Fragment>
+    <div {...props}>
       <Styled.Checkbox name={type} />
-      <Styled.Label
-        checked={checked}
-        htmlFor={type}
-        onClick={() => setCheckedState((prevState) => !prevState)}>
+      <Styled.Label checked={checked} htmlFor={type}>
         <Styled.TopicIcon as={Icon} checked={checked} />
-        <span>{startCase(translationMap[type])}</span>
+        <Styled.TopicTitle>
+          {translationMap[fromIconToTopicName(type)]}
+        </Styled.TopicTitle>
       </Styled.Label>
-    </Fragment>
+    </div>
   );
 };
 
