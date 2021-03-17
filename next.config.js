@@ -20,6 +20,9 @@ module.exports = {
       url: 'https://matomo.openpolitica.com/',
       siteId: 1,
     },
+    profilePictures: {
+      baseUrl: 'https://declara.jne.gob.pe/Assets/Fotos-HojaVida/',
+    },
   },
   webpack(config) {
     config.module.rules.push({
