@@ -1,0 +1,33 @@
+import * as Styled from './styles';
+import { partyIconSource } from 'components/CandidateCard';
+
+const profileBaseUrl = process.env.profilePictures.baseUrl;
+
+const CompatibilityPartyCard = ({
+  partyName,
+  profileImageId,
+  compatibility,
+  ...props
+}) => {
+  return (
+    <Styled.Card {...props}>
+      <Styled.PartyIcon src={partyIconSource(partyName)} />
+      <Styled.ProfileIcon
+        src={
+          profileImageId
+            ? `${profileBaseUrl}${profileImageId}.jpg`
+            : `${profileBaseUrl}134127.jpg`
+        }
+      />
+      <Styled.Column>
+        <Styled.PartyName>{partyName || 'Nombre del partido'}</Styled.PartyName>
+        <Styled.Compatibility>{`${
+          compatibility || '0'
+        }% de compatibilidad`}</Styled.Compatibility>
+      </Styled.Column>
+      <Styled.ArrowCircle />
+    </Styled.Card>
+  );
+};
+
+export default CompatibilityPartyCard;
