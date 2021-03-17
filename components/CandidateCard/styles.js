@@ -27,14 +27,6 @@ export const NumberIcon = styled('span')`
 
 export const ProfileIcon = PartyIcon;
 
-export const Fullname = styled('p')`
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  line-height: 1.125rem;
-  margin: 0 0 0 0.5rem;
-`;
-
 export const Card = styled('div')`
   align-items: center;
   border-radius: 4px;
@@ -47,6 +39,18 @@ export const Card = styled('div')`
   padding: 0.875rem;
   position: relative;
   width: 20.5rem;
+`;
+
+export const Fullname = styled('p')`
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1.125rem;
+  margin: 0 0 0 0.5rem;
+
+  ${Card}:hover & {
+    text-decoration: underline;
+  }
 `;
 
 export const ArrowCircle = styled('div')`
