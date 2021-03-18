@@ -29,10 +29,10 @@ const contentPerCandidateType = (role, district, genre) => {
   }
   if (role.includes('PRESIDENTE')) {
     const specificRole = role.includes('PRIMER')
-      ? '1er Vicepresidente'
+      ? '1ra Vicepresidencia'
       : role.includes('SEGUNDO')
-      ? '2do Vicepresidente'
-      : 'Presidente';
+      ? '2da Vicepresidencia'
+      : 'Presidencia';
     return genre === 'F'
       ? `Candidata a ${specificRole}`
       : `Candidato a ${specificRole}`;
@@ -80,7 +80,7 @@ const CandidateBigCard = (props) => {
           </Column>
           <Row>
             <PartyIcon src={partyIconSource(props.candidateParty)} />
-            {props.candidateRole.indexOf('CONGRESISTA') !== -1 ? (
+            {props.candidateRole.includes('CONGRESISTA') ? (
               <NumberIcon>{props.candidateNumber || 'NA'}</NumberIcon>
             ) : null}
           </Row>
@@ -101,7 +101,10 @@ const CandidateBigCard = (props) => {
         <RowBorderUp>
           <Subtitle>REDES SOCIALES</Subtitle>
           {props.candidateTwitterLink ? (
-            <SocialLink href={props.candidateTwitterLink} target="_blank">
+            <SocialLink
+              href={props.candidateTwitterLink}
+              target="_blank"
+              rel="noopener noreferrer">
               <SocialTwitterIcon
                 src="/images/icons/candidateTwitter.svg"
                 alt="star"
@@ -109,7 +112,10 @@ const CandidateBigCard = (props) => {
             </SocialLink>
           ) : null}
           {props.candidateFacebookLink ? (
-            <SocialLink href={props.candidateFacebookLink} target="_blank">
+            <SocialLink
+              href={props.candidateFacebookLink}
+              target="_blank"
+              rel="noopener noreferrer">
               <SocialFacebookIcon
                 src="/images/icons/candidateFacebook.svg"
                 alt="star"

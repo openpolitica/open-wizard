@@ -42,8 +42,8 @@ export const NumberIcon = styled('span')`
 `;
 
 export const ProfileIcon = styled('img')`
-  height: 100px;
-  width: 71px;
+  height: 6.25rem;
+  width: 4.438rem;
 `;
 
 export const Fullname = styled('p')`
@@ -128,15 +128,15 @@ export const Subtitle = styled('h3')`
 `;
 
 export const SocialTwitterIcon = styled('img')`
-  height: 16px;
+  height: 1rem;
   margin-left: 1rem;
-  width: 20px;
+  width: 1.25rem;
 `;
 
 export const SocialFacebookIcon = styled('img')`
-  height: 16px;
+  height: 1rem;
   margin-left: 1rem;
-  width: 8.8px;
+  width: 0.55rem;
 `;
 
 export const SocialLink = styled('a')`
