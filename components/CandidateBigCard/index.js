@@ -13,7 +13,8 @@ import {
   MemberBox,
   Subtitle,
   RowBorderUp,
-  SocialIcon,
+  SocialTwitterIcon,
+  SocialFacebookIcon,
   SocialLink,
 } from './styles';
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
@@ -96,12 +97,25 @@ const CandidateBigCard = (props) => {
           <MemberBox type="yellow">Invitado del partido</MemberBox>
         )}
       </RowBorderUp>
-      {props.candidateTwitterLink ? (
+      {props.candidateTwitterLink || props.candidateFacebookLink ? (
         <RowBorderUp>
           <Subtitle>REDES SOCIALES</Subtitle>
-          <SocialLink href={props.candidateTwitterLink} target="_blank">
-            <SocialIcon src="/images/icons/candidateTwitter.svg" alt="star" />
-          </SocialLink>
+          {props.candidateTwitterLink ? (
+            <SocialLink href={props.candidateTwitterLink} target="_blank">
+              <SocialTwitterIcon
+                src="/images/icons/candidateTwitter.svg"
+                alt="star"
+              />
+            </SocialLink>
+          ) : null}
+          {props.candidateFacebookLink ? (
+            <SocialLink href={props.candidateFacebookLink} target="_blank">
+              <SocialFacebookIcon
+                src="/images/icons/candidateFacebook.svg"
+                alt="star"
+              />
+            </SocialLink>
+          ) : null}
         </RowBorderUp>
       ) : null}
     </Card>

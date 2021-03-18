@@ -105,7 +105,8 @@ export default function CandidateSingle(props) {
           district={c.postula_distrito}
           candidateGenre={c.id_sexo}
           candidateRole={c.cargo_nombre}
-          candidateTwitterLink={c.twitter}></Styled.CandidateBigCard>
+          candidateTwitterLink={c.twitter}
+          candidateFacebookLink={c.facebook}></Styled.CandidateBigCard>
         <Styled.Accordion
           type="personalInfo"
           title="Información personal"

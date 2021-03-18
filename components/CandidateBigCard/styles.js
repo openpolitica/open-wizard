@@ -127,10 +127,16 @@ export const Subtitle = styled('h3')`
   margin-bottom: 0.2rem;
 `;
 
-export const SocialIcon = styled('img')`
+export const SocialTwitterIcon = styled('img')`
   height: 16px;
   margin-left: 1rem;
   width: 20px;
+`;
+
+export const SocialFacebookIcon = styled('img')`
+  height: 16px;
+  margin-left: 1rem;
+  width: 8.8px;
 `;
 
 export const SocialLink = styled('a')`
