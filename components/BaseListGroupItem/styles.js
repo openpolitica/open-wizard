@@ -18,6 +18,8 @@ export const TopicTitle = styled(BaseTitle)`
 `;
 
 export const TopicDetail = styled(BaseParagraph)`
+  margin-top: 0.063rem;
+  margin-left: 0.125rem;
 `;
 
 export const TopicItem = styled('li')`
@@ -25,8 +27,8 @@ export const TopicItem = styled('li')`
   display: flex;
   &:first-child {
     border-radius: 0.25rem 0.25rem 0 0;
-  }
-  &:last-child {
+  };
+  &:last-of-type {
     border-radius: 0 0 0.25rem 0.25rem;
-  }
+  };
 `;
