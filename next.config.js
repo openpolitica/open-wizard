@@ -8,6 +8,7 @@ module.exports = {
       candidatesUrl: 'https://api.openpolitica.com/candidates',
       locationsUrl: 'https://api.openpolitica.com/locations',
       partiesUrl: 'https://api.openpolitica.com/parties',
+      policiesUrl: 'https://staging-api.openpolitica.com/policies'
     },
     hotjar: {
       id: 2235835,
