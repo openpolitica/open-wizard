@@ -11,6 +11,7 @@ module.exports = {
       candidatesUrl: `https://${apiBase}.openpolitica.com/candidates`,
       locationsUrl: `https://${apiBase}.openpolitica.com/locations`,
       partiesUrl: `https://${apiBase}.openpolitica.com/parties`,
+      policiesUrl: `https://${apiBase}.openpolitica.com/policies`
     },
     hotjar: {
       id: 2235835,
