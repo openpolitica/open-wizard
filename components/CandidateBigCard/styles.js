@@ -41,10 +41,10 @@ export const NumberIcon = styled('span')`
   width: 2rem;
 `;
 
-export const ProfileIcon = styled('img')`
-  height: 6.25rem;
-  width: 4.438rem;
-`;
+export const ProfileIcon = styled(Image).attrs((props) => ({
+  height: 100,
+  width: 71,
+}))``;
 
 export const Fullname = styled('p')`
   color: #475065;
