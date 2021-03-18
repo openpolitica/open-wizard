@@ -12,6 +12,9 @@ import {
   ContentColumn,
   MemberBox,
   Subtitle,
+  RowBorderUp,
+  SocialIcon,
+  SocialLink,
 } from './styles';
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 
@@ -78,13 +81,21 @@ const CandidateBigCard = (props) => {
           type={props.isFavorite ? 'favorite' : 'notFavorite'}
         />
       </MainRow>
-      <Row>
+      <RowBorderUp>
         {props.candidateDesignate === 'No' ? (
           <MemberBox type="green">Militante</MemberBox>
         ) : (
           <MemberBox type="yellow">Invitado del partido</MemberBox>
         )}
-      </Row>
+      </RowBorderUp>
+      {props.candidateTwitterLink ? (
+        <RowBorderUp>
+          <Subtitle>REDES SOCIALES</Subtitle>
+          <SocialLink href={props.candidateTwitterLink} target="_blank">
+            <SocialIcon src="/images/icons/candidateTwitter.svg" alt="star" />
+          </SocialLink>
+        </RowBorderUp>
+      ) : null}
     </Card>
   );
 };

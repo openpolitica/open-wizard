@@ -41,10 +41,10 @@ export const NumberIcon = styled('span')`
   width: 2rem;
 `;
 
-export const ProfileIcon = styled(Image).attrs((props) => ({
-  height: 100,
-  width: 71,
-}))``;
+export const ProfileIcon = styled('img')`
+  height: 100px;
+  width: 71px;
+`;
 
 export const Fullname = styled('p')`
   color: #475065;
@@ -63,8 +63,6 @@ export const Card = styled('div')`
   box-shadow: 0px 2px 4px rgba(71, 80, 101, 0.12);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.25rem;
-  height: 11.5rem;
   justify-content: flex-start;
   padding: 0.875rem;
   position: relative;
@@ -83,14 +81,20 @@ export const Star = styled('div')`
 
 export const Row = styled.div`
   display: flex;
+  flex: 0 0 100%;
   flex-direction: row;
+`;
+
+export const RowBorderUp = styled(Row)`
+  align-items: center;
+  border-top: 1px solid #e3e5e8;
+  padding: 0.5rem 0;
 `;
 
 export const MainRow = styled(Row)`
   align-items: flex-end;
-  border-bottom: 1px solid #e3e5e8;
   flex: 0 0 100%;
-  padding-bottom: 0.8rem;
+  padding: 0.5rem 0;
 `;
 
 export const Column = styled.div`
@@ -110,7 +114,6 @@ export const MemberBox = styled.div`
   display: flex;
   font-family: 'Poppins', sans-serif;
   font-size: 0.8rem;
-  margin-top: 0.4rem;
   padding: 0.6rem 0.9rem;
 `;
 
@@ -119,7 +122,17 @@ export const Subtitle = styled('h3')`
   font-family: 'Poppins', sans-serif;
   font-size: 0.7875rem;
   font-weight: 700;
-  line-height: 1.5rem;
+  line-height: 1.125rem;
   margin: 0;
   margin-bottom: 0.2rem;
 `;
+
+export const SocialIcon = styled('img')`
+  height: 16px;
+  margin-left: 1rem;
+  width: 20px;
+`;
+
+export const SocialLink = styled('a')`
+  text-decoration: none;
+)`;
