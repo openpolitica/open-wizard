@@ -5,6 +5,8 @@ import { TopicsContext } from 'hooks/useTopics';
 import * as Styled from './styles';
 import qs from 'qs';
 
+const requiredNumberOfSelectedTopics = 3;
+
 const fetchQuestions = (apiTerms) => {
   const { data, error } = useSWR('/api/policies/questions', () =>
     fetch(`${process.env.api.policiesUrl}/questions?${apiTerms}`).then((data) =>
@@ -42,7 +44,7 @@ export default function IsMomentTopics() {
         </Styled.SubTitle>
         <Styled.TopicList>
           {
-            userSelectedTopics ? userSelectedTopics.map((topic, index) => (
+            userSelectedTopics.length ? userSelectedTopics.map((topic, index) => (
               <Styled.TopicListGroupItem
                 key={`Topic-${index}`}
                 type={topic}
@@ -50,10 +52,18 @@ export default function IsMomentTopics() {
               >{topic}</Styled.TopicListGroupItem>
             )) :
               (
-                <p>Ningún tópico seleccionado</p>
+                <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
               )
           }
           <Styled.Button
+            type={
+              userSelectedTopics.length < requiredNumberOfSelectedTopics
+                ? 'disabled'
+                : 'primary'
+            }
+            disabled={
+              userSelectedTopics.length < requiredNumberOfSelectedTopics
+            }
             onClick={() => Router.push('/presidential-steps/3')}
             text="Continuar"
           />
