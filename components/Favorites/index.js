@@ -1,19 +1,10 @@
 import { useContext } from 'react';
 import Router from 'next/router';
-import ls from 'local-storage';
 import { FavoritesContext } from 'hooks/useFavorites';
 import GoBackButton from 'components/GoBackButton';
 import Chip from 'components/Chip';
 import * as Styled from './styles';
-
-const includesAll = (theseValues) => (inTheseValues) =>
-  theseValues.every((value) => inTheseValues.includes(value));
-
-const comesFromAFinishedUserTrip = includesAll([
-  'location',
-  'impeachment',
-  'withSentence',
-])(Object.keys(ls.get('op.wizard')));
+import comesFromAFinishedUserTrip from './comesFromAFinishedUserTrip';
 
 const goBackToPartyResults = (event) => {
   if (comesFromAFinishedUserTrip) {
