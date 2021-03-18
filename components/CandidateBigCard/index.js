@@ -20,13 +20,21 @@ import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 
 const profileIconBaseUrl = 'https://declara.jne.gob.pe/Assets/Fotos-HojaVida/';
 
-const postulaContent = (role, district, genre) => {
-  if (role.indexOf('CONGRESISTA') > -1) {
+const contentPerCandidateType = (role, district, genre) => {
+  if (role.includes('CONGRESISTA')) {
     return district !== 'PERUANOS RESIDENTES EN EL EXTRANJERO'
       ? `Postula por ${capitalize(district)}`
       : `Postula al Extranjero`;
-  } else {
-    return genre === 'F' ? `Candidata a Presidente` : `Candidato a Presidente`;
+  }
+  if (role.includes('PRESIDENTE')) {
+    const specificRole = role.includes('PRIMER')
+      ? '1er Vicepresidente'
+      : role.includes('SEGUNDO')
+      ? '2do Vicepresidente'
+      : 'Presidente';
+    return genre === 'F'
+      ? `Candidata a ${specificRole}`
+      : `Candidato a ${specificRole}`;
   }
 };
 
@@ -62,7 +70,7 @@ const CandidateBigCard = (props) => {
               {capitalize(props.candidateFullname) || 'Nombre de candidato'}
             </Fullname>
             <Subtitle>
-              {postulaContent(
+              {contentPerCandidateType(
                 props.candidateRole,
                 props.district,
                 props.candidateGenre,
