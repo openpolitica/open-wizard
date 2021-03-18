@@ -33,8 +33,6 @@ export const TopicIcon = styled('svg')`
 `;
 
 export const TopicTitle = styled('span')`
-  text-align: center;
-
   &:first-letter {
     text-transform: capitalize;
   }
