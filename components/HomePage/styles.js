@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 import BaseButton from 'components/BaseButton';
 
 export const Container = styled.div`
@@ -8,20 +7,12 @@ export const Container = styled.div`
 `;
 
 export const Hero = styled.main`
-  background: #ecf4f3;
-  padding: 40px 24px 141px 24px;
   position: relative;
 `;
 
-export const Welcome = styled.div`
+export const TextContent = styled.div`
   background: #ecf4f3;
-  padding: 40px 24px 141px 24px;
-`;
-
-export const BackgrounHero = styled.div`
-  position: absolute;
-  right: 0;
-  bottom: -53px;
+  padding: 40px 24px 1px 24px;
 `;
 
 export const Title = styled.h1`
@@ -42,6 +33,41 @@ export const Paragraph = styled.p`
   font-weight: 600;
   font-size: 14px;
   margin-bottom: 24px;
+`;
+
+export const ContentButtonCandidate = styled.div`
+  background: linear-gradient(to bottom, #ecf4f3 50%, #fff 50%);
+  display: flex;
+  margin: 0px -13px 0px 0px;
+  padding: 0px 24px;
+  width: 100%;
+`;
+
+export const FindMyCandidateButton = styled('button')`
+  background: #fff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  margin: 0px 13px 0px 0px;
+  max-width: 157px;
+  padding: 12px 12px 24px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const TextButton = styled.p`
+  color: #475065;
+  margin: 4px 0px 0px;
+`;
+
+export const SpanCandidate = styled.span`
+  font-weight: bold;
 `;
 
 export const InfoSection = styled.div`

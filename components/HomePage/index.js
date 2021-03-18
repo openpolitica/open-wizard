@@ -2,9 +2,13 @@ import ls from 'local-storage';
 import {
   Container,
   Hero,
-  BackgrounHero,
+  TextContent,
   Title,
   Paragraph,
+  ContentButtonCandidate,
+  FindMyCandidateButton,
+  TextButton,
+  SpanCandidate,
   InfoCard,
   BackgroundDirections,
   Span,
@@ -18,7 +22,6 @@ import {
   WrapperCheckLabel,
 } from './styles.js';
 import { useRouter } from 'next/router';
-import BaseButton from 'components/BaseButton';
 import BaseHeader from 'components/Header';
 import Footer from 'components/Footer';
 
@@ -42,27 +45,40 @@ const HomePage = () => {
   const router = useRouter();
   ls('op.wizard', {});
 
-  const handleStart = (e) => {
+  const goToCongressmen = (e) => {
     router.push('/steps/1');
+  };
+  const goToPresident = (e) => {
+    router.push('/');
   };
 
   return (
     <Container>
       <BaseHeader />
       <Hero>
-        <Title>
-          Hay casi 2700 candidatos al congreso{' '}
-          <Span>¿Sabes a quién elegir?</Span>
-        </Title>
-        <Paragraph>
-          Te ayudamos a encontrar tus candidatos ideales en 3 sencillos pasos
-        </Paragraph>
-        <BaseButton type="secondary" onClick={handleStart}>
-          Encontrar mis candidatos
-        </BaseButton>
-        <BackgrounHero>
-          <img src="../images/charco-inbox.svg" alt="postal" />
-        </BackgrounHero>
+        <TextContent>
+          <Title>
+            Hay casi 2700 candidatos al congreso{' '}
+            <Span>¿Sabes a quién elegir?</Span>
+          </Title>
+          <Paragraph>
+            Te ayudamos a encontrar tus candidatos ideales en 3 sencillos pasos
+          </Paragraph>
+        </TextContent>
+        <ContentButtonCandidate>
+          <FindMyCandidateButton onClick={goToPresident}>
+            <img src="../images/icons/president.svg" alt="icono presidente" />
+            <TextButton>
+              Encontrar mi candidato<SpanCandidate> presidencial</SpanCandidate>
+            </TextButton>
+          </FindMyCandidateButton>
+          <FindMyCandidateButton onClick={goToCongressmen}>
+            <img src="../images/icons/congressmen.svg" alt="icono presidente" />
+            <TextButton>
+              Encontrar mi candidato al <SpanCandidate>congreso</SpanCandidate>{' '}
+            </TextButton>
+          </FindMyCandidateButton>
+        </ContentButtonCandidate>
       </Hero>
 
       <InfoSection>
@@ -78,7 +94,7 @@ const HomePage = () => {
           <SubtitleInfoCard>Tú eliges qué filtros utilizar:</SubtitleInfoCard>
           <CheckLabel>Candidatos con/sin sentencias</CheckLabel>
           <CheckLabel>Selecciona tus partidos preferidos</CheckLabel>
-          <ButtonStart type="secondary" onClick={handleStart}>
+          <ButtonStart type="secondary" onClick={goToCongressmen}>
             Comenzar
           </ButtonStart>
           <BackgroundDirections>
