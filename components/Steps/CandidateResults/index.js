@@ -1,9 +1,8 @@
-import { useEffect, useState, useContext } from 'react';
+import { useState, useContext } from 'react';
 import Router, { useRouter } from 'next/router';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
-import qs from 'qs';
 import { FavoritesContext } from 'hooks/useFavorites';
 import * as Styled from './styles';
 import toggleSlug from 'components/PartyCard/toggleSlug';
@@ -14,13 +13,10 @@ import FavoriteButton from 'components/FavoriteButton';
 import FilterModal from 'components/FilterModal';
 import {
   applyFilter,
-  applyFilters,
-  byGenre,
   onlyMale,
   onlyFemale,
   hasJNEIncome,
   hasPublicServiceExperience,
-  byStudies,
   upToPrimary,
   upToSecondary,
   upToHighSchool,
@@ -30,14 +26,7 @@ import {
   doesntHaveSanctionsWithDriving,
 } from 'components/Steps/PartyResults/filters';
 import hasDriverLicenseIssue from './hasDriverLicenseIssue';
-
-const mapApiTerms = (options) => ({
-  vacancia: options.impeachment,
-  sentencias: options.withSentence,
-  region: options.location,
-  role: 'CONGRESISTA',
-  limit: 10,
-});
+import comesFromAFinishedUserTrip from 'components/Favorites/comesFromAFinishedUserTrip';
 
 const LoadingScreen = () => {
   return (
@@ -56,10 +45,11 @@ export default function Step4(props) {
   if (isServer) {
     return <LoadingScreen />;
   }
-  if (!router.query.partyName) {
+
+  if (!router.query.partyName || !comesFromAFinishedUserTrip()) {
     router.push('/');
+    return null;
   }
-  const partyName = router.query.partyName;
 
   const [isFilterModalOpen, setFilterModalState] = useState(false);
   const [filters, setFilters] = useState(ls('op.wizard').filters);
@@ -68,7 +58,7 @@ export default function Step4(props) {
   ];
   const location = ls('op.wizard').location;
 
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     candidates && location
       ? `/api/parties/dirtylists?region=${location}&party=${candidates[0].org_politica_nombre}`
       : null,
