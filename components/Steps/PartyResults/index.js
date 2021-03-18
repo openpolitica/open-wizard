@@ -13,13 +13,11 @@ import FilterModal from 'components/FilterModal';
 import {
   applyFilter,
   applyFilters,
-  byGenre,
   onlyMale,
   onlyFemale,
   hasJNEIncome,
   hasPublicServiceExperience,
   hasPrivateWorkExperience,
-  byStudies,
   upToPrimary,
   upToSecondary,
   upToHighSchool,
@@ -32,6 +30,7 @@ import GoBackButton from 'components/GoBackButton';
 import FavoriteButton from 'components/FavoriteButton';
 import startCasePeruvianRegions from './startCasePeruvianRegions';
 import simplePluralize from './simplePluralize';
+import comesFromAFinishedUserTrip from 'components/Favorites/comesFromAFinishedUserTrip';
 
 const mapApiTerms = (options) => ({
   vacancia: options.impeachment,
@@ -71,7 +70,7 @@ const showPartyCards = (candidatesByPartyName) => {
 };
 
 const fetchSeats = (location) => {
-  const { data, error } = useSWR('/api/locations/seats', () =>
+  const { data } = useSWR('/api/locations/seats', () =>
     fetch(`${process.env.api.locationsUrl}/${location}/seats`).then((data) =>
       data.json(),
     ),
@@ -89,6 +88,11 @@ export default function PartyResults(props) {
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
+  }
+
+  if (!comesFromAFinishedUserTrip()) {
+    Router.push('/');
+    return null;
   }
 
   const fetchStoreCandidates = async () => {
