@@ -53,13 +53,14 @@ export const SubTitle = styled(BaseParagraph)`
 export const Topics = styled('section')`
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4375rem;
   justify-content: center;
   margin: 1rem 0 2rem;
   width: 20.5rem;
 `;
 
-export const TopicCheckbox = BaseTopicCheckbox;
+export const TopicCheckbox = styled(BaseTopicCheckbox)`
+  margin: 0.21875rem;
+`;
 
 export const Button = styled(BaseButton)`
   margin: 1.5rem auto 0;
