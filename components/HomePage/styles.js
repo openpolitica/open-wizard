@@ -1,180 +1,141 @@
 import styled from 'styled-components';
 import BaseButton from 'components/BaseButton';
 
-export const Container = styled.div`
+export const Container = styled('div')`
   background: #fff;
   font-family: 'Poppins', sans-serif;
 `;
 
-export const Hero = styled.main`
+export const Hero = styled('main')`
   position: relative;
 `;
 
-export const TextContent = styled.div`
+export const TextContent = styled('div')`
   background: #ecf4f3;
-  padding: 40px 24px 1px 24px;
+  padding: 2.5rem 1.5rem 0.0625rem 1.5rem;
 `;
 
-export const Title = styled.h1`
+export const Title = styled('h1')`
   color: #04102f;
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 600;
-  line-height: 32px;
-  margin-right: 0 42px 0 0;
+  line-height: 2rem;
 `;
 
-export const Span = styled.span`
+export const SpanGreen = styled('span')`
   color: #4eb5a2;
 `;
 
-export const Paragraph = styled.p`
-  line-height: 18px;
+export const Paragraph = styled('p')`
+  line-height: 1.125rem;
   color: #475065;
-  font-weight: 600;
-  font-size: 14px;
-  margin-bottom: 24px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  margin-bottom: 1.5rem;
 `;
 
-export const ContentButtonCandidate = styled.div`
+export const ContentButtonCandidate = styled('div')`
   background: linear-gradient(to bottom, #ecf4f3 50%, #fff 50%);
-  display: flex;
-  margin: 0px -13px 0px 0px;
-  padding: 0px 24px;
-  width: 100%;
+  display: grid;
+  padding: 0 1.5rem;
+  grid-template-columns: repeat(2, minmax(9.375rem, 9.8125rem));
+  column-gap: 13px;
 `;
 
 export const FindMyCandidateButton = styled('button')`
   background: #fff;
   border: none;
-  border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.12);
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 21px;
-  margin: 0px 13px 0px 0px;
-  max-width: 157px;
-  padding: 12px 12px 24px;
+  max-width: 9.8125rem;
+  padding: 0.75rem 0.75rem 1.5rem;
 
   &:hover {
     text-decoration: underline;
   }
 `;
 
-export const TextButton = styled.p`
-  color: #475065;
-  margin: 4px 0px 0px;
+export const TextButton = styled('p')`
+  color: #04102f;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.3125rem;
+  margin: 0.25rem 0 0;
 `;
 
-export const SpanCandidate = styled.span`
+export const SpanBlack = styled('span')`
   font-weight: bold;
 `;
 
-export const InfoSection = styled.div`
-  padding: 60px 24px 41px;
+export const InfoSection = styled('div')`
+  padding: 3.75rem 1.5rem 2.5rem;
 `;
 
-export const InfoText = styled.p`
+export const InfoText = styled('p')`
   color: #04102f;
   font-weight: bold;
-  font-size: 18px;
-  line-height: 24px;
-  max-width: 65%;
+  font-size: 1.125rem;
+  line-height: 1.5rem;
+  max-width: 88%;
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 2rem;
 `;
 
-export const BoxLogo = styled.div`
+export const BoxLogo = styled('div')`
   align-items: center;
   display: flex;
-  img {
-    margin-right: 8px;
-  }
 `;
 
-export const InfoCard = styled.div`
+export const LogoImage = styled('div')`
+  margin-right: 0.75rem;
+`;
+
+export const InfoCard = styled('div')`
   position: relative;
   background-color: #04102f;
-  border-radius: 16px;
-  padding: 51px 20px 37px 24px;
+  border-radius: 1rem;
+  padding: 2.5rem 1.5rem;
   color: #fff;
-  margin-top: 138px;
+  margin-top: 5rem;
 `;
 
-export const BackgroundDirections = styled.div`
+export const BackgroundDirections = styled('div')`
   position: absolute;
-  top: -115px;
+  top: -5.75rem;
+  right: -1.53125rem;
 `;
 
-export const TitleInfoCard = styled.p`
+export const TitleInfoCard = styled('p')`
   color: #fff;
   font-weight: 600;
-  font-size: 19px;
-  line-height: 26px;
+  font-size: 1.1875rem;
+  line-height: 1.625rem;
   margin: 0;
-  margin-bottom: 16px;
+  margin-bottom: 1rem;
 `;
 
-export const SubtitleInfoCard = styled.p`
+export const SubtitleInfoCard = styled('p')`
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 0.875rem;
   margin: 0;
-  margin-bottom: 8px;
+  margin-bottom: 0.5rem;
 `;
 // check section
-export const CheckText = styled.p`
+export const CheckText = styled('p')`
   font-weight: normal;
   margin: 0;
-  margin-left: 8px;
-  font-size: 14px;
+  margin-left: 0.5rem;
+  font-size: 0.875rem;
 `;
 
-export const WrapperCheckLabel = styled.div`
+export const WrapperCheckLabel = styled('div')`
   display: flex;
-  margin-bottom: 4px;
+  margin-bottom: 0.25rem;
 `;
 
 export const ButtonStart = styled(BaseButton)`
-  margin-top: 16px;
-`;
-
-export const FooterContent = styled.footer`
-  background-color: #4eb5a2;
-  color: #fff;
-  padding: 40px 24px;
-  font-family: Roboto;
-`;
-
-export const TextCopyright = styled.p`
-  font-size: 18px;
-  line-height: 24px;
-  margin: 0;
-`;
-
-export const WriteUs = styled.p`
-  font-weight: bold;
-  font-size: 18px;
-  margin: 0;
-  margin-top: 32px;
-  margin-bottom: 8px;
-`;
-
-export const WriteUsEmail = styled.a`
-  color: #fff;
-  opacity: 0.6;
-  font-size: 18px;
-`;
-
-export const BoxSocialMedia = styled.ul`
-  display: flex;
-  margin: 0;
-  margin-top: 24px;
-  align-items: center;
-  padding-left: 0;
-`;
-
-export const SocialMediaList = styled.li`
-  list-style: none;
-  margin-right: 16px;
+  margin-top: 1rem;
+  width: 100%;
 `;
