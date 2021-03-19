@@ -2,7 +2,7 @@ import * as Styled from './styles.js';
 import * as icons from 'public/images/icons/topics';
 import fromIconToTopicName from 'components/PresidentialTopics/fromIconToTopicName';
 
-const translationMap = {
+export const translationMap = {
   education: 'educación',
   environment: 'ambiente',
   governability: 'gobernabilidad',

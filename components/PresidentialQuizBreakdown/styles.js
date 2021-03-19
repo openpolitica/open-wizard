@@ -6,7 +6,7 @@ import BaseTitle from 'components/BaseTitle';
 import BaseParagraph from 'components/BaseParagraph';
 import BaseTopicCheckbox from 'components/TopicCheckbox';
 import BaseButton from 'components/BaseButton';
-import ListGroupItem from 'components/BaseListGroupItem';
+import BaseQuizBreakdownItem from 'components/BaseQuizBreakdownItem';
 
 export const Container = styled('section')`
   align-items: center;
@@ -60,14 +60,14 @@ export const Topics = styled('section')`
   width: 20.5rem;
 `;
 
-export const TopicList = styled('ul')`
+export const QuizBreakdown = styled('ul')`
   display: flex;
   flex-direction: column;
   padding-left: 0;
   width: 20rem;
 `;
 
-export const TopicListGroupItem = styled(ListGroupItem)`
+export const QuizBreakdownItem = styled(BaseQuizBreakdownItem)`
   align-items: center;
   background-color: #ffffff;
   border: 0.1rem solid rgba(0, 0, 0, 0.125);

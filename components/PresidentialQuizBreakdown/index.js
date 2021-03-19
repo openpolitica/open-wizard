@@ -16,11 +16,9 @@ const fetchQuestions = (apiTerms) => {
   return data?.data;
 };
 
-export default function IsMomentTopics() {
+export default function PresidentialQuizBreakdown() {
   const { userSelectedTopics } = useContext(TopicsContext);
-
   const apiTerms = qs.stringify({ topics: userSelectedTopics });
-
   const questions = fetchQuestions(apiTerms) || {};
 
   return (
@@ -30,21 +28,21 @@ export default function IsMomentTopics() {
         <Styled.Row>
           <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
         </Styled.Row>
-        <Styled.Stepper steps="1" of="3" />
+        <Styled.Stepper steps="2" of="3" />
         <Styled.Title>Es momento del test</Styled.Title>
         <Styled.SubTitle>Te haremos preguntas por cada pilar.</Styled.SubTitle>
         <Styled.SubTitle>
           Si no deseas responder una de ellas, podrás omitirla.
         </Styled.SubTitle>
-        <Styled.TopicList>
+        <Styled.QuizBreakdown>
           {userSelectedTopics.length ? (
             userSelectedTopics.map((topic, index) => (
-              <Styled.TopicListGroupItem
+              <Styled.QuizBreakdownItem
                 key={`Topic-${index}`}
                 type={topic}
                 questions={questions}>
                 {topic}
-              </Styled.TopicListGroupItem>
+              </Styled.QuizBreakdownItem>
             ))
           ) : (
             <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
@@ -61,7 +59,7 @@ export default function IsMomentTopics() {
             onClick={() => Router.push('/presidential-steps/3')}
             text="Continuar"
           />
-        </Styled.TopicList>
+        </Styled.QuizBreakdown>
       </Styled.Step>
     </Styled.Container>
   );
