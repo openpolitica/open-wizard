@@ -86,6 +86,13 @@ export default function CandidateSingle(props) {
             text={generateGoBackText(fromPath)}
           />
         </Styled.Row>
+        {c.cargo_nombre.includes('VICEPRESIDENTE') ? (
+          <Styled.Chip type={'good'}>
+            {`Este candidato está postulando a la ${
+              c.cargo_nombre.includes('PRIMER') ? 'Primera' : 'Segunda'
+            } Vicepresidencia y al Congreso.`}
+          </Styled.Chip>
+        ) : null}
         <Styled.CandidateBigCard
           addFavorite={addFavorite}
           removeFavorite={removeFavorite}

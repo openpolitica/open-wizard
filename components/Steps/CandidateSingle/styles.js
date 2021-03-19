@@ -34,7 +34,8 @@ export const Title = styled(BaseTitle)`
 `;
 
 export const Chip = styled(BaseChip)`
-  margin-top: 1rem;
+  flex: 1;
+  margin: 0.5rem 0;
 `;
 
 export const Results = styled('section')`
