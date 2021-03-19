@@ -52,7 +52,7 @@ const HomePage = () => {
     router.push('/steps/1');
   };
   const goToPresident = (e) => {
-    router.push('/');
+    router.push('/presidential-steps/1');
   };
 
   const electionDate = new Date('2021/04/11');
@@ -67,16 +67,15 @@ const HomePage = () => {
         <Styled.TextContent>
           <Styled.Title>
             Faltan
-            <Styled.SpanGreen> {remainingDays} días </Styled.SpanGreen>
-            para las elecciones{' '}
-            <Styled.SpanBlack>¿Ya sabes por quién votar?</Styled.SpanBlack>
+            <Styled.Emphasis> {remainingDays} días </Styled.Emphasis>
+            para las elecciones <strong>¿Ya sabes por quién votar?</strong>
           </Styled.Title>
           <Styled.Paragraph>
             Te ayudamos a encontrar tus opciones ideales para estas elecciones
             en unos cuantos pasos
           </Styled.Paragraph>
         </Styled.TextContent>
-        <Styled.ContentButtonCandidate>
+        <Styled.ButtonsRow>
           <Styled.FindMyCandidateButton onClick={goToPresident}>
             <Image
               src="/images/icons/president.svg"
@@ -84,45 +83,40 @@ const HomePage = () => {
               height="70"
               alt="icono presidente"
             />
-            <Styled.TextButton>
+            <Styled.ButtonText>
               Encuentra a tu
-              <Styled.SpanBlack> presidente</Styled.SpanBlack>
-            </Styled.TextButton>
+              <strong> presidente</strong>
+            </Styled.ButtonText>
           </Styled.FindMyCandidateButton>
           <Styled.FindMyCandidateButton onClick={goToCongressmen}>
             <Image
               src="/images/icons/congressmen.svg"
               width="70"
               height="70"
-              alt="icono presidente"
+              alt="icono congresistas"
             />
-            <Styled.TextButton>
-              Encuentra a tu
-              <Styled.SpanBlack> congresista</Styled.SpanBlack>
-            </Styled.TextButton>
+            <Styled.ButtonText>
+              Encuentra a tus <strong> congresistas</strong>
+            </Styled.ButtonText>
           </Styled.FindMyCandidateButton>
-        </Styled.ContentButtonCandidate>
+        </Styled.ButtonsRow>
       </Styled.Hero>
-
       <Styled.InfoSection>
         <Styled.InfoText>
           Juntamos toda la información pública para que puedas{' '}
-          <Styled.SpanGreen> elegir informado.</Styled.SpanGreen>
+          <Styled.Emphasis> elegir informado.</Styled.Emphasis>
         </Styled.InfoText>
         <LogoList />
         <Styled.InfoCard>
           <Styled.TitleInfoCard>
             Te damos las herramientas para que encuentres a tu
-            <Styled.SpanGreen> candidato ideal</Styled.SpanGreen>
+            <Styled.Emphasis> candidato ideal</Styled.Emphasis>
           </Styled.TitleInfoCard>
           <Styled.SubtitleInfoCard>
             Tú eliges qué filtros utilizar:
           </Styled.SubtitleInfoCard>
           <CheckLabel>Candidatos con/sin sentencias</CheckLabel>
           <CheckLabel>Selecciona tus partidos preferidos</CheckLabel>
-          <Styled.ButtonStart type="secondary" onClick={goToCongressmen}>
-            Comenzar
-          </Styled.ButtonStart>
           <Styled.BackgroundDirections>
             <Image
               src="/images/charco-directions.svg"

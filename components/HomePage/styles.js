@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import BaseButton from 'components/BaseButton';
 
 export const Container = styled('div')`
   background: #fff;
@@ -22,7 +21,7 @@ export const Title = styled('h1')`
   line-height: 2rem;
 `;
 
-export const SpanGreen = styled('span')`
+export const Emphasis = styled('span')`
   color: #4eb5a2;
 `;
 
@@ -34,7 +33,7 @@ export const Paragraph = styled('p')`
   margin-bottom: 1.5rem;
 `;
 
-export const ContentButtonCandidate = styled('div')`
+export const ButtonsRow = styled('div')`
   background: linear-gradient(to bottom, #ecf4f3 50%, #fff 50%);
   display: grid;
   padding: 0 1.5rem;
@@ -56,7 +55,7 @@ export const FindMyCandidateButton = styled('button')`
   }
 `;
 
-export const TextButton = styled('p')`
+export const ButtonText = styled('p')`
   color: #04102f;
   font-size: 0.875rem;
   font-weight: 500;
@@ -133,9 +132,4 @@ export const CheckText = styled('p')`
 export const WrapperCheckLabel = styled('div')`
   display: flex;
   margin-bottom: 0.25rem;
-`;
-
-export const ButtonStart = styled(BaseButton)`
-  margin-top: 1rem;
-  width: 100%;
 `;
