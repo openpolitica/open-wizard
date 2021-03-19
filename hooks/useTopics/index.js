@@ -5,22 +5,30 @@ export const TopicsContext = createContext();
 
 const initialTopicsState = {
   userSelected: [],
+  quizItems: {},
 };
 
 const reducer = (state, action) => {
   if (action.type === 'addUserSelectedTopic') {
-    return { userSelected: [...state.userSelected, action.value] };
+    return {
+      ...state,
+      userSelected: [...state.userSelected, action.value],
+    };
   }
   if (action.type === 'removeUserSelectedTopic') {
     const topicIndex = state.userSelected.findIndex(
       (topic) => topic === action.value,
     );
     return {
+      ...state,
       userSelected: [
         ...state.userSelected.slice(0, topicIndex),
         ...state.userSelected.slice(topicIndex + 1),
       ],
     };
+  }
+  if (action.type === 'addQuizItems') {
+    return { ...state, quizItems: action.value };
   }
 };
 
@@ -39,6 +47,7 @@ export const TopicsProvider = ({ children }) => {
           dispatch({ type: 'addUserSelectedTopic', value }),
         removeUserSelectedTopic: (value) =>
           dispatch({ type: 'removeUserSelectedTopic', value }),
+        addQuizItems: (value) => dispatch({ type: 'addQuizItems', value }),
       }}>
       {children}
     </TopicsContext.Provider>
