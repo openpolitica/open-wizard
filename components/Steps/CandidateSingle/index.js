@@ -87,7 +87,7 @@ export default function CandidateSingle(props) {
           />
         </Styled.Row>
         {c.cargo_nombre.includes('VICEPRESIDENTE') ? (
-          <Styled.Chip type={'good'}>
+          <Styled.Chip type="good">
             {`Este candidato está postulando a la ${
               c.cargo_nombre.includes('PRIMER') ? 'Primera' : 'Segunda'
             } Vicepresidencia y al Congreso.`}
