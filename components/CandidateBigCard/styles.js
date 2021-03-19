@@ -146,4 +146,4 @@ export const SocialFacebookIcon = styled('img')`
 
 export const SocialLink = styled('a')`
   text-decoration: none;
-)`;
+`;
