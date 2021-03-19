@@ -1,66 +1,92 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
 import { TopicsContext } from 'hooks/useTopics';
+import Loading from 'components/Loading';
 import * as Styled from './styles';
 import qs from 'qs';
 
 const requiredNumberOfSelectedTopics = 3;
 
-const fetchQuestions = (apiTerms) => {
-  const { data } = useSWR('/api/policies/questions', () =>
-    fetch(`${process.env.api.policiesUrl}/questions?${apiTerms}`).then((data) =>
-      data.json(),
-    ),
-  );
-  return data?.data;
-};
-
-export default function PresidentialQuizBreakdown() {
-  const { userSelectedTopics } = useContext(TopicsContext);
-  const apiTerms = qs.stringify({ topics: userSelectedTopics });
-  const questions = fetchQuestions(apiTerms) || {};
-
+const LoadingScreen = () => {
   return (
     <Styled.Container>
       <Styled.Header />
-      <Styled.Step>
-        <Styled.Row>
-          <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
-        </Styled.Row>
-        <Styled.Stepper steps="2" of="3" />
-        <Styled.Title>Es momento del test</Styled.Title>
-        <Styled.SubTitle>Te haremos preguntas por cada pilar.</Styled.SubTitle>
-        <Styled.SubTitle>
-          Si no deseas responder una de ellas, podrás omitirla.
-        </Styled.SubTitle>
-        <Styled.QuizBreakdown>
-          {userSelectedTopics.length ? (
-            userSelectedTopics.map((topic, index) => (
-              <Styled.QuizBreakdownItem
-                key={`Topic-${index}`}
-                type={topic}
-                questions={questions}>
-                {topic}
-              </Styled.QuizBreakdownItem>
-            ))
-          ) : (
-            <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
-          )}
-          <Styled.Button
-            type={
-              userSelectedTopics.length < requiredNumberOfSelectedTopics
-                ? 'disabled'
-                : 'primary'
-            }
-            disabled={
-              userSelectedTopics.length < requiredNumberOfSelectedTopics
-            }
-            onClick={() => Router.push('/presidential-steps/3')}
-            text="Continuar"
-          />
-        </Styled.QuizBreakdown>
-      </Styled.Step>
+      <Loading />
     </Styled.Container>
   );
+};
+
+const fetchQuestions = (apiTerms) =>
+  fetch(`${process.env.api.policiesUrl}/questions?${apiTerms}`).then((data) =>
+    data.json(),
+  );
+
+export default function PresidentialQuizBreakdown() {
+  const { userSelectedTopics, addQuizItems } = useContext(TopicsContext);
+  const apiTerms = qs.stringify({ topics: userSelectedTopics });
+  const { data: response, error, isLoading } = useSWR(
+    '/api/policies/questions',
+    () => fetchQuestions(apiTerms),
+  );
+  const questions = response?.data;
+
+  useEffect(() => {
+    addQuizItems(questions);
+  }, [questions]);
+
+  if (error) {
+    // Todo: Add Error component
+    return <p>Error: {error}</p>;
+  }
+  if (isLoading) {
+    return <LoadingScreen />;
+  }
+  if (Object.keys(questions || {}).length) {
+    return (
+      <Styled.Container>
+        <Styled.Header />
+        <Styled.Step>
+          <Styled.Row>
+            <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
+          </Styled.Row>
+          <Styled.Stepper steps="2" of="3" />
+          <Styled.Title>Es momento del test</Styled.Title>
+          <Styled.SubTitle>
+            Te haremos preguntas por cada pilar.
+          </Styled.SubTitle>
+          <Styled.SubTitle>
+            Si no deseas responder una de ellas, podrás omitirla.
+          </Styled.SubTitle>
+          <Styled.QuizBreakdown>
+            {userSelectedTopics.length ? (
+              userSelectedTopics.map((topic, index) => (
+                <Styled.QuizBreakdownItem
+                  key={`Topic-${index}`}
+                  type={topic}
+                  questions={questions}>
+                  {topic}
+                </Styled.QuizBreakdownItem>
+              ))
+            ) : (
+              <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
+            )}
+            <Styled.Button
+              type={
+                userSelectedTopics.length < requiredNumberOfSelectedTopics
+                  ? 'disabled'
+                  : 'primary'
+              }
+              disabled={
+                userSelectedTopics.length < requiredNumberOfSelectedTopics
+              }
+              onClick={() => Router.push('/presidential-steps/3')}
+              text="Continuar"
+            />
+          </Styled.QuizBreakdown>
+        </Styled.Step>
+      </Styled.Container>
+    );
+  }
+  return null;
 }
