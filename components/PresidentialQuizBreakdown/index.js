@@ -1,10 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
-import { TopicsContext } from 'hooks/useTopics';
 import Loading from 'components/Loading';
 import * as Styled from './styles';
 import qs from 'qs';
+import { useTopics } from 'hooks/useTopics';
 
 const requiredNumberOfSelectedTopics = 3;
 
@@ -23,7 +23,7 @@ const fetchQuestions = (apiTerms) =>
   );
 
 export default function PresidentialQuizBreakdown() {
-  const { userSelectedTopics, addQuizItems } = useContext(TopicsContext);
+  const { userSelectedTopics, addQuizItems } = useTopics();
   const apiTerms = qs.stringify({ topics: userSelectedTopics });
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/questions',

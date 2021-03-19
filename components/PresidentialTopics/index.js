@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 import Router from 'next/router';
-import { TopicsContext } from 'hooks/useTopics';
 import * as Styled from './styles';
 import * as topics from 'public/images/icons/topics';
 import fromIconToTopicName from './fromIconToTopicName';
+import { useTopics } from 'hooks/useTopics';
 
 const requiredNumberOfSelectedTopics = 3;
 const branch = (fn1) => (fn2) => (value) => (!value ? fn1() : fn2());
@@ -13,7 +12,7 @@ export default function PresidentialTopics() {
     userSelectedTopics,
     addUserSelectedTopic,
     removeUserSelectedTopic,
-  } = useContext(TopicsContext);
+  } = useTopics();
 
   return (
     <Styled.Container>
