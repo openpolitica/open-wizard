@@ -60,7 +60,7 @@ export const Topics = styled('section')`
   width: 20.5rem;
 `;
 
-export const TopicList = styled("ul")`
+export const TopicList = styled('ul')`
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -69,13 +69,13 @@ export const TopicList = styled("ul")`
 
 export const TopicListGroupItem = styled(ListGroupItem)`
   align-items: center;
-  background-color: #FFFFFF;
-  border: 0.1rem solid rgba(0,0,0,.125);
+  background-color: #ffffff;
+  border: 0.1rem solid rgba(0, 0, 0, 0.125);
   display: flex;
   height: 3.5rem;
   justify-content: start;
   margin-bottom: -1px;
-  padding: .75rem 1.25rem;
+  padding: 0.75rem 1.25rem;
   position: relative;
 `;
 
