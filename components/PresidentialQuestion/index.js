@@ -1,14 +1,14 @@
 import * as Styled from './styles';
-import Header from '../Header';
+import Header from 'components/Header';
 import { Fragment, useEffect, useState } from 'react';
-import BaseRadioButton from '../BaseRadioButton';
-import RadioGroup from '../BaseRadioButton/RadioGroup';
-import BaseButton from '../BaseButton';
+import BaseRadioButton from 'components/BaseRadioButton';
+import RadioGroup from 'components/BaseRadioButton/RadioGroup';
+import BaseButton from 'components/BaseButton';
 import * as icons from 'public/images/icons/topics';
 import { useTopics } from 'hooks/useTopics';
 import { useRouter } from 'next/router';
-import { translationMap } from '../TopicCheckbox';
-import { GoBackButton } from '../PresidentialTopics/styles';
+import { translationMap } from 'components/TopicCheckbox';
+import { GoBackButton } from 'components/PresidentialTopics/styles';
 
 const nameCapitalized = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
