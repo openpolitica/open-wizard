@@ -18,8 +18,15 @@ const BaseListGroupItem = ({ type, questions, ...props }) => {
   const translatedTopic = translationMap[type];
   return (
     <TopicItem {...props}>
-      <TopicIcon as={Icon} width="30" height="30" viewBox="0 0 50 50" ></TopicIcon>
-      <TopicTitle>{translatedTopic}:</TopicTitle><TopicDetail>&nbsp;{questions[type] ? questions[type].length : 0} preguntas</TopicDetail>
+      <TopicIcon
+        as={Icon}
+        width="30"
+        height="30"
+        viewBox="0 0 50 50"></TopicIcon>
+      <TopicTitle>{translatedTopic}:</TopicTitle>
+      <TopicDetail>
+        &nbsp;{questions[type] ? questions[type].length : 0} preguntas
+      </TopicDetail>
     </TopicItem>
   );
 };
