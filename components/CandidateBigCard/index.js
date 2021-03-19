@@ -16,6 +16,7 @@ import {
   SocialTwitterIcon,
   SocialFacebookIcon,
   SocialLink,
+  ImageColumn,
 } from './styles';
 import capitalize from '../Steps/PartyResults/startCasePeruvianRegions';
 
@@ -59,12 +60,11 @@ const CandidateBigCard = (props) => {
   return (
     <Card {...props}>
       <MainRow>
-        <ProfileIcon
-          src={
-            `${profileIconBaseUrl}${props.profileImageId}.jpg` ||
-            `${profileIconBaseUrl}134127.jpg`
-          }
-        />
+        <ImageColumn>
+          <ProfileIcon
+            src={`${profileIconBaseUrl}${props.profileImageId}.jpg`}
+          />
+        </ImageColumn>
         <ContentColumn>
           <Column>
             <Fullname>

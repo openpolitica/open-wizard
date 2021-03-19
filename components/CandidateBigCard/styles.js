@@ -41,7 +41,7 @@ export const NumberIcon = styled('span')`
   width: 2rem;
 `;
 
-export const ProfileIcon = styled(Image).attrs((props) => ({
+export const ProfileIcon = styled(Image).attrs(() => ({
   height: 100,
   width: 71,
 }))``;
@@ -102,8 +102,13 @@ export const Column = styled.div`
   flex-direction: column;
 `;
 
+export const ImageColumn = styled(Column)`
+  flex: 2;
+`;
+
 export const ContentColumn = styled(Column)`
-  padding: 0 0.4rem 0 0.4rem;
+  flex: 6;
+  padding: 0 0.4rem;
 `;
 
 export const MemberBox = styled.div`
