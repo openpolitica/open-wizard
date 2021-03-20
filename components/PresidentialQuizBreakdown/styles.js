@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import BaseHeader from 'components/Header';
 import BaseGoBackButton from 'components/GoBackButton';
 import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
@@ -8,34 +7,13 @@ import BaseTopicCheckbox from 'components/TopicCheckbox';
 import BaseButton from 'components/BaseButton';
 import BaseQuizBreakdownItem from 'components/BaseQuizBreakdownItem';
 
-export const Container = styled('section')`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Header = styled(BaseHeader)`
-  width: 100%;
-`;
-
 export const Row = styled('div')`
   display: flex;
   justify-content: space-between;
   width: 100%;
 `;
 
-export const GoBackButton = styled(BaseGoBackButton)`
-  margin-top: 1rem;
-  margin-left: 1rem;
-`;
-
-export const Step = styled('div')`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 0 1.5rem;
-`;
+export const GoBackButton = styled(BaseGoBackButton)``;
 
 export const Stepper = styled(BaseStepper)`
   margin-top: 1.5rem;

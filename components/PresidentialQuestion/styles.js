@@ -3,10 +3,6 @@ import BaseButton from 'components/BaseButton';
 import BaseChip from 'components/Chip';
 import Stepper from 'components/Stepper';
 
-export const Container = styled('div')`
-  font-family: Poppins, sans-serif;
-  padding: 2rem 1.5rem;
-`;
 export const StyledStepper = styled(Stepper)`
   display: flex;
   justify-content: center;
