@@ -4,7 +4,6 @@ import BaseParagraph from 'components/BaseParagraph';
 
 export const TopicIcon = styled('svg')`
   color: #5bc13e;
-  margin-top: 6px;
 
   path {
     fill: currentColor;
@@ -14,9 +13,11 @@ export const TopicIcon = styled('svg')`
 
 export const TopicTitle = styled(BaseTitle)`
   font-size: 0.9rem;
-  margin-left: 0.2rem;
+  margin-left: 0.3rem;
   margin-right: 0.2rem;
   text-transform: capitalize;
+  color: #475065;
+  font-weight: 600;
 `;
 
 export const TopicDetail = styled(BaseParagraph)`
