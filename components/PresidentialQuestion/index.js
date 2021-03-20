@@ -55,7 +55,7 @@ export default function PresidentialQuestion() {
         questionId,
         answerId: isOmitted ? '' : selectedOption,
       });
-      router.push('/results/presidential');
+      router.push('/presidential-results/grouped-by-compatibility');
     }
   };
 
@@ -68,7 +68,6 @@ export default function PresidentialQuestion() {
       router.push('/presidential-steps/1');
       return;
     }
-
     if (isUpperThanFirstQuestionIdx) {
       setCurrentQuestionIdx((prevIdx) => prevIdx - 1);
     }
@@ -113,9 +112,7 @@ export default function PresidentialQuestion() {
                 <RadioGroup
                   key={answer.id}
                   value={selectedOption}
-                  onChange={(value) => {
-                    setSelectedOption(value);
-                  }}>
+                  onChange={(value) => setSelectedOption(value)}>
                   <BaseRadioButton value={answer.id}>
                     {answer.label}
                   </BaseRadioButton>
@@ -124,6 +121,7 @@ export default function PresidentialQuestion() {
             </Styled.QuestionList>
             <Styled.QuestionButtons>
               <BaseButton
+                type={selectedOption === '' ? 'disabled' : 'primary'}
                 disabled={selectedOption === ''}
                 onClick={handleNextButton}>
                 Continuar

@@ -35,13 +35,7 @@ const reducer = (state, action) => {
     const answerIndex = state.userAnswers.findIndex(
       (answer) => answer.questionId === action.value.questionId,
     );
-
-    if (answerIndex === -1) {
-      return {
-        ...state,
-        userAnswers: [...state.userAnswers, action.value],
-      };
-    } else {
+    if (answerIndex !== -1) {
       const newUserAnswers = [...state.userAnswers];
       newUserAnswers[answerIndex] = action.value;
       return {
@@ -49,6 +43,10 @@ const reducer = (state, action) => {
         userAnswers: newUserAnswers,
       };
     }
+    return {
+      ...state,
+      userAnswers: [...state.userAnswers, action.value],
+    };
   }
 };
 

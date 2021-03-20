@@ -1,21 +1,22 @@
 import styled from 'styled-components';
 
-export const Radio = styled.label`
+export const Radio = styled('label')`
   color: #475065;
   display: grid;
   grid-gap: 0.5rem;
   grid-template-columns: min-content auto;
   margin-bottom: 1rem;
+  cursor: pointer;
 `;
-export const RadioInput = styled.span`
+export const RadioInput = styled('span')`
   display: flex;
 `;
-export const RadioLabel = styled.span`
+export const RadioLabel = styled('span')`
   color: #475065;
   font-size: 0.875rem;
   line-height: 1.375rem;
 `;
-export const RadioControl = styled.span`
+export const RadioControl = styled('span')`
   border-radius: 50%;
   border: 0.125rem solid currentColor;
   color: #ccc;
@@ -24,7 +25,7 @@ export const RadioControl = styled.span`
   transform: translateY(0.06rem);
   width: 1.5rem;
 `;
-export const Input = styled.input`
+export const Input = styled('input')`
   height: 0;
   opacity: 0;
   width: 0;

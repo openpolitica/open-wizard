@@ -8,9 +8,9 @@ const PresidentialResults = dynamic(
   },
 );
 
-const nossrPresidentQuestion = () => (
+const nossrPresidentialResults = () => (
   <TopicsProvider>
     <PresidentialResults />
   </TopicsProvider>
 );
-export default nossrPresidentQuestion;
+export default nossrPresidentialResults;
