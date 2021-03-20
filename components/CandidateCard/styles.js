@@ -48,11 +48,7 @@ export const Fullname = styled('p')`
   font-weight: 700;
   line-height: 1.125rem;
   margin: 0 0 0 0.5rem;
-  text-transform: lowercase;
-
-  &::first-line {
-    text-transform: capitalize;
-  }
+  text-transform: capitalize;
 
   ${Card}:hover & {
     text-decoration: underline;
