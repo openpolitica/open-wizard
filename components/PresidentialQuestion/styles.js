@@ -55,7 +55,11 @@ export const OmitButton = styled(BaseButton)`
   border: none;
   margin-top: 1.125rem;
   &:disabled {
-    opacity: 0.6;
+    opacity: 0.4;
+    &:hover {
+      text-decoration: none;
+      cursor: auto;
+    }
   }
 `;
 export const NoQuestionChip = styled(BaseChip)`

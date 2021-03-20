@@ -10,14 +10,16 @@ import { translationMap } from 'components/TopicCheckbox';
 import { GoBackButton } from 'components/PresidentialTopics/styles';
 import MainLayout from 'components/layouts/MainLayout';
 
+const ALLOW_OMITTED_QUESTIONS_PER_TOPIC = 1;
+
 const nameCapitalized = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
 export default function PresidentialQuestion() {
   const [selectedOption, setSelectedOption] = useState('');
   const [currentTopic, setCurrentTopic] = useState(0);
-
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
+  const [questionsOmitted, setQuestionsOmitted] = useState(0);
 
   const router = useRouter();
   const { addUserAnswers, quizItems } = useTopics();
@@ -35,6 +37,9 @@ export default function PresidentialQuestion() {
   const isLastCurrentTopicIdx = currentTopic === questionBank.length - 1;
 
   const handleNextButton = ({ isOmitted = false } = {}) => {
+    if (isOmitted) {
+      setQuestionsOmitted((prevIdx) => prevIdx + 1);
+    }
     if (isLowerThanLastQuestionIdx) {
       addUserAnswers({
         questionId,
@@ -43,6 +48,7 @@ export default function PresidentialQuestion() {
       setCurrentQuestionIdx((prevIdx) => prevIdx + 1);
     }
     if (isLastCurrentQuestionIdx && !isLastCurrentTopicIdx) {
+      setQuestionsOmitted(0);
       setCurrentTopic((prevIdx) => prevIdx + 1);
       setCurrentQuestionIdx(0);
       addUserAnswers({
@@ -125,6 +131,7 @@ export default function PresidentialQuestion() {
               Continuar
             </BaseButton>
             <Styled.OmitButton
+              disabled={questionsOmitted === ALLOW_OMITTED_QUESTIONS_PER_TOPIC}
               onClick={() => handleNextButton({ isOmitted: true })}
               type="transparent">
               Omitir
