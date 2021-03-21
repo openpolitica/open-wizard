@@ -12,12 +12,12 @@ export const TopicIcon = styled('svg')`
 `;
 
 export const TopicTitle = styled(BaseTitle)`
+  color: #475065;
   font-size: 0.9rem;
+  font-weight: 600;
   margin-left: 0.3rem;
   margin-right: 0.2rem;
   text-transform: capitalize;
-  color: #475065;
-  font-weight: 600;
 `;
 
 export const TopicDetail = styled(BaseParagraph)`
