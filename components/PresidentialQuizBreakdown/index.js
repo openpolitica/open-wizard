@@ -1,19 +1,19 @@
-import { useContext, useEffect } from 'react';
+import { useEffect } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
-import { TopicsContext } from 'hooks/useTopics';
 import Loading from 'components/Loading';
 import * as Styled from './styles';
 import qs from 'qs';
+import { useTopics } from 'hooks/useTopics';
+import MainLayout from 'components/layouts/MainLayout';
 
 const requiredNumberOfSelectedTopics = 3;
 
 const LoadingScreen = () => {
   return (
-    <Styled.Container>
-      <Styled.Header />
+    <MainLayout>
       <Loading />
-    </Styled.Container>
+    </MainLayout>
   );
 };
 
@@ -23,7 +23,7 @@ const fetchQuestions = (apiTerms) =>
   );
 
 export default function PresidentialQuizBreakdown() {
-  const { userSelectedTopics, addQuizItems } = useContext(TopicsContext);
+  const { userSelectedTopics, addQuizItems } = useTopics();
   const apiTerms = qs.stringify({ topics: userSelectedTopics });
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/questions',
@@ -44,48 +44,43 @@ export default function PresidentialQuizBreakdown() {
   }
   if (Object.keys(questions || {}).length) {
     return (
-      <Styled.Container>
-        <Styled.Header />
-        <Styled.Step>
-          <Styled.Row>
-            <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
-          </Styled.Row>
-          <Styled.Stepper steps="2" of="3" />
-          <Styled.Title>Es momento del test</Styled.Title>
-          <Styled.SubTitle>
-            Te haremos preguntas por cada pilar.
-          </Styled.SubTitle>
-          <Styled.SubTitle>
-            Si no deseas responder una de ellas, podrás omitirla.
-          </Styled.SubTitle>
-          <Styled.QuizBreakdown>
-            {userSelectedTopics.length ? (
-              userSelectedTopics.map((topic, index) => (
-                <Styled.QuizBreakdownItem
-                  key={`Topic-${index}`}
-                  type={topic}
-                  questions={questions}>
-                  {topic}
-                </Styled.QuizBreakdownItem>
-              ))
-            ) : (
-              <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
-            )}
-            <Styled.Button
-              type={
-                userSelectedTopics.length < requiredNumberOfSelectedTopics
-                  ? 'disabled'
-                  : 'primary'
-              }
-              disabled={
-                userSelectedTopics.length < requiredNumberOfSelectedTopics
-              }
-              onClick={() => Router.push('/presidential-steps/3')}
-              text="Continuar"
-            />
-          </Styled.QuizBreakdown>
-        </Styled.Step>
-      </Styled.Container>
+      <MainLayout>
+        <Styled.Row>
+          <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
+        </Styled.Row>
+        <Styled.Stepper steps="2" of="3" />
+        <Styled.Title>Es momento del test</Styled.Title>
+        <Styled.SubTitle>Te haremos preguntas por cada pilar.</Styled.SubTitle>
+        <Styled.SubTitle>
+          Si no deseas responder una de ellas, podrás omitirla.
+        </Styled.SubTitle>
+        <Styled.QuizBreakdown>
+          {userSelectedTopics.length ? (
+            userSelectedTopics.map((topic, index) => (
+              <Styled.QuizBreakdownItem
+                key={`Topic-${index}`}
+                type={topic}
+                questions={questions}>
+                {topic}
+              </Styled.QuizBreakdownItem>
+            ))
+          ) : (
+            <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
+          )}
+          <Styled.Button
+            type={
+              userSelectedTopics.length < requiredNumberOfSelectedTopics
+                ? 'disabled'
+                : 'primary'
+            }
+            disabled={
+              userSelectedTopics.length < requiredNumberOfSelectedTopics
+            }
+            onClick={() => Router.push('/presidential-steps/3')}
+            text="Continuar"
+          />
+        </Styled.QuizBreakdown>
+      </MainLayout>
     );
   }
   return null;
