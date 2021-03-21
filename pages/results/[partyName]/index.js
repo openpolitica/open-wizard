@@ -10,7 +10,7 @@ const CandidateResults = dynamic(
 
 const nossrCandidateResults = () => (
   <FavoritesProvider>
-    <CandidateResults />;
+    <CandidateResults />
   </FavoritesProvider>
 );
 export default nossrCandidateResults;

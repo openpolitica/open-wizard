@@ -35,7 +35,9 @@ const CandidateCard = (props) => {
             `${profileIconBaseUrl}134127.jpg`
           }
         />
-        <Fullname>{props.candidateFullname || 'Nombre de candidato'}</Fullname>
+        <Fullname>
+          {props.candidateFullname.toLowerCase() || 'Nombre de candidato'}
+        </Fullname>
         <ArrowCircle />
       </Card>
     </Link>
