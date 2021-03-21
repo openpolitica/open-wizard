@@ -1,4 +1,8 @@
 import * as Styled from './styles';
+// import useSWR from 'swr';
+// import fetch from 'isomorphic-fetch';
+import { useRouter } from 'next/router';
+import ls from 'local-storage';
 import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
@@ -12,11 +16,26 @@ const LoadingScreen = () => {
   );
 };
 
-export default function PresidentialStaff() {
+function generateGoBackText(path) {
+  if (!ls('op.wizard')) {
+    return 'Inicia tu viaje';
+  }
+  return 'Regresa a resultados';
+}
+
+export default function PresidentialStaff(props) {
+  const router = useRouter();
+  const { fromPath } = router.query;
+
+  // const partyId = props.partyId
   const isServer = typeof window === 'undefined';
   if (isServer) {
     return <LoadingScreen />;
   }
+
+  // const { data } = useSWR(`/api/parties/partyId=${partyId}`, () =>
+  //   fetch(`/api/parties/partyId=${partyId}`).then((data) => data.json()),
+  // );
 
   // TODO: Call from API
   const data = {
@@ -58,24 +77,30 @@ export default function PresidentialStaff() {
     },
   };
 
+  if (!data) {
+    return <LoadingScreen />;
+  }
+
   return (
     <Styled.Container>
       <Styled.Header />
       <Styled.Step>
         <Styled.Row>
           {/* TODO: Go Back URL */}
-          <GoBackButton to={''} text="Regresa" />
+          <GoBackButton
+            to={fromPath || '/'}
+            text={generateGoBackText(fromPath)}
+          />
         </Styled.Row>
-        <Styled.Title align="center">Plancha Presidencial de</Styled.Title>
-        <Styled.Title align="center">
+        <Styled.Title>Plancha Presidencial de</Styled.Title>
+        <Styled.EmphasizedTitle>
           {startCasePeruvianRegions(data.president.org_politica_nombre)}
-        </Styled.Title>
+        </Styled.EmphasizedTitle>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
             {data.president.id_sexo === 'F' ? 'Presidenta' : 'Presidente'}
           </Styled.Subtitle>
           <Styled.CandidateCard
-            key={`Candidate-${data.president.hoja_vida_id}`}
             candidateParty={data.president.org_politica_nombre}
             candidateFullname={`${data.president.id_nombres} ${data.president.id_apellido_paterno}`}
             profileImageId={data.president.hoja_vida_id}
@@ -89,7 +114,6 @@ export default function PresidentialStaff() {
               : 'Primer Vicepresidente'}
           </Styled.Subtitle>
           <Styled.CandidateCard
-            key={`Candidate-${data.firstVP.hoja_vida_id}`}
             candidateParty={data.firstVP.org_politica_nombre}
             candidateFullname={`${data.firstVP.id_nombres} ${data.firstVP.id_apellido_paterno}`}
             profileImageId={data.firstVP.hoja_vida_id}
@@ -103,7 +127,6 @@ export default function PresidentialStaff() {
               : 'Segundo Vicepresidente'}
           </Styled.Subtitle>
           <Styled.CandidateCard
-            key={`Candidate-${data.secondVP.hoja_vida_id}`}
             candidateParty={data.secondVP.org_politica_nombre}
             candidateFullname={`${data.secondVP.id_nombres} ${data.secondVP.id_apellido_paterno}`}
             profileImageId={data.secondVP.hoja_vida_id}
