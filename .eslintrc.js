@@ -5,6 +5,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
   ],
+  plugins: ['better-styled-components'],
   rules: {
     'no-console': ['warn'],
     'no-unused-vars': ['error'],
@@ -15,5 +16,6 @@ module.exports = {
     'react/prop-types': ['warn'],
     'react/display-name': ['warn'],
     'react/jsx-no-target-blank': ['warn'],
+    'better-styled-components/sort-declarations-alphabetically': ['error'],
   },
 };
