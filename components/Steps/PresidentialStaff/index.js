@@ -84,7 +84,7 @@ export default function PresidentialStaff() {
         </Styled.CandidateSingle>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
-            {data.president.id_sexo === 'F'
+            {data.firstVP.id_sexo === 'F'
               ? 'Primera Vicepresidenta'
               : 'Primer Vicepresidente'}
           </Styled.Subtitle>
@@ -98,7 +98,7 @@ export default function PresidentialStaff() {
         </Styled.CandidateSingle>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
-            {data.president.id_sexo === 'F'
+            {data.secondVP.id_sexo === 'F'
               ? 'Segunda Vicepresidenta'
               : 'Segundo Vicepresidente'}
           </Styled.Subtitle>
