@@ -26,10 +26,10 @@ export default function Step3() {
       </Styled.Step>
       <Styled.YesNoButtons>
         <Styled.NoButton onClick={onNoButtonClick}>
-          Ocultar candidatos
+          Ocultar partidos
         </Styled.NoButton>
         <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
-          Incluir candidatos
+          Incluir partidos
         </Styled.YesButton>
       </Styled.YesNoButtons>
     </Styled.Container>
