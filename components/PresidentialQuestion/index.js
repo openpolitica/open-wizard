@@ -10,7 +10,7 @@ import { translationMap } from 'components/TopicCheckbox';
 import { GoBackButton } from 'components/PresidentialTopics/styles';
 import MainLayout from 'components/layouts/MainLayout';
 
-const ALLOW_OMITTED_QUESTIONS_PER_TOPIC = 1;
+const allowOmittedQuestionsPerTopic = 1;
 
 const nameCapitalized = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
@@ -131,7 +131,7 @@ export default function PresidentialQuestion() {
               Continuar
             </BaseButton>
             <Styled.OmitButton
-              disabled={questionsOmitted === ALLOW_OMITTED_QUESTIONS_PER_TOPIC}
+              disabled={questionsOmitted === allowOmittedQuestionsPerTopic}
               onClick={() => handleNextButton({ isOmitted: true })}
               type="transparent">
               Omitir
