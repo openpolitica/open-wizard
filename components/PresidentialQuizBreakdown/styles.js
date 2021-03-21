@@ -53,7 +53,7 @@ export const QuizBreakdownItem = styled(BaseQuizBreakdownItem)`
   height: 3.5rem;
   justify-content: start;
   margin-bottom: -1px;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
   position: relative;
 `;
 
