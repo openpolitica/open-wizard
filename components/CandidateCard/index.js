@@ -28,7 +28,9 @@ const CandidateCard = (props) => {
       as={`/candidate/${props.systemId}`}>
       <Card {...props}>
         <PartyIcon src={partyIconSource(props.candidateParty)} />
-        <NumberIcon>{props.candidateNumber || '5'}</NumberIcon>
+        {props.candidateNumber ? (
+          <NumberIcon>{props.candidateNumber}</NumberIcon>
+        ) : null}
         <ProfileIcon
           src={
             `${profileIconBaseUrl}${props.profileImageId}.jpg` ||
