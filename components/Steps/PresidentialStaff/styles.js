@@ -15,8 +15,8 @@ export const Header = styled(BaseHeader)`
 
 export const Row = styled('div')`
   display: flex;
-  width: 100%;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const Step = styled('div')`
@@ -28,6 +28,12 @@ export const Step = styled('div')`
 
 export const Title = styled(BaseTitle)`
   font-size: 1.125rem;
+  margin-top: 2em;
+`;
+
+export const EmphasizedTitle = styled(Title)`
+  color: #4eb5a2;
+  margin-top: 0;
 `;
 
 export const Subtitle = styled('p')`
