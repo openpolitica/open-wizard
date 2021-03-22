@@ -52,6 +52,7 @@ export default function PresidentialResults() {
           <Styled.ThinkLikeYou>Piensa más como tú</Styled.ThinkLikeYou>
           <Styled.CompatibilityPartyCard
             partyName={results[0].org_politica_nombre}
+            partyAlias={results[0].name}
             compatibility={compatibilityToPercentage(results[0].compatibility)}
             profileImageId={results[0].president.hoja_vida_id}
             onClick={() =>
@@ -69,6 +70,7 @@ export default function PresidentialResults() {
               (
                 {
                   org_politica_nombre: partyName,
+                  name: partyAlias,
                   compatibility,
                   president: { hoja_vida_id },
                 },
@@ -77,6 +79,7 @@ export default function PresidentialResults() {
                 <Styled.CompatibilityPartyCard
                   key={`PartyCard-${index}`}
                   partyName={partyName}
+                  partyAlias={partyAlias}
                   compatibility={compatibilityToPercentage(compatibility)}
                   profileImageId={hoja_vida_id}
                   onClick={() =>

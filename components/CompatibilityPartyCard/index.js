@@ -5,6 +5,7 @@ const profileBaseUrl = process.env.profilePictures.baseUrl;
 
 const CompatibilityPartyCard = ({
   partyName,
+  partyAlias,
   profileImageId,
   compatibility,
   ...props
@@ -20,7 +21,9 @@ const CompatibilityPartyCard = ({
         }
       />
       <Styled.Column>
-        <Styled.PartyName>{partyName || 'Nombre del partido'}</Styled.PartyName>
+        <Styled.PartyName>
+          {partyAlias || 'Nombre del partido'}
+        </Styled.PartyName>
         <Styled.Compatibility>{`${
           compatibility || '0'
         }% de compatibilidad`}</Styled.Compatibility>
