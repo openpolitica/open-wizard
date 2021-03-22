@@ -4,6 +4,7 @@ import { useTopics } from 'hooks/useTopics';
 import * as Styled from './styles';
 import MainLayout from 'components/layouts/MainLayout';
 import Loading from 'components/Loading';
+import toggleSlug from 'components/PartyCard/toggleSlug';
 
 const LoadingScreen = () => {
   return (
@@ -50,11 +51,15 @@ export default function PresidentialResults() {
         <Styled.Results>
           <Styled.ThinkLikeYou>Piensa más como tú</Styled.ThinkLikeYou>
           <Styled.CompatibilityPartyCard
-            partyName={results[0].name}
+            partyName={results[0].org_politica_nombre}
             compatibility={compatibilityToPercentage(results[0].compatibility)}
             profileImageId={results[0].president.hoja_vida_id}
             onClick={() =>
-              Router.push(`/presidential-list/${results[0].name}/`)
+              Router.push(
+                `/presidential-list/${toggleSlug(
+                  results[0].org_politica_nombre,
+                )}/`,
+              )
             }
           />
           <Styled.OtherResults>Otros resultados</Styled.OtherResults>
@@ -62,7 +67,11 @@ export default function PresidentialResults() {
             .slice(1)
             .map(
               (
-                { name: partyName, compatibility, president: { hoja_vida_id } },
+                {
+                  org_politica_nombre: partyName,
+                  compatibility,
+                  president: { hoja_vida_id },
+                },
                 index,
               ) => (
                 <Styled.CompatibilityPartyCard
@@ -71,7 +80,7 @@ export default function PresidentialResults() {
                   compatibility={compatibilityToPercentage(compatibility)}
                   profileImageId={hoja_vida_id}
                   onClick={() =>
-                    Router.push(`/presidential-list/${partyName}/`)
+                    Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
                   }
                 />
               ),
