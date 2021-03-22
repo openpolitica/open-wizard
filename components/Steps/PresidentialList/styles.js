@@ -32,7 +32,7 @@ export const Title = styled(BaseTitle)`
 `;
 
 export const EmphasizedTitle = styled(Title)`
-  color: #4eb5a2;
+  color: #5bc13e;
   margin-top: 0;
 `;
 
