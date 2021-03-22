@@ -2,7 +2,7 @@ import * as Styled from './styles';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import toggleSlug from 'components/PartyCard/toggleSlug';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 import ls from 'local-storage';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
@@ -16,16 +16,25 @@ const LoadingScreen = () => {
   );
 };
 
-function generateGoBackText(path) {
-  if (!ls('op.wizard')) {
-    return 'Inicia tu viaje';
+const includesAll = (theseValues) => (inTheseValues) =>
+  theseValues.every((value) => inTheseValues.includes(value));
+
+const comesFromAFinishedUserTrip = () =>
+  includesAll(['quizItems', 'userAnswers', 'userSelected'])(
+    Object.keys(ls.get('op.topics') || {}),
+  );
+
+const goBackToPartyResults = (event) => {
+  if (comesFromAFinishedUserTrip()) {
+    Router.push('/presidential-results/grouped-by-compatibility');
+    return;
   }
-  return 'Regresa a resultados';
-}
+  Router.push('/');
+};
 
 export default function presidentList(props) {
   const router = useRouter();
-  const { fromPath, partyName } = router.query;
+  const { partyName } = router.query;
 
   const isServer = typeof window === 'undefined';
   if (isServer) {
@@ -51,8 +60,12 @@ export default function presidentList(props) {
       <Styled.Step>
         <Styled.Row>
           <GoBackButton
-            to={fromPath || '/'}
-            text={generateGoBackText(fromPath)}
+            text={
+              comesFromAFinishedUserTrip
+                ? 'Regresa a resultados'
+                : 'Inicia tu viaje'
+            }
+            onClick={goBackToPartyResults}
           />
         </Styled.Row>
         <Styled.Title>Plancha Presidencial de</Styled.Title>
