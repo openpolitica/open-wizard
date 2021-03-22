@@ -3,11 +3,11 @@ import Link from 'next/link';
 
 const Header = (props) => {
   return (
-    <Link href="/">
-      <StyledHeader {...props}>
-        <LogoImg src={'/images/icons/votu_logo.svg'} />
-      </StyledHeader>
-    </Link>
+    <StyledHeader {...props}>
+      <Link href="/">
+        <LogoImg src="/images/icons/votu-pe-logo.svg" />
+      </Link>
+    </StyledHeader>
   );
 };
 
