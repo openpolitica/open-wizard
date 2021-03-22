@@ -29,7 +29,7 @@ export default function PresidentialResults() {
   const { userAnswers } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
-    () => fetchResults(userAnswers),
+    () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
   );
   const results = response?.data;
 
