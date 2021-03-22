@@ -50,7 +50,16 @@ export const Text = styled(BaseParagraph)`
 export const Text1 = Text;
 export const Text2 = styled(Text)`
   margin-bottom: 1.125rem;
-  margin-top: 1rem;
+`;
+
+export const Link = styled('a')`
+  color: #4bc540;
+  text-decoration: none;
+
+  &:hover,
+  &:active {
+    text-decoration: underline;
+  }
 `;
 
 export const DownloadIcon = styled(BaseDownloadIcon)`
@@ -58,8 +67,7 @@ export const DownloadIcon = styled(BaseDownloadIcon)`
   transform: translateY(0.2rem);
 `;
 
-export const DownloadText = styled('a')`
-  color: #4bc540;
+export const DownloadLink = styled(Link)`
   font-size: 0.875rem;
   text-decoration: none;
   width: 100%;

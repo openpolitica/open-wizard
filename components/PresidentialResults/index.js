@@ -84,7 +84,14 @@ export default function PresidentialResults() {
             Revisa el análisis que hicimos a los planes de gobierno
           </Styled.CallToAction>
           <Styled.Text1>
-            El equipo de Open Política analizó los planes de gobierno de los{' '}
+            El equipo de{' '}
+            <Styled.Link
+              href="//openpolitica.com"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Política
+            </Styled.Link>{' '}
+            analizó los planes de gobierno de los{' '}
             <strong>
               10 partidos con mayor intención de voto presidencial al 10 de
               marzo de 2021.
@@ -94,10 +101,10 @@ export default function PresidentialResults() {
             Si deseas leer el detalle del análisis, puedes descargarlo desde el
             siguiente enlace:
           </Styled.Text2>
-          <Styled.DownloadText href="#">
+          <Styled.DownloadLink href="#">
             <Styled.DownloadIcon />
             Descargar reporte en PDF
-          </Styled.DownloadText>
+          </Styled.DownloadLink>
         </Styled.Disclaimer>
       </MainLayout>
     );
