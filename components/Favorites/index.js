@@ -7,7 +7,7 @@ import * as Styled from './styles';
 import comesFromAFinishedUserTrip from './comesFromAFinishedUserTrip';
 
 const goBackToPartyResults = (event) => {
-  if (comesFromAFinishedUserTrip) {
+  if (comesFromAFinishedUserTrip()) {
     Router.push('results/grouped-by-party');
     return;
   }
