@@ -27,7 +27,7 @@ const fetchResults = (answers) =>
   }).then((data) => data.json());
 
 export default function PresidentialResults() {
-  const { userAnswers } = useTopics();
+  const { userAnswers, resetTopics } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
@@ -42,10 +42,15 @@ export default function PresidentialResults() {
     return <LoadingScreen />;
   }
   if (results && results.length) {
+    const handlePreviousButton = () => {
+      resetTopics();
+      Router.push('/');
+      return;
+    };
     return (
       <MainLayout>
         <Styled.Row>
-          <Styled.GoBackButton to="/" text="Regresa" />
+          <Styled.GoBackButton onClick={handlePreviousButton} text="Regresa" />
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
