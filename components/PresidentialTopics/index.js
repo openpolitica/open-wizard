@@ -20,7 +20,6 @@ export default function PresidentialTopics() {
       <Styled.Row>
         <Styled.GoBackButton to="/" text="Regresa" />
       </Styled.Row>
-      <Styled.Stepper steps="1" of="3" />
       <Styled.Title>¿Qué temas son importantes para ti?</Styled.Title>
       <Styled.SubTitle>
         Selecciona como mínimo 3 opciones para darte un resultado acertado
