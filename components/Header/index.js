@@ -5,7 +5,7 @@ const Header = (props) => {
   return (
     <StyledHeader {...props}>
       <Link href="/">
-        <LogoImg src={'/images/icons/votu_pe_logo.svg'} />
+        <LogoImg src={'/images/icons/votu-pe-logo.svg'} />
       </Link>
     </StyledHeader>
   );
