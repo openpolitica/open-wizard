@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import BaseGoBackButton from 'components/GoBackButton';
-import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
 import BaseParagraph from 'components/BaseParagraph';
 import BaseTopicCheckbox from 'components/TopicCheckbox';
@@ -13,10 +12,6 @@ export const Row = styled('div')`
 `;
 
 export const GoBackButton = styled(BaseGoBackButton)``;
-
-export const Stepper = styled(BaseStepper)`
-  margin-top: 1.5rem;
-`;
 
 export const Title = styled(BaseTitle)`
   margin-top: 2rem;

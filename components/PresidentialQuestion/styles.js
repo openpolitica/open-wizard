@@ -1,19 +1,13 @@
 import styled from 'styled-components';
 import BaseButton from 'components/BaseButton';
 import BaseChip from 'components/Chip';
-import Stepper from 'components/Stepper';
 
-export const StyledStepper = styled(Stepper)`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-  margin-top: 1.5rem;
-`;
 export const QuestionTopic = styled('div')`
   align-items: center;
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  margin-top: 1.5rem;
 `;
 export const QuestionTopicIcon = styled('svg')`
   color: #5bc13e;
@@ -57,8 +51,8 @@ export const OmitButton = styled(BaseButton)`
   &:disabled {
     opacity: 0.4;
     &:hover {
-      text-decoration: none;
       cursor: auto;
+      text-decoration: none;
     }
   }
 `;

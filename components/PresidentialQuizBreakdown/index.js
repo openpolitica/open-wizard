@@ -48,7 +48,6 @@ export default function PresidentialQuizBreakdown() {
         <Styled.Row>
           <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
         </Styled.Row>
-        <Styled.Stepper steps="2" of="3" />
         <Styled.Title>Es momento del test</Styled.Title>
         <Styled.SubTitle>Te haremos preguntas por cada pilar.</Styled.SubTitle>
         <Styled.SubTitle>

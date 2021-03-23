@@ -96,7 +96,6 @@ export default function PresidentialQuestion() {
   return (
     <MainLayout>
       <GoBackButton text="Regresar" onClick={handlePreviousButton} />
-      <Styled.StyledStepper of={3} steps={3} />
       {questionListLength ? (
         <Fragment>
           <Styled.QuestionTopic key="topic">
