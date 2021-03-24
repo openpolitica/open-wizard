@@ -72,7 +72,7 @@ export const TopicsProvider = ({ children }) => {
         addQuizItems: (value) => dispatch({ type: 'addQuizItems', value }),
         userAnswers: state.userAnswers,
         addUserAnswers: (value) => dispatch({ type: 'addUserAnswers', value }),
-        resetTopics: (value) => dispatch({ type: 'resetTopics' }),
+        resetTopics: () => dispatch({ type: 'resetTopics' }),
       }}>
       {children}
     </TopicsContext.Provider>
