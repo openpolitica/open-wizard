@@ -36,7 +36,9 @@ export default function PresidentialResults() {
   const firstresults = results?.filter(
     (element) => element.compatibility === results[0].compatibility,
   );
-
+  const otherresults = results?.filter(
+    (element) => element.compatibility !== results[0].compatibility,
+  );
   const handleGoBackButton = () => {
     resetTopics();
     Router.push('/');
@@ -82,30 +84,28 @@ export default function PresidentialResults() {
             ),
           )}
           <Styled.OtherResults>Otros resultados</Styled.OtherResults>
-          {results
-            .slice(1)
-            .map(
-              (
-                {
-                  org_politica_nombre: partyName,
-                  name: partyAlias,
-                  compatibility,
-                  president: { hoja_vida_id },
-                },
-                index,
-              ) => (
-                <Styled.CompatibilityPartyCard
-                  key={`PartyCard-${index}`}
-                  partyName={partyName}
-                  partyAlias={partyAlias}
-                  compatibility={compatibilityToPercentage(compatibility)}
-                  profileImageId={hoja_vida_id}
-                  onClick={() =>
-                    Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
-                  }
-                />
-              ),
-            )}
+          {otherresults.map(
+            (
+              {
+                org_politica_nombre: partyName,
+                name: partyAlias,
+                compatibility,
+                president: { hoja_vida_id },
+              },
+              index,
+            ) => (
+              <Styled.CompatibilityPartyCard
+                key={`PartyCard-${index}`}
+                partyName={partyName}
+                partyAlias={partyAlias}
+                compatibility={compatibilityToPercentage(compatibility)}
+                profileImageId={hoja_vida_id}
+                onClick={() =>
+                  Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
+                }
+              />
+            ),
+          )}
         </Styled.Results>
         <Styled.HorizontalRule />
         <Styled.Disclaimer>
