@@ -33,6 +33,9 @@ export default function PresidentialResults() {
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
   );
   const results = response?.data;
+  const firstresults = results?.filter(
+    (element) => element.compatibility === results[0].compatibility,
+  );
 
   const handleGoBackButton = () => {
     resetTopics();
@@ -56,19 +59,28 @@ export default function PresidentialResults() {
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
           <Styled.ThinkLikeYou>Piensa más como tú</Styled.ThinkLikeYou>
-          <Styled.CompatibilityPartyCard
-            partyName={results[0].org_politica_nombre}
-            partyAlias={results[0].name}
-            compatibility={compatibilityToPercentage(results[0].compatibility)}
-            profileImageId={results[0].president.hoja_vida_id}
-            onClick={() =>
-              Router.push(
-                `/presidential-list/${toggleSlug(
-                  results[0].org_politica_nombre,
-                )}/`,
-              )
-            }
-          />
+          {firstresults.map(
+            (
+              {
+                org_politica_nombre: partyName,
+                name: partyAlias,
+                compatibility,
+                president: { hoja_vida_id },
+              },
+              index,
+            ) => (
+              <Styled.CompatibilityPartyCard
+                key={`PartyCard-${index}`}
+                partyName={partyName}
+                partyAlias={partyAlias}
+                compatibility={compatibilityToPercentage(compatibility)}
+                profileImageId={hoja_vida_id}
+                onClick={() =>
+                  Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
+                }
+              />
+            ),
+          )}
           <Styled.OtherResults>Otros resultados</Styled.OtherResults>
           {results
             .slice(1)
