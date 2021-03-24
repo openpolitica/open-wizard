@@ -23,13 +23,19 @@ const fetchQuestions = (apiTerms) =>
   );
 
 export default function PresidentialQuizBreakdown() {
-  const { userSelectedTopics, addQuizItems } = useTopics();
+  const { userSelectedTopics, addQuizItems, resetAnswers } = useTopics();
   const apiTerms = qs.stringify({ topics: userSelectedTopics });
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/questions',
     () => fetchQuestions(apiTerms),
   );
   const questions = response?.data;
+
+  const handleContinueButton = () => {
+    resetAnswers();
+    Router.push('/presidential-steps/3');
+    return;
+  };
 
   useEffect(() => {
     addQuizItems(questions);
@@ -75,7 +81,7 @@ export default function PresidentialQuizBreakdown() {
             disabled={
               userSelectedTopics.length < requiredNumberOfSelectedTopics
             }
-            onClick={() => Router.push('/presidential-steps/3')}
+            onClick={handleContinueButton}
             text="Continuar"
           />
         </Styled.QuizBreakdown>

@@ -51,6 +51,12 @@ const reducer = (state, action) => {
   if (action.type === 'resetTopics') {
     return initialTopicsState;
   }
+  if (action.type === 'resetAnswers') {
+    return {
+      ...state,
+      userAnswers: [],
+    };
+  }
 };
 
 export const TopicsProvider = ({ children }) => {
@@ -73,6 +79,7 @@ export const TopicsProvider = ({ children }) => {
         userAnswers: state.userAnswers,
         addUserAnswers: (value) => dispatch({ type: 'addUserAnswers', value }),
         resetTopics: () => dispatch({ type: 'resetTopics' }),
+        resetAnswers: () => dispatch({ type: 'resetAnswers' }),
       }}>
       {children}
     </TopicsContext.Provider>
