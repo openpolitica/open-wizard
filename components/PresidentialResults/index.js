@@ -119,7 +119,10 @@ export default function PresidentialResults() {
             Si deseas leer el detalle del análisis, puedes descargarlo desde el
             siguiente enlace:
           </Styled.Text2>
-          <Styled.DownloadLink href="#">
+          <Styled.DownloadLink
+            href="//drive.google.com/drive/folders/1I0SvScSG72M1fxyAuqXPkZK4JLxl1_kQ?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
             <Styled.DownloadIcon />
             Descargar reporte en PDF
           </Styled.DownloadLink>
