@@ -48,6 +48,9 @@ const reducer = (state, action) => {
       userAnswers: [...state.userAnswers, action.value],
     };
   }
+  if (action.type === 'resetTopics') {
+    return initialTopicsState;
+  }
 };
 
 export const TopicsProvider = ({ children }) => {
@@ -69,6 +72,7 @@ export const TopicsProvider = ({ children }) => {
         addQuizItems: (value) => dispatch({ type: 'addQuizItems', value }),
         userAnswers: state.userAnswers,
         addUserAnswers: (value) => dispatch({ type: 'addUserAnswers', value }),
+        resetTopics: () => dispatch({ type: 'resetTopics' }),
       }}>
       {children}
     </TopicsContext.Provider>

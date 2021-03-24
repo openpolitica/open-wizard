@@ -27,12 +27,18 @@ const fetchResults = (answers) =>
   }).then((data) => data.json());
 
 export default function PresidentialResults() {
-  const { userAnswers } = useTopics();
+  const { userAnswers, resetTopics } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
   );
   const results = response?.data;
+
+  const handleGoBackButton = () => {
+    resetTopics();
+    Router.push('/');
+    return;
+  };
 
   if (error) {
     // Todo: Add Error component
@@ -45,7 +51,7 @@ export default function PresidentialResults() {
     return (
       <MainLayout>
         <Styled.Row>
-          <Styled.GoBackButton to="/" text="Regresa" />
+          <Styled.GoBackButton onClick={handleGoBackButton} text="Regresa" />
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
