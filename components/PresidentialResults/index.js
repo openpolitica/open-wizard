@@ -34,6 +34,12 @@ export default function PresidentialResults() {
   );
   const results = response?.data;
 
+  const handleGoBackButton = () => {
+    resetTopics();
+    Router.push('/');
+    return;
+  };
+
   if (error) {
     // Todo: Add Error component
     return <p>Error: {error}</p>;
@@ -42,15 +48,10 @@ export default function PresidentialResults() {
     return <LoadingScreen />;
   }
   if (results && results.length) {
-    const handlePreviousButton = () => {
-      resetTopics();
-      Router.push('/');
-      return;
-    };
     return (
       <MainLayout>
         <Styled.Row>
-          <Styled.GoBackButton onClick={handlePreviousButton} text="Regresa" />
+          <Styled.GoBackButton onClick={handleGoBackButton} text="Regresa" />
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
