@@ -36,7 +36,7 @@ export default function PresidentialResults() {
   const topResults = results?.filter(
     (element) => element.compatibility === results[0].compatibility,
   );
-  const otherresults = results?.filter(
+  const otherResults = results?.filter(
     (element) => element.compatibility !== results[0].compatibility,
   );
   const handleGoBackButton = () => {
