@@ -56,7 +56,7 @@ export default function PresidentialResults() {
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
           <Styled.ThinkLikeYou>Piensa más como tú</Styled.ThinkLikeYou>
-          {firstresults.map(
+          {topResults.map(
             (
               {
                 org_politica_nombre: partyName,
