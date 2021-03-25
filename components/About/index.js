@@ -1,9 +1,14 @@
 import Footer from 'components/Footer';
+import SEO from 'components/SEO';
 import * as Styled from './styles';
 
 export default function About() {
   return (
     <Styled.Container>
+      <SEO
+        title="VOTU | Sobre el proyecto"
+        description="VOTU es el primer producto digital de Open Política."
+      />
       <Styled.Header />
       <Styled.Content>
         <Styled.Title>Algunos detalles sobre el proyecto</Styled.Title>

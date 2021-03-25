@@ -3,10 +3,13 @@ import Header from 'components/Header';
 import { team, mentors } from './data';
 import Footer from 'components/Footer';
 import * as Styled from './styles';
+import { Fragment } from 'react';
+import SEO from 'components/SEO';
 
 export default function WhoWeAre() {
   return (
-    <>
+    <Fragment>
+      <SEO title="VOTU | Acerca de Nosotros" />
       <Header />
       <Styled.Container>
         <Styled.Main>
@@ -48,6 +51,6 @@ export default function WhoWeAre() {
         </Styled.Content200>
       </Styled.Container>
       <Footer />
-    </>
+    </Fragment>
   );
 }

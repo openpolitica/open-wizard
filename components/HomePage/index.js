@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import BaseHeader from 'components/Header';
 import Footer from 'components/Footer';
+import SEO from 'components/SEO';
 
 const CheckLabel = (props) => (
   <Styled.WrapperCheckLabel>
@@ -62,6 +63,7 @@ const HomePage = () => {
 
   return (
     <Styled.Container>
+      <SEO />
       <BaseHeader />
       <Styled.Hero>
         <Styled.TextContent>
