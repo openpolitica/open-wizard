@@ -27,7 +27,7 @@ const fetchResults = (answers) =>
   }).then((data) => data.json());
 
 export default function PresidentialResults() {
-  const { userAnswers, resetTopics } = useTopics();
+  const { userAnswers } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
@@ -39,11 +39,6 @@ export default function PresidentialResults() {
   const otherResults = results?.filter(
     (element) => element.compatibility !== results[0].compatibility,
   );
-  const handleGoBackButton = () => {
-    resetTopics();
-    Router.push('/');
-    return;
-  };
 
   if (error) {
     // Todo: Add Error component
@@ -56,7 +51,7 @@ export default function PresidentialResults() {
     return (
       <MainLayout>
         <Styled.Row>
-          <Styled.GoBackButton onClick={handleGoBackButton} text="Regresa" />
+          <Styled.GoBackButton to="/" text="Regresa" />
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
@@ -131,7 +126,10 @@ export default function PresidentialResults() {
             Si deseas leer el detalle del análisis, puedes descargarlo desde el
             siguiente enlace:
           </Styled.Text2>
-          <Styled.DownloadLink href="#">
+          <Styled.DownloadLink
+            href="//drive.google.com/drive/folders/1I0SvScSG72M1fxyAuqXPkZK4JLxl1_kQ?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer">
             <Styled.DownloadIcon />
             Descargar reporte en PDF
           </Styled.DownloadLink>

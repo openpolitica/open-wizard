@@ -85,10 +85,12 @@ const CandidateBigCard = (props) => {
             ) : null}
           </Row>
         </ContentColumn>
-        <Star
-          onClick={onStarClick}
-          type={props.isFavorite ? 'favorite' : 'notFavorite'}
-        />
+        {props.runsForCongress ? (
+          <Star
+            onClick={onStarClick}
+            type={props.isFavorite ? 'favorite' : 'notFavorite'}
+          />
+        ) : null}
       </MainRow>
       <RowBorderUp>
         {props.candidateDesignate === 'No' ? (
