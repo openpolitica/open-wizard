@@ -79,7 +79,7 @@ export default function PresidentialResults() {
             ),
           )}
           <Styled.OtherResults>Otros resultados</Styled.OtherResults>
-          {otherresults.map(
+          {otherResults.map(
             (
               {
                 org_politica_nombre: partyName,
