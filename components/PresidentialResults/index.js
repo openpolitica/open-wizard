@@ -5,6 +5,7 @@ import * as Styled from './styles';
 import MainLayout from 'components/layouts/MainLayout';
 import Loading from 'components/Loading';
 import toggleSlug from 'components/PartyCard/toggleSlug';
+import comesFromAFinishedPresidentialUserTrip from 'components/PresidentialList/comesFromAFinishedPresidentialUserTrip';
 
 const LoadingScreen = () => {
   return (
@@ -39,6 +40,11 @@ export default function PresidentialResults() {
   const otherResults = results?.filter(
     (element) => element.compatibility !== results[0].compatibility,
   );
+
+  if (!comesFromAFinishedPresidentialUserTrip()) {
+    Router.push('/');
+    return null;
+  }
 
   if (error) {
     // Todo: Add Error component
