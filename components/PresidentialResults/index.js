@@ -33,7 +33,7 @@ export default function PresidentialResults() {
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
   );
   const results = response?.data;
-  const firstresults = results?.filter(
+  const topResults = results?.filter(
     (element) => element.compatibility === results[0].compatibility,
   );
   const otherresults = results?.filter(
