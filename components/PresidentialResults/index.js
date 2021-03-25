@@ -27,7 +27,7 @@ const fetchResults = (answers) =>
   }).then((data) => data.json());
 
 export default function PresidentialResults() {
-  const { userAnswers, resetTopics } = useTopics();
+  const { userAnswers } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
@@ -35,7 +35,6 @@ export default function PresidentialResults() {
   const results = response?.data;
 
   const handleGoBackButton = () => {
-    resetTopics();
     Router.push('/');
     return;
   };
