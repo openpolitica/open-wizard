@@ -19,7 +19,7 @@ export default function PresidentialTopics() {
 
   useEffect(() => {
     resetTopics();
-  }, []);
+  }, [Router.pathname]);
 
   return (
     <MainLayout>
