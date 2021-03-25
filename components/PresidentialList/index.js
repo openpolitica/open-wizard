@@ -3,9 +3,9 @@ import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import Router, { useRouter } from 'next/router';
-import ls from 'local-storage';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
+import comesFromAFinishedPresidentialUserTrip from './comesFromAFinishedPresidentialUserTrip';
 
 const LoadingScreen = () => {
   return (
@@ -16,16 +16,8 @@ const LoadingScreen = () => {
   );
 };
 
-const includesAll = (theseValues) => (inTheseValues) =>
-  theseValues.every((value) => inTheseValues.includes(value));
-
-const comesFromAFinishedUserTrip = () =>
-  includesAll(['quizItems', 'userAnswers', 'userSelected'])(
-    Object.keys(ls.get('op.topics') || {}),
-  );
-
 const goBackToPartyResults = (event) => {
-  if (comesFromAFinishedUserTrip()) {
+  if (comesFromAFinishedPresidentialUserTrip()) {
     Router.push('/presidential-results/grouped-by-compatibility');
     return;
   }
@@ -61,7 +53,7 @@ export default function presidentList(props) {
         <Styled.Row>
           <GoBackButton
             text={
-              comesFromAFinishedUserTrip
+              comesFromAFinishedPresidentialUserTrip()
                 ? 'Regresa a resultados'
                 : 'Inicia tu viaje'
             }
