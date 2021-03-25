@@ -72,7 +72,7 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
   const c = data?.data;
-  const isCongressCandidate = c.cargo_nombre.includes('CONGRESISTA');
+  const runsForCongress = c.cargo_nombre.includes('CONGRESISTA');
 
   const isFavorite = favorites.find(
     (favorite) => c.hoja_vida_id === favorite.hoja_vida_id,
@@ -116,7 +116,7 @@ export default function CandidateSingle(props) {
           candidateRole={c.cargo_nombre}
           candidateTwitterLink={c.twitter}
           candidateFacebookLink={c.facebook}
-          isCongressCandidate={isCongressCandidate}></Styled.CandidateBigCard>
+          runsForCongress={runsForCongress}></Styled.CandidateBigCard>
         <Styled.Accordion
           type="personalInfo"
           title="Información personal"
@@ -194,7 +194,7 @@ export default function CandidateSingle(props) {
           }}
         />
       </Styled.Step>
-      {isCongressCandidate ? (
+      {runsForCongress ? (
         isFavorite ? (
           <Styled.FavoriteButton
             text="Sácame de tus opciones"

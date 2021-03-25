@@ -85,7 +85,7 @@ const CandidateBigCard = (props) => {
             ) : null}
           </Row>
         </ContentColumn>
-        {props.isCongressCandidate ? (
+        {props.runsForCongress ? (
           <Star
             onClick={onStarClick}
             type={props.isFavorite ? 'favorite' : 'notFavorite'}
