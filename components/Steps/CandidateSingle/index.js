@@ -72,6 +72,8 @@ export default function CandidateSingle(props) {
     return <LoadingScreen />;
   }
   const c = data?.data;
+  const runsForCongress = c.cargo_nombre.includes('CONGRESISTA');
+
   const isFavorite = favorites.find(
     (favorite) => c.hoja_vida_id === favorite.hoja_vida_id,
   );
@@ -113,7 +115,8 @@ export default function CandidateSingle(props) {
           candidateGenre={c.id_sexo}
           candidateRole={c.cargo_nombre}
           candidateTwitterLink={c.twitter}
-          candidateFacebookLink={c.facebook}></Styled.CandidateBigCard>
+          candidateFacebookLink={c.facebook}
+          runsForCongress={runsForCongress}></Styled.CandidateBigCard>
         <Styled.Accordion
           type="personalInfo"
           title="Información personal"
@@ -191,18 +194,20 @@ export default function CandidateSingle(props) {
           }}
         />
       </Styled.Step>
-      {isFavorite ? (
-        <Styled.FavoriteButton
-          text="Sácame de tus opciones"
-          type="transparent"
-          onClick={() => removeFavorite(c.hoja_vida_id)}
-        />
-      ) : (
-        <Styled.FavoriteButton
-          text="Agrégame a tus opciones"
-          onClick={() => addFavorite(c)}
-        />
-      )}
+      {runsForCongress ? (
+        isFavorite ? (
+          <Styled.FavoriteButton
+            text="Sácame de tus opciones"
+            type="transparent"
+            onClick={() => removeFavorite(c.hoja_vida_id)}
+          />
+        ) : (
+          <Styled.FavoriteButton
+            text="Agrégame a tus opciones"
+            onClick={() => addFavorite(c)}
+          />
+        )
+      ) : null}
     </Styled.Container>
   );
 }
