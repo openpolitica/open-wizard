@@ -1,4 +1,5 @@
 import Router from 'next/router';
+import { useEffect } from 'react';
 import * as Styled from './styles';
 import * as topics from 'public/images/icons/topics';
 import fromIconToTopicName from './fromIconToTopicName';
@@ -13,7 +14,12 @@ export default function PresidentialTopics() {
     userSelectedTopics,
     addUserSelectedTopic,
     removeUserSelectedTopic,
+    resetTopics,
   } = useTopics();
+
+  useEffect(() => {
+    resetTopics();
+  }, [Router.pathname]);
 
   return (
     <MainLayout>
