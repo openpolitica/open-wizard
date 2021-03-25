@@ -5,8 +5,8 @@ export default function SEO(props) {
   const { ...customMeta } = props;
   const router = useRouter();
   const meta = {
-    title: 'VOTU | Transparentamos la información política en el Perú.',
-    description: `Votu.pe es una aplicación independiente desarrollada para ayudarte en la selección de tus candidatos congresales y presidenciales basándose en datos de fuentes públicas y un análisis de los planes de gobierno. Su objetivo es ser tu herramienta de consulta para decidir mejor tu voto.`,
+    title: 'VOTU | Tu guía digital para las elecciones del Perú.',
+    description: `Votu.pe es tu guía digital para ayudarte a elegir tu voto. En VOTU.pe puedes encontrar informacion de todos los candidatos congresales y presidenciales, basada en fuentes de datos públicas y planes de gobierno. Mediante distintos filtros, y preguntas, VOTU.pe te ayuda a encontrar a los candidatos que más se alinean con tus preferencias personales. VOTU es una aplicación independiente desarrollada por Open Politica.`,
     image: 'https://votu.pe/images/banner.png',
     type: 'website',
     ...customMeta,
