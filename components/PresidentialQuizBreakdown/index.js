@@ -7,7 +7,7 @@ import qs from 'qs';
 import { useTopics } from 'hooks/useTopics';
 import MainLayout from 'components/layouts/MainLayout';
 
-const requiredNumberOfSelectedTopics = 3;
+const requiredNumberOfSelectedTopics = 1;
 
 const LoadingScreen = () => {
   return (

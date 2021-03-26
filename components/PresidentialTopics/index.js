@@ -6,7 +6,7 @@ import fromIconToTopicName from './fromIconToTopicName';
 import { useTopics } from 'hooks/useTopics';
 import MainLayout from 'components/layouts/MainLayout';
 
-const requiredNumberOfSelectedTopics = 3;
+const requiredNumberOfSelectedTopics = 1;
 const branch = (fn1) => (fn2) => (value) => (!value ? fn1() : fn2());
 
 export default function PresidentialTopics() {
@@ -27,9 +27,7 @@ export default function PresidentialTopics() {
         <Styled.GoBackButton to="/" text="Regresa" />
       </Styled.Row>
       <Styled.Title>¿Qué temas son importantes para ti?</Styled.Title>
-      <Styled.SubTitle>
-        Selecciona como mínimo 3 opciones para darte un resultado acertado
-      </Styled.SubTitle>
+      <Styled.SubTitle>Selecciona al menos un tema</Styled.SubTitle>
       <Styled.Topics>
         {Object.keys(topics).map((topic) => (
           <Styled.TopicCheckbox
