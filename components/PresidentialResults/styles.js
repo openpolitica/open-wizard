@@ -18,6 +18,9 @@ export const Tagline = styled(BaseParagraph)`
 `;
 
 export const ThinkLikeYou = Tagline;
+export const ThinkLikeYouSingleTopic = styled(ThinkLikeYou)`
+  color: #4bc540;
+`;
 export const OtherResults = styled(Tagline)`
   margin-top: 1.5rem;
 `;
