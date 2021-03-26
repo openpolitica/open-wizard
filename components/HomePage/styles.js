@@ -82,12 +82,29 @@ export const InfoText = styled('p')`
 `;
 
 export const BoxLogo = styled('div')`
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 1.2rem;
+`;
+
+export const LogoDiv = styled('div')`
   align-items: center;
   display: flex;
+  flex-direction: column;
+  margin-right: 0.75rem;
 `;
 
 export const LogoImage = styled('div')`
-  margin-right: 0.75rem;
+  display: flex;
+  align-self: center;
+`;
+
+export const LogoText = styled('p')`
+  color: #8e94a4;
+  font-weight: 600;
+  font-size: 0.575rem;
+  margin: 0;
+  text-align: center;
 `;
 
 export const InfoCard = styled('div')`
