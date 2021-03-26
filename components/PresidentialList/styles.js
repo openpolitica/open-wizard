@@ -36,6 +36,19 @@ export const EmphasizedTitle = styled(Title)`
   margin-top: 0;
 `;
 
+export const ExternalLink = styled('a')`
+  align-items: center;
+  align-self: flex-start;
+  color: #5bc13e;
+  display: flex;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+`;
+export const ExternalLinkText = styled('span')`
+  font-size: 0.875rem;
+  margin-left: 0.5rem;
+`;
+
 export const Subtitle = styled('p')`
   color: #475065;
   font-family: Poppins;
