@@ -61,7 +61,7 @@ export default function CandidateSingle(props) {
   };
 
   const { data, error } = useSWR(
-    candidateId ? '/api/candidates/hoja_vida_id' : null,
+    candidateId ? `/api/candidates/hoja_vida_id/${candidateId}` : null,
     () =>
       fetch(
         `${process.env.api.candidatesUrl}/hoja_vida_id/${candidateId}`,
