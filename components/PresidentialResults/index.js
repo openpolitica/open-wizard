@@ -6,6 +6,7 @@ import MainLayout from 'components/layouts/MainLayout';
 import Loading from 'components/Loading';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import comesFromAFinishedPresidentialUserTrip from 'components/PresidentialList/comesFromAFinishedPresidentialUserTrip';
+import { translationMap } from 'components/TopicCheckbox';
 
 const LoadingScreen = () => {
   return (
@@ -28,7 +29,7 @@ const fetchResults = (answers) =>
   }).then((data) => data.json());
 
 export default function PresidentialResults() {
-  const { userAnswers } = useTopics();
+  const { userAnswers, userSelectedTopics } = useTopics();
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
     () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
@@ -40,6 +41,7 @@ export default function PresidentialResults() {
   const otherResults = results?.filter(
     (element) => element.compatibility !== results[0].compatibility,
   );
+  const isSingleTopic = userSelectedTopics && userSelectedTopics.length === 1;
 
   if (!comesFromAFinishedPresidentialUserTrip()) {
     Router.push('/');
@@ -61,7 +63,12 @@ export default function PresidentialResults() {
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
-          <Styled.ThinkLikeYou>Piensa más como tú</Styled.ThinkLikeYou>
+          <Styled.ThinkLikeYou>
+            Piensa más como tú {isSingleTopic ? 'en ' : ''}
+            <Styled.ThinkLikeYouSingleTopic as="span">
+              {isSingleTopic ? `${translationMap[userSelectedTopics[0]]}` : ''}
+            </Styled.ThinkLikeYouSingleTopic>
+          </Styled.ThinkLikeYou>
           {topResults.map(
             (
               {
