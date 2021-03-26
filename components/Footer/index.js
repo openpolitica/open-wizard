@@ -15,24 +15,28 @@ export default function Footer() {
         <Link href="/about">Sobre el proyecto</Link>
       </Styled.AboutTheProjectLink>
       <Styled.WriteUs> Escríbenos</Styled.WriteUs>
-      <Styled.WriteUsEmail href="mailto:  openpoliticaperu@gmail.com?subject = Feedback&body = Message">
-        openpoliticaperu@gmail.com
+      <Styled.WriteUsEmail href="mailto:  hola@votu.pe?subject = Feedback&body = Message">
+        hola@votu.pe
       </Styled.WriteUsEmail>
       <Styled.BoxSocialMedia>
         <Styled.SocialMediaList>
           <a
-            href=" https://www.facebook.com/Open-Pol%C3%ADtica-100666928704593"
-            target="_blank">
+            href=" https://www.facebook.com/votu.pe/"
+            target="_blank"
+            rel="noreFerrer">
             <img src="../images/icons/facebook.svg" alt="logo facebook" />
           </a>
         </Styled.SocialMediaList>
         <Styled.SocialMediaList>
-          <a href="https://twitter.com/votupe" target="_blank">
+          <a href="https://twitter.com/votupe" target="_blank" rel="noreFerrer">
             <img src="../images/icons/twitter.svg" alt="logo twitter" />
           </a>
         </Styled.SocialMediaList>
         <Styled.SocialMediaList>
-          <a href="https://www.instagram.com/votu.pe/" target="_blank">
+          <a
+            href="https://www.instagram.com/votu.pe/"
+            target="_blank"
+            rel="noreFerrer">
             <img src="../images/icons/instagram.svg" alt="logo instagram" />
           </a>
         </Styled.SocialMediaList>
