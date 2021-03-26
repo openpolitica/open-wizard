@@ -14,33 +14,45 @@ const CheckLabel = (props) => (
 
 const LogoList = () => (
   <Styled.BoxLogo>
-    <Styled.LogoImage>
-      <Image src="/images/jne.svg" width="75" height="80" alt="jne logo" />
-    </Styled.LogoImage>
-    <Styled.LogoImage>
-      <Image
-        src="/images/power-of-attorney.svg"
-        width="75"
-        height="80"
-        alt="poder judicial logo"
-      />
-    </Styled.LogoImage>
-    <Styled.LogoImage>
-      <Image
-        src="/images/public-ministry.svg"
-        width="75"
-        height="80"
-        alt="ministerio público logo"
-      />
-    </Styled.LogoImage>
-    <Styled.LogoImage>
-      <Image
-        src="/images/el-comercio.svg"
-        width="75"
-        height="80"
-        alt="el comercio logo"
-      />
-    </Styled.LogoImage>
+    <Styled.LogoDiv>
+      <Styled.LogoImage>
+        <Image src="/images/jne.svg" width="75" height="80" alt="jne logo" />
+      </Styled.LogoImage>
+      <Styled.LogoText>HOJAS DE VIDA</Styled.LogoText>
+    </Styled.LogoDiv>
+    <Styled.LogoDiv>
+      <Styled.LogoImage>
+        <Image
+          src="/images/power-of-attorney.svg"
+          width="75"
+          height="80"
+          alt="poder judicial logo"
+        />
+      </Styled.LogoImage>
+      <Styled.LogoText>SENTENCIAS</Styled.LogoText>
+    </Styled.LogoDiv>
+    <Styled.LogoDiv>
+      <Styled.LogoImage>
+        <Image
+          src="/images/public-ministry.svg"
+          width="75"
+          height="80"
+          alt="ministerio público logo"
+        />
+      </Styled.LogoImage>
+      <Styled.LogoText>MILITANCIA</Styled.LogoText>
+    </Styled.LogoDiv>
+    <Styled.LogoDiv>
+      <Styled.LogoImage>
+        <Image
+          src="/images/el-comercio.svg"
+          width="75"
+          height="80"
+          alt="el comercio logo"
+        />
+      </Styled.LogoImage>
+      <Styled.LogoText>SANCIONES</Styled.LogoText>
+    </Styled.LogoDiv>
   </Styled.BoxLogo>
 );
 
@@ -106,6 +118,9 @@ const HomePage = () => {
           Juntamos toda la información pública para que puedas{' '}
           <Styled.Emphasis> elegir informado.</Styled.Emphasis>
         </Styled.InfoText>
+        <Styled.Paragraph>
+          Consultamos distintas bases de datos de acceso público:
+        </Styled.Paragraph>
         <LogoList />
         <Styled.InfoCard>
           <Styled.TitleInfoCard>
