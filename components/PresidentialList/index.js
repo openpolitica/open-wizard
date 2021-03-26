@@ -25,29 +25,6 @@ const goBackToPartyResults = (event) => {
   Router.push('/');
 };
 
-const governancePlanMapByPartyId = {
-  4: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16511.pdf',
-  1257: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16531.pdf',
-  2173: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16535.pdf',
-  2191: 'https://drive.google.com/file/d/1t-u3sSqjV4il_sxw_5P6CPAzakFhXfcv/view',
-  2160: 'https://drive.google.com/file/d/1X7mJITVhVluvQ0PemY68PIZVP4zagpnt/view',
-  2646: '',
-  1366: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16490.pdf',
-  1264: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16479.pdf',
-  14: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16494.pdf',
-  2840: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16521.pdf',
-  179: 'https://drive.google.com/file/d/1odWKpBC7OTNllBXzNn80JNp--9RgFk_J/view',
-  2235: '',
-  2218: 'https://drive.google.com/file/d/1F-yD4uPT_C8zbgjlsRruObd4otgRYMh0/view',
-  15: 'https://drive.google.com/file/d/1ytbf2OUCWe8PK6rOqOR9lgrKuYIr4vsq/view',
-  55: 'https://drive.google.com/file/d/1HYtZSPjoaJ0NuXvv42ElGYErmFeoclLy/view',
-  2731: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16536.pdf',
-  5: 'https://drive.google.com/file/d/1ZWK1dXKEORw6BxzvyKyiMu7507mHLePP/view',
-  22: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16482.pdf',
-  47: 'https://drive.google.com/file/d/1Cph8rUOWUN4-f6TIuaik1Quwfd0xOx7i/view',
-  21: 'https://declara.jne.gob.pe/ASSETS/PLANGOBIERNO/FILEPLANGOBIERNO/16517.pdf',
-};
-
 export default function presidentList(props) {
   const router = useRouter();
   const { partyName } = router.query;
@@ -89,9 +66,7 @@ export default function presidentList(props) {
           {presidentList.president.org_politica_alias}
         </Styled.EmphasizedTitle>
         <Styled.ExternalLink
-          href={
-            governancePlanMapByPartyId[presidentList.president.org_politica_id]
-          }
+          href={presidentList.president.plan_de_gobierno_url || '#'}
           target="_blank"
           rel="noopener noreferrer">
           <ExternalLinkIcon />
