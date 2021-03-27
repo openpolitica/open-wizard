@@ -23,12 +23,15 @@ export default function Footer() {
           <a
             href=" https://www.facebook.com/votu.pe/"
             target="_blank"
-            rel="noreFerrer">
+            rel="noopener noreferrer">
             <img src="../images/icons/facebook.svg" alt="logo facebook" />
           </a>
         </Styled.SocialMediaList>
         <Styled.SocialMediaList>
-          <a href="https://twitter.com/votupe" target="_blank" rel="noreFerrer">
+          <a
+            href="https://twitter.com/votupe"
+            target="_blank"
+            rel="noopener noreferrer">
             <img src="../images/icons/twitter.svg" alt="logo twitter" />
           </a>
         </Styled.SocialMediaList>
@@ -36,7 +39,7 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/votu.pe/"
             target="_blank"
-            rel="noreFerrer">
+            rel="noopener noreferrer">
             <img src="../images/icons/instagram.svg" alt="logo instagram" />
           </a>
         </Styled.SocialMediaList>
