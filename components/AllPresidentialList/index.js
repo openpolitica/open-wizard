@@ -37,7 +37,7 @@ export default function presidentList(props) {
       <Styled.Row>
         <GoBackButton text="Regresar" to="/" />
       </Styled.Row>
-      <Styled.Title>Lista de candidatos a la presidencia</Styled.Title>
+      <Styled.Title>Lista de partidos a la presidencia</Styled.Title>
       <Styled.ListUL>
         {presidentsList.map((president) => (
           <Styled.ListItem key={president.org_politica_id}>
@@ -46,7 +46,7 @@ export default function presidentList(props) {
                 president.org_politica_nombre,
               )}`}
               candidateParty={president.org_politica_nombre}
-              candidateFullname={`${president.id_nombres} ${president.id_apellido_paterno}`}
+              candidateFullname={president.org_politica_alias}
               profileImageId={president.hoja_vida_id}
               systemId={president.hoja_vida_id}
             />

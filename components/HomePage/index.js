@@ -5,6 +5,8 @@ import { useRouter } from 'next/router';
 import BaseHeader from 'components/Header';
 import Footer from 'components/Footer';
 import BaseButton from 'components/BaseButton';
+import { useTopics } from 'hooks/useTopics';
+import { useEffect } from 'react';
 
 const CheckLabel = (props) => (
   <Styled.WrapperCheckLabel>
@@ -59,7 +61,7 @@ const LogoList = () => (
 
 const HomePage = () => {
   const router = useRouter();
-  ls('op.wizard', {});
+  const { resetTopics } = useTopics();
 
   const goToCongressmen = (e) => {
     router.push('/steps/1');
@@ -72,6 +74,11 @@ const HomePage = () => {
   const currentDate = new Date();
   const miliseconds = electionDate.getTime() - currentDate.getTime();
   const remainingDays = Math.round(miliseconds / (1000 * 60 * 60 * 24));
+
+  useEffect(() => {
+    resetTopics();
+    ls('op.wizard', {});
+  }, [resetTopics, router.pathname]);
 
   return (
     <Styled.Container>
