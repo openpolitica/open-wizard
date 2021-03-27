@@ -33,4 +33,31 @@ const CompatibilityPartyCard = ({
   );
 };
 
-export default CompatibilityPartyCard;
+const PresidentialPartyCard = ({
+  partyName,
+  partyAlias,
+  profileImageId,
+  compatibility,
+  ...props
+}) => {
+  return (
+    <Styled.Card {...props}>
+      <Styled.PartyIcon src={partyIconSource(partyName)} />
+      <Styled.ProfileIcon
+        src={
+          profileImageId
+            ? `${profileBaseUrl}${profileImageId}.jpg`
+            : `${profileBaseUrl}134127.jpg`
+        }
+      />
+      <Styled.Column>
+        <Styled.PartyName>
+          {partyAlias || 'Nombre del partido'}
+        </Styled.PartyName>
+      </Styled.Column>
+      <Styled.ArrowCircle />
+    </Styled.Card>
+  );
+};
+
+export { PresidentialPartyCard, CompatibilityPartyCard };
