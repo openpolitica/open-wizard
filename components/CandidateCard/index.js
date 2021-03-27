@@ -22,10 +22,10 @@ const CandidateCard = (props) => {
   return (
     <Link
       href={{
-        pathname: `/candidate/${props.systemId}`,
+        pathname: props.href || `/candidate/${props.systemId}`,
         query: { fromPath: window.location.pathname },
       }}
-      as={`/candidate/${props.systemId}`}>
+      as={props.href || `/candidate/${props.systemId}`}>
       <Card {...props}>
         <PartyIcon src={partyIconSource(props.candidateParty)} />
         {props.candidateNumber ? (
