@@ -13,6 +13,8 @@ export const Row = BaseRow;
 export const GoBackButton = BaseGoBackButton;
 export const Title = BaseTitle;
 export const Tagline = styled(BaseParagraph)`
+  color: #04102f;
+  font-size: 1rem;
   font-weight: bold;
   width: 100%;
 `;
