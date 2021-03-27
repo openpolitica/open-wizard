@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import BaseHeader from 'components/Header';
 import Footer from 'components/Footer';
+import BaseButton from 'components/BaseButton';
 
 const CheckLabel = (props) => (
   <Styled.WrapperCheckLabel>
@@ -115,6 +116,21 @@ const HomePage = () => {
       </Styled.Hero>
       <Styled.InfoSection>
         <Styled.InfoText>
+          ¿Quieres ver la lista de todos los candidatos?
+        </Styled.InfoText>
+        <Styled.Paragraph>
+          <strong>
+            Encuentra todos los datos que buscas sobre todos los posibles
+            presidentes:
+          </strong>{' '}
+          Hojas de vida, sentencias, sanciones, entre otros.
+        </Styled.Paragraph>
+        <BaseButton onClick={() => router.push('/presidential-list/')}>
+          Ver lista de candidatos presidenciales
+        </BaseButton>
+      </Styled.InfoSection>
+      <Styled.TextContent>
+        <Styled.InfoText>
           Juntamos toda la información pública para que puedas{' '}
           <Styled.Emphasis> elegir informado.</Styled.Emphasis>
         </Styled.InfoText>
@@ -141,7 +157,7 @@ const HomePage = () => {
             />
           </Styled.BackgroundDirections>
         </Styled.InfoCard>
-      </Styled.InfoSection>
+      </Styled.TextContent>
       <Footer />
     </Styled.Container>
   );
