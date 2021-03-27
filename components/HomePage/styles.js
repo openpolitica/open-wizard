@@ -11,7 +11,7 @@ export const Hero = styled('main')`
 
 export const TextContent = styled('div')`
   background: #ecf4f3;
-  padding: 2.5rem 1.5rem 0.0625rem 1.5rem;
+  padding: 2.5rem 1.5rem 1.5rem 1.5rem;
 `;
 
 export const Title = styled('h1')`
