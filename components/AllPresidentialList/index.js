@@ -4,8 +4,9 @@ import fetch from 'isomorphic-fetch';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import MainLayout from 'components/layouts/MainLayout';
-import CandidateCard from 'components/CandidateCard';
 import toggleSlug from 'components/PartyCard/toggleSlug';
+import { PresidentialPartyCard } from 'components/CompatibilityPartyCard';
+import Link from 'next/link';
 
 const LoadingScreen = () => {
   return (
@@ -41,15 +42,16 @@ export default function presidentList(props) {
       <Styled.ListUL>
         {presidentsList.map((president) => (
           <Styled.ListItem key={president.org_politica_id}>
-            <CandidateCard
+            <Link
               href={`/presidential-list/${toggleSlug(
                 president.org_politica_nombre,
-              )}`}
-              candidateParty={president.org_politica_nombre}
-              candidateFullname={president.org_politica_alias}
-              profileImageId={president.hoja_vida_id}
-              systemId={president.hoja_vida_id}
-            />
+              )}`}>
+              <PresidentialPartyCard
+                partyName={president.org_politica_nombre}
+                partyAlias={president.org_politica_alias}
+                profileImageId={president.hoja_vida_id}
+              />
+            </Link>
           </Styled.ListItem>
         ))}
       </Styled.ListUL>
