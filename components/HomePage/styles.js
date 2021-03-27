@@ -48,7 +48,7 @@ export const FindMyCandidateButton = styled('button')`
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
   cursor: pointer;
   max-width: 9.8125rem;
-  padding: 0.75rem 0.75rem 1.5rem;
+  padding: 0.75rem 0.4375rem 1.5rem;
 
   &:hover {
     text-decoration: underline;
