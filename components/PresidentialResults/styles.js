@@ -6,7 +6,7 @@ import {
   Topics as BaseResults,
 } from 'components/PresidentialTopics/styles';
 import BaseParagraph from 'components/BaseParagraph';
-import BaseCompatibilityPartyCard from 'components/CompatibilityPartyCard';
+import { CompatibilityPartyCard as BaseCompatibilityPartyCard } from 'components/CompatibilityPartyCard';
 import BaseDownloadIcon from 'public/images/icons/download.svg';
 
 export const Row = BaseRow;

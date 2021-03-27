@@ -22,7 +22,7 @@ const goBackToPartyResults = (event) => {
     Router.push('/presidential-results/grouped-by-compatibility');
     return;
   }
-  Router.push('/');
+  Router.push('/presidential-list');
 };
 
 export default function presidentList(props) {
@@ -56,7 +56,7 @@ export default function presidentList(props) {
             text={
               comesFromAFinishedPresidentialUserTrip()
                 ? 'Regresa a resultados'
-                : 'Inicia tu viaje'
+                : 'Ir a Lista'
             }
             onClick={goBackToPartyResults}
           />
