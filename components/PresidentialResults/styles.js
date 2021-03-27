@@ -40,11 +40,6 @@ export const HorizontalRule = styled('hr')`
 
 export const Disclaimer = Results;
 
-export const CallToAction = styled(Tagline)`
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-`;
-
 export const Text = styled(BaseParagraph)`
   margin-top: 1rem;
   width: 100%;
