@@ -6,6 +6,7 @@ import Router, { useRouter } from 'next/router';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import comesFromAFinishedPresidentialUserTrip from './comesFromAFinishedPresidentialUserTrip';
+import ExternalLinkIcon from 'public/images/icons/external-link.svg';
 
 const LoadingScreen = () => {
   return (
@@ -64,6 +65,15 @@ export default function presidentList(props) {
         <Styled.EmphasizedTitle>
           {presidentList.president.org_politica_alias}
         </Styled.EmphasizedTitle>
+        <Styled.ExternalLink
+          href={presidentList.president.plan_de_gobierno_url || '#'}
+          target="_blank"
+          rel="noopener noreferrer">
+          <ExternalLinkIcon />
+          <Styled.ExternalLinkText>
+            Ir al plan de gobierno
+          </Styled.ExternalLinkText>
+        </Styled.ExternalLink>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
             {presidentList.president.id_sexo === 'F'
