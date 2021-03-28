@@ -6,18 +6,23 @@ import {
   Topics as BaseResults,
 } from 'components/PresidentialTopics/styles';
 import BaseParagraph from 'components/BaseParagraph';
-import BaseCompatibilityPartyCard from 'components/CompatibilityPartyCard';
+import { CompatibilityPartyCard as BaseCompatibilityPartyCard } from 'components/CompatibilityPartyCard';
 import BaseDownloadIcon from 'public/images/icons/download.svg';
 
 export const Row = BaseRow;
 export const GoBackButton = BaseGoBackButton;
 export const Title = BaseTitle;
 export const Tagline = styled(BaseParagraph)`
+  color: #04102f;
+  font-size: 1rem;
   font-weight: bold;
   width: 100%;
 `;
 
 export const ThinkLikeYou = Tagline;
+export const ThinkLikeYouSingleTopic = styled(ThinkLikeYou)`
+  color: #4bc540;
+`;
 export const OtherResults = styled(Tagline)`
   margin-top: 1.5rem;
 `;
@@ -36,11 +41,6 @@ export const HorizontalRule = styled('hr')`
 `;
 
 export const Disclaimer = Results;
-
-export const CallToAction = styled(Tagline)`
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-`;
 
 export const Text = styled(BaseParagraph)`
   margin-top: 1rem;

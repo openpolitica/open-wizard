@@ -6,6 +6,7 @@ import Router, { useRouter } from 'next/router';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import comesFromAFinishedPresidentialUserTrip from './comesFromAFinishedPresidentialUserTrip';
+import ExternalLinkIcon from 'public/images/icons/external-link.svg';
 
 const LoadingScreen = () => {
   return (
@@ -21,7 +22,7 @@ const goBackToPartyResults = (event) => {
     Router.push('/presidential-results/grouped-by-compatibility');
     return;
   }
-  Router.push('/');
+  Router.push('/presidential-list');
 };
 
 export default function presidentList(props) {
@@ -55,7 +56,7 @@ export default function presidentList(props) {
             text={
               comesFromAFinishedPresidentialUserTrip()
                 ? 'Regresa a resultados'
-                : 'Inicia tu viaje'
+                : 'Ir a Lista'
             }
             onClick={goBackToPartyResults}
           />
@@ -64,6 +65,15 @@ export default function presidentList(props) {
         <Styled.EmphasizedTitle>
           {presidentList.president.org_politica_alias}
         </Styled.EmphasizedTitle>
+        <Styled.ExternalLink
+          href={presidentList.president.plan_de_gobierno_url || '#'}
+          target="_blank"
+          rel="noopener noreferrer">
+          <ExternalLinkIcon />
+          <Styled.ExternalLinkText>
+            Ir al plan de gobierno
+          </Styled.ExternalLinkText>
+        </Styled.ExternalLink>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
             {presidentList.president.id_sexo === 'F'
