@@ -16,6 +16,11 @@ const LoadingScreen = () => {
   );
 };
 
+const translateTopics = (topics, translationMap) =>
+  topics.map((topic) => translationMap[topic]);
+
+const topicsToTextList = (topics) => (topics.length ? topics.join(', ') : '');
+
 const compatibilityToPercentage = (number) =>
   number ? parseInt(number * 100, 10) : 0;
 
@@ -41,7 +46,6 @@ export default function PresidentialResults() {
   const otherResults = results?.filter(
     (element) => element.compatibility !== results[0].compatibility,
   );
-  const isSingleTopic = userSelectedTopics && userSelectedTopics.length === 1;
 
   if (!comesFromAFinishedPresidentialUserTrip()) {
     Router.push('/');
@@ -64,10 +68,13 @@ export default function PresidentialResults() {
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
           <Styled.ThinkLikeYou>
-            Piensa más como tú {isSingleTopic ? 'en ' : ''}
-            <Styled.ThinkLikeYouSingleTopic as="span">
-              {isSingleTopic ? `${translationMap[userSelectedTopics[0]]}` : ''}
-            </Styled.ThinkLikeYouSingleTopic>
+            Plan de gobierno más compatible en:
+            <Styled.ThinkLikeYouTopics>
+              {topicsToTextList(
+                translateTopics(userSelectedTopics, translationMap),
+              )}
+              .
+            </Styled.ThinkLikeYouTopics>
           </Styled.ThinkLikeYou>
           {topResults.map(
             (
