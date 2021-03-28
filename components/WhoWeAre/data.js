@@ -50,12 +50,6 @@ export const team = [
     socialNetwork: 'https://www.linkedin.com/in/arturo-viayrada/',
   },
   {
-    photo: '/images/photos/Rodrigo-Torres.png',
-    name: 'Rodrigo Torres',
-    role: 'Analytics',
-    socialNetwork: 'https://twitter.com/RoTorresT',
-  },
-  {
     photo: '/images/photos/Almendra-Maravi.JPG',
     name: 'Almendra Maraví',
     role: 'Frontend Dev',
