@@ -93,8 +93,8 @@ const HomePage = () => {
             para las elecciones <strong>¿Ya sabes por quién votar?</strong>
           </Styled.Title>
           <Styled.Paragraph>
-            Te ayudamos a encontrar tus opciones ideales para estas elecciones
-            en unos cuantos pasos
+            Te ayudamos a encontrar tus opciones para estas elecciones en unos
+            cuantos pasos
           </Styled.Paragraph>
         </Styled.TextContent>
         <Styled.ButtonsRow>
