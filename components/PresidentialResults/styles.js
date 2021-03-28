@@ -19,9 +19,14 @@ export const Tagline = styled(BaseParagraph)`
   width: 100%;
 `;
 
-export const ThinkLikeYou = Tagline;
-export const ThinkLikeYouSingleTopic = styled(ThinkLikeYou)`
+export const ThinkLikeYou = styled(Tagline)`
+  color: #475065;
+  font-size: 0.875rem;
+`;
+export const ThinkLikeYouTopics = styled(ThinkLikeYou)`
   color: #4bc540;
+  font-size: 0.875rem;
+  text-transform: capitalize;
 `;
 export const OtherResults = styled(Tagline)`
   margin-top: 1.5rem;
