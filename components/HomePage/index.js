@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import BaseHeader from 'components/Header';
 import Footer from 'components/Footer';
-import SEO from 'components/SEO';
 import BaseButton from 'components/BaseButton';
 import { useTopics } from 'hooks/useTopics';
 import { useEffect } from 'react';
@@ -83,7 +82,6 @@ const HomePage = () => {
 
   return (
     <Styled.Container>
-      <SEO />
       <BaseHeader />
       <Styled.Hero>
         <Styled.TextContent>
