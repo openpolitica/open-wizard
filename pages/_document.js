@@ -1,6 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
-import GlobalStyles from '../global-styles/global';
+import GlobalStyles from 'global-styles/global';
+import SEO from 'components/SEO';
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
@@ -55,6 +56,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
+          <SEO />
           <GlobalStyles />
           {this.props.styleTags}
         </Head>
