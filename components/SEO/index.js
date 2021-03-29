@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 export default function SEO(props) {
   const meta = {
     title: 'VOTU | Tu guía digital para las elecciones del Perú.',
-    description: `Votu.pe es tu guía digital para ayudarte a elegir tu voto. En VOTU.pe puedes encontrar informacion de todos los candidatos congresales y presidenciales, basada en fuentes de datos públicas y planes de gobierno. Mediante distintos filtros, y preguntas, VOTU.pe te ayuda a encontrar a los candidatos que más se alinean con tus preferencias personales. VOTU es una aplicación independiente desarrollada por Open Politica.`,
+    description: `Votu.pe es tu guía digital para ayudarte a elegir tu voto. En VOTU.pe puedes encontrar información de todos los candidatos congresales y presidenciales, basada en fuentes de datos públicas y planes de gobierno. Mediante distintos filtros, y preguntas, VOTU.pe te ayuda a encontrar a los candidatos que más se alinean con tus preferencias personales. VOTU es una aplicación independiente desarrollada por Open Política.`,
     image: 'https://votu.pe/images/banner.png',
     type: 'website',
   };
