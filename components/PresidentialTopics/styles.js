@@ -4,6 +4,7 @@ import BaseTitle from 'components/BaseTitle';
 import BaseParagraph from 'components/BaseParagraph';
 import BaseTopicCheckbox from 'components/TopicCheckbox';
 import BaseButton from 'components/BaseButton';
+import InfoMessage from 'components/InfoMessage';
 
 export const Row = styled('div')`
   display: flex;
@@ -35,6 +36,15 @@ export const TopicCheckbox = styled(BaseTopicCheckbox)`
   margin: 0.21875rem;
 `;
 
+export const BottomMessage = styled(InfoMessage)`
+  margin-top: 0.75rem;
+  text-align: center;
+`;
+
 export const Button = styled(BaseButton)`
   margin: 1.5rem auto 0;
+`;
+
+export const Strong = styled('strong')`
+  font-weight: 700;
 `;
