@@ -183,7 +183,7 @@ export default function PartyResults(props) {
             : 'única opción'}
         </Styled.Title>
         <Styled.FilterButton
-          type="transparent"
+          color="transparent"
           onClick={() => setFilterModalState(true)}
         />
         <Styled.Chip type={'good'}>

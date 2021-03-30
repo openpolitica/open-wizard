@@ -44,7 +44,7 @@ export default function PresidentialTopics() {
           />
         ))}
         <Styled.Button
-          type={
+          color={
             userSelectedTopics.length < requiredNumberOfSelectedTopics
               ? 'disabled'
               : 'primary'

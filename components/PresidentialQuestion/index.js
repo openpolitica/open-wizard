@@ -124,7 +124,7 @@ export default function PresidentialQuestion() {
           </Styled.QuestionList>
           <Styled.QuestionButtons>
             <BaseButton
-              type={selectedOption === '' ? 'disabled' : 'primary'}
+              color={selectedOption === '' ? 'disabled' : 'primary'}
               disabled={selectedOption === ''}
               onClick={handleNextButton}>
               Continuar
@@ -132,7 +132,7 @@ export default function PresidentialQuestion() {
             <Styled.OmitButton
               disabled={questionsOmitted === allowOmittedQuestionsPerTopic}
               onClick={() => handleNextButton({ isOmitted: true })}
-              type="transparent">
+              color="transparent">
               Omitir
             </Styled.OmitButton>
           </Styled.QuestionButtons>

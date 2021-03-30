@@ -7,7 +7,6 @@ import * as Styled from './styles';
 import { FavoritesContext } from 'hooks/useFavorites';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
-import toggleSlug from 'components/PartyCard/toggleSlug';
 
 const LoadingScreen = () => {
   return (
@@ -60,7 +59,7 @@ export default function CandidateSingle(props) {
     setCollapsed(newCollapsedObject);
   };
 
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     candidateId ? `/api/candidates/hoja_vida_id/${candidateId}` : null,
     () =>
       fetch(
@@ -198,7 +197,7 @@ export default function CandidateSingle(props) {
         isFavorite ? (
           <Styled.FavoriteButton
             text="Sácame de tus opciones"
-            type="transparent"
+            color="transparent"
             onClick={() => removeFavorite(c.hoja_vida_id)}
           />
         ) : (

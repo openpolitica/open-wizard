@@ -30,19 +30,19 @@ const textColorPriority = {
 
 export const StyledButton = styled('button')`
   background-color: ${(props) =>
-    backgroundColorPriority[props.type || 'primary']};
-  border-color: ${(props) => borderColorPriority[props.type || 'primary']};
-  border-width: ${(props) => borderWidthPriority[props.type || 'primary']};
+    backgroundColorPriority[props.color || 'primary']};
+  border-color: ${(props) => borderColorPriority[props.color || 'primary']};
   border-radius: 2rem;
-  cursor: ${(props) => (props.type === 'disabled' ? 'auto' : 'pointer')};
-  color: ${(props) => textColorPriority[props.type || 'primary']};
+  border-width: ${(props) => borderWidthPriority[props.color || 'primary']};
+  color: ${(props) => textColorPriority[props.color || 'primary']};
+  cursor: ${(props) => (props.color === 'disabled' ? 'auto' : 'pointer')};
   font-family: 'Roboto', sans-serif;
-  min-width: 7.375rem;
   height: 3rem;
+  min-width: 7.375rem;
   padding: 0 1.5rem;
 
   &:hover {
     text-decoration: ${(props) =>
-      props.type === 'disabled' ? 'none' : 'underline'};
+      props.color === 'disabled' ? 'none' : 'underline'};
   }
 `;

@@ -67,7 +67,7 @@ export default function PresidentialQuizBreakdown() {
             <Styled.SubTitle>Ningún tópico seleccionado</Styled.SubTitle>
           )}
           <Styled.Button
-            type={
+            color={
               userSelectedTopics.length < requiredNumberOfSelectedTopics
                 ? 'disabled'
                 : 'primary'
