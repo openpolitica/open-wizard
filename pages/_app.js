@@ -1,5 +1,7 @@
 import { Fragment, useEffect } from 'react';
 import Head from 'next/head';
+import { ThemeProvider } from 'styled-components';
+import theme from 'global-styles/theme';
 import useHotjar from 'react-use-hotjar';
 import { init as initMatomo } from '@openpolitica/matomo-next';
 
@@ -9,7 +11,9 @@ function Votu({ Component, pageProps }) {
       <Head>
         <title>Votu.pe</title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </Fragment>
   );
 }
