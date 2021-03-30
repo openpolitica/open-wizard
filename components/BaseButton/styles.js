@@ -1,48 +1,48 @@
-import styled from 'styled-components';
-
-const backgroundColorPriority = {
-  primary: '#04102F',
-  secondary: '#4EB5A2',
-  transparent: 'transparent',
-  disabled: '#8E94A4',
-};
-
-const borderColorPriority = {
-  primary: 'none',
-  secondary: 'none',
-  transparent: '#04102F',
-  disabled: 'none',
-};
-
-const borderWidthPriority = {
-  primary: '0px',
-  secondary: '0px',
-  transparent: '1px',
-  disabled: '0px',
-};
-
-const textColorPriority = {
-  primary: 'white',
-  secondary: 'white',
-  transparent: '#04102F',
-  disabled: 'white',
-};
+import styled, { css } from 'styled-components';
 
 export const StyledButton = styled('button')`
-  background-color: ${(props) =>
-    backgroundColorPriority[props.color || 'primary']};
-  border-color: ${(props) => borderColorPriority[props.color || 'primary']};
+  background-color: #04102f;
+  border: none;
   border-radius: 2rem;
-  border-width: ${(props) => borderWidthPriority[props.color || 'primary']};
-  color: ${(props) => textColorPriority[props.color || 'primary']};
-  cursor: ${(props) => (props.color === 'disabled' ? 'auto' : 'pointer')};
+  color: #ffffff;
+  cursor: pointer;
   font-family: 'Roboto', sans-serif;
   height: 3rem;
   min-width: 7.375rem;
   padding: 0 1.5rem;
 
   &:hover {
-    text-decoration: ${(props) =>
-      props.color === 'disabled' ? 'none' : 'underline'};
+    text-decoration: underline;
   }
+
+  &:disabled {
+    border: none;
+    opacity: 0.25;
+    &:hover {
+      cursor: auto;
+      text-decoration: none;
+    }
+  }
+
+  ${(props) =>
+    props.color === 'primary' &&
+    css`
+      background-color: #04102f;
+      border: none;
+      color: #ffffff;
+    `}
+  ${(props) =>
+    props.color === 'secondary' &&
+    css`
+      background-color: #4eb5a2;
+      border: none;
+      color: #ffffff;
+    `}
+  ${(props) =>
+    props.color === 'transparent' &&
+    css`
+      background-color: transparent;
+      border: 1px solid #04102f;
+      color: #04102f;
+    `}
 `;

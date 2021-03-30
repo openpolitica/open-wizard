@@ -48,13 +48,6 @@ export const QuestionButtons = styled('div')`
 export const OmitButton = styled(BaseButton)`
   border: none;
   margin-top: 1.125rem;
-  &:disabled {
-    opacity: 0.4;
-    &:hover {
-      cursor: auto;
-      text-decoration: none;
-    }
-  }
 `;
 export const NoQuestionChip = styled(BaseChip)`
   margin: 0 auto;

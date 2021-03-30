@@ -124,7 +124,6 @@ export default function PresidentialQuestion() {
           </Styled.QuestionList>
           <Styled.QuestionButtons>
             <BaseButton
-              color={selectedOption === '' ? 'disabled' : 'primary'}
               disabled={selectedOption === ''}
               onClick={handleNextButton}>
               Continuar

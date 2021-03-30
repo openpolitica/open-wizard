@@ -2,7 +2,7 @@ import { StyledButton } from './styles.js';
 
 const BaseButton = (props) => {
   return (
-    <StyledButton {...props}>
+    <StyledButton color={props.color || 'primary'} {...props}>
       {typeof props.children === 'string' ? props.children : props.text}
     </StyledButton>
   );
