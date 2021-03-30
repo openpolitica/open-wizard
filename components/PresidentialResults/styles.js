@@ -33,6 +33,7 @@ export const OtherResults = styled(Tagline)`
 `;
 
 export const Results = styled(BaseResults)`
+  margin-bottom: 0;
   margin-top: 1.5rem;
 `;
 
@@ -42,6 +43,7 @@ export const CompatibilityPartyCard = styled(BaseCompatibilityPartyCard)`
 
 export const HorizontalRule = styled('hr')`
   border: 1px solid #e3e5e8;
+  margin-top: 2.5rem;
   width: 100%;
 `;
 
