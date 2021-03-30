@@ -27,7 +27,7 @@ export default function PresidentialTopics() {
       <Styled.Row>
         <Styled.GoBackButton to="/" text="Regresa" />
       </Styled.Row>
-      <Chip type={'info'}>Este cuestionario sólo te ayudará a encontrar los <b>planes de gobierno</b> con los que tienes <b>más posiciones en común.</b></Chip>
+      <Chip type="info">Este cuestionario sólo te ayudará a encontrar los <strong>planes de gobierno</strong> con los que tienes <strong>más posiciones en común.</strong></Chip>
       <Styled.Title>¿Qué temas son importantes para ti?</Styled.Title>
       <Styled.SubTitle>Selecciona al menos un tema</Styled.SubTitle>
       <Styled.Topics>
