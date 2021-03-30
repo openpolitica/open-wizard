@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 
-export const StyledButton = styled('button')`
+export const StyledButton = styled('button').attrs((props) => ({
+  type: props.type || 'button',
+}))`
   background-color: #04102f;
   border: none;
   border-radius: 2rem;
