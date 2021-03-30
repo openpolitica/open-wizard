@@ -2,7 +2,6 @@ import * as Styled from './styles';
 import { Fragment, useEffect, useState } from 'react';
 import BaseRadioButton from 'components/BaseRadioButton';
 import RadioGroup from 'components/BaseRadioButton/RadioGroup';
-import BaseButton from 'components/BaseButton';
 import * as icons from 'public/images/icons/topics';
 import { useTopics } from 'hooks/useTopics';
 import { useRouter } from 'next/router';
@@ -123,18 +122,18 @@ export default function PresidentialQuestion() {
             ))}
           </Styled.QuestionList>
           <Styled.QuestionButtons>
-            <BaseButton
-              type={selectedOption === '' ? 'disabled' : 'primary'}
-              disabled={selectedOption === ''}
-              onClick={handleNextButton}>
-              Continuar
-            </BaseButton>
             <Styled.OmitButton
               disabled={questionsOmitted === allowOmittedQuestionsPerTopic}
               onClick={() => handleNextButton({ isOmitted: true })}
               type="transparent">
-              Omitir
+              No responder
             </Styled.OmitButton>
+            <Styled.NextButton
+              type={selectedOption === '' ? 'disabled' : 'primary'}
+              disabled={selectedOption === ''}
+              onClick={handleNextButton}>
+              Continuar
+            </Styled.NextButton>
           </Styled.QuestionButtons>
         </Fragment>
       ) : (

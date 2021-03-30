@@ -43,11 +43,15 @@ export const QuestionList = styled('div')`
 export const QuestionButtons = styled('div')`
   align-items: center;
   display: flex;
-  flex-direction: column;
+`;
+export const NextButton = styled(BaseButton)`
+  margin-left: 0.85rem;
+  min-width: 9.8125rem;
 `;
 export const OmitButton = styled(BaseButton)`
-  border: none;
-  margin-top: 1.125rem;
+  background: #ffffff;
+  border: 1px solid #1f1f1f;
+  min-width: 9.8125rem;
   &:disabled {
     opacity: 0.4;
     &:hover {
