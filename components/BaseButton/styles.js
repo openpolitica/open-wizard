@@ -1,48 +1,50 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const backgroundColorPriority = {
-  primary: '#04102F',
-  secondary: '#4EB5A2',
-  transparent: 'transparent',
-  disabled: '#8E94A4',
-};
-
-const borderColorPriority = {
-  primary: 'none',
-  secondary: 'none',
-  transparent: '#04102F',
-  disabled: 'none',
-};
-
-const borderWidthPriority = {
-  primary: '0px',
-  secondary: '0px',
-  transparent: '1px',
-  disabled: '0px',
-};
-
-const textColorPriority = {
-  primary: 'white',
-  secondary: 'white',
-  transparent: '#04102F',
-  disabled: 'white',
-};
-
-export const StyledButton = styled('button')`
-  background-color: ${(props) =>
-    backgroundColorPriority[props.type || 'primary']};
-  border-color: ${(props) => borderColorPriority[props.type || 'primary']};
-  border-width: ${(props) => borderWidthPriority[props.type || 'primary']};
+export const StyledButton = styled('button').attrs((props) => ({
+  type: props.type || 'button',
+}))`
+  background-color: #04102f;
+  border: none;
   border-radius: 2rem;
-  cursor: ${(props) => (props.type === 'disabled' ? 'auto' : 'pointer')};
-  color: ${(props) => textColorPriority[props.type || 'primary']};
+  color: #ffffff;
+  cursor: pointer;
   font-family: 'Roboto', sans-serif;
-  min-width: 7.375rem;
   height: 3rem;
+  min-width: 7.375rem;
   padding: 0 1.5rem;
 
   &:hover {
-    text-decoration: ${(props) =>
-      props.type === 'disabled' ? 'none' : 'underline'};
+    text-decoration: underline;
   }
+
+  &:disabled {
+    border: none;
+    opacity: 0.25;
+    &:hover {
+      cursor: auto;
+      text-decoration: none;
+    }
+  }
+
+  ${(props) =>
+    props.color === 'primary' &&
+    css`
+      background-color: #04102f;
+      border: none;
+      color: #ffffff;
+    `}
+  ${(props) =>
+    props.color === 'secondary' &&
+    css`
+      background-color: #4eb5a2;
+      border: none;
+      color: #ffffff;
+    `}
+  ${(props) =>
+    props.color === 'transparent' &&
+    css`
+      background-color: transparent;
+      border: 1px solid #04102f;
+      color: #04102f;
+    `}
 `;

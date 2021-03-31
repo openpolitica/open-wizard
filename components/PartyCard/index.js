@@ -21,7 +21,7 @@ const PartyCard = (props) => {
         {numberOfCandidates(props.numberOfCandidates)}
       </Styled.NumberOfCandidates>
       <Styled.SeeCandidatesButton
-        type="transparent"
+        color="transparent"
         onClick={onSeeCandidatesButtonClick(props.partyName)(props.candidates)}>
         Ver candidatos
       </Styled.SeeCandidatesButton>

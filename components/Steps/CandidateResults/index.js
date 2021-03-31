@@ -122,7 +122,7 @@ export default function Step4(props) {
           </Styled.Emphasis>
         </Styled.Title>
         <Styled.FilterButton
-          type="transparent"
+          color="transparent"
           onClick={() => setFilterModalState(true)}
         />
         <Styled.ChipCard type="good">

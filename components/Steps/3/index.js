@@ -28,7 +28,7 @@ export default function Step3() {
         <Styled.NoButton onClick={onNoButtonClick}>
           Ocultar partidos
         </Styled.NoButton>
-        <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
+        <Styled.YesButton color="transparent" onClick={onYesButtonClick}>
           Incluir partidos
         </Styled.YesButton>
       </Styled.YesNoButtons>

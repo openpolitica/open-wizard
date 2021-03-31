@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import BaseHeader from 'components/Header';
 import BaseStepper from 'components/Stepper';
 import BaseTitle from 'components/BaseTitle';
-import BaseParagraph from 'components/BaseParagraph';
 import BaseSelect from 'components/BaseSelect';
 import BaseLinkButton from 'components/LinkButton';
 import BaseButton from 'components/BaseButton';
@@ -22,15 +21,15 @@ export const Header = styled(BaseHeader)`
 `;
 
 export const GoBackButton = styled(BaseGoBackButton)`
-  margin-top: 16px;
   margin-left: 16px;
+  margin-top: 16px;
 `;
 
 export const Step = styled('div')`
   align-items: center;
+  display: flex;
   flex: 1;
   flex-direction: column;
-  display: flex;
   padding: 0 1.5rem;
 `;
 
@@ -63,10 +62,5 @@ export const LinkButton = styled(BaseLinkButton)`
 
 export const Button = styled(BaseButton)`
   align-self: center;
-  background-color: ${(props) => (props.disabled ? 'grey' : 'auto')};
-  cursor: ${(props) => (props.disabled ? 'auto' : 'pointer')};
   margin-bottom: 5rem;
-  &:hover {
-    text-decoration: ${(props) => (props.disabled ? 'none' : 'underline')};
-  }
 `;

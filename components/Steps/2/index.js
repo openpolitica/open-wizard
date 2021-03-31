@@ -35,7 +35,7 @@ export default function Step2() {
         <Styled.NoButton onClick={onNoButtonClick}>
           Ocultar candidatos
         </Styled.NoButton>
-        <Styled.YesButton type="transparent" onClick={onYesButtonClick}>
+        <Styled.YesButton color="transparent" onClick={onYesButtonClick}>
           Incluir candidatos
         </Styled.YesButton>
       </Styled.YesNoButtons>

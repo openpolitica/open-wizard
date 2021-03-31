@@ -53,11 +53,6 @@ export default function PresidentialTopics() {
           </strong>
         </Styled.BottomMessage>
         <Styled.Button
-          type={
-            userSelectedTopics.length < requiredNumberOfSelectedTopics
-              ? 'disabled'
-              : 'primary'
-          }
           disabled={userSelectedTopics.length < requiredNumberOfSelectedTopics}
           onClick={() => Router.push('/presidential-steps/2')}
           text="Continuar"

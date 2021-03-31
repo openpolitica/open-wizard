@@ -42,7 +42,7 @@ export const CandidateCard = styled(BaseCandidateCard)`
 
 // Todo: make it sticky / position-absoluted when needed
 export const KeepLookingButton = styled((props) => (
-  <BaseButton type="secondary" {...props} />
+  <BaseButton color="secondary" {...props} />
 ))`
   margin-top: 1.25rem;
 `;
