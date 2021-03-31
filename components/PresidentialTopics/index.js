@@ -45,6 +45,13 @@ export default function PresidentialTopics() {
             type={topic}
           />
         ))}
+        <Styled.BottomMessage>
+          *Solo mostraremos los{' '}
+          <strong>
+            10 partidos con mayor intención de voto presidencial al 10 de marzo
+            de 2021.
+          </strong>
+        </Styled.BottomMessage>
         <Styled.Button
           type={
             userSelectedTopics.length < requiredNumberOfSelectedTopics
