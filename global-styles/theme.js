@@ -17,14 +17,14 @@ const theme = {
       200: '#E3E5E8',
       100: '#F7F7F7',
     },
-    black: {
+    luminosity: {
       700: '#1F1F1F',
       600: '#6D6D6D',
       500: '#B1B1B1',
       400: '#DEDEDE',
       300: '#F3F3F3',
+      200: '#FFFFFF',
     },
-    white: '#FFFFFF',
     status: {
       success: {
         700: '#45A73D',
@@ -34,14 +34,14 @@ const theme = {
         300: '#E3F9E1',
         200: '#F7FDF6',
       },
-      warning300: {
+      warning: {
         700: '#807300',
         600: '#B3A100',
         500: '#FFE500',
         400: '#FFF599',
         300: '#FFFACC',
       },
-      error300: {
+      error: {
         700: '#721111',
         600: '#C41E1E',
         500: '#F86363',
