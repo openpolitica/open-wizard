@@ -44,7 +44,3 @@ export const BottomMessage = styled(InfoMessage)`
 export const Button = styled(BaseButton)`
   margin: 1.5rem auto 0;
 `;
-
-export const Strong = styled('strong')`
-  font-weight: 700;
-`;
