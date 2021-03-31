@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled('div')`
-  background: ${({ theme }) => theme.colors.luminosity[200]};
+  background: ${({ theme }) => theme.colors.neutral[200]};
   font-family: 'Poppins', sans-serif;
 `;
 
@@ -108,7 +108,7 @@ export const LogoText = styled('p')`
 `;
 
 export const InfoCard = styled('div')`
-  background-color: ${({ theme }) => theme.colors.luminosity[700]};
+  background-color: ${({ theme }) => theme.colors.neutral[700]};
   border-radius: 1rem;
   color: #fff;
   margin-top: 5rem;

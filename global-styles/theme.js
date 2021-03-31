@@ -17,7 +17,7 @@ const theme = {
       200: '#E3E5E8',
       100: '#F7F7F7',
     },
-    luminosity: {
+    neutral: {
       700: '#1F1F1F',
       600: '#6D6D6D',
       500: '#B1B1B1',
