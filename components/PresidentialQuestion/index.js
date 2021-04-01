@@ -45,6 +45,10 @@ export default function PresidentialQuestion() {
   const questionHasMultipleOptions = !!questionList[currentQuestionIdx]
     ?.question?.isMultiple;
 
+  const questionIndication = questionHasMultipleOptions
+    ? 'Elige al menos una respuesta'
+    : 'Elige una respuesta';
+
   const handleNextButton = ({ isOmitted = false } = {}) => {
     const selectedAnswers = Array.from(selectedOption.answers)?.length
       ? Array.from(selectedOption.answers)
@@ -132,6 +136,9 @@ export default function PresidentialQuestion() {
           <Styled.QuestionTitle>
             {questionList[currentQuestionIdx]?.question?.label}
           </Styled.QuestionTitle>
+          <Styled.QuestionIndication>
+            {questionIndication}
+          </Styled.QuestionIndication>
           <Styled.QuestionList>
             {questionHasMultipleOptions ? (
               <CheckboxGroup
