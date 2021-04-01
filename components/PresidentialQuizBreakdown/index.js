@@ -49,9 +49,9 @@ export default function PresidentialQuizBreakdown() {
           <Styled.GoBackButton to="/presidential-steps/1" text="Regresa" />
         </Styled.Row>
         <Styled.Title>Es momento del test</Styled.Title>
-        <Styled.SubTitle>Te haremos preguntas por cada pilar.</Styled.SubTitle>
         <Styled.SubTitle>
-          Si no deseas responder una de ellas, podrás omitirla.
+          Te haremos preguntas por cada pilar. Si no deseas responder una de
+          ellas, podrás no responder.
         </Styled.SubTitle>
         <Styled.QuizBreakdown>
           {userSelectedTopics.length ? (
