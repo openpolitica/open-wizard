@@ -26,15 +26,6 @@ module.exports = {
       baseUrl: 'https://declara.jne.gob.pe/Assets/Fotos-HojaVida/',
     },
   },
-  async redirects() {
-    return [
-      {
-        source: '/:slug',
-        destination: '/presidential-list/:slug',
-        permanent: true,
-      },
-    ];
-  },
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
