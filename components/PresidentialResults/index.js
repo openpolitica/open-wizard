@@ -35,9 +35,13 @@ const fetchResults = (answers) =>
 
 export default function PresidentialResults() {
   const { userAnswers, userSelectedTopics } = useTopics();
+  const filteredAnswers = userAnswers.filter((answer) => {
+    return answer?.answerId || answer?.answers;
+  });
+
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
-    () => fetchResults(userAnswers.filter((answer) => answer.answerId)),
+    () => fetchResults(filteredAnswers),
   );
   const results = response?.data;
   const topResults = results?.filter(
