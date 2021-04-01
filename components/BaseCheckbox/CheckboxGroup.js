@@ -30,8 +30,14 @@ export default function CheckboxGroup({
       forceSingleValueIndex !== -1 &&
       currentValue !== forceSingleValue
     ) {
-      setState(removeFromArray(state, forceSingleValueIndex));
-      onChange(removeFromArray(state, forceSingleValueIndex));
+      setState([
+        ...removeFromArray(state, forceSingleValueIndex),
+        currentValue,
+      ]);
+      onChange([
+        ...removeFromArray(state, forceSingleValueIndex),
+        currentValue,
+      ]);
       return;
     }
 
