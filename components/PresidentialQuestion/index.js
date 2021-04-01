@@ -3,6 +3,8 @@ import { Fragment, useEffect, useState } from 'react';
 import BaseRadioButton from 'components/BaseRadioButton';
 import RadioGroup from 'components/BaseRadioButton/RadioGroup';
 import BaseButton from 'components/BaseButton';
+import CheckboxGroup from 'components/BaseCheckbox/CheckboxGroup';
+import BaseCheckbox from 'components/BaseCheckbox';
 import * as icons from 'public/images/icons/topics';
 import { useTopics } from 'hooks/useTopics';
 import { useRouter } from 'next/router';
@@ -16,7 +18,6 @@ const nameCapitalized = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
 export default function PresidentialQuestion() {
-  const [selectedOption, setSelectedOption] = useState('');
   const [currentTopic, setCurrentTopic] = useState(0);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [questionsOmitted, setQuestionsOmitted] = useState(0);
@@ -35,6 +36,17 @@ export default function PresidentialQuestion() {
   const isLastCurrentQuestionIdx =
     currentQuestionIdx === questionListLength - 1;
   const isLastCurrentTopicIdx = currentTopic === questionBank.length - 1;
+
+  const questionHasMultipleOptions =
+    questionList[currentQuestionIdx]?.question?.isMultiple;
+  const [selectedOption, setSelectedOption] = useState(
+    questionHasMultipleOptions ? [] : '',
+  );
+  const forceSingleValue = questionList[currentQuestionIdx]?.answers.reduce(
+    (prev, current) =>
+      prev === null ? (current.forceSingle ? current.id : null) : prev,
+    null,
+  );
 
   const handleNextButton = ({ isOmitted = false } = {}) => {
     if (isOmitted) {
@@ -90,9 +102,12 @@ export default function PresidentialQuestion() {
   const Icon = icons[`${nameCapitalized(topicLabel || '')}Icon`];
 
   useEffect(() => {
-    setSelectedOption('');
+    questionHasMultipleOptions ? setSelectedOption([]) : setSelectedOption('');
   }, [currentQuestionIdx]);
 
+  const shouldContinueButtonBeDisabled = Array.isArray(selectedOption)
+    ? !selectedOption.length
+    : selectedOption === '';
   return (
     <MainLayout>
       <GoBackButton text="Regresar" onClick={handlePreviousButton} />
@@ -111,21 +126,33 @@ export default function PresidentialQuestion() {
             {questionList[currentQuestionIdx]?.question?.label}
           </Styled.QuestionTitle>
           <Styled.QuestionList>
-            {questionList[currentQuestionIdx]?.answers.map((answer) => (
-              <RadioGroup
-                key={answer.id}
-                value={selectedOption}
-                onChange={(value) => setSelectedOption(value)}>
-                <BaseRadioButton value={answer.id}>
-                  {answer.label}
-                </BaseRadioButton>
-              </RadioGroup>
-            ))}
+            {!questionHasMultipleOptions &&
+              questionList[currentQuestionIdx]?.answers.map((answer) => (
+                <RadioGroup
+                  key={answer.id}
+                  value={selectedOption}
+                  onChange={(value) => setSelectedOption(value)}>
+                  <BaseRadioButton value={answer.id}>
+                    {answer.label}
+                  </BaseRadioButton>
+                </RadioGroup>
+              ))}
+            {questionHasMultipleOptions &&
+              questionList[currentQuestionIdx]?.answers.map((answer) => (
+                <CheckboxGroup
+                  key={answer.id}
+                  value={selectedOption}
+                  onChange={(value) => setSelectedOption(value)}
+                  forceSingle={answer.forceSingle}
+                  forceSingleValue={forceSingleValue}>
+                  <BaseCheckbox value={answer.id}>{answer.label}</BaseCheckbox>
+                </CheckboxGroup>
+              ))}
           </Styled.QuestionList>
           <Styled.QuestionButtons>
             <BaseButton
-              type={selectedOption === '' ? 'disabled' : 'primary'}
-              disabled={selectedOption === ''}
+              type={shouldContinueButtonBeDisabled ? 'disabled' : 'primary'}
+              disabled={shouldContinueButtonBeDisabled}
               onClick={handleNextButton}>
               Continuar
             </BaseButton>
