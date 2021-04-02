@@ -138,7 +138,10 @@ export default function PresidentialQuestion() {
                   setSelectedOption({ ...selectedOption, answers: value })
                 }>
                 {questionList[currentQuestionIdx]?.answers.map((answer) => (
-                  <BaseCheckbox key={answer.id} value={answer.id}>
+                  <BaseCheckbox
+                    key={answer.id}
+                    value={answer.id}
+                    forceSingle={!!answer.forceSingle}>
                     {answer.label}
                   </BaseCheckbox>
                 ))}

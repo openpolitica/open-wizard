@@ -3,7 +3,7 @@ import * as Styled from './styles';
 
 const numberOfAnswersAllowed = 2;
 
-function BaseCheckbox({ children, value, ...inputProps }) {
+function BaseCheckbox({ children, value, forceSingle, ...inputProps }) {
   const { state, isSelected, handleOnChange } = useCheckboxContext();
 
   const isDisabled = (id) => {
@@ -16,7 +16,9 @@ function BaseCheckbox({ children, value, ...inputProps }) {
         <Styled.Input
           type="checkbox"
           value={value}
-          onChange={(event) => handleOnChange(value, event.target.checked)}
+          onChange={(event) =>
+            handleOnChange(value, event.target.checked, forceSingle)
+          }
           checked={isSelected(value)}
           disabled={isDisabled(value)}
           {...inputProps}
