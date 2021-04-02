@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
 import { useTopics } from 'hooks/useTopics';
@@ -7,12 +8,51 @@ import Loading from 'components/Loading';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import comesFromAFinishedPresidentialUserTrip from 'components/PresidentialList/comesFromAFinishedPresidentialUserTrip';
 import { translationMap } from 'components/TopicCheckbox';
+import PresidentialNoResults from 'components/PresidentialNoResults';
+
+const minimumRequiredNumberOfAnswers = 3;
 
 const LoadingScreen = () => {
   return (
     <MainLayout>
       <Loading />
     </MainLayout>
+  );
+};
+
+const DisclaimerFooter = () => {
+  return (
+    <Fragment>
+      <Styled.HorizontalRule />
+      <Styled.Disclaimer>
+        <Styled.Tagline>¿Cómo obtuve estos resultados?</Styled.Tagline>
+        <Styled.Text1>
+          El equipo de{' '}
+          <Styled.Link
+            href="//openpolitica.com"
+            target="_blank"
+            rel="noopener noreferrer">
+            Open Política
+          </Styled.Link>{' '}
+          utilizó los planes de gobierno de los{' '}
+          <strong>
+            10 partidos con mayor intención de voto presidencial al 10 de marzo
+            de 2021.
+          </strong>
+        </Styled.Text1>
+        <Styled.Text2>
+          Si deseas leer el detalle, puedes descargarlo desde el siguiente
+          enlace:
+        </Styled.Text2>
+        <Styled.DownloadLink
+          href="//drive.google.com/drive/folders/1I0SvScSG72M1fxyAuqXPkZK4JLxl1_kQ?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer">
+          <Styled.DownloadIcon />
+          Descargar reporte en PDF
+        </Styled.DownloadLink>
+      </Styled.Disclaimer>
+    </Fragment>
   );
 };
 
@@ -38,6 +78,15 @@ export default function PresidentialResults() {
   const filteredAnswers = userAnswers.filter((answer) => {
     return answer?.answerId || answer?.answers;
   });
+
+  if (filteredAnswers.length < minimumRequiredNumberOfAnswers) {
+    return (
+      <MainLayout>
+        <PresidentialNoResults />
+        <DisclaimerFooter />
+      </MainLayout>
+    );
+  }
 
   const { data: response, error, isLoading } = useSWR(
     '/api/policies/results',
@@ -126,35 +175,7 @@ export default function PresidentialResults() {
             ),
           )}
         </Styled.Results>
-        <Styled.HorizontalRule />
-        <Styled.Disclaimer>
-          <Styled.Tagline>¿Cómo obtuve estos resultados?</Styled.Tagline>
-          <Styled.Text1>
-            El equipo de{' '}
-            <Styled.Link
-              href="//openpolitica.com"
-              target="_blank"
-              rel="noopener noreferrer">
-              Open Política
-            </Styled.Link>{' '}
-            utilizó los planes de gobierno de los{' '}
-            <strong>
-              10 partidos con mayor intención de voto presidencial al 10 de
-              marzo de 2021.
-            </strong>
-          </Styled.Text1>
-          <Styled.Text2>
-            Si deseas leer el detalle, puedes descargarlo desde el siguiente
-            enlace:
-          </Styled.Text2>
-          <Styled.DownloadLink
-            href="//drive.google.com/drive/folders/1I0SvScSG72M1fxyAuqXPkZK4JLxl1_kQ?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer">
-            <Styled.DownloadIcon />
-            Descargar reporte en PDF
-          </Styled.DownloadLink>
-        </Styled.Disclaimer>
+        <DisclaimerFooter />
       </MainLayout>
     );
   }
