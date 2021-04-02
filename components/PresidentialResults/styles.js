@@ -23,9 +23,10 @@ export const ThinkLikeYou = styled(Tagline)`
   color: #475065;
   font-size: 0.875rem;
 `;
-export const ThinkLikeYouTopics = styled(ThinkLikeYou)`
+export const ThinkLikeYouTopics = styled('span')`
   color: #4bc540;
   font-size: 0.875rem;
+  margin-left: 0.3rem;
   text-transform: capitalize;
 `;
 export const OtherResults = styled(Tagline)`
