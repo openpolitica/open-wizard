@@ -21,7 +21,8 @@ export default function CheckboxGroup({ children, value, onChange }) {
     }
     if (selected) {
       newValue.add(key);
-    } else {
+    }
+    if (!selected) {
       newValue.delete(key);
     }
 

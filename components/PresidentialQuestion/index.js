@@ -113,7 +113,7 @@ export default function PresidentialQuestion() {
   }, [currentQuestionIdx]);
 
   const shouldContinueButtonBeDisabled =
-    selectedOption.answerId == null && selectedOption.answers.size === 0;
+    selectedOption.answerId === null && selectedOption.answers.size === 0;
 
   return (
     <MainLayout>
