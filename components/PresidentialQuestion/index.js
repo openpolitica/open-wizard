@@ -46,7 +46,9 @@ export default function PresidentialQuestion() {
     ?.question?.isMultiple;
 
   const handleNextButton = ({ isOmitted = false } = {}) => {
-    const selectedAnswers = Array.from(selectedOption.answers);
+    const selectedAnswers = Array.from(selectedOption.answers)?.length
+      ? Array.from(selectedOption.answers)
+      : null;
 
     if (isOmitted) {
       setQuestionsOmitted((prevIdx) => prevIdx + 1);
