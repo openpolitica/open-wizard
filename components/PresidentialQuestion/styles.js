@@ -35,7 +35,7 @@ export const QuestionTitle = styled('h3')`
   margin-bottom: 1rem;
   text-align: center;
 `;
-export const QuestionIndication = styled(BaseParagraph)`
+export const QuestionInstructions = styled(BaseParagraph)`
   margin-bottom: 1rem;
   text-align: center;
 `;
