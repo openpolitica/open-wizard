@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import BaseButton from 'components/BaseButton';
+import BaseParagraph from 'components/BaseParagraph';
 import BaseChip from 'components/Chip';
 
 export const QuestionTopic = styled('div')`
@@ -31,7 +32,11 @@ export const QuestionCounter = styled('span')`
 export const QuestionTitle = styled('h3')`
   font-size: 1.125rem;
   line-height: 1.625rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
+  text-align: center;
+`;
+export const QuestionInstructions = styled(BaseParagraph)`
+  margin-bottom: 1rem;
   text-align: center;
 `;
 export const QuestionList = styled('div')`
