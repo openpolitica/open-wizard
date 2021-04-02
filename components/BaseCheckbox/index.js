@@ -1,9 +1,14 @@
 import { useCheckboxContext } from './checkbox-context';
 import * as Styled from './styles';
 
+const numberOfAnswersAllowed = 2;
+
 function BaseCheckbox({ children, value, ...inputProps }) {
-  const [state, onChange] = useCheckboxContext();
-  const checked = state.find((option) => option === value);
+  const { state, isSelected, handleOnChange } = useCheckboxContext();
+
+  const isDisabled = (id) => {
+    return state.size === numberOfAnswersAllowed && !state.has(id);
+  };
 
   return (
     <Styled.Checkbox>
@@ -11,8 +16,9 @@ function BaseCheckbox({ children, value, ...inputProps }) {
         <Styled.Input
           type="checkbox"
           value={value}
-          checked={checked}
-          onChange={(event) => onChange(event.target.value)}
+          onChange={(event) => handleOnChange(value, event.target.checked)}
+          checked={isSelected(value)}
+          disabled={isDisabled(value)}
           {...inputProps}
         />
         <Styled.CheckboxControl />

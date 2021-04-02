@@ -18,6 +18,11 @@ const nameCapitalized = (string) =>
   string.charAt(0).toUpperCase() + string.slice(1);
 
 export default function PresidentialQuestion() {
+  const [selectedOption, setSelectedOption] = useState({
+    answerId: '',
+    answers: new Set(),
+  });
+
   const [currentTopic, setCurrentTopic] = useState(0);
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [questionsOmitted, setQuestionsOmitted] = useState(0);
@@ -37,25 +42,20 @@ export default function PresidentialQuestion() {
     currentQuestionIdx === questionListLength - 1;
   const isLastCurrentTopicIdx = currentTopic === questionBank.length - 1;
 
-  const questionHasMultipleOptions =
-    questionList[currentQuestionIdx]?.question?.isMultiple;
-  const [selectedOption, setSelectedOption] = useState(
-    questionHasMultipleOptions ? [] : '',
-  );
-  const forceSingleValue = questionList[currentQuestionIdx]?.answers.reduce(
-    (prev, current) =>
-      prev === null ? (current.forceSingle ? current.id : null) : prev,
-    null,
-  );
+  const questionHasMultipleOptions = !!questionList[currentQuestionIdx]
+    ?.question?.isMultiple;
 
   const handleNextButton = ({ isOmitted = false } = {}) => {
+    const selectedAnswers = Array.from(selectedOption.answers);
+
     if (isOmitted) {
       setQuestionsOmitted((prevIdx) => prevIdx + 1);
     }
     if (isLowerThanLastQuestionIdx) {
       addUserAnswers({
         questionId,
-        answerId: isOmitted ? '' : selectedOption,
+        answerId: isOmitted ? null : selectedOption.answerId,
+        answers: isOmitted ? null : selectedAnswers,
       });
       setCurrentQuestionIdx((prevIdx) => prevIdx + 1);
     }
@@ -65,13 +65,15 @@ export default function PresidentialQuestion() {
       setCurrentQuestionIdx(0);
       addUserAnswers({
         questionId,
-        answerId: isOmitted ? '' : selectedOption,
+        answerId: isOmitted ? null : selectedOption.answerId,
+        answers: isOmitted ? null : selectedAnswers,
       });
     }
     if (isLastCurrentQuestionIdx && isLastCurrentTopicIdx) {
       addUserAnswers({
         questionId,
-        answerId: isOmitted ? '' : selectedOption,
+        answerId: isOmitted ? null : selectedOption.answerId,
+        answers: isOmitted ? null : selectedAnswers,
       });
       router.push('/presidential-results/grouped-by-compatibility');
     }
@@ -102,12 +104,15 @@ export default function PresidentialQuestion() {
   const Icon = icons[`${nameCapitalized(topicLabel || '')}Icon`];
 
   useEffect(() => {
-    questionHasMultipleOptions ? setSelectedOption([]) : setSelectedOption('');
+    setSelectedOption({
+      answerId: null,
+      answers: new Set(),
+    });
   }, [currentQuestionIdx]);
 
-  const shouldContinueButtonBeDisabled = Array.isArray(selectedOption)
-    ? !selectedOption.length
-    : selectedOption === '';
+  const shouldContinueButtonBeDisabled =
+    selectedOption.answerId == null && selectedOption.answers.size === 0;
+
   return (
     <MainLayout>
       <GoBackButton text="Regresar" onClick={handlePreviousButton} />
@@ -126,28 +131,31 @@ export default function PresidentialQuestion() {
             {questionList[currentQuestionIdx]?.question?.label}
           </Styled.QuestionTitle>
           <Styled.QuestionList>
-            {!questionHasMultipleOptions &&
-              questionList[currentQuestionIdx]?.answers.map((answer) => (
-                <RadioGroup
-                  key={answer.id}
-                  value={selectedOption}
-                  onChange={(value) => setSelectedOption(value)}>
-                  <BaseRadioButton value={answer.id}>
+            {questionHasMultipleOptions ? (
+              <CheckboxGroup
+                value={selectedOption.answers}
+                onChange={(value) =>
+                  setSelectedOption({ ...selectedOption, answers: value })
+                }>
+                {questionList[currentQuestionIdx]?.answers.map((answer) => (
+                  <BaseCheckbox key={answer.id} value={answer.id}>
+                    {answer.label}
+                  </BaseCheckbox>
+                ))}
+              </CheckboxGroup>
+            ) : (
+              <RadioGroup
+                value={selectedOption.answerId}
+                onChange={(value) =>
+                  setSelectedOption({ ...selectedOption, answerId: value })
+                }>
+                {questionList[currentQuestionIdx]?.answers.map((answer) => (
+                  <BaseRadioButton key={answer.id} value={answer.id}>
                     {answer.label}
                   </BaseRadioButton>
-                </RadioGroup>
-              ))}
-            {questionHasMultipleOptions &&
-              questionList[currentQuestionIdx]?.answers.map((answer) => (
-                <CheckboxGroup
-                  key={answer.id}
-                  value={selectedOption}
-                  onChange={(value) => setSelectedOption(value)}
-                  forceSingle={answer.forceSingle}
-                  forceSingleValue={forceSingleValue}>
-                  <BaseCheckbox value={answer.id}>{answer.label}</BaseCheckbox>
-                </CheckboxGroup>
-              ))}
+                ))}
+              </RadioGroup>
+            )}
           </Styled.QuestionList>
           <Styled.QuestionButtons>
             <BaseButton

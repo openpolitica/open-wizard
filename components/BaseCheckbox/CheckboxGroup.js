@@ -1,62 +1,25 @@
-import { useEffect, useState } from 'react';
 import { CheckboxProvider } from './checkbox-context';
 
-export default function CheckboxGroup({
-  children,
-  value,
-  onChange,
-  forceSingle,
-  forceSingleValue,
-}) {
-  const [state, setState] = useState([]);
+export default function CheckboxGroup({ children, value, onChange }) {
+  const isSelected = (key) => value.has(key);
 
-  function handleOnChange(currentValue) {
-    const optionIndex = state.findIndex((option) => option === currentValue);
-    const forceSingleValueIndex = state.findIndex(
-      (option) => option === forceSingleValue,
-    );
-    const removeFromArray = (array, index) => [
-      ...array.slice(0, index),
-      ...array.slice(index + 1),
-    ];
-    if (forceSingle) {
-      setState([currentValue]);
-      onChange([currentValue]);
-      return;
+  function handleOnChange(key, selected) {
+    const newValue = new Set([...value]);
+    if (selected) {
+      newValue.add(key);
+    } else {
+      newValue.delete(key);
     }
-
-    if (
-      !forceSingle &&
-      forceSingleValueIndex !== -1 &&
-      currentValue !== forceSingleValue
-    ) {
-      setState([
-        ...removeFromArray(state, forceSingleValueIndex),
-        currentValue,
-      ]);
-      onChange([
-        ...removeFromArray(state, forceSingleValueIndex),
-        currentValue,
-      ]);
-      return;
-    }
-
-    if (optionIndex !== -1) {
-      setState(removeFromArray(state, optionIndex));
-      onChange(removeFromArray(state, optionIndex));
-      return;
-    }
-
-    setState([...state, currentValue]);
-    onChange([...state, currentValue]);
+    onChange(newValue);
   }
 
-  useEffect(() => {
-    setState(value);
-  }, [value]);
-
   return (
-    <CheckboxProvider value={[state, handleOnChange]}>
+    <CheckboxProvider
+      value={{
+        state: value,
+        isSelected,
+        handleOnChange,
+      }}>
       {children}
     </CheckboxProvider>
   );
