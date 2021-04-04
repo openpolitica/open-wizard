@@ -11,9 +11,9 @@ import comesFromAFinishedPresidentialUserTrip from 'components/PresidentialList/
 import { translationMap } from 'components/TopicCheckbox';
 import PresidentialNoResults from 'components/PresidentialNoResults';
 
-const minimumRequiredNumberOfAnswers = 3;
+const minimumRequiredNumberOfAnswers = 1;
 
-const capitalize = text => [text[0].toUpperCase(), ...text.slice(1)].join('');
+const capitalize = (text) => [text[0].toUpperCase(), ...text.slice(1)].join('');
 
 const LoadingScreen = () => {
   return (
@@ -109,7 +109,9 @@ export default function PresidentialResults() {
   if (filteredAnswers.length < minimumRequiredNumberOfAnswers) {
     return (
       <MainLayout>
-        <PresidentialNoResults />
+        <PresidentialNoResults
+          minimumRequiredNumberOfAnswers={minimumRequiredNumberOfAnswers}
+        />
         <DisclaimerFooter />
       </MainLayout>
     );
