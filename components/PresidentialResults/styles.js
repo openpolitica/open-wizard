@@ -6,12 +6,17 @@ import {
   Topics as BaseResults,
 } from 'components/PresidentialTopics/styles';
 import BaseParagraph from 'components/BaseParagraph';
+import BaseSelect from 'components/BaseSelect';
 import { CompatibilityPartyCard as BaseCompatibilityPartyCard } from 'components/CompatibilityPartyCard';
 import BaseDownloadIcon from 'public/images/icons/download.svg';
 
 export const Row = BaseRow;
 export const GoBackButton = BaseGoBackButton;
 export const Title = BaseTitle;
+export const Paragraph = styled(BaseParagraph)`
+  margin-bottom: 0.25rem;
+  width: 100%;
+`;
 export const Tagline = styled(BaseParagraph)`
   color: #04102f;
   font-size: 1rem;
@@ -19,9 +24,14 @@ export const Tagline = styled(BaseParagraph)`
   width: 100%;
 `;
 
+export const Select = styled(BaseSelect)`
+  margin-bottom: 1.5rem;
+  width: 100%;
+`;
 export const ThinkLikeYou = styled(Tagline)`
   color: #475065;
   font-size: 0.875rem;
+  margin-top: 1.5rem;
 `;
 export const ThinkLikeYouTopics = styled('span')`
   color: #4bc540;

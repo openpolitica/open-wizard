@@ -1,6 +1,7 @@
-import { Fragment } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 import Router from 'next/router';
 import useSWR from 'swr';
+import orderBy from 'lodash.orderby';
 import { useTopics } from 'hooks/useTopics';
 import * as Styled from './styles';
 import MainLayout from 'components/layouts/MainLayout';
@@ -11,6 +12,8 @@ import { translationMap } from 'components/TopicCheckbox';
 import PresidentialNoResults from 'components/PresidentialNoResults';
 
 const minimumRequiredNumberOfAnswers = 3;
+
+const capitalize = text => [text[0].toUpperCase(), ...text.slice(1)].join('');
 
 const LoadingScreen = () => {
   return (
@@ -73,8 +76,32 @@ const fetchResults = (answers) =>
     body: JSON.stringify({ answers }),
   }).then((data) => data.json());
 
+const onByTopicSelectChange = ({
+  topic,
+  setSortedResults,
+  setSelectedTopic,
+  results,
+}) => {
+  setSelectedTopic(topic);
+  if (!topic) {
+    setSortedResults(
+      orderBy(results, ['compatibility', 'name'], ['desc', 'asc']),
+    );
+    return;
+  }
+  setSortedResults(
+    orderBy(
+      results,
+      [`compatibility_per_topic[${topic}]`, 'name'],
+      ['desc', 'asc'],
+    ),
+  );
+};
+
 export default function PresidentialResults() {
   const { userAnswers, userSelectedTopics } = useTopics();
+  const [sortedResults, setSortedResults] = useState(null);
+  const [selectedTopic, setSelectedTopic] = useState(null);
   const filteredAnswers = userAnswers.filter((answer) => {
     return answer?.answerId || answer?.answers;
   });
@@ -93,12 +120,12 @@ export default function PresidentialResults() {
     () => fetchResults(filteredAnswers),
   );
   const results = response?.data;
-  const topResults = results?.filter(
-    (element) => element.compatibility === results[0].compatibility,
-  );
-  const otherResults = results?.filter(
-    (element) => element.compatibility !== results[0].compatibility,
-  );
+
+  useEffect(() => {
+    setSortedResults(
+      orderBy(results, ['compatibility', 'name'], ['desc', 'asc']),
+    );
+  }, [results]);
 
   if (!comesFromAFinishedPresidentialUserTrip()) {
     Router.push('/');
@@ -112,7 +139,7 @@ export default function PresidentialResults() {
   if (isLoading) {
     return <LoadingScreen />;
   }
-  if (results && results.length) {
+  if (sortedResults && sortedResults.length) {
     return (
       <MainLayout>
         <Styled.Row>
@@ -120,21 +147,47 @@ export default function PresidentialResults() {
         </Styled.Row>
         <Styled.Title>Resultados</Styled.Title>
         <Styled.Results>
+          <Styled.Paragraph align="left">
+            Ordenar resultados por compatibilidad en
+          </Styled.Paragraph>
+          <Styled.Select
+            onChange={(event) =>
+              onByTopicSelectChange({
+                topic: event.target.value,
+                results,
+                setSortedResults,
+                setSelectedTopic,
+              })
+            }>
+            <option value="">Todos los temas que seleccioné</option>
+            {userSelectedTopics.map((topic) => {
+              return (
+                <option key={topic} value={topic}>
+                  {capitalize(translationMap[topic])}
+                </option>
+              );
+            })}
+          </Styled.Select>
+          <Styled.HorizontalRule />
           <Styled.ThinkLikeYou>
             Plan de gobierno más compatible en:
             <Styled.ThinkLikeYouTopics>
               {topicsToTextList(
-                translateTopics(userSelectedTopics, translationMap),
+                translateTopics(
+                  selectedTopic ? [selectedTopic] : userSelectedTopics,
+                  translationMap,
+                ),
               )}
               .
             </Styled.ThinkLikeYouTopics>
           </Styled.ThinkLikeYou>
-          {topResults.map(
+          {sortedResults.map(
             (
               {
                 org_politica_nombre: partyName,
                 name: partyAlias,
                 compatibility,
+                compatibility_per_topic,
                 president: { hoja_vida_id },
               },
               index,
@@ -143,30 +196,11 @@ export default function PresidentialResults() {
                 key={`PartyCard-${index}`}
                 partyName={partyName}
                 partyAlias={partyAlias}
-                compatibility={compatibilityToPercentage(compatibility)}
-                profileImageId={hoja_vida_id}
-                onClick={() =>
-                  Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
-                }
-              />
-            ),
-          )}
-          <Styled.OtherResults>Otros resultados</Styled.OtherResults>
-          {otherResults.map(
-            (
-              {
-                org_politica_nombre: partyName,
-                name: partyAlias,
-                compatibility,
-                president: { hoja_vida_id },
-              },
-              index,
-            ) => (
-              <Styled.CompatibilityPartyCard
-                key={`PartyCard-${index}`}
-                partyName={partyName}
-                partyAlias={partyAlias}
-                compatibility={compatibilityToPercentage(compatibility)}
+                compatibility={compatibilityToPercentage(
+                  !selectedTopic
+                    ? compatibility
+                    : compatibility_per_topic[selectedTopic],
+                )}
                 profileImageId={hoja_vida_id}
                 onClick={() =>
                   Router.push(`/presidential-list/${toggleSlug(partyName)}/`)
