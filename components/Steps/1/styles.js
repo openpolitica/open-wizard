@@ -52,7 +52,6 @@ export const Title = styled(BaseTitle)`
 `;
 
 export const Select = styled(BaseSelect)`
-  cursor: pointer;
   margin-top: 1.5rem;
 `;
 
