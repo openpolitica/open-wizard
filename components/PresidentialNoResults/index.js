@@ -3,8 +3,11 @@ import Router from 'next/router';
 import { Fragment } from 'react';
 import GoBackButton from 'components/GoBackButton';
 import * as Styled from './styles';
+import simplePluralize from 'components/Steps/PartyResults/simplePluralize';
 
-export default function PresidentialNoResults() {
+export default function PresidentialNoResults({
+  minimumRequiredNumberOfAnswers,
+}) {
   return (
     <Fragment>
       <GoBackButton to="/presidential-steps/2" text="Regresa" />
@@ -12,7 +15,9 @@ export default function PresidentialNoResults() {
       <Styled.Chip type="bad">
         <strong>No te pases, pues.</strong>
         <Styled.Paragraph>
-          Responde al menos 3 preguntas para obtener un resultado.
+          Responde al menos{' '}
+          {simplePluralize(minimumRequiredNumberOfAnswers, 'pregunta')} para
+          obtener un resultado.
         </Styled.Paragraph>
       </Styled.Chip>
       <Image
