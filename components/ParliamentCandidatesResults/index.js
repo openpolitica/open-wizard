@@ -89,10 +89,6 @@ export default function Step4(props) {
           type="transparent"
           onClick={() => setFilterModalState(true)}
         />
-        <Styled.ChipCard type="good">
-          Recuerda que tu voto por este partido beneficia a los primeros de su
-          lista al congreso.
-        </Styled.ChipCard>
         {candidates && badIssues ? (
           <Styled.ChipCard type="bad">
             Alguno de los primeros de esta lista tiene{' '}
