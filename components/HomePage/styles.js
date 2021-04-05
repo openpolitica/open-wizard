@@ -40,7 +40,7 @@ export const ButtonsScroll = styled('div')`
 `;
 
 export const ButtonsRow = styled('div')`
-  column-gap: 13px;
+  column-gap: 0.8125rem;
   display: grid;
   grid-template-columns: repeat(4, minmax(8.875rem, 9.8125rem));
   &:after {
@@ -58,7 +58,7 @@ export const FindMyCandidateButton = styled('button')`
   border-radius: 0.3125rem;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
   cursor: pointer;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   max-width: 9.8125rem;
   padding: 0.75rem 0.4375rem 1.5rem;
 
