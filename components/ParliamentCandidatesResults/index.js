@@ -1,25 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import fetch from 'isomorphic-fetch';
 import ls from 'local-storage';
 import * as Styled from './styles';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import startCasePeruvianRegions from 'components/Steps/PartyResults/startCasePeruvianRegions';
-import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 
 import FilterParliamentModal from 'components/FilterParliamentModal';
 import comesFromAFinishedUserTrip from 'components/ParliamentResults/comesFromAFinishedUserTrip';
-
-const LoadingScreen = () => {
-  return (
-    <Styled.Container>
-      <Styled.Header />
-      <Loading />
-    </Styled.Container>
-  );
-};
 
 export default function Step4(props) {
   const router = useRouter();
@@ -34,28 +22,6 @@ export default function Step4(props) {
   const candidates = ls('op.parliament').filteredCandidates[
     toggleSlug(router.query.partyName)
   ];
-
-  const { isLoading, data } = useSWR(
-    candidates
-      ? `/api/parties/dirtylists?party=${candidates[0].org_politica_nombre}`
-      : null,
-    () =>
-      fetch(
-        `${process.env.api.partiesUrl}/dirtylists?party=${candidates[0].org_politica_nombre}`,
-      ).then((data) => data.json()),
-  );
-
-  if (isLoading) {
-    return <LoadingScreen />;
-  }
-
-  const listIssues = data?.data?.lists[0];
-  const badIssues = listIssues
-    ? listIssues.sentencias_civiles +
-        listIssues.sentencias_penales +
-        listIssues.sancion_servir >
-      0
-    : null;
 
   return (
     <Styled.Container>
@@ -89,12 +55,6 @@ export default function Step4(props) {
           type="transparent"
           onClick={() => setFilterModalState(true)}
         />
-        {candidates && badIssues ? (
-          <Styled.ChipCard type="bad">
-            Alguno de los primeros de esta lista tiene{' '}
-            <strong>sentencias y/o sanciones en SERVIR.</strong>
-          </Styled.ChipCard>
-        ) : null}
         <Styled.Candidates>
           {candidates ? (
             candidates.map((candidate, index) => (
