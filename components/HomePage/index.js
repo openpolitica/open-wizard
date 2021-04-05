@@ -69,6 +69,9 @@ const HomePage = () => {
   const goToGovernmentPlan = (e) => {
     router.push('/presidential-steps/1');
   };
+  const goToAndeanParliament = (e) => {
+    router.push('/parliament-steps/1');
+  };
 
   const electionDate = new Date('2021/04/11');
   const currentDate = new Date();
@@ -95,31 +98,44 @@ const HomePage = () => {
             cuantos pasos
           </Styled.Paragraph>
         </Styled.TextContent>
-        <Styled.ButtonsRow>
-          <Styled.FindMyCandidateButton onClick={goToGovernmentPlan}>
-            <Image
-              src="/images/icons/governmentPlan.svg"
-              width="70"
-              height="70"
-              alt="icono plan de gobierno"
-            />
-            <Styled.ButtonText>
-              Encuentra tu mejor
-              <strong> plan de gobierno</strong>
-            </Styled.ButtonText>
-          </Styled.FindMyCandidateButton>
-          <Styled.FindMyCandidateButton onClick={goToCongressmen}>
-            <Image
-              src="/images/icons/congressmen.svg"
-              width="70"
-              height="70"
-              alt="icono congresistas"
-            />
-            <Styled.ButtonText>
-              Encuentra a tus <strong> congresistas</strong>
-            </Styled.ButtonText>
-          </Styled.FindMyCandidateButton>
-        </Styled.ButtonsRow>
+        <Styled.ButtonsScroll>
+          <Styled.ButtonsRow>
+            <Styled.FindMyCandidateButton onClick={goToGovernmentPlan}>
+              <Image
+                src="/images/icons/governmentPlan.svg"
+                width="70"
+                height="70"
+                alt="icono plan de gobierno"
+              />
+              <Styled.ButtonText>
+                Encuentra tu
+                <strong> plan de gobierno</strong>
+              </Styled.ButtonText>
+            </Styled.FindMyCandidateButton>
+            <Styled.FindMyCandidateButton onClick={goToCongressmen}>
+              <Image
+                src="/images/icons/congressmen.svg"
+                width="70"
+                height="70"
+                alt="icono congresistas"
+              />
+              <Styled.ButtonText>
+                Encuentra a tus <strong> congresistas</strong>
+              </Styled.ButtonText>
+            </Styled.FindMyCandidateButton>
+            <Styled.FindMyCandidateButton onClick={goToAndeanParliament}>
+              <Image
+                src="/images/icons/andeanParliament.svg"
+                width="70"
+                height="70"
+                alt="icono parlamento andino"
+              />
+              <Styled.ButtonText>
+                Encuentra a tu <strong> parlamento andino</strong>
+              </Styled.ButtonText>
+            </Styled.FindMyCandidateButton>
+          </Styled.ButtonsRow>
+        </Styled.ButtonsScroll>
       </Styled.Hero>
       <Styled.InfoSection>
         <Styled.InfoText>
