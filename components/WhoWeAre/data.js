@@ -83,7 +83,7 @@ export const team = [
     photo: '/images/photos/Luigi-Viton.png',
     name: 'Luigi Vitón',
     role: 'DevOps',
-    socialNetwork: 'https://www.facebook.com/Luighiv',
+    socialNetwork: 'https://www.linkedin.com/in/luighiviton/',
   },
   {
     photo: '/images/photos/Paul-Ccari.png',
