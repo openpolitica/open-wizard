@@ -33,12 +33,23 @@ export const Paragraph = styled('p')`
   margin-bottom: 1.5rem;
 `;
 
-export const ButtonsRow = styled('div')`
+export const ButtonsScroll = styled('div')`
   background: linear-gradient(to bottom, #ecf4f3 50%, #fff 50%);
-  column-gap: 13px;
+  overflow-x: auto;
+  padding-left: 1.3rem;
+`;
+
+export const ButtonsRow = styled('div')`
+  column-gap: 0.8125rem;
   display: grid;
-  grid-template-columns: repeat(2, minmax(9.375rem, 9.8125rem));
-  padding: 0 1.5rem;
+  grid-template-columns: repeat(4, minmax(8.875rem, 9.8125rem));
+  &:after {
+    content: '';
+    height: 0.3rem;
+    padding-left: 0.4rem;
+    right: 0;
+    width: 0;
+  }
 `;
 
 export const FindMyCandidateButton = styled('button')`
@@ -47,6 +58,7 @@ export const FindMyCandidateButton = styled('button')`
   border-radius: 0.3125rem;
   box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
   cursor: pointer;
+  margin-bottom: 0.625rem;
   max-width: 9.8125rem;
   padding: 0.75rem 0.4375rem 1.5rem;
 
@@ -61,10 +73,6 @@ export const ButtonText = styled('p')`
   font-weight: 500;
   line-height: 1.3125rem;
   margin: 0.25rem 0 0;
-`;
-
-export const SpanBlack = styled('span')`
-  font-weight: bold;
 `;
 
 export const InfoSection = styled('div')`
