@@ -9,7 +9,7 @@ export const Photo = styled(Image)`
 
 export const Name = styled.p`
   color: #475065;
-  font-size: 0.818rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   margin: 0;
   margin-top: 0.5rem;

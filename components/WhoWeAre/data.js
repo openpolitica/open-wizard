@@ -67,6 +67,30 @@ export const team = [
     role: 'Backend Dev',
     socialNetwork: 'https://www.linkedin.com/in/gianpietro/',
   },
+  {
+    photo: '/images/photos/Almendra-Marañon.png',
+    name: 'Almendra Marañón',
+    role: 'Social Media Manager',
+    socialNetwork: 'https://www.linkedin.com/in/samallyn/',
+  },
+  {
+    photo: '/images/photos/Eli-Taipe.png',
+    name: 'Elí Taipe Andrade',
+    role: 'UI Designer',
+    socialNetwork: 'https://www.instagram.com/etermaster/',
+  },
+  {
+    photo: '/images/photos/Luigi-Viton.png',
+    name: 'Luigi Vitón',
+    role: 'DevOps',
+    socialNetwork: 'https://www.linkedin.com/in/luighiviton/',
+  },
+  {
+    photo: '/images/photos/Paul-Ccari.png',
+    name: 'Paul Ccari',
+    role: 'Frontend Dev',
+    socialNetwork: 'https://www.linkedin.com/in/paulccari/',
+  },
 ];
 
 export const mentors = [
