@@ -7,7 +7,6 @@ import * as Styled from './styles';
 import { FavoritesContext } from 'hooks/useFavorites';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
-import toggleSlug from 'components/PartyCard/toggleSlug';
 
 const LoadingScreen = () => {
   return (
@@ -60,7 +59,7 @@ export default function CandidateSingle(props) {
     setCollapsed(newCollapsedObject);
   };
 
-  const { data, error } = useSWR(
+  const { data } = useSWR(
     candidateId ? `/api/candidates/hoja_vida_id/${candidateId}` : null,
     () =>
       fetch(
@@ -116,7 +115,8 @@ export default function CandidateSingle(props) {
           candidateRole={c.cargo_nombre}
           candidateTwitterLink={c.twitter}
           candidateFacebookLink={c.facebook}
-          runsForCongress={runsForCongress}></Styled.CandidateBigCard>
+          runsForCongress={runsForCongress}
+        />
         <Styled.Accordion
           type="personalInfo"
           title="Información personal"
