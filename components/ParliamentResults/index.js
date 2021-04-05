@@ -100,7 +100,7 @@ export default function PartyResults(props) {
     setCandidates(ls('op.parliament').filteredCandidates);
   }, [filters]);
 
-  if (!Object.keys(candidates).length) {
+  if (!Object.keys(candidates || {}).length) {
     return <LoadingScreen />;
   }
 
