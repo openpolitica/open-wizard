@@ -7,7 +7,7 @@ import qs from 'qs';
 import groupBy from 'lodash.groupby';
 import { FavoritesContext } from 'hooks/useFavorites';
 import * as Styled from './styles';
-import PartyCard from 'components/PartyCard';
+import { PartyCard } from 'components/PartyCard';
 import Loading from 'components/Loading';
 import FilterModal from 'components/FilterModal';
 import {
