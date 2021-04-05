@@ -1,10 +1,7 @@
 import hasDriverLicenseIssue from 'components/Steps/CandidateResults/hasDriverLicenseIssue';
 
 const capitalize = (text, { omit = ['de', 'en', 'el', 'la', 'del'] } = {}) => {
-  const lowerTextArray = text
-    .trim()
-    .toLowerCase()
-    .split(/\s+/);
+  const lowerTextArray = text.trim().toLowerCase().split(/\s+/);
   return lowerTextArray
     .map((word) =>
       word !== lowerTextArray[0] && omit.includes(word)
@@ -207,7 +204,7 @@ const processCandidateContent = (type, content) => {
           </div>,
         );
       }
-      if (content.servir !== 'No registra') {
+      if (content.servir !== 'No registra' && content.servir !== null) {
         sanctionArray.push(
           <div key="servir">
             <p>
