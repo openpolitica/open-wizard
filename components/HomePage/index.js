@@ -78,6 +78,7 @@ const HomePage = () => {
   useEffect(() => {
     resetTopics();
     ls('op.wizard', {});
+    ls('op.parliament', {});
   }, [resetTopics, router.pathname]);
 
   return (
