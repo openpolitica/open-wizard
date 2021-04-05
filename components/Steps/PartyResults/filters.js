@@ -57,6 +57,12 @@ export const doesntHaveSanctionsWithDriving = (candidates) =>
       !hasDriverLicenseIssue(candidate.licencia_conducir),
   );
 
+// Sentences parliament candidates
+export const doesntHaveCivilSanctions = (candidates) =>
+  candidates.filter((candidate) => candidate.sentencias_ec_civil_cnt === 0);
+export const doesntHavePenalSanctions = (candidates) =>
+  candidates.filter((candidate) => candidate.sentencias_ec_penal_cnt === 0);
+
 const filterMap = {
   onlyMale,
   onlyFemale,
@@ -72,6 +78,8 @@ const filterMap = {
   doesntHaveSanctionsWithSunat,
   doesntHaveSanctionsWithServir,
   doesntHaveSanctionsWithDriving,
+  doesntHaveCivilSanctions,
+  doesntHavePenalSanctions,
 };
 
 export const applyFilter = (data) => (filter) => filter(data);
