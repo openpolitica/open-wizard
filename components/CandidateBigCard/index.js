@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   Card,
   PartyIcon,
@@ -27,6 +26,9 @@ const contentPerCandidateType = (role, district, genre) => {
     return district !== 'PERUANOS RESIDENTES EN EL EXTRANJERO'
       ? `Postula por ${capitalize(district)}`
       : `Postula al Extranjero`;
+  }
+  if (role.includes('PARLAMENTO ANDINO')) {
+    return 'Postula al parlamento andino';
   }
   if (role.includes('PRESIDENTE')) {
     const specificRole = role.includes('PRIMER')
@@ -57,6 +59,10 @@ const CandidateBigCard = (props) => {
     props.addFavorite(props.candidate);
   };
 
+  const isRunningForCongressOrParliament =
+    props.candidateRole.includes('CONGRESISTA') ||
+    props.candidateRole.includes('PARLAMENTO ANDINO');
+
   return (
     <Card {...props}>
       <MainRow>
@@ -80,7 +86,7 @@ const CandidateBigCard = (props) => {
           </Column>
           <Row>
             <PartyIcon src={partyIconSource(props.candidateParty)} />
-            {props.candidateRole.includes('CONGRESISTA') ? (
+            {isRunningForCongressOrParliament ? (
               <NumberIcon>{props.candidateNumber || 'NA'}</NumberIcon>
             ) : null}
           </Row>
