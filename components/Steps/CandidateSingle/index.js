@@ -94,6 +94,13 @@ export default function CandidateSingle(props) {
             } Vicepresidencia y al Congreso.`}
           </Styled.Chip>
         ) : null}
+        {c.cargo_nombre.includes('VICEPRESIDENTE Y REPRESENTANTE') ? (
+          <Styled.Chip type="good">
+            {`Este candidato está postulando a la ${
+              c.cargo_nombre.includes('PRIMER') ? 'Primera' : 'Segunda'
+            } Vicepresidencia y al Parlamento Andino.`}
+          </Styled.Chip>
+        ) : null}
         <Styled.CandidateBigCard
           addFavorite={addFavorite}
           removeFavorite={removeFavorite}
