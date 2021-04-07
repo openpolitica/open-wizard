@@ -27,9 +27,6 @@ const contentPerCandidateType = (role, district, genre) => {
       ? `Postula por ${capitalize(district)}`
       : `Postula al Extranjero`;
   }
-  if (role.includes('PARLAMENTO ANDINO')) {
-    return 'Postula al parlamento andino';
-  }
   if (role.includes('PRESIDENTE')) {
     const specificRole = role.includes('PRIMER')
       ? '1ra Vicepresidencia'
@@ -39,6 +36,9 @@ const contentPerCandidateType = (role, district, genre) => {
     return genre === 'F'
       ? `Candidata a ${specificRole}`
       : `Candidato a ${specificRole}`;
+  }
+  if (role.includes('PARLAMENTO ANDINO')) {
+    return 'Postula al parlamento andino';
   }
 };
 
