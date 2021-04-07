@@ -79,6 +79,13 @@ const processCandidateContent = (type, content) => {
       </p>
     );
   }
+  if (type === 'residence') {
+    return (
+      <p>
+        {content.distrito}, {content.provincia}, {content.departamento}
+      </p>
+    );
+  }
   if (type === 'education') {
     let superiorEducationCount = 0;
     if (content) {
