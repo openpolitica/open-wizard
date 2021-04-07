@@ -57,6 +57,8 @@ const wrongCareers = [
   '-',
 ];
 
+const continents = ['AMERICA', 'EUROPA', 'ASIA', 'AFRICA', 'OCEANIA'];
+
 const processCandidateContent = (type, content) => {
   if (type === 'personalInfo') {
     return (
@@ -82,7 +84,10 @@ const processCandidateContent = (type, content) => {
   if (type === 'residence') {
     return (
       <p>
-        {content.distrito}, {content.provincia}, {content.departamento}
+        {content.distrito}, {content.provincia}
+        {continents.includes(content.departamento)
+          ? null
+          : `, ${content.departamento}`}
       </p>
     );
   }
