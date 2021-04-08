@@ -126,28 +126,16 @@ export default function CandidateSingle(props) {
           content={{
             birthdate: c.nacimiento_fecha,
             dni: c.id_dni,
-          }}
-        />
-        <Styled.Accordion
-          type="place"
-          title="Lugar de nacimiento"
-          collapsed={collapsed.place}
-          titleRowClick={onTitleRowClick}
-          content={{
-            departamento: c.nacimiento_departamento,
-            provincia: c.nacimiento_provincia,
-            pais: c.nacimiento_pais,
-          }}
-        />
-        <Styled.Accordion
-          type="residence"
-          title="Lugar de residencia"
-          collapsed={collapsed.residence}
-          titleRowClick={onTitleRowClick}
-          content={{
-            distrito: c.domicilio_distrito,
-            provincia: c.domicilio_provincia,
-            departamento: c.domicilio_departamento,
+            place: {
+              departamento: c.nacimiento_departamento,
+              provincia: c.nacimiento_provincia,
+              pais: c.nacimiento_pais,
+            },
+            residence: {
+              distrito: c.domicilio_distrito,
+              provincia: c.domicilio_provincia,
+              departamento: c.domicilio_departamento,
+            },
           }}
         />
         <Styled.Accordion
