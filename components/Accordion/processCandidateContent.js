@@ -57,6 +57,8 @@ const wrongCareers = [
   '-',
 ];
 
+const continents = ['AMERICA', 'EUROPA', 'ASIA', 'AFRICA', 'OCEANIA'];
+
 const processCandidateContent = (type, content) => {
   if (type === 'personalInfo') {
     return (
@@ -67,16 +69,20 @@ const processCandidateContent = (type, content) => {
         <p>
           <strong>DNI:</strong> {addLeadZeros(content.dni, 8)}
         </p>
+        <p>
+          <strong>Lugar de nacimiento:</strong>
+          {content.place.departamento
+            ? ` ${content.place.provincia}, ${content.place.departamento}`
+            : content.place.pais}
+        </p>
+        <p>
+          <strong>Lugar de residencia:</strong> {content.residence.distrito},{' '}
+          {content.residence.provincia}
+          {continents.includes(content.residence.departamento)
+            ? null
+            : `, ${content.residence.departamento}`}
+        </p>
       </div>
-    );
-  }
-  if (type === 'place') {
-    return (
-      <p>
-        {content.departamento
-          ? `${content.provincia}, ${content.departamento}`
-          : content.pais}
-      </p>
     );
   }
   if (type === 'education') {

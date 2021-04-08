@@ -37,6 +37,7 @@ export default function CandidateSingle(props) {
   const [collapsed, setCollapsed] = useState({
     personalInfo: false,
     place: true,
+    residence: true,
     education: true,
     experience: true,
     income: true,
@@ -132,17 +133,16 @@ export default function CandidateSingle(props) {
           content={{
             birthdate: c.nacimiento_fecha,
             dni: c.id_dni,
-          }}
-        />
-        <Styled.Accordion
-          type="place"
-          title="Lugar de nacimiento"
-          collapsed={collapsed.place}
-          titleRowClick={onTitleRowClick}
-          content={{
-            departamento: c.nacimiento_departamento,
-            provincia: c.nacimiento_provincia,
-            pais: c.nacimiento_pais,
+            place: {
+              departamento: c.nacimiento_departamento,
+              provincia: c.nacimiento_provincia,
+              pais: c.nacimiento_pais,
+            },
+            residence: {
+              distrito: c.domicilio_distrito,
+              provincia: c.domicilio_provincia,
+              departamento: c.domicilio_departamento,
+            },
           }}
         />
         <Styled.Accordion
