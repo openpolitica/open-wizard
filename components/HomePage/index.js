@@ -113,13 +113,14 @@ const HomePage = () => {
     if (remainingHoursEnd > 0) {
       return (
         <Styled.Title>
-          Hoy son las elecciones <strong>¿Ya sabes por quién votar?</strong>
+          El <strong>80% del Perú</strong> ya decidió por quién votar, ¿y tú?
         </Styled.Title>
       );
     } else {
       return (
         <Styled.Title>
-          Las elecciones han finalizado, gracias por usar Votu.
+          Las elecciones han finalizado. Gracias por usar{' '}
+          <strong>Votu.pe</strong>.
         </Styled.Title>
       );
     }
