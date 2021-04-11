@@ -73,10 +73,58 @@ const HomePage = () => {
     router.push('/parliament-steps/1');
   };
 
-  const electionDate = new Date('2021/04/11');
+  const electionDateStart = new Date('2021/04/11 07:00 GMT-5:00');
+  const electionDateEnd = new Date('2021/04/11 19:00 GMT-5:00');
   const currentDate = new Date();
-  const miliseconds = electionDate.getTime() - currentDate.getTime();
-  const remainingDays = Math.round(miliseconds / (1000 * 60 * 60 * 24));
+  const miliseconds = electionDateStart.getTime() - currentDate.getTime();
+  const milisecondsEnd = electionDateEnd.getTime() - currentDate.getTime();
+  const remainingDays = Math.floor(miliseconds / (1000 * 60 * 60 * 24));
+  const remainingHours = Math.round(miliseconds / (1000 * 60 * 60));
+  const remainingHoursEnd = Math.round(milisecondsEnd / (1000 * 60 * 60));
+
+  const DynamicTime = () => {
+    if (remainingDays > 1) {
+      return <Styled.Emphasis> {remainingDays} días </Styled.Emphasis>;
+    }
+    if (remainingDays > 0) {
+      return <Styled.Emphasis> {remainingDays} día </Styled.Emphasis>;
+    }
+    if (remainingHours > 1) {
+      return <Styled.Emphasis> {remainingHours} horas </Styled.Emphasis>;
+    }
+    if (remainingHours > 0) {
+      return <Styled.Emphasis> {remainingHours} hora </Styled.Emphasis>;
+    }
+    if (remainingHoursEnd > 0) {
+      return null;
+    }
+  };
+
+  const DynamicTitle = () => {
+    if (remainingHours > 0) {
+      return (
+        <Styled.Title>
+          {remainingDays === 1 || remainingHours === 1 ? `Falta` : `Faltan`}
+          <DynamicTime />
+          para las elecciones <strong>¿Ya sabes por quién votar?</strong>
+        </Styled.Title>
+      );
+    }
+    if (remainingHoursEnd > 0) {
+      return (
+        <Styled.Title>
+          El <strong>80% del Perú</strong> ya decidió por quién votar, ¿y tú?
+        </Styled.Title>
+      );
+    } else {
+      return (
+        <Styled.Title>
+          Las elecciones han finalizado. Gracias por usar{' '}
+          <strong>Votu.pe</strong>.
+        </Styled.Title>
+      );
+    }
+  };
 
   useEffect(() => {
     resetTopics();
@@ -89,11 +137,7 @@ const HomePage = () => {
       <BaseHeader />
       <Styled.Hero>
         <Styled.TextContent>
-          <Styled.Title>
-            Faltan
-            <Styled.Emphasis> {remainingDays} días </Styled.Emphasis>
-            para las elecciones <strong>¿Ya sabes por quién votar?</strong>
-          </Styled.Title>
+          <DynamicTitle />
           <Styled.Paragraph>
             Te ayudamos a encontrar tus opciones para estas elecciones en unos
             cuantos pasos
