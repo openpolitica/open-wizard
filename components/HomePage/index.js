@@ -104,7 +104,7 @@ const HomePage = () => {
     if (remainingHours > 0) {
       return (
         <Styled.Title>
-          {remainingDays === 1 || remainingHours === 1 ? `Falta` : `Faltan`}
+          {remainingDays === 1 || remainingHours === 1 ? 'Falta' : 'Faltan'}
           <DynamicTime />
           para las elecciones <strong>¿Ya sabes por quién votar?</strong>
         </Styled.Title>
@@ -119,9 +119,26 @@ const HomePage = () => {
     } else {
       return (
         <Styled.Title>
-          Las elecciones han finalizado. Gracias por usar{' '}
-          <strong>Votu.pe</strong>.
+          Las elecciones se fueron, pero nosotros nos quedamos.
         </Styled.Title>
+      );
+    }
+  };
+
+  const DynamicParagraph = () => {
+    if (remainingHoursEnd > 0) {
+      return (
+        <Styled.Paragraph>
+          Te ayudamos a encontrar tus opciones para estas elecciones en unos
+          cuantos pasos
+        </Styled.Paragraph>
+      );
+    } else {
+      return (
+        <Styled.Paragraph>
+          Revisa los planes de gobierno que presentaron los partidos y los
+          candidatos que postularon
+        </Styled.Paragraph>
       );
     }
   };
@@ -138,10 +155,7 @@ const HomePage = () => {
       <Styled.Hero>
         <Styled.TextContent>
           <DynamicTitle />
-          <Styled.Paragraph>
-            Te ayudamos a encontrar tus opciones para estas elecciones en unos
-            cuantos pasos
-          </Styled.Paragraph>
+          <DynamicParagraph />
         </Styled.TextContent>
         <Styled.ButtonsScroll>
           <Styled.ButtonsRow>
