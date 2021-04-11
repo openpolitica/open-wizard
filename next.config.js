@@ -19,7 +19,7 @@ module.exports = {
       version: 6,
     },
     matomo: {
-      url: 'https://matomo.openpolitica.com/',
+      url: 'https://votupe.matomo.cloud/',
       siteId: 1,
     },
     profilePictures: {
