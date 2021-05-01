@@ -73,8 +73,8 @@ const HomePage = () => {
     router.push('/parliament-steps/1');
   };
 
-  const electionDateStart = new Date('2021/04/11 07:00 GMT-5:00');
-  const electionDateEnd = new Date('2021/04/11 19:00 GMT-5:00');
+  const electionDateStart = new Date('2021/06/06 07:00 GMT-5:00');
+  const electionDateEnd = new Date('2021/06/06 19:00 GMT-5:00');
   const currentDate = new Date();
   const miliseconds = electionDateStart.getTime() - currentDate.getTime();
   const milisecondsEnd = electionDateEnd.getTime() - currentDate.getTime();
@@ -129,15 +129,14 @@ const HomePage = () => {
     if (remainingHoursEnd > 0) {
       return (
         <Styled.Paragraph>
-          Te ayudamos a encontrar tus opciones para estas elecciones en unos
-          cuantos pasos
+          Revisa a los dos candidatos que quedaron para esta segunda vuelta.
         </Styled.Paragraph>
       );
     } else {
       return (
         <Styled.Paragraph>
-          Revisa los planes de gobierno que presentaron los partidos y los
-          candidatos que postularon
+          Revisa los planes de gobierno que presentaron los dos candidatos que
+          quedaron para la segunda vuelta.
         </Styled.Paragraph>
       );
     }
