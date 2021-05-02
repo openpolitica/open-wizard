@@ -36,3 +36,21 @@ export const SeeCandidatesButton = styled(BaseButton)`
   margin-top: 1rem;
   min-width: 6.375rem;
 `;
+
+export const HomeCard = styled(Card)`
+  justify-content: space-around;
+  padding: 1rem 0;
+  text-decoration: none;
+`;
+
+export const HomePartyName = styled(PartyName)`
+  font-size: 1rem;
+`;
+
+export const SeePresidentialList = styled(BaseParagraph)`
+  font-size: 0.7rem;
+
+  ${HomeCard}:hover & {
+    text-decoration: underline;
+  }
+`;
