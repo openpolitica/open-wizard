@@ -14,6 +14,10 @@ export const TextContent = styled('div')`
   padding: 2.5rem 1.5rem 1.5rem 1.5rem;
 `;
 
+export const TextContent2 = styled(TextContent)`
+  background: #fff;
+`;
+
 export const Title = styled('h1')`
   color: #04102f;
   font-size: 1.5rem;
@@ -42,7 +46,7 @@ export const ButtonsScroll = styled('div')`
 export const ButtonsRow = styled('div')`
   column-gap: 0.8125rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(8.875rem, 9.8125rem));
+  grid-template-columns: repeat(2, minmax(8.875rem, 9.8125rem));
   &:after {
     content: '';
     height: 0.3rem;

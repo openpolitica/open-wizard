@@ -7,6 +7,7 @@ import Footer from 'components/Footer';
 import BaseButton from 'components/BaseButton';
 import { useTopics } from 'hooks/useTopics';
 import { useEffect } from 'react';
+import { HomePartyCard as PartyCard } from 'components/PartyCard';
 
 const CheckLabel = (props) => (
   <Styled.WrapperCheckLabel>
@@ -158,59 +159,18 @@ const HomePage = () => {
         </Styled.TextContent>
         <Styled.ButtonsScroll>
           <Styled.ButtonsRow>
-            <Styled.FindMyCandidateButton onClick={goToGovernmentPlan}>
-              <Image
-                src="/images/icons/governmentPlan.svg"
-                width="70"
-                height="70"
-                alt="icono plan de gobierno"
-              />
-              <Styled.ButtonText>
-                Encuentra tu
-                <strong> plan de gobierno</strong>
-              </Styled.ButtonText>
-            </Styled.FindMyCandidateButton>
-            <Styled.FindMyCandidateButton onClick={goToCongressmen}>
-              <Image
-                src="/images/icons/congressmen.svg"
-                width="70"
-                height="70"
-                alt="icono congresistas"
-              />
-              <Styled.ButtonText>
-                Encuentra a tus <strong> congresistas</strong>
-              </Styled.ButtonText>
-            </Styled.FindMyCandidateButton>
-            <Styled.FindMyCandidateButton onClick={goToAndeanParliament}>
-              <Image
-                src="/images/icons/andeanParliament.svg"
-                width="70"
-                height="70"
-                alt="icono parlamento andino"
-              />
-              <Styled.ButtonText>
-                Encuentra a tu <strong> parlamento andino</strong>
-              </Styled.ButtonText>
-            </Styled.FindMyCandidateButton>
+            <PartyCard
+              partyName="partido-politico-nacional-peru-libre"
+              partyAlias="Perú libre"
+            />
+            <PartyCard
+              partyName="fuerza-popular"
+              partyAlias="Fuerza popular"
+            />
           </Styled.ButtonsRow>
         </Styled.ButtonsScroll>
       </Styled.Hero>
-      <Styled.InfoSection>
-        <Styled.InfoText>
-          ¿Quieres ver la lista de todos los candidatos?
-        </Styled.InfoText>
-        <Styled.Paragraph>
-          <strong>
-            Encuentra todos los datos que buscas sobre todos los posibles
-            presidentes:
-          </strong>{' '}
-          Hojas de vida, sentencias, sanciones, entre otros.
-        </Styled.Paragraph>
-        <BaseButton onClick={() => router.push('/presidential-list/')}>
-          Ver lista de candidatos presidenciales
-        </BaseButton>
-      </Styled.InfoSection>
-      <Styled.TextContent>
+      <Styled.TextContent2>
         <Styled.InfoText>
           Juntamos toda la información pública para que puedas{' '}
           <Styled.Emphasis> elegir informado.</Styled.Emphasis>
@@ -238,7 +198,7 @@ const HomePage = () => {
             />
           </Styled.BackgroundDirections>
         </Styled.InfoCard>
-      </Styled.TextContent>
+      </Styled.TextContent2>
       <Footer />
     </Styled.Container>
   );
