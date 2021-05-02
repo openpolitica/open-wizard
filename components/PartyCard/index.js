@@ -50,4 +50,18 @@ const PartyParliamentCard = (props) => {
   );
 };
 
-export { PartyCard, PartyParliamentCard };
+const HomePartyCard = (props) => {
+  return (
+    <Styled.HomeCard as="a" href={`presidential-list/${props.partyName}`}>
+      <Styled.PartyIcon src={partyIconSource(props.partyName)} />
+      <Styled.HomePartyName>
+        {props.partyAlias || 'Partido Político'}
+      </Styled.HomePartyName>
+      <Styled.SeePresidentialList>
+        Ver plancha presidencial
+      </Styled.SeePresidentialList>
+    </Styled.HomeCard>
+  );
+};
+
+export { PartyCard, PartyParliamentCard, HomePartyCard };
