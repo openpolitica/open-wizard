@@ -130,17 +130,16 @@ const HomePage = () => {
     if (remainingHoursEnd > 0) {
       return (
         <Styled.Paragraph>
-          Revisa a los dos candidatos que quedaron para esta segunda vuelta.
-        </Styled.Paragraph>
-      );
-    } else {
-      return (
-        <Styled.Paragraph>
-          Revisa los planes de gobierno que presentaron los dos candidatos que
-          quedaron para la segunda vuelta.
+          Revisa las dos opciones que quedaron para esta segunda vuelta.
         </Styled.Paragraph>
       );
     }
+    return (
+      <Styled.Paragraph>
+        Revisa los planes de gobierno que presentaron las dos opciones que
+        quedaron para la segunda vuelta.
+      </Styled.Paragraph>
+    );
   };
 
   useEffect(() => {
@@ -163,10 +162,7 @@ const HomePage = () => {
               partyName="partido-politico-nacional-peru-libre"
               partyAlias="Perú libre"
             />
-            <PartyCard
-              partyName="fuerza-popular"
-              partyAlias="Fuerza popular"
-            />
+            <PartyCard partyName="fuerza-popular" partyAlias="Fuerza popular" />
           </Styled.ButtonsRow>
         </Styled.ButtonsScroll>
       </Styled.Hero>
