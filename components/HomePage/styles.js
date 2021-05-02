@@ -56,33 +56,6 @@ export const ButtonsRow = styled('div')`
   }
 `;
 
-export const FindMyCandidateButton = styled('button')`
-  background: #fff;
-  border: none;
-  border-radius: 0.3125rem;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  margin-bottom: 0.625rem;
-  max-width: 9.8125rem;
-  padding: 0.75rem 0.4375rem 1.5rem;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
-
-export const ButtonText = styled('p')`
-  color: #04102f;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1.3125rem;
-  margin: 0.25rem 0 0;
-`;
-
-export const InfoSection = styled('div')`
-  padding: 3.75rem 1.5rem 2.5rem;
-`;
-
 export const InfoText = styled('p')`
   color: #04102f;
   font-size: 1.125rem;
