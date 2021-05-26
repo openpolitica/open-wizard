@@ -48,7 +48,7 @@ export default function presidentList(props) {
   const presidentList = data?.data;
 
   const NewPlan = () => {
-    if (presidentList.president.org_politica_alias === 'Perú Libre')
+    if (presidentList.president.org_politica_alias === 'Perú Libre') {
       return (
         <Styled.ExternalLink
           href={'https://perulibre.pe/plan-bicentenario.pdf'}
@@ -60,6 +60,7 @@ export default function presidentList(props) {
           </Styled.ExternalLinkText>
         </Styled.ExternalLink>
       );
+    }  
     return null;
   };
 
