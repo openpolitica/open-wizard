@@ -47,6 +47,22 @@ export default function presidentList(props) {
   }
   const presidentList = data?.data;
 
+  const NewPlan = () => {
+    if (presidentList.president.org_politica_alias === 'Perú Libre')
+      return (
+        <Styled.ExternalLink
+          href={'https://perulibre.pe/plan-bicentenario.pdf'}
+          target="_blank"
+          rel="noopener noreferrer">
+          <ExternalLinkIcon />
+          <Styled.ExternalLinkText>
+            Ir al <strong>nuevo</strong> plan de gobierno
+          </Styled.ExternalLinkText>
+        </Styled.ExternalLink>
+      );
+    return null;
+  };
+
   return (
     <Styled.Container>
       <Styled.Header />
@@ -65,6 +81,7 @@ export default function presidentList(props) {
         <Styled.EmphasizedTitle>
           {presidentList.president.org_politica_alias}
         </Styled.EmphasizedTitle>
+        <NewPlan />
         <Styled.ExternalLink
           href={presidentList.president.plan_de_gobierno_url || '#'}
           target="_blank"
