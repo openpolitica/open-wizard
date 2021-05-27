@@ -1,12 +1,12 @@
 import * as Styled from './styles';
 import useSWR from 'swr';
 import fetch from 'isomorphic-fetch';
+import Image from 'next/image';
 import toggleSlug from 'components/PartyCard/toggleSlug';
 import Router, { useRouter } from 'next/router';
 import Loading from 'components/Loading';
 import GoBackButton from 'components/GoBackButton';
 import comesFromAFinishedPresidentialUserTrip from './comesFromAFinishedPresidentialUserTrip';
-import ExternalLinkIcon from 'public/images/icons/external-link.svg';
 
 const LoadingScreen = () => {
   return (
@@ -47,6 +47,30 @@ export default function presidentList(props) {
   }
   const presidentList = data?.data;
 
+  const FollowIcon = () => {
+    return (
+      <Styled.FollowIcon>
+        <Image src="/images/icons/follow-icon.svg" width={6} height={12} />
+      </Styled.FollowIcon>
+    );
+  };
+  const NewPlan = () => {
+    if (presidentList.president.org_politica_alias === 'Perú Libre') {
+      return (
+        <Styled.ExternalLink
+          href={'https://perulibre.pe/plan-bicentenario.pdf'}
+          target="_blank"
+          rel="noopener noreferrer">
+          <Styled.ExternalLinkText>
+            Ir al <strong>nuevo</strong> plan de gobierno
+          </Styled.ExternalLinkText>
+          <FollowIcon />
+        </Styled.ExternalLink>
+      );
+    }
+    return null;
+  };
+
   return (
     <Styled.Container>
       <Styled.Header />
@@ -65,14 +89,15 @@ export default function presidentList(props) {
         <Styled.EmphasizedTitle>
           {presidentList.president.org_politica_alias}
         </Styled.EmphasizedTitle>
+        <NewPlan />
         <Styled.ExternalLink
           href={presidentList.president.plan_de_gobierno_url || '#'}
           target="_blank"
           rel="noopener noreferrer">
-          <ExternalLinkIcon />
           <Styled.ExternalLinkText>
             Ir al plan de gobierno
           </Styled.ExternalLinkText>
+          <FollowIcon />
         </Styled.ExternalLink>
         <Styled.CandidateSingle>
           <Styled.Subtitle>
