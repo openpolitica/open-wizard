@@ -33,20 +33,26 @@ export const Title = styled(BaseTitle)`
 
 export const EmphasizedTitle = styled(Title)`
   color: #5bc13e;
+  margin-bottom: 0.5rem;
   margin-top: 0;
 `;
 
 export const ExternalLink = styled('a')`
   align-items: center;
-  align-self: flex-start;
+  align-self: center;
   color: #5bc13e;
   display: flex;
   font-size: 0.875rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.5625rem 0;
 `;
 export const ExternalLinkText = styled('span')`
   font-size: 0.875rem;
   margin-left: 0.5rem;
+`;
+
+export const FollowIcon = styled.div`
+  margin-left: 0.625rem;
 `;
 
 export const Subtitle = styled('p')`
